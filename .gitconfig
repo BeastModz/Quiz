@@ -1,0 +1,5 @@
+[user]
+	name = Mark
+	email = m.formsma@pm.me
+[core]
+	autocrlf = true

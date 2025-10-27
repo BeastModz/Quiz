@@ -1,0 +1,1235 @@
+[
+  {
+    "id": 81,
+    "exam": "Exam 2",
+    "type": "multiple-choice",
+    "question": "Which of the following is an example of a negative feedback loop in human physiology?",
+    "image": null,
+    "options": [
+      "Blood clotting.",
+      "Cellular respiration.",
+      "The role of oxytocin during child birth.",
+      "Sweating on a warm day."
+    ],
+    "correct": "D",
+    "explanation": null,
+    "originalNumber": 1
+  },
+  {
+    "id": 82,
+    "exam": "Exam 2",
+    "type": "multiple-choice",
+    "question": "If a blood test comes back with a result indicating high triglyceride levels, that indicates the person is ingesting too much of which type of organic molecules in its diet?",
+    "image": null,
+    "options": [
+      "Carbohydrates.",
+      "Lipids.",
+      "Nucleic acids.",
+      "Proteins."
+    ],
+    "correct": "B",
+    "explanation": null,
+    "originalNumber": 2
+  },
+  {
+    "id": 83,
+    "exam": "Exam 2",
+    "type": "multiple-choice",
+    "question": "One of the important physiological functions of the blood is the regulation of body temperature. Under cold weather conditions, which of the following is TRUE?",
+    "image": null,
+    "options": [
+      "Constriction of the blood vessels near the skin.",
+      "Hemoglobin levels decrease.",
+      "Hemoglobin levels increase.",
+      "Dilation of the blood vessels near the skin."
+    ],
+    "correct": "A",
+    "explanation": null,
+    "originalNumber": 3
+  },
+  {
+    "id": 84,
+    "exam": "Exam 2",
+    "type": "multiple-choice",
+    "question": "For the target cells to respond to an hormone they must have specific protein receptors. Where are these receptors located?",
+    "image": null,
+    "options": [
+      "Both in the cell membrane and in the cytoplasm.",
+      "Only in the cell membrane.",
+      "Only in the cytoplasm.",
+      "Only in the cell nucleus."
+    ],
+    "correct": "A",
+    "explanation": null,
+    "originalNumber": 4
+  },
+  {
+    "id": 85,
+    "exam": "Exam 2",
+    "type": "multiple-choice",
+    "question": "One of the hormones produced by the pituitary gland is the Antidiuretic Hormone (ADH). What is the main physiological function of this hormone?",
+    "image": null,
+    "options": [
+      "It causes the adrenal glands to release corticosteroids.",
+      "It causes the kidneys to reabsorb more water.",
+      "It increases calcium levels in the blood.",
+      "It regulates the production of female sex hormones in the ovaries."
+    ],
+    "correct": "B",
+    "explanation": null,
+    "originalNumber": 5
+  },
+  {
+    "id": 86,
+    "exam": "Exam 2",
+    "type": "multiple-choice",
+    "question": "Where in the body can you find Kuppfer cells, immune system cells that destroy antigens entering the body through the digestive system?",
+    "image": null,
+    "options": [
+      "Large intestine.",
+      "Liver.",
+      "Stomach.",
+      "Tonsils."
+    ],
+    "correct": "B",
+    "explanation": null,
+    "originalNumber": 6
+  },
+  {
+    "id": 87,
+    "exam": "Exam 2",
+    "type": "multiple-choice",
+    "question": "In which part of the nephron is most water reabsorbed?",
+    "image": null,
+    "options": [
+      "In the proximal convoluted tubule.",
+      "In the glomerulus.",
+      "In the nephron loop.",
+      "In the collecting duct."
+    ],
+    "correct": "C",
+    "explanation": null,
+    "originalNumber": 7
+  },
+  {
+    "id": 88,
+    "exam": "Exam 2",
+    "type": "multiple-choice",
+    "question": "Mister Smith has O+ blood. Which of the following blood transfusion can be safely done with no risks for the people involved?",
+    "image": null,
+    "options": [
+      "Mister Smith donates blood to Miss Jones who has O- blood.",
+      "Mister Smith donates blood to Mister Jackson who has A+ blood.",
+      "Mister Smith receives blood from Mister Jackson who has A+ blood.",
+      "None of the above."
+    ],
+    "correct": "B",
+    "explanation": null,
+    "originalNumber": 8
+  },
+  {
+    "id": 89,
+    "exam": "Exam 2",
+    "type": "multiple-choice",
+    "question": "Which of the following sentences about the plasma membrane is NOT true?",
+    "image": null,
+    "options": [
+      "Oxygen can diffuse across the membrane.",
+      "Phospholipids form the basic structure of the plasma membrane.",
+      "Transport proteins are required to allow some chemicals across the membrane.",
+      "Muscle cells have no plasma membrane to allow for a faster intake of glucose."
+    ],
+    "correct": "D",
+    "explanation": null,
+    "originalNumber": 9
+  },
+  {
+    "id": 90,
+    "exam": "Exam 2",
+    "type": "multiple-choice",
+    "question": "Which of these physiological functions in NOT associated with the urinary system?",
+    "image": null,
+    "options": [
+      "Producing urine.",
+      "Regulating blood pressure.",
+      "Removing nitrogenous wastes from the body.",
+      "Removing ethanol from the body."
+    ],
+    "correct": "D",
+    "explanation": null,
+    "originalNumber": 10
+  },
+  {
+    "id": 91,
+    "exam": "Exam 2",
+    "type": "multiple-choice",
+    "question": "The Dutch cycling team went to train in the Alps before the start of the Olympic games. Which of the following changes would you expect to see in those athletes?",
+    "image": null,
+    "options": [
+      "A higher cardiac output.",
+      "A higher concentration of hemoglobin in the blood.",
+      "A lower pH level in the blood.",
+      "A lower respiratory rate."
+    ],
+    "correct": "B",
+    "explanation": null,
+    "originalNumber": 11
+  },
+  {
+    "id": 92,
+    "exam": "Exam 2",
+    "type": "multiple-choice",
+    "question": "Look at the picture below showing the internal structure of a kidney. Which structures do numbers 1, 2, 3 and 4 correspond to?",
+    "image": "Image required",
+    "options": [
+      "1 – renal capsule; 2 – renal pelvis; 3 – renal pyramid; 4 - nephron.",
+      "1 – renal cortex; 2 – glomerulus; 3 – renal pelvis; 4 – renal pyramid.",
+      "1 – renal cortex; 2 – renal capsule; 3 – renal pyramid; 4 – renal pelvis.",
+      "1 – renal medulla; 2 – renal cortex; 3 – nephron; 4 - ureter"
+    ],
+    "correct": "C",
+    "explanation": null,
+    "originalNumber": 12
+  },
+  {
+    "id": 93,
+    "exam": "Exam 2",
+    "type": "multiple-choice",
+    "question": "What would happen to the process of urine formation if the renal medulla became hyposmolar (low salt concentration)?",
+    "image": null,
+    "options": [
+      "The blood pressure would increase.",
+      "The ion concentration in the blood would become lower.",
+      "The person would need to micturate more frequently.",
+      "The urine would turn brown."
+    ],
+    "correct": "C",
+    "explanation": null,
+    "originalNumber": 13
+  },
+  {
+    "id": 94,
+    "exam": "Exam 2",
+    "type": "multiple-choice",
+    "question": "What is the cytosol?",
+    "image": null,
+    "options": [
+      "A cellular organelle responsible for packaging proteins for extracellular transport.",
+      "A lipid responsible for transducing hormonal signals inside living cells.",
+      "The fluid component of the cell, within which various organelles and particles are suspended.",
+      "The material or protoplasm found within living cells, between the membrane and the nucleus."
+    ],
+    "correct": "C",
+    "explanation": null,
+    "originalNumber": 14
+  },
+  {
+    "id": 95,
+    "exam": "Exam 2",
+    "type": "multiple-choice",
+    "question": "Which of the following substances in NOT commonly found in blood plasma?",
+    "image": null,
+    "options": [
+      "Carbon dioxide.",
+      "Collagen.",
+      "Glucose.",
+      "Urea."
+    ],
+    "correct": "D",
+    "explanation": null,
+    "originalNumber": 15
+  },
+  {
+    "id": 96,
+    "exam": "Exam 2",
+    "type": "multiple-choice",
+    "question": "Which two endocrine organs are involved in regulating calcium metabolism?",
+    "image": null,
+    "options": [
+      "Adrenal glands and thyroid.",
+      "Pancreas and Pituitary.",
+      "Parathyroid and Pancreas.",
+      "Thyroid and parathyroid."
+    ],
+    "correct": "D",
+    "explanation": null,
+    "originalNumber": 16
+  },
+  {
+    "id": 97,
+    "exam": "Exam 2",
+    "type": "multiple-choice",
+    "question": "Which of these symptoms is common in patients suffering from Diabetes Mellitus?",
+    "image": null,
+    "options": [
+      "Hypophagia (lack of appetite).",
+      "Hypoglicemia (low blood sugar)",
+      "Polyuria (excessive urination).",
+      "Proteinuria (proteins in the urine)."
+    ],
+    "correct": "C",
+    "explanation": null,
+    "originalNumber": 17
+  },
+  {
+    "id": 98,
+    "exam": "Exam 2",
+    "type": "multiple-choice",
+    "question": "The figure below shows the results of an experiment where human red blood cells were exposed to three saline solutions with different concentrations. Given the behavior of the cells (upper panel) and the movement of water across their membranes (lower panel), which of these statements is TRUE?",
+    "image": "Image required",
+    "options": [
+      "All three solutions have a similar concentration.",
+      "Solution A has the highest salt concentration.",
+      "Solution B has the highest salt concentration.",
+      "Solution C has the highest salt concentration."
+    ],
+    "correct": "B",
+    "explanation": null,
+    "originalNumber": 18
+  },
+  {
+    "id": 99,
+    "exam": "Exam 2",
+    "type": "multiple-choice",
+    "question": "Which of the following processes causes a DECREASE in blood pressure?",
+    "image": null,
+    "options": [
+      "Reduced water reabsorption in the nephrons.",
+      "Release of renin in the kidney.",
+      "Release of aldosterone in the adrenal glands.",
+      "Vasoconstriction (narrowing of the blood vessels)."
+    ],
+    "correct": "A",
+    "explanation": null,
+    "originalNumber": 19
+  },
+  {
+    "id": 100,
+    "exam": "Exam 2",
+    "type": "multiple-choice",
+    "question": "Willem was biking along is normal route to school when a speeding car came in his direction. He barely managed to avoid the collision and was still shaking from the scare when he entered the classroom. If you could test his blood before and after the incident, which of these hormones would have had a significant increase?",
+    "image": null,
+    "options": [
+      "Adrenaline.",
+      "Calcitonin.",
+      "Melatonin.",
+      "Parathyroid hormone (PTH)."
+    ],
+    "correct": "A",
+    "explanation": null,
+    "originalNumber": 20
+  },
+  {
+    "id": 101,
+    "exam": "Exam 2",
+    "type": "multiple-choice",
+    "question": "Which of the following sentences about steroid-based hormones is TRUE?",
+    "image": null,
+    "options": [
+      "They are only found in the hypothalamus.",
+      "They are resistant to very low pH levels.",
+      "They can to cross cell membranes.",
+      "They regulate glucose levels in the blood."
+    ],
+    "correct": "C",
+    "explanation": null,
+    "originalNumber": 21
+  },
+  {
+    "id": 102,
+    "exam": "Exam 2",
+    "type": "multiple-choice",
+    "question": "Which of these blood components carries cholesterol to the liver?",
+    "image": null,
+    "options": [
+      "Erythrocytes.",
+      "High-density lipoproteins (HDL).",
+      "Low-density lipoproteins (LDL).",
+      "Platelets."
+    ],
+    "correct": "B",
+    "explanation": null,
+    "originalNumber": 22
+  },
+  {
+    "id": 103,
+    "exam": "Exam 2",
+    "type": "multiple-choice",
+    "question": "The glomerular filtrate is the result of blood filtration in the kidneys, but not yet urine. Which of the following differences between glomerular filtrate and urine is FALSE?",
+    "image": null,
+    "options": [
+      "In healthy individuals, only the glomerular filtrate contains glucose.",
+      "The body produces roughly 100x more glomerular filtrate than urine.",
+      "Urine has a lower pH than the glomerular filtrate.",
+      "Urine has more salt  than the glomerular filtrate."
+    ],
+    "correct": "D",
+    "explanation": null,
+    "originalNumber": 23
+  },
+  {
+    "id": 104,
+    "exam": "Exam 2",
+    "type": "multiple-choice",
+    "question": "One of the items of safety equipment of a spacecraft removes carbon dioxide from the inside to keep the environment healthy for the astronauts. After an accident happened, the equipment stopped working, what do you expect would happen to the pH level of the astronaut's blood?",
+    "image": null,
+    "options": [
+      "The pH would decrease (acidosis).",
+      "The pH would increase (alkalosis).",
+      "The pH would remain the same (homeostasis)."
+    ],
+    "correct": "A",
+    "explanation": null,
+    "originalNumber": 24
+  },
+  {
+    "id": 105,
+    "exam": "Exam 2",
+    "type": "multiple-choice",
+    "question": "Which of this conditions are characterized by the production of abnormal white blood cells?",
+    "image": null,
+    "options": [
+      "Anemia.",
+      "Hemophilia.",
+      "Leukemia.",
+      "Puerperia."
+    ],
+    "correct": "C",
+    "explanation": null,
+    "originalNumber": 25
+  },
+  {
+    "id": 106,
+    "exam": "Exam 2",
+    "type": "multiple-choice",
+    "question": "What is the ureter?",
+    "image": null,
+    "options": [
+      "A circular muscle that regulates the flow of urine into the outside of the body.",
+      "An expandable muscular sac that accumulates urine produced in the kidney.",
+      "A tube that carries urine from the kidneys to the urinary bladder.",
+      "A tube that carries urine from the urinary bladder to the outside of the body."
+    ],
+    "correct": "C",
+    "explanation": null,
+    "originalNumber": 26
+  },
+  {
+    "id": 107,
+    "exam": "Exam 2",
+    "type": "multiple-choice",
+    "question": "What is gluconeogenesis?",
+    "image": null,
+    "options": [
+      "The breakdown of glycogen into glucose.",
+      "The formation of glycogen from glucose.",
+      "The production of glucose from fats and/or aminoacids.",
+      "The synthesis of aminoacids in the liver."
+    ],
+    "correct": "C",
+    "explanation": null,
+    "originalNumber": 27
+  },
+  {
+    "id": 108,
+    "exam": "Exam 2",
+    "type": "multiple-choice",
+    "question": "Our body can only synthesize 11 of the 20 standard aminoacids. If the diet is lacking some of the other nine aminoacids this means we might be unable to synthesize which of these organic compounds?",
+    "image": null,
+    "options": [
+      "Carbohydrates.",
+      "Lipids.",
+      "Nucleic acids.",
+      "Proteins."
+    ],
+    "correct": "D",
+    "explanation": null,
+    "originalNumber": 28
+  },
+  {
+    "id": 109,
+    "exam": "Exam 2",
+    "type": "multiple-choice",
+    "question": "The figure below shows the results of a test to determine the blood type of a patient. Given the pattern of coagulation of the blood, what is the blood type of this patient?",
+    "image": "Image required",
+    "options": [
+      "The blood type is A+.",
+      "The blood type is AB+.",
+      "The blood type is B-.",
+      "The blood type is O-."
+    ],
+    "correct": "A",
+    "explanation": null,
+    "originalNumber": 29
+  },
+  {
+    "id": 110,
+    "exam": "Exam 2",
+    "type": "multiple-choice",
+    "question": "Which of these is an example of an hormonal stimuli regulating hormone release?",
+    "image": null,
+    "options": [
+      "High levels of thyroid stimulating hormone (TSH) cause the release of T3 in the thyroid.",
+      "Low concentrations of calcium in the blood cause the release of parathyroid hormone (PTH) in the parathyroid glands.",
+      "The reception of light in the eyes regulates the release of melatonin in the pineal gland.",
+      "The thoracic splanchnic nerves stimulate the release of noradrenaline in the adrenal glands."
+    ],
+    "correct": "A",
+    "explanation": null,
+    "originalNumber": 30
+  },
+  {
+    "id": 111,
+    "exam": "Exam 2",
+    "type": "multiple-choice",
+    "question": "Why is it impossible for humans to survive at very high altitudes?",
+    "image": null,
+    "options": [
+      "Air temperatures above 5000 m are too cold to sustain life.",
+      "Red blood cells burst due to low pressure and become unable to transport oxygen.",
+      "The atmosphere at high altitudes has a different mixture of gases, with a smaller percentage of oxygen, leading to suffocation.",
+      "The body reacts to low oxygen availability by increasing the amount of red blood cells, causing the blood to become too thick."
+    ],
+    "correct": "D",
+    "explanation": null,
+    "originalNumber": 31
+  },
+  {
+    "id": 112,
+    "exam": "Exam 2",
+    "type": "multiple-choice",
+    "question": "The thyroid gland produces two hormones Triiodothyronine (T3) and Thyroxine (T4) together know as thyroid hormones. Which of the following is NOT a physiological response to the release of these hormones?",
+    "image": null,
+    "options": [
+      "Body temperature increases.",
+      "Mitochondria increase the rate of cellular respiration.",
+      "More glucose is consumed by the cells.",
+      "The pituitary gland increases the release of thyroid-stimulating hormone (TSH)."
+    ],
+    "correct": "D",
+    "explanation": null,
+    "originalNumber": 32
+  },
+  {
+    "id": 113,
+    "exam": "Exam 2",
+    "type": "multiple-choice",
+    "question": "Which of these is the LOWEST level of organization in our body?",
+    "image": null,
+    "options": [
+      "Cells.",
+      "Organelles.",
+      "Organs.",
+      "Systems."
+    ],
+    "correct": "B",
+    "explanation": null,
+    "originalNumber": 33
+  },
+  {
+    "id": 114,
+    "exam": "Exam 2",
+    "type": "multiple-choice",
+    "question": "The hormone hCG (human chorionic gonadotropin) is very important in the initial stages of pregnancy has it avoids menstruations, thus allowing the embryo to safely attach to the uterine wall. Where is it produced?",
+    "image": null,
+    "options": [
+      "In the embryonic tissues (placenta).",
+      "In the ovaries.",
+      "In the pituitary gland.",
+      "In the uterus."
+    ],
+    "correct": "A",
+    "explanation": null,
+    "originalNumber": 34
+  },
+  {
+    "id": 115,
+    "exam": "Exam 2",
+    "type": "multiple-choice",
+    "question": "How do you call the process of filtrating the blood outside the body in patients suffering from renal failure?",
+    "image": null,
+    "options": [
+      "Hematopoiesis.",
+      "Hematocrit.",
+      "Hemodialysis",
+      "Hemoglobin."
+    ],
+    "correct": "C",
+    "explanation": null,
+    "originalNumber": 35
+  },
+  {
+    "id": 116,
+    "exam": "Exam 2",
+    "type": "multiple-choice",
+    "question": "Which of the following sentences regarding kidney vascularization is CORRECT?",
+    "image": null,
+    "options": [
+      "The afferent arteriole carries blood into the glomerulus.",
+      "The efferent arteriole branches into several interlobal arteries.",
+      "The renal vein carries blood into the kidney.",
+      "The segmental arteries are located in the renal cortex."
+    ],
+    "correct": "A",
+    "explanation": null,
+    "originalNumber": 36
+  },
+  {
+    "id": 117,
+    "exam": "Exam 2",
+    "type": "multiple-choice",
+    "question": "Which of following cases is an example of pinocytosis?",
+    "image": null,
+    "options": [
+      "Detection of insulin by protein receptors in the membrane of muscle cells.",
+      "Diffusion of oxygen across the plasma membrane of red blood cells in the pulmonary alveoli.",
+      "Ingestion of bacteria by neutrophil white blood cells during an infectious process.",
+      "The uptake of extracellular fluids containing nutrients by cells of the intestinal wall."
+    ],
+    "correct": "D",
+    "explanation": null,
+    "originalNumber": 37
+  },
+  {
+    "id": 118,
+    "exam": "Exam 2",
+    "type": "multiple-choice",
+    "question": "Which of the following sentences regarding kidney anatomy is TRUE?",
+    "image": null,
+    "options": [
+      "The nephrons are fully contained in the renal medula.",
+      "The outer lining of the kidney is known as renal cortex.",
+      "The renal pelvis collects the urine draining from the collecting ducts.",
+      "The thinner part of the kidney, where blood vessel go in and out, in called the renal pyramid."
+    ],
+    "correct": "C",
+    "explanation": null,
+    "originalNumber": 38
+  },
+  {
+    "id": 119,
+    "exam": "Exam 2",
+    "type": "multiple-choice",
+    "question": "As part of the monitoring of impacts caused by gas-drilling induced earthquakes in the province of Groningen, you were asked to measure the effect of these earthquakes on the long-term stress response of people living in the affected areas. Which of these hormones would you measure in those people?",
+    "image": null,
+    "options": [
+      "Aldosterone.",
+      "Cortisone.",
+      "Glucagon.",
+      "Thyroxine (T4)."
+    ],
+    "correct": "B",
+    "explanation": null,
+    "originalNumber": 39
+  },
+  {
+    "id": 120,
+    "exam": "Exam 2",
+    "type": "multiple-choice",
+    "question": "Which of the following is NOT a physiological function of the blood?",
+    "image": null,
+    "options": [
+      "Coordination of body system responses.",
+      "Protection against infectious agents.",
+      "Regulation of body temperature.",
+      "Transport of nutrients and gases."
+    ],
+    "correct": "A",
+    "explanation": null,
+    "originalNumber": 40
+  },
+  {
+    "id": 121,
+    "exam": "Exam 2",
+    "type": "true-false",
+    "question": "The sarcomeres are the functional units of the muscle.",
+    "image": null,
+    "options": [
+      "True.",
+      "False."
+    ],
+    "correct": "A",
+    "explanation": null,
+    "originalNumber": 41
+  },
+  {
+    "id": 122,
+    "exam": "Exam 2",
+    "type": "true-false",
+    "question": "Myosin heads need calcium ions to make a cross-bridge.",
+    "image": null,
+    "options": [
+      "True.",
+      "False."
+    ],
+    "correct": "A",
+    "explanation": null,
+    "originalNumber": 42
+  },
+  {
+    "id": 123,
+    "exam": "Exam 2",
+    "type": "true-false",
+    "question": "No ATP is required for an isometric muscle contraction.",
+    "image": null,
+    "options": [
+      "True.",
+      "False."
+    ],
+    "correct": "B",
+    "explanation": null,
+    "originalNumber": 43
+  },
+  {
+    "id": 124,
+    "exam": "Exam 2",
+    "type": "multiple-choice",
+    "question": "Myoglobin ensures the supply of what in the muscles?",
+    "image": null,
+    "options": [
+      "Blood.",
+      "Glycogen.",
+      "Oxygen."
+    ],
+    "correct": "C",
+    "explanation": null,
+    "originalNumber": 44
+  },
+  {
+    "id": 125,
+    "exam": "Exam 2",
+    "type": "multiple-choice",
+    "question": "How is lactate formed in the muscles?",
+    "image": null,
+    "options": [
+      "By the aerobic metabolism.",
+      "By glycolysis.",
+      "By the splitting of creatine phosphate."
+    ],
+    "correct": "B",
+    "explanation": null,
+    "originalNumber": 45
+  },
+  {
+    "id": 126,
+    "exam": "Exam 2",
+    "type": "true-false",
+    "question": "Aerobic metabolism CANNOT be combined with anaerobic metabolism in a muscle cell.",
+    "image": null,
+    "options": [
+      "True.",
+      "False."
+    ],
+    "correct": "B",
+    "explanation": null,
+    "originalNumber": 46
+  },
+  {
+    "id": 127,
+    "exam": "Exam 2",
+    "type": "multiple-choice",
+    "question": "To run a marathon you benefit mostly from which of the following?",
+    "image": null,
+    "options": [
+      "Creatine phosphate.",
+      "Glycolysis.",
+      "Krebs cycle/oxidative phosphorylation."
+    ],
+    "correct": "C",
+    "explanation": null,
+    "originalNumber": 47
+  },
+  {
+    "id": 128,
+    "exam": "Exam 2",
+    "type": "multiple-choice",
+    "question": "If a muscle's length remains the same, what type of contraction did it make?",
+    "image": null,
+    "options": [
+      "Concentric.",
+      "Eccentric.",
+      "Isometric."
+    ],
+    "correct": "C",
+    "explanation": null,
+    "originalNumber": 48
+  },
+  {
+    "id": 129,
+    "exam": "Exam 2",
+    "type": "multiple-choice",
+    "question": "How do you call muscles that have the opposite working mechanism?",
+    "image": null,
+    "options": [
+      "Agonists.",
+      "Antagonists.",
+      "Synergists."
+    ],
+    "correct": "B",
+    "explanation": null,
+    "originalNumber": 49
+  },
+  {
+    "id": 130,
+    "exam": "Exam 2",
+    "type": "multiple-choice",
+    "question": "Anaerobic endurance is the capacity of muscles to perform for a short period under which conditions?",
+    "image": null,
+    "options": [
+      "Using only oxygen stored in the muscle cell.",
+      "With insufficiently supplied oxygen.",
+      "With sufficiently supplied oxygen."
+    ],
+    "correct": "B",
+    "explanation": null,
+    "originalNumber": 50
+  },
+  {
+    "id": 131,
+    "exam": "Exam 2",
+    "type": "multiple-choice",
+    "question": "The VO2max is the maximal oxygen consumption during incremental exercise. In which unit is it expressed?",
+    "image": null,
+    "options": [
+      "ml.",
+      "ml/min.",
+      "ml/min per kg of body weight."
+    ],
+    "correct": "C",
+    "explanation": null,
+    "originalNumber": 51
+  },
+  {
+    "id": 132,
+    "exam": "Exam 2",
+    "type": "multiple-choice",
+    "question": "Which of the following is TRUE below the anaerobic threshold?",
+    "image": null,
+    "options": [
+      "The muscle contains insufficient O2 for energy supply.",
+      "A lot of pyruvic acid is converted into lactate.",
+      "You can be in a steady state."
+    ],
+    "correct": "C",
+    "explanation": null,
+    "originalNumber": 52
+  },
+  {
+    "id": 133,
+    "exam": "Exam 2",
+    "type": "multiple-choice",
+    "question": "The figure below represents a synovial joint. What structure is represented by the number 4?",
+    "image": "Image required",
+    "options": [
+      "The capsule.",
+      "The cartilage.",
+      "The synovial membrane."
+    ],
+    "correct": "B",
+    "explanation": null,
+    "originalNumber": 53
+  },
+  {
+    "id": 134,
+    "exam": "Exam 2",
+    "type": "multiple-choice",
+    "question": "Which part of a joint is responsible for lubrication, nutrition and strength distribution?",
+    "image": null,
+    "options": [
+      "The cartilage.",
+      "The periost.",
+      "The synovia."
+    ],
+    "correct": "C",
+    "explanation": null,
+    "originalNumber": 54
+  },
+  {
+    "id": 135,
+    "exam": "Exam 2",
+    "type": "multiple-choice",
+    "question": "What forms the inner lining of the joint capsule?",
+    "image": null,
+    "options": [
+      "The cartilage.",
+      "The ligaments.",
+      "The synovial membrane."
+    ],
+    "correct": "C",
+    "explanation": null,
+    "originalNumber": 55
+  },
+  {
+    "id": 136,
+    "exam": "Exam 2",
+    "type": "multiple-choice",
+    "question": "What is the function of the ligaments in a joint?",
+    "image": null,
+    "options": [
+      "Fixation of the hyaline cartilage.",
+      "Movement of the joint.",
+      "Reinforcement of the joint capsule."
+    ],
+    "correct": "C",
+    "explanation": null,
+    "originalNumber": 56
+  },
+  {
+    "id": 137,
+    "exam": "Exam 2",
+    "type": "multiple-choice",
+    "question": "The figure below represents a joint. This type of joint is an articulatio…",
+    "image": "Image required",
+    "options": [
+      "Ellipsoidea.",
+      "Ginglymus.",
+      "Sellaris."
+    ],
+    "correct": "B",
+    "explanation": null,
+    "originalNumber": 57
+  },
+  {
+    "id": 138,
+    "exam": "Exam 2",
+    "type": "multiple-choice",
+    "question": "What type of joint is the elbow joint?",
+    "image": null,
+    "options": [
+      "Ball-and-socket.",
+      "Complex.",
+      "Pivot."
+    ],
+    "correct": "B",
+    "explanation": null,
+    "originalNumber": 58
+  },
+  {
+    "id": 139,
+    "exam": "Exam 2",
+    "type": "multiple-choice",
+    "question": "Which of these processes results in the acidification of the muscle?",
+    "image": null,
+    "options": [
+      "ATP spliting.",
+      "ATP synthesis.",
+      "Lactate production."
+    ],
+    "correct": "A",
+    "explanation": null,
+    "originalNumber": 59
+  },
+  {
+    "id": 140,
+    "exam": "Exam 2",
+    "type": "multiple-choice",
+    "question": "Which of the following should be consumed to prevent fatigue during activity?",
+    "image": null,
+    "options": [
+      "Fats.",
+      "Foods with a high glycemic index.",
+      "Proteins."
+    ],
+    "correct": "B",
+    "explanation": null,
+    "originalNumber": 60
+  },
+  {
+    "id": 141,
+    "exam": "Exam 2",
+    "type": "multiple-choice",
+    "question": "How do you call a joint based on a link with connective tissue between two bones?",
+    "image": null,
+    "options": [
+      "Synchondrosis.",
+      "Syndesmosis.",
+      "Synostosis."
+    ],
+    "correct": "B",
+    "explanation": null,
+    "originalNumber": 61
+  },
+  {
+    "id": 142,
+    "exam": "Exam 2",
+    "type": "multiple-choice",
+    "question": "Which of the following is a capacity vessel?",
+    "image": null,
+    "options": [
+      "A capillary.",
+      "A vein.",
+      "An artery."
+    ],
+    "correct": "B",
+    "explanation": null,
+    "originalNumber": 62
+  },
+  {
+    "id": 143,
+    "exam": "Exam 2",
+    "type": "multiple-choice",
+    "question": "In which type of blood vessel will you find valves?",
+    "image": null,
+    "options": [
+      "In arteries.",
+      "In capillaries.",
+      "In veins."
+    ],
+    "correct": "C",
+    "explanation": null,
+    "originalNumber": 63
+  },
+  {
+    "id": 144,
+    "exam": "Exam 2",
+    "type": "multiple-choice",
+    "question": "How are substances transported over the capillary wall?",
+    "image": null,
+    "options": [
+      "Only by diffusion.",
+      "Only by filtration.",
+      "By both diffusion and filtration."
+    ],
+    "correct": "C",
+    "explanation": null,
+    "originalNumber": 64
+  },
+  {
+    "id": 145,
+    "exam": "Exam 2",
+    "type": "true-false",
+    "question": "Relatively speaking, arterioles have the largest amount of smooth muscle tissue among all blood vessels.",
+    "image": null,
+    "options": [
+      "True.",
+      "False."
+    ],
+    "correct": "A",
+    "explanation": null,
+    "originalNumber": 65
+  },
+  {
+    "id": 146,
+    "exam": "Exam 2",
+    "type": "multiple-choice",
+    "question": "Where is the smooth muscle tissue of the vascular walls located?",
+    "image": null,
+    "options": [
+      "In the tunica adventitia.",
+      "In the tunica media.",
+      "In the tunica intima."
+    ],
+    "correct": "B",
+    "explanation": null,
+    "originalNumber": 66
+  },
+  {
+    "id": 147,
+    "exam": "Exam 2",
+    "type": "multiple-choice",
+    "question": "Which muscle fibers are wired by the most capillaries?",
+    "image": null,
+    "options": [
+      "Heart muscle fibres.",
+      "Red muscle fibres.",
+      "White muscle fibres."
+    ],
+    "correct": "A",
+    "explanation": null,
+    "originalNumber": 67
+  },
+  {
+    "id": 148,
+    "exam": "Exam 2",
+    "type": "multiple-choice",
+    "question": "The figure below represents the heart and its main blood vessels. Which blood vessel is represented by the letter A?",
+    "image": "Image required",
+    "options": [
+      "Aorta.",
+      "A. pulmonaris.",
+      "V. pulmonaris."
+    ],
+    "correct": "A",
+    "explanation": null,
+    "originalNumber": 68
+  },
+  {
+    "id": 149,
+    "exam": "Exam 2",
+    "type": "multiple-choice",
+    "question": "According to the Frank-Starling effect, what happens to the beat volume when the filling of the ventricles increases?",
+    "image": null,
+    "options": [
+      "It decreases.",
+      "It increases.",
+      "It remains the same."
+    ],
+    "correct": "B",
+    "explanation": null,
+    "originalNumber": 69
+  },
+  {
+    "id": 150,
+    "exam": "Exam 2",
+    "type": "multiple-choice",
+    "question": "The cardiac output is the volume of blood ejected by the heart per minute. It equals which of the following options?",
+    "image": null,
+    "options": [
+      "Beat volume at rest.",
+      "Beat volume of the left ventricle.",
+      "Beat volume times the heart frequency."
+    ],
+    "correct": "C",
+    "explanation": null,
+    "originalNumber": 70
+  },
+  {
+    "id": 151,
+    "exam": "Exam 2",
+    "type": "multiple-choice",
+    "question": "Electric stimuli pass the bundle of His on their way to where?",
+    "image": null,
+    "options": [
+      "To the AV node.",
+      "To the Purkinje fibres.",
+      "To the SA node."
+    ],
+    "correct": "B",
+    "explanation": null,
+    "originalNumber": 71
+  },
+  {
+    "id": 152,
+    "exam": "Exam 2",
+    "type": "multiple-choice",
+    "question": "What effect does the sympathetic nervous system have on the heart frequency?",
+    "image": null,
+    "options": [
+      "It has no influence on heart frequency.",
+      "It increases the heart frequency.",
+      "It lowers the heart frequency."
+    ],
+    "correct": "B",
+    "explanation": null,
+    "originalNumber": 72
+  },
+  {
+    "id": 153,
+    "exam": "Exam 2",
+    "type": "multiple-choice",
+    "question": "What is the consequence of exertion on the QRS complex?",
+    "image": null,
+    "options": [
+      "The complex becomes higher.",
+      "The complex becomes wider.",
+      "The number of complexes increases."
+    ],
+    "correct": "C",
+    "explanation": null,
+    "originalNumber": 73
+  },
+  {
+    "id": 154,
+    "exam": "Exam 2",
+    "type": "multiple-choice",
+    "question": "What happens to blood pressure during exercise?",
+    "image": null,
+    "options": [
+      "It drops.",
+      "It remains the same.",
+      "It rises."
+    ],
+    "correct": "C",
+    "explanation": null,
+    "originalNumber": 74
+  },
+  {
+    "id": 155,
+    "exam": "Exam 2",
+    "type": "multiple-choice",
+    "question": "Which of the following is the most important respiratory muscle?",
+    "image": null,
+    "options": [
+      "The diaphragm.",
+      "The m. intercostalis externus.",
+      "The m rectus abdominis."
+    ],
+    "correct": "A",
+    "explanation": null,
+    "originalNumber": 75
+  },
+  {
+    "id": 156,
+    "exam": "Exam 2",
+    "type": "multiple-choice",
+    "question": "Which of the following is TRUE regarding relaxed respiration?",
+    "image": null,
+    "options": [
+      "It is a passive event.",
+      "It requires contraction of the diaphragm.",
+      "It requires contraction of the mm. intercostales."
+    ],
+    "correct": "A",
+    "explanation": null,
+    "originalNumber": 76
+  },
+  {
+    "id": 157,
+    "exam": "Exam 2",
+    "type": "true-false",
+    "question": "The wall of a pulmonary alveolus has a thickness of a single cell layer.",
+    "image": null,
+    "options": [
+      "True.",
+      "False."
+    ],
+    "correct": "A",
+    "explanation": null,
+    "originalNumber": 77
+  },
+  {
+    "id": 158,
+    "exam": "Exam 2",
+    "type": "true-false",
+    "question": "All pulmonary alveoli are encompassed by capillaries.",
+    "image": null,
+    "options": [
+      "True.",
+      "False."
+    ],
+    "correct": "A",
+    "explanation": null,
+    "originalNumber": 78
+  },
+  {
+    "id": 159,
+    "exam": "Exam 2",
+    "type": "multiple-choice",
+    "question": "Where is the respiratory regulation center located?",
+    "image": null,
+    "options": [
+      "In the brain cortex.",
+      "In the brain stem.",
+      "In the spinal cord."
+    ],
+    "correct": "B",
+    "explanation": null,
+    "originalNumber": 79
+  },
+  {
+    "id": 160,
+    "exam": "Exam 2",
+    "type": "multiple-choice",
+    "question": "The figure below represents part of the respiratory system. Which number corresponds to the bifurcation?",
+    "image": "Image required",
+    "options": [
+      "3.",
+      "4.",
+      "6.",
+      "7."
+    ],
+    "correct": "B",
+    "explanation": null,
+    "originalNumber": 80
+  }
+]

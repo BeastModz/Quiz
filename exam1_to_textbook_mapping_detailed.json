@@ -1,0 +1,1921 @@
+[
+  {
+    "qnum": 1,
+    "prompt": "Positive feedback example",
+    "correct_answer": "A",
+    "theory": {
+      "chapter": "Ch. 1 — The Human Body: An Orientation",
+      "section_or_topic": "Homeostasis → Feedback mechanisms (positive vs negative)",
+      "pages_approx": "pp. 19–21"
+    },
+    "notes": "Blood clotting amplifies platelet activation until a clot forms; contrast with negative feedback like temperature control.",
+    "explanation": "Positive feedback amplifies a deviation until an end‑point is reached. In hemostasis, damaged\nendothelium exposes collagen, platelets adhere, and release ADP, thromboxane A2, and serotonin;\nthese recruit additional platelets, accelerating the cascade. Thrombin generation further boosts\nplatelet activation and fibrin formation—an escalating loop that stops once the breach is sealed.\nContrast with negative feedback (e.g., thermoregulation), which counteracts the deviation to restore\na set point. Positive feedback is rare and reserved for ‘all‑or‑none’ events like parturition and\nclotting.",
+    "key_points": [
+      "Amplifies initial stimulus",
+      "Platelet mediators recruit more platelets",
+      "Terminates when clot stabilizes"
+    ],
+    "common_pitfalls": [
+      "Confusing positive with ‘good’—it means amplifying, not beneficial"
+    ],
+    "cross_links": [
+      "Ch.1 Homeostasis → Feedback mechanisms",
+      "Ch.10 Hemostasis → platelet plug and coagulation"
+    ]
+  },
+  {
+    "qnum": 2,
+    "prompt": "Water: NOT an important role",
+    "correct_answer": "A",
+    "theory": {
+      "chapter": "Ch. 2 — Basic Chemistry",
+      "section_or_topic": "Inorganic compounds → Water (properties, solvent)",
+      "pages_approx": "pp. 39–41"
+    },
+    "notes": "Water is polar; it doesn’t dissolve membrane lipids (hydrophobic). It does regulate temperature, transport, and hydrolysis.",
+    "explanation": "Water’s polarity makes it the universal solvent for ions and polar molecules, enables hydrolysis and\ndehydration synthesis, and provides thermal stability due to high specific heat and high heat of\nvaporization. However, hydrophobic phospholipid tails and nonpolar lipids do not dissolve in water;\ninstead, amphipathic phospholipids self‑assemble into bilayers where hydrophilic heads face water\nand hydrophobic tails exclude it. This separation underlies membrane compartmentalization and\nselective permeability.",
+    "key_points": [
+      "Polar solvent & reaction medium",
+      "Thermal buffer for homeostasis",
+      "Does NOT dissolve nonpolar lipids"
+    ],
+    "common_pitfalls": [
+      "Assuming all biological molecules dissolve in water"
+    ],
+    "cross_links": [
+      "Ch.2 Inorganic Compounds → Water",
+      "Ch.3 Plasma membrane → phospholipids"
+    ]
+  },
+  {
+    "qnum": 3,
+    "prompt": "NOT a function of urinary system",
+    "correct_answer": "D",
+    "theory": {
+      "chapter": "Ch. 15 — The Urinary System",
+      "section_or_topic": "Overview of renal functions",
+      "pages_approx": "pp. 511–513"
+    },
+    "notes": "Kidneys excrete nitrogenous wastes and regulate fluid, electrolytes, and pH. Ethanol metabolism is mainly hepatic (Ch.14).",
+    "explanation": "The kidneys filter plasma, reclaim useful solutes and water, secrete wastes (urea, creatinine, uric\nacid), and regulate ECF volume, electrolyte balance, and acid–base status. They also produce renin\n(BP regulation) and EPO (erythropoiesis). Ethanol clearance is predominantly hepatic: alcohol\ndehydrogenase oxidizes ethanol to acetaldehyde, then acetaldehyde dehydrogenase to acetate; the\nkidneys excrete metabolites but are not the primary site of ethanol metabolism.",
+    "key_points": [
+      "Excretion of nitrogenous wastes",
+      "BP/pH/electrolyte regulation",
+      "Ethanol metabolism = liver"
+    ],
+    "common_pitfalls": [
+      "Equating excretion of ethanol with metabolism of ethanol"
+    ],
+    "cross_links": [
+      "Ch.15 Overview of renal function",
+      "Ch.14 Liver metabolism of ethanol"
+    ]
+  },
+  {
+    "qnum": 4,
+    "prompt": "Where does filtration occur in nephron?",
+    "correct_answer": "C",
+    "theory": {
+      "chapter": "Ch. 15 — The Urinary System",
+      "section_or_topic": "Urine formation → Filtration at the glomerulus",
+      "pages_approx": "pp. 516–517"
+    },
+    "notes": "Hydrostatic pressure forces plasma (minus proteins and cells) into Bowman’s capsule.",
+    "explanation": "Filtration occurs across fenestrated glomerular capillaries, the basement membrane, and podocyte\nslit diaphragms—the filtration membrane. Capillary hydrostatic pressure (~55 mmHg) drives bulk flow\ninto Bowman’s capsule; plasma proteins and cells are retained. The resulting filtrate resembles\nplasma without proteins. Filtration rate depends on net filtration pressure and the surface\narea/permeability of the membrane (Kf).",
+    "key_points": [
+      "Site: glomerulus/Bowman’s capsule",
+      "Driven by hydrostatic pressure, not enzymes",
+      "Proteins/cells retained"
+    ],
+    "common_pitfalls": [
+      "Thinking reabsorption occurs during filtration"
+    ],
+    "cross_links": [
+      "Ch.15 Urine formation → Filtration"
+    ]
+  },
+  {
+    "qnum": 5,
+    "prompt": "Leukocytes and phagocytosis (T/F)",
+    "correct_answer": "A",
+    "theory": {
+      "chapter": "Ch. 12 — Lymphatic System & Body Defenses",
+      "section_or_topic": "Innate defenses → Phagocytes (neutrophils, macrophages)",
+      "pages_approx": "pp. 404–406"
+    },
+    "notes": "Neutrophils and macrophages ingest pathogens and debris; link to antigen presentation.",
+    "explanation": "Neutrophils and monocyte‑derived macrophages recognize PAMPs via pattern‑recognition receptors,\nengulf particles into phagosomes, and fuse with lysosomes to form phagolysosomes where ROS, nitric\noxide, and hydrolases kill and digest microbes. Macrophages also present antigen via MHC II,\nbridging innate and adaptive immunity.",
+    "key_points": [
+      "Neutrophils/macrophages ingest & digest",
+      "Phagolysosome chemistry (ROS, enzymes)",
+      "Antigen presentation links to adaptive arm"
+    ],
+    "common_pitfalls": [
+      "Assuming all leukocytes are phagocytic (lymphocytes are not)"
+    ],
+    "cross_links": [
+      "Ch.12 Innate defenses → Phagocytes"
+    ]
+  },
+  {
+    "qnum": 6,
+    "prompt": "NOT involved in blood pH regulation",
+    "correct_answer": "D",
+    "theory": {
+      "chapter": "Ch. 10 — Blood",
+      "section_or_topic": "Plasma buffers (bicarbonate/CO2 system)",
+      "pages_approx": "pp. 338–339"
+    },
+    "notes": "CO2/HCO3−/H+ buffer blood pH; O2 does not buffer pH.",
+    "explanation": "Blood pH (7.35–7.45) is buffered primarily by the carbonic acid–bicarbonate system: CO₂ + H₂O ⇌\nH₂CO₃ ⇌ H⁺ + HCO₃⁻. Hemoglobin and plasma proteins provide additional buffering via imidazole\ngroups. Respiratory compensation adjusts CO₂ (minutes), while renal compensation modulates H⁺\nsecretion and HCO₃⁻ reabsorption (hours–days). Oxygen itself is not a buffer.",
+    "key_points": [
+      "Primary buffer: H₂CO₃/HCO₃⁻",
+      "Respiratory vs renal compensation",
+      "O₂ doesn’t buffer pH"
+    ],
+    "common_pitfalls": [
+      "Confusing CO₂ (acidic) with O₂"
+    ],
+    "cross_links": [
+      "Ch.10 Plasma & buffers",
+      "Ch.13 CO₂ regulation of ventilation",
+      "Ch.15 Renal acid–base"
+    ]
+  },
+  {
+    "qnum": 7,
+    "prompt": "Corpus luteum hormone",
+    "correct_answer": "C",
+    "theory": {
+      "chapter": "Ch. 16 — Reproductive System",
+      "section_or_topic": "Ovarian hormones → Progesterone actions",
+      "pages_approx": "pp. 540–541, 554–555"
+    },
+    "notes": "Progesterone prepares/maintains endometrium; falls if no implantation, triggering menses.",
+    "explanation": "Ovarian hormones → Progesterone actions. Key mechanisms and clinical implications are highlighted in\nCh. 16 — Reproductive System. Progesterone prepares/maintains endometrium; falls if no implantation,\ntriggering menses. This topic integrates structure‑function and homeostasis and is testable via\ndefinitions, mechanisms, and clinical examples.",
+    "key_points": [
+      "Define the core concept",
+      "Explain the mechanism",
+      "Connect to homeostasis/clinical angle"
+    ],
+    "common_pitfalls": [
+      "Rote memorization without mechanism understanding"
+    ],
+    "cross_links": [
+      "Ch. 16 — Reproductive System",
+      "Ovarian hormones → Progesterone actions"
+    ]
+  },
+  {
+    "qnum": 8,
+    "prompt": "Humoral stimulus example",
+    "correct_answer": "B",
+    "theory": {
+      "chapter": "Ch. 9 — Endocrine System",
+      "section_or_topic": "Stimuli for hormone release → Humoral",
+      "pages_approx": "p. 311"
+    },
+    "notes": "Low Ca2+ → Parathyroid glands release PTH; classic humoral control.",
+    "explanation": "Stimuli for hormone release → Humoral. Key mechanisms and clinical implications are highlighted in\nCh. 9 — Endocrine System. Low Ca2+ → Parathyroid glands release PTH; classic humoral control. This\ntopic integrates structure‑function and homeostasis and is testable via definitions, mechanisms, and\nclinical examples.",
+    "key_points": [
+      "Define the core concept",
+      "Explain the mechanism",
+      "Connect to homeostasis/clinical angle"
+    ],
+    "common_pitfalls": [
+      "Rote memorization without mechanism understanding"
+    ],
+    "cross_links": [
+      "Ch. 9 — Endocrine System",
+      "Stimuli for hormone release → Humoral"
+    ]
+  },
+  {
+    "qnum": 9,
+    "prompt": "NOT a function of the liver",
+    "correct_answer": "B",
+    "theory": {
+      "chapter": "Ch. 14 — Digestive System & Metabolism",
+      "section_or_topic": "Liver functions (detox, metabolism, urea formation)",
+      "pages_approx": "pp. 470–472"
+    },
+    "notes": "Liver doesn’t hydrolyze cancer cells; immune surveillance is separate.",
+    "explanation": "Liver functions (detox, metabolism, urea formation). Key mechanisms and clinical implications are\nhighlighted in Ch. 14 — Digestive System & Metabolism. Liver doesn’t hydrolyze cancer cells; immune\nsurveillance is separate. This topic integrates structure‑function and homeostasis and is testable\nvia definitions, mechanisms, and clinical examples.",
+    "key_points": [
+      "Define the core concept",
+      "Explain the mechanism",
+      "Connect to homeostasis/clinical angle"
+    ],
+    "common_pitfalls": [
+      "Rote memorization without mechanism understanding"
+    ],
+    "cross_links": [
+      "Ch. 14 — Digestive System & Metabolism",
+      "Liver functions (detox, metabolism, urea formation)"
+    ]
+  },
+  {
+    "qnum": 10,
+    "prompt": "Lowest level of organization",
+    "correct_answer": "B",
+    "theory": {
+      "chapter": "Ch. 1 — The Human Body: An Orientation",
+      "section_or_topic": "Levels of structural organization",
+      "pages_approx": "pp. 2–3"
+    },
+    "notes": "Hierarchy: atoms → molecules → organelles → cells → tissues → organs → systems → organism.",
+    "explanation": "Levels of structural organization. Key mechanisms and clinical implications are highlighted in Ch. 1\n— The Human Body: An Orientation. Hierarchy: atoms → molecules → organelles → cells → tissues →\norgans → systems → organism. This topic integrates structure‑function and homeostasis and is\ntestable via definitions, mechanisms, and clinical examples.",
+    "key_points": [
+      "Define the core concept",
+      "Explain the mechanism",
+      "Connect to homeostasis/clinical angle"
+    ],
+    "common_pitfalls": [
+      "Rote memorization without mechanism understanding"
+    ],
+    "cross_links": [
+      "Ch. 1 — The Human Body: An Orientation",
+      "Levels of structural organization"
+    ]
+  },
+  {
+    "qnum": 11,
+    "prompt": "Organelle for disposing of unwanted molecules",
+    "correct_answer": "B",
+    "theory": {
+      "chapter": "Ch. 3 — Cells and Tissues",
+      "section_or_topic": "Organelles → Lysosomes",
+      "pages_approx": "pp. 66–69"
+    },
+    "notes": "Lysosomes contain hydrolases for intracellular digestion; peroxisomes handle oxidative detox.",
+    "explanation": "Organelles → Lysosomes. Key mechanisms and clinical implications are highlighted in Ch. 3 — Cells\nand Tissues. Lysosomes contain hydrolases for intracellular digestion; peroxisomes handle oxidative\ndetox. This topic integrates structure‑function and homeostasis and is testable via definitions,\nmechanisms, and clinical examples.",
+    "key_points": [
+      "Define the core concept",
+      "Explain the mechanism",
+      "Connect to homeostasis/clinical angle"
+    ],
+    "common_pitfalls": [
+      "Rote memorization without mechanism understanding"
+    ],
+    "cross_links": [
+      "Ch. 3 — Cells and Tissues",
+      "Organelles → Lysosomes"
+    ]
+  },
+  {
+    "qnum": 12,
+    "prompt": "Lysine-deficient dinos cannot synthesize ___",
+    "correct_answer": "D",
+    "theory": {
+      "chapter": "Ch. 2 — Basic Chemistry",
+      "section_or_topic": "Organic compounds → Proteins (amino acids)",
+      "pages_approx": "pp. 46–51"
+    },
+    "notes": "Amino acids are building blocks of proteins; without lysine, protein synthesis fails.",
+    "explanation": "Organic compounds → Proteins (amino acids). Key mechanisms and clinical implications are highlighted\nin Ch. 2 — Basic Chemistry. Amino acids are building blocks of proteins; without lysine, protein\nsynthesis fails. This topic integrates structure‑function and homeostasis and is testable via\ndefinitions, mechanisms, and clinical examples.",
+    "key_points": [
+      "Define the core concept",
+      "Explain the mechanism",
+      "Connect to homeostasis/clinical angle"
+    ],
+    "common_pitfalls": [
+      "Rote memorization without mechanism understanding"
+    ],
+    "cross_links": [
+      "Ch. 2 — Basic Chemistry",
+      "Organic compounds → Proteins (amino acids)"
+    ]
+  },
+  {
+    "qnum": 13,
+    "prompt": "Urine formation: correct statement",
+    "correct_answer": "C",
+    "theory": {
+      "chapter": "Ch. 15 — The Urinary System",
+      "section_or_topic": "Tubular reabsorption/Secretion",
+      "pages_approx": "pp. 517–519"
+    },
+    "notes": "Ions are actively reabsorbed in the proximal/distal tubules; filtration is pressure-driven, not enzymatic.",
+    "explanation": "Tubular reabsorption/Secretion. Key mechanisms and clinical implications are highlighted in Ch. 15 —\nThe Urinary System. Ions are actively reabsorbed in the proximal/distal tubules; filtration is\npressure-driven, not enzymatic. This topic integrates structure‑function and homeostasis and is\ntestable via definitions, mechanisms, and clinical examples.",
+    "key_points": [
+      "Define the core concept",
+      "Explain the mechanism",
+      "Connect to homeostasis/clinical angle"
+    ],
+    "common_pitfalls": [
+      "Rote memorization without mechanism understanding"
+    ],
+    "cross_links": [
+      "Ch. 15 — The Urinary System",
+      "Tubular reabsorption/Secretion"
+    ]
+  },
+  {
+    "qnum": 14,
+    "prompt": "Glucose regulation: which two organs",
+    "correct_answer": "B",
+    "theory": {
+      "chapter": "Ch. 9 & Ch. 14",
+      "section_or_topic": "Endocrine pancreas (insulin/glucagon) + Liver glycogen/metabolism",
+      "pages_approx": "Ch. 9 pp. 323–325; Ch. 14 pp. 480–483"
+    },
+    "notes": "Pancreas secretes insulin/glucagon; liver stores/releases glucose via glycogen metabolism.",
+    "explanation": "Endocrine pancreas (insulin/glucagon) + Liver glycogen/metabolism. Key mechanisms and clinical\nimplications are highlighted in Ch. 9 & Ch. 14. Pancreas secretes insulin/glucagon; liver\nstores/releases glucose via glycogen metabolism. This topic integrates structure‑function and\nhomeostasis and is testable via definitions, mechanisms, and clinical examples.",
+    "key_points": [
+      "Define the core concept",
+      "Explain the mechanism",
+      "Connect to homeostasis/clinical angle"
+    ],
+    "common_pitfalls": [
+      "Rote memorization without mechanism understanding"
+    ],
+    "cross_links": [
+      "Ch. 9 & Ch. 14",
+      "Endocrine pancreas (insulin/glucagon) + Liver glycogen/metabolism"
+    ]
+  },
+  {
+    "qnum": 15,
+    "prompt": "Cold exposure → likely hormone profile",
+    "correct_answer": "B",
+    "theory": {
+      "chapter": "Ch. 9 — Endocrine System",
+      "section_or_topic": "Thyroid hormones and metabolic rate/thermogenesis",
+      "pages_approx": "pp. 317–319"
+    },
+    "notes": "Cold stimulates higher T3/T4 for thermogenesis; insulin/sex steroids aren’t primary here.",
+    "explanation": "Thyroid hormones and metabolic rate/thermogenesis. Key mechanisms and clinical implications are\nhighlighted in Ch. 9 — Endocrine System. Cold stimulates higher T3/T4 for thermogenesis; insulin/sex\nsteroids aren’t primary here. This topic integrates structure‑function and homeostasis and is\ntestable via definitions, mechanisms, and clinical examples.",
+    "key_points": [
+      "Define the core concept",
+      "Explain the mechanism",
+      "Connect to homeostasis/clinical angle"
+    ],
+    "common_pitfalls": [
+      "Rote memorization without mechanism understanding"
+    ],
+    "cross_links": [
+      "Ch. 9 — Endocrine System",
+      "Thyroid hormones and metabolic rate/thermogenesis"
+    ]
+  },
+  {
+    "qnum": 16,
+    "prompt": "Osmosis experiment with RBC in saline — FALSE statement",
+    "correct_answer": "A",
+    "theory": {
+      "chapter": "Ch. 3 — Cells and Tissues",
+      "section_or_topic": "Membrane transport → Osmosis/tonicity",
+      "pages_approx": "pp. 76–81"
+    },
+    "notes": "Hypotonic solution has lowest salt and causes swelling/lysis; ensure arrow interpretation for osmosis.",
+    "explanation": "Membrane transport → Osmosis/tonicity. Key mechanisms and clinical implications are highlighted in\nCh. 3 — Cells and Tissues. Hypotonic solution has lowest salt and causes swelling/lysis; ensure\narrow interpretation for osmosis. This topic integrates structure‑function and homeostasis and is\ntestable via definitions, mechanisms, and clinical examples.",
+    "key_points": [
+      "Define the core concept",
+      "Explain the mechanism",
+      "Connect to homeostasis/clinical angle"
+    ],
+    "common_pitfalls": [
+      "Rote memorization without mechanism understanding"
+    ],
+    "cross_links": [
+      "Ch. 3 — Cells and Tissues",
+      "Membrane transport → Osmosis/tonicity"
+    ]
+  },
+  {
+    "qnum": 17,
+    "prompt": "What is cytosol?",
+    "correct_answer": "C",
+    "theory": {
+      "chapter": "Ch. 3 — Cells and Tissues",
+      "section_or_topic": "Cytoplasm → Cytosol vs organelles",
+      "pages_approx": "pp. 67–68"
+    },
+    "notes": "Cytosol is the intracellular fluid in which organelles are suspended.",
+    "explanation": "Cytoplasm → Cytosol vs organelles. Key mechanisms and clinical implications are highlighted in Ch. 3\n— Cells and Tissues. Cytosol is the intracellular fluid in which organelles are suspended. This\ntopic integrates structure‑function and homeostasis and is testable via definitions, mechanisms, and\nclinical examples.",
+    "key_points": [
+      "Define the core concept",
+      "Explain the mechanism",
+      "Connect to homeostasis/clinical angle"
+    ],
+    "common_pitfalls": [
+      "Rote memorization without mechanism understanding"
+    ],
+    "cross_links": [
+      "Ch. 3 — Cells and Tissues",
+      "Cytoplasm → Cytosol vs organelles"
+    ]
+  },
+  {
+    "qnum": 18,
+    "prompt": "Where does hematopoiesis occur?",
+    "correct_answer": "A",
+    "theory": {
+      "chapter": "Ch. 10 — Blood",
+      "section_or_topic": "Hematopoiesis in red bone marrow",
+      "pages_approx": "pp. 345–347"
+    },
+    "notes": "Blood cell formation occurs in red marrow of certain bones in adults.",
+    "explanation": "Hematopoiesis in red bone marrow. Key mechanisms and clinical implications are highlighted in Ch. 10\n— Blood. Blood cell formation occurs in red marrow of certain bones in adults. This topic integrates\nstructure‑function and homeostasis and is testable via definitions, mechanisms, and clinical\nexamples.",
+    "key_points": [
+      "Define the core concept",
+      "Explain the mechanism",
+      "Connect to homeostasis/clinical angle"
+    ],
+    "common_pitfalls": [
+      "Rote memorization without mechanism understanding"
+    ],
+    "cross_links": [
+      "Ch. 10 — Blood",
+      "Hematopoiesis in red bone marrow"
+    ]
+  },
+  {
+    "qnum": 19,
+    "prompt": "Label endocrine organs in figure",
+    "correct_answer": "C",
+    "theory": {
+      "chapter": "Ch. 9 — Endocrine System",
+      "section_or_topic": "Major endocrine organs (thyroid, adrenals, pancreas, testes)",
+      "pages_approx": "pp. 312–320, 323–327"
+    },
+    "notes": "Standard anterior diagram: thyroid (neck), adrenals (atop kidneys), pancreas (abdomen), testes (male gonads).",
+    "explanation": "Major endocrine organs (thyroid, adrenals, pancreas, testes). Key mechanisms and clinical\nimplications are highlighted in Ch. 9 — Endocrine System. Standard anterior diagram: thyroid (neck),\nadrenals (atop kidneys), pancreas (abdomen), testes (male gonads). This topic integrates\nstructure‑function and homeostasis and is testable via definitions, mechanisms, and clinical\nexamples.",
+    "key_points": [
+      "Define the core concept",
+      "Explain the mechanism",
+      "Connect to homeostasis/clinical angle"
+    ],
+    "common_pitfalls": [
+      "Rote memorization without mechanism understanding"
+    ],
+    "cross_links": [
+      "Ch. 9 — Endocrine System",
+      "Major endocrine organs (thyroid, adrenals, pancreas, testes)"
+    ]
+  },
+  {
+    "qnum": 20,
+    "prompt": "Hormone from islets of Langerhans",
+    "correct_answer": "B",
+    "theory": {
+      "chapter": "Ch. 9 — Endocrine System",
+      "section_or_topic": "Pancreatic islets → insulin/glucagon",
+      "pages_approx": "pp. 323–325"
+    },
+    "notes": "Beta cells produce insulin; alpha cells produce glucagon.",
+    "explanation": "Pancreatic islets → insulin/glucagon. Key mechanisms and clinical implications are highlighted in\nCh. 9 — Endocrine System. Beta cells produce insulin; alpha cells produce glucagon. This topic\nintegrates structure‑function and homeostasis and is testable via definitions, mechanisms, and\nclinical examples.",
+    "key_points": [
+      "Define the core concept",
+      "Explain the mechanism",
+      "Connect to homeostasis/clinical angle"
+    ],
+    "common_pitfalls": [
+      "Rote memorization without mechanism understanding"
+    ],
+    "cross_links": [
+      "Ch. 9 — Endocrine System",
+      "Pancreatic islets → insulin/glucagon"
+    ]
+  },
+  {
+    "qnum": 21,
+    "prompt": "Hormone to assess chronic stress (earthquakes)",
+    "correct_answer": "B",
+    "theory": {
+      "chapter": "Ch. 9 — Endocrine System",
+      "section_or_topic": "Adrenal cortex hormones → cortisol/cortisone",
+      "pages_approx": "pp. 320–322"
+    },
+    "notes": "Cortisol (measured as cortisone metabolites) reflects HPA-axis stress response.",
+    "explanation": "Adrenal cortex hormones → cortisol/cortisone. Key mechanisms and clinical implications are\nhighlighted in Ch. 9 — Endocrine System. Cortisol (measured as cortisone metabolites) reflects HPA-\naxis stress response. This topic integrates structure‑function and homeostasis and is testable via\ndefinitions, mechanisms, and clinical examples.",
+    "key_points": [
+      "Define the core concept",
+      "Explain the mechanism",
+      "Connect to homeostasis/clinical angle"
+    ],
+    "common_pitfalls": [
+      "Rote memorization without mechanism understanding"
+    ],
+    "cross_links": [
+      "Ch. 9 — Endocrine System",
+      "Adrenal cortex hormones → cortisol/cortisone"
+    ]
+  },
+  {
+    "qnum": 22,
+    "prompt": "What is the urethra?",
+    "correct_answer": "D",
+    "theory": {
+      "chapter": "Ch. 15 — The Urinary System",
+      "section_or_topic": "Lower urinary tract: urethra",
+      "pages_approx": "pp. 521–523"
+    },
+    "notes": "Urethra carries urine from bladder to exterior (male vs female length differences).",
+    "explanation": "Lower urinary tract: urethra. Key mechanisms and clinical implications are highlighted in Ch. 15 —\nThe Urinary System. Urethra carries urine from bladder to exterior (male vs female length\ndifferences). This topic integrates structure‑function and homeostasis and is testable via\ndefinitions, mechanisms, and clinical examples.",
+    "key_points": [
+      "Define the core concept",
+      "Explain the mechanism",
+      "Connect to homeostasis/clinical angle"
+    ],
+    "common_pitfalls": [
+      "Rote memorization without mechanism understanding"
+    ],
+    "cross_links": [
+      "Ch. 15 — The Urinary System",
+      "Lower urinary tract: urethra"
+    ]
+  },
+  {
+    "qnum": 23,
+    "prompt": "Passive transport hallmark",
+    "correct_answer": "C",
+    "theory": {
+      "chapter": "Ch. 3 — Cells and Tissues",
+      "section_or_topic": "Passive transport → diffusion/osmosis/filtration",
+      "pages_approx": "pp. 76–80"
+    },
+    "notes": "Moves down concentration gradient; no ATP requirement.",
+    "explanation": "Passive transport → diffusion/osmosis/filtration. Key mechanisms and clinical implications are\nhighlighted in Ch. 3 — Cells and Tissues. Moves down concentration gradient; no ATP requirement.\nThis topic integrates structure‑function and homeostasis and is testable via definitions,\nmechanisms, and clinical examples.",
+    "key_points": [
+      "Define the core concept",
+      "Explain the mechanism",
+      "Connect to homeostasis/clinical angle"
+    ],
+    "common_pitfalls": [
+      "Rote memorization without mechanism understanding"
+    ],
+    "cross_links": [
+      "Ch. 3 — Cells and Tissues",
+      "Passive transport → diffusion/osmosis/filtration"
+    ]
+  },
+  {
+    "qnum": 24,
+    "prompt": "Blood component carrying cholesterol to liver",
+    "correct_answer": "B",
+    "theory": {
+      "chapter": "Ch. 14 — Metabolism & Ch. 10 — Blood (plasma lipoproteins)",
+      "section_or_topic": "Lipoproteins → HDL vs LDL function",
+      "pages_approx": "Ch. 14 p. 490; Ch. 10 p. 338"
+    },
+    "notes": "HDL scavenges cholesterol and returns it to the liver (reverse transport).",
+    "explanation": "Lipoproteins → HDL vs LDL function. Key mechanisms and clinical implications are highlighted in Ch.\n14 — Metabolism & Ch. 10 — Blood (plasma lipoproteins). HDL scavenges cholesterol and returns it to\nthe liver (reverse transport). This topic integrates structure‑function and homeostasis and is\ntestable via definitions, mechanisms, and clinical examples.",
+    "key_points": [
+      "Define the core concept",
+      "Explain the mechanism",
+      "Connect to homeostasis/clinical angle"
+    ],
+    "common_pitfalls": [
+      "Rote memorization without mechanism understanding"
+    ],
+    "cross_links": [
+      "Ch. 14 — Metabolism & Ch. 10 — Blood (plasma lipoproteins)",
+      "Lipoproteins → HDL vs LDL function"
+    ]
+  },
+  {
+    "qnum": 25,
+    "prompt": "Glomerular filtrate vs urine — FALSE difference",
+    "correct_answer": "D",
+    "theory": {
+      "chapter": "Ch. 15 — The Urinary System",
+      "section_or_topic": "Urine formation and composition differences",
+      "pages_approx": "pp. 516–520"
+    },
+    "notes": "Filtrate has less solute; urine concentrates salts. Glucose should not be in urine under normal conditions.",
+    "explanation": "Urine formation and composition differences. Key mechanisms and clinical implications are\nhighlighted in Ch. 15 — The Urinary System. Filtrate has less solute; urine concentrates salts.\nGlucose should not be in urine under normal conditions. This topic integrates structure‑function and\nhomeostasis and is testable via definitions, mechanisms, and clinical examples.",
+    "key_points": [
+      "Define the core concept",
+      "Explain the mechanism",
+      "Connect to homeostasis/clinical angle"
+    ],
+    "common_pitfalls": [
+      "Rote memorization without mechanism understanding"
+    ],
+    "cross_links": [
+      "Ch. 15 — The Urinary System",
+      "Urine formation and composition differences"
+    ]
+  },
+  {
+    "qnum": 26,
+    "prompt": "Example of pinocytosis",
+    "correct_answer": "D",
+    "theory": {
+      "chapter": "Ch. 3 — Cells and Tissues",
+      "section_or_topic": "Vesicular transport → endocytosis (pinocytosis)",
+      "pages_approx": "pp. 80–82"
+    },
+    "notes": "Pinocytosis = ‘cell drinking’ of extracellular fluid, e.g., intestinal absorptive cells.",
+    "explanation": "Vesicular transport → endocytosis (pinocytosis). Key mechanisms and clinical implications are\nhighlighted in Ch. 3 — Cells and Tissues. Pinocytosis = ‘cell drinking’ of extracellular fluid,\ne.g., intestinal absorptive cells. This topic integrates structure‑function and homeostasis and is\ntestable via definitions, mechanisms, and clinical examples.",
+    "key_points": [
+      "Define the core concept",
+      "Explain the mechanism",
+      "Connect to homeostasis/clinical angle"
+    ],
+    "common_pitfalls": [
+      "Rote memorization without mechanism understanding"
+    ],
+    "cross_links": [
+      "Ch. 3 — Cells and Tissues",
+      "Vesicular transport → endocytosis (pinocytosis)"
+    ]
+  },
+  {
+    "qnum": 27,
+    "prompt": "Liver response to glucagon",
+    "correct_answer": "A",
+    "theory": {
+      "chapter": "Ch. 9 — Endocrine System",
+      "section_or_topic": "Glucagon action on liver → glycogenolysis/gluconeogenesis",
+      "pages_approx": "pp. 323–325; Ch.14 pp. 480–483"
+    },
+    "notes": "Glucagon raises blood glucose by glycogen breakdown and gluconeogenesis.",
+    "explanation": "Glucagon action on liver → glycogenolysis/gluconeogenesis. Key mechanisms and clinical implications\nare highlighted in Ch. 9 — Endocrine System. Glucagon raises blood glucose by glycogen breakdown and\ngluconeogenesis. This topic integrates structure‑function and homeostasis and is testable via\ndefinitions, mechanisms, and clinical examples.",
+    "key_points": [
+      "Define the core concept",
+      "Explain the mechanism",
+      "Connect to homeostasis/clinical angle"
+    ],
+    "common_pitfalls": [
+      "Rote memorization without mechanism understanding"
+    ],
+    "cross_links": [
+      "Ch. 9 — Endocrine System",
+      "Glucagon action on liver → glycogenolysis/gluconeogenesis"
+    ]
+  },
+  {
+    "qnum": 28,
+    "prompt": "Sickle cell anemia — TRUE",
+    "correct_answer": "A",
+    "theory": {
+      "chapter": "Ch. 10 — Blood",
+      "section_or_topic": "Erythrocyte disorders → sickle cell anemia",
+      "pages_approx": "pp. 343–345"
+    },
+    "notes": "Abnormal HbS → sickling, hemolysis, reduced O2 transport; not caused by mosquitoes.",
+    "explanation": "Erythrocyte disorders → sickle cell anemia. Key mechanisms and clinical implications are highlighted\nin Ch. 10 — Blood. Abnormal HbS → sickling, hemolysis, reduced O2 transport; not caused by\nmosquitoes. This topic integrates structure‑function and homeostasis and is testable via\ndefinitions, mechanisms, and clinical examples.",
+    "key_points": [
+      "Define the core concept",
+      "Explain the mechanism",
+      "Connect to homeostasis/clinical angle"
+    ],
+    "common_pitfalls": [
+      "Rote memorization without mechanism understanding"
+    ],
+    "cross_links": [
+      "Ch. 10 — Blood",
+      "Erythrocyte disorders → sickle cell anemia"
+    ]
+  },
+  {
+    "qnum": 29,
+    "prompt": "Kidney anatomy — TRUE statement",
+    "correct_answer": "C",
+    "theory": {
+      "chapter": "Ch. 15 — The Urinary System",
+      "section_or_topic": "Gross renal anatomy → renal pelvis, cortex/medulla",
+      "pages_approx": "pp. 512–514"
+    },
+    "notes": "Renal pelvis collects urine from collecting ducts via calyces; cortex is outer; medulla contains pyramids.",
+    "explanation": "Gross renal anatomy → renal pelvis, cortex/medulla. Key mechanisms and clinical implications are\nhighlighted in Ch. 15 — The Urinary System. Renal pelvis collects urine from collecting ducts via\ncalyces; cortex is outer; medulla contains pyramids. This topic integrates structure‑function and\nhomeostasis and is testable via definitions, mechanisms, and clinical examples.",
+    "key_points": [
+      "Define the core concept",
+      "Explain the mechanism",
+      "Connect to homeostasis/clinical angle"
+    ],
+    "common_pitfalls": [
+      "Rote memorization without mechanism understanding"
+    ],
+    "cross_links": [
+      "Ch. 15 — The Urinary System",
+      "Gross renal anatomy → renal pelvis, cortex/medulla"
+    ]
+  },
+  {
+    "qnum": 30,
+    "prompt": "Renin release trigger",
+    "correct_answer": "B",
+    "theory": {
+      "chapter": "Ch. 15 — The Urinary System",
+      "section_or_topic": "JGA and RAAS activation",
+      "pages_approx": "pp. 517–518"
+    },
+    "notes": "Low afferent arteriole pressure → renin; RAAS raises BP via angiotensin II, aldosterone.",
+    "explanation": "JGA and RAAS activation. Key mechanisms and clinical implications are highlighted in Ch. 15 — The\nUrinary System. Low afferent arteriole pressure → renin; RAAS raises BP via angiotensin II,\naldosterone. This topic integrates structure‑function and homeostasis and is testable via\ndefinitions, mechanisms, and clinical examples.",
+    "key_points": [
+      "Define the core concept",
+      "Explain the mechanism",
+      "Connect to homeostasis/clinical angle"
+    ],
+    "common_pitfalls": [
+      "Rote memorization without mechanism understanding"
+    ],
+    "cross_links": [
+      "Ch. 15 — The Urinary System",
+      "JGA and RAAS activation"
+    ]
+  },
+  {
+    "qnum": 31,
+    "prompt": "Smallpox vaccine effect",
+    "correct_answer": "B",
+    "theory": {
+      "chapter": "Ch. 12 — Lymphatic System & Body Defenses",
+      "section_or_topic": "Adaptive immunity → humoral response (antibodies)",
+      "pages_approx": "pp. 410–420"
+    },
+    "notes": "Vaccination induces antigen-specific antibodies and memory cells.",
+    "explanation": "Adaptive immunity → humoral response (antibodies). Key mechanisms and clinical implications are\nhighlighted in Ch. 12 — Lymphatic System & Body Defenses. Vaccination induces antigen-specific\nantibodies and memory cells. This topic integrates structure‑function and homeostasis and is\ntestable via definitions, mechanisms, and clinical examples.",
+    "key_points": [
+      "Define the core concept",
+      "Explain the mechanism",
+      "Connect to homeostasis/clinical angle"
+    ],
+    "common_pitfalls": [
+      "Rote memorization without mechanism understanding"
+    ],
+    "cross_links": [
+      "Ch. 12 — Lymphatic System & Body Defenses",
+      "Adaptive immunity → humoral response (antibodies)"
+    ]
+  },
+  {
+    "qnum": 32,
+    "prompt": "Disease: abnormal WBC production",
+    "correct_answer": "C",
+    "theory": {
+      "chapter": "Ch. 10 — Blood",
+      "section_or_topic": "Leukocyte disorders → leukemia",
+      "pages_approx": "pp. 348–350"
+    },
+    "notes": "Leukemia = malignant WBCs; anemia is RBC-related; hemophilia is clotting-factor deficiency.",
+    "explanation": "Leukocyte disorders → leukemia. Key mechanisms and clinical implications are highlighted in Ch. 10 —\nBlood. Leukemia = malignant WBCs; anemia is RBC-related; hemophilia is clotting-factor deficiency.\nThis topic integrates structure‑function and homeostasis and is testable via definitions,\nmechanisms, and clinical examples.",
+    "key_points": [
+      "Define the core concept",
+      "Explain the mechanism",
+      "Connect to homeostasis/clinical angle"
+    ],
+    "common_pitfalls": [
+      "Rote memorization without mechanism understanding"
+    ],
+    "cross_links": [
+      "Ch. 10 — Blood",
+      "Leukocyte disorders → leukemia"
+    ]
+  },
+  {
+    "qnum": 33,
+    "prompt": "Organ for amino acid synthesis",
+    "correct_answer": "B",
+    "theory": {
+      "chapter": "Ch. 14 — Digestive System & Metabolism",
+      "section_or_topic": "Liver metabolism (amino acid interconversion, urea cycle)",
+      "pages_approx": "pp. 470–472, 486–488"
+    },
+    "notes": "Liver transaminates amino acids and handles nitrogen via urea cycle.",
+    "explanation": "Liver metabolism (amino acid interconversion, urea cycle). Key mechanisms and clinical implications\nare highlighted in Ch. 14 — Digestive System & Metabolism. Liver transaminates amino acids and\nhandles nitrogen via urea cycle. This topic integrates structure‑function and homeostasis and is\ntestable via definitions, mechanisms, and clinical examples.",
+    "key_points": [
+      "Define the core concept",
+      "Explain the mechanism",
+      "Connect to homeostasis/clinical angle"
+    ],
+    "common_pitfalls": [
+      "Rote memorization without mechanism understanding"
+    ],
+    "cross_links": [
+      "Ch. 14 — Digestive System & Metabolism",
+      "Liver metabolism (amino acid interconversion, urea cycle)"
+    ]
+  },
+  {
+    "qnum": 34,
+    "prompt": "Hormone action — TRUE statement",
+    "correct_answer": "D",
+    "theory": {
+      "chapter": "Ch. 9 — Endocrine System",
+      "section_or_topic": "Mechanisms of hormone action → second messengers",
+      "pages_approx": "pp. 309–311"
+    },
+    "notes": "Non-steroid (peptide) hormones use membrane receptors and second messengers.",
+    "explanation": "Mechanisms of hormone action → second messengers. Key mechanisms and clinical implications are\nhighlighted in Ch. 9 — Endocrine System. Non-steroid (peptide) hormones use membrane receptors and\nsecond messengers. This topic integrates structure‑function and homeostasis and is testable via\ndefinitions, mechanisms, and clinical examples.",
+    "key_points": [
+      "Define the core concept",
+      "Explain the mechanism",
+      "Connect to homeostasis/clinical angle"
+    ],
+    "common_pitfalls": [
+      "Rote memorization without mechanism understanding"
+    ],
+    "cross_links": [
+      "Ch. 9 — Endocrine System",
+      "Mechanisms of hormone action → second messengers"
+    ]
+  },
+  {
+    "qnum": 35,
+    "prompt": "Process that oxidizes iron atoms",
+    "correct_answer": "D",
+    "theory": {
+      "chapter": "Ch. 10 — Blood",
+      "section_or_topic": "Hemoglobin and oxygen transport",
+      "pages_approx": "pp. 341–343"
+    },
+    "notes": "O2 binding changes Fe2+ coordination in heme; oxygenation (not oxidation to Fe3+) underlies O2 transport.",
+    "explanation": "Hemoglobin and oxygen transport. Key mechanisms and clinical implications are highlighted in Ch. 10\n— Blood. O2 binding changes Fe2+ coordination in heme; oxygenation (not oxidation to Fe3+) underlies\nO2 transport. This topic integrates structure‑function and homeostasis and is testable via\ndefinitions, mechanisms, and clinical examples.",
+    "key_points": [
+      "Define the core concept",
+      "Explain the mechanism",
+      "Connect to homeostasis/clinical angle"
+    ],
+    "common_pitfalls": [
+      "Rote memorization without mechanism understanding"
+    ],
+    "cross_links": [
+      "Ch. 10 — Blood",
+      "Hemoglobin and oxygen transport"
+    ]
+  },
+  {
+    "qnum": 36,
+    "prompt": "Plasma membrane — TRUE",
+    "correct_answer": "C",
+    "theory": {
+      "chapter": "Ch. 3 — Cells and Tissues",
+      "section_or_topic": "Membrane structure & permeability",
+      "pages_approx": "pp. 64–67, 76–78"
+    },
+    "notes": "Small nonpolar gases like O2 diffuse across lipid bilayers; not all transporters require ATP.",
+    "explanation": "Membrane structure & permeability. Key mechanisms and clinical implications are highlighted in Ch. 3\n— Cells and Tissues. Small nonpolar gases like O2 diffuse across lipid bilayers; not all\ntransporters require ATP. This topic integrates structure‑function and homeostasis and is testable\nvia definitions, mechanisms, and clinical examples.",
+    "key_points": [
+      "Define the core concept",
+      "Explain the mechanism",
+      "Connect to homeostasis/clinical angle"
+    ],
+    "common_pitfalls": [
+      "Rote memorization without mechanism understanding"
+    ],
+    "cross_links": [
+      "Ch. 3 — Cells and Tissues",
+      "Membrane structure & permeability"
+    ]
+  },
+  {
+    "qnum": 37,
+    "prompt": "Process that decreases blood pressure",
+    "correct_answer": "A",
+    "theory": {
+      "chapter": "Ch. 15 — The Urinary System",
+      "section_or_topic": "Renal control of BP; hormones (ADH/aldosterone/ANP)",
+      "pages_approx": "pp. 524–531"
+    },
+    "notes": "Less water reabsorption lowers blood volume/pressure; renin/aldosterone typically increase BP.",
+    "explanation": "Renal control of BP; hormones (ADH/aldosterone/ANP). Key mechanisms and clinical implications are\nhighlighted in Ch. 15 — The Urinary System. Less water reabsorption lowers blood volume/pressure;\nrenin/aldosterone typically increase BP. This topic integrates structure‑function and homeostasis\nand is testable via definitions, mechanisms, and clinical examples.",
+    "key_points": [
+      "Define the core concept",
+      "Explain the mechanism",
+      "Connect to homeostasis/clinical angle"
+    ],
+    "common_pitfalls": [
+      "Rote memorization without mechanism understanding"
+    ],
+    "cross_links": [
+      "Ch. 15 — The Urinary System",
+      "Renal control of BP; hormones (ADH/aldosterone/ANP)"
+    ]
+  },
+  {
+    "qnum": 38,
+    "prompt": "NOT found in healthy urine",
+    "correct_answer": "B",
+    "theory": {
+      "chapter": "Ch. 15 — The Urinary System",
+      "section_or_topic": "Urine composition",
+      "pages_approx": "pp. 519–520"
+    },
+    "notes": "Hemoglobin/blood are abnormal in urine; water, urea, and some bicarbonate are normal.",
+    "explanation": "Urine composition. Key mechanisms and clinical implications are highlighted in Ch. 15 — The Urinary\nSystem. Hemoglobin/blood are abnormal in urine; water, urea, and some bicarbonate are normal. This\ntopic integrates structure‑function and homeostasis and is testable via definitions, mechanisms, and\nclinical examples.",
+    "key_points": [
+      "Define the core concept",
+      "Explain the mechanism",
+      "Connect to homeostasis/clinical angle"
+    ],
+    "common_pitfalls": [
+      "Rote memorization without mechanism understanding"
+    ],
+    "cross_links": [
+      "Ch. 15 — The Urinary System",
+      "Urine composition"
+    ]
+  },
+  {
+    "qnum": 39,
+    "prompt": "NOT commonly found in plasma",
+    "correct_answer": "B",
+    "theory": {
+      "chapter": "Ch. 10 — Blood",
+      "section_or_topic": "Plasma composition",
+      "pages_approx": "pp. 338–340"
+    },
+    "notes": "Collagen isn’t dissolved in plasma; glucose, CO2, urea are.",
+    "explanation": "Plasma composition. Key mechanisms and clinical implications are highlighted in Ch. 10 — Blood.\nCollagen isn’t dissolved in plasma; glucose, CO2, urea are. This topic integrates structure‑function\nand homeostasis and is testable via definitions, mechanisms, and clinical examples.",
+    "key_points": [
+      "Define the core concept",
+      "Explain the mechanism",
+      "Connect to homeostasis/clinical angle"
+    ],
+    "common_pitfalls": [
+      "Rote memorization without mechanism understanding"
+    ],
+    "cross_links": [
+      "Ch. 10 — Blood",
+      "Plasma composition"
+    ]
+  },
+  {
+    "qnum": 40,
+    "prompt": "Three chemical classes of hormones",
+    "correct_answer": "B",
+    "theory": {
+      "chapter": "Ch. 9 — Endocrine System",
+      "section_or_topic": "Hormone chemistry",
+      "pages_approx": "pp. 309–310"
+    },
+    "notes": "Amino acid–based, steroid, and eicosanoid/fatty-acid derivatives.",
+    "explanation": "Hormone chemistry. Key mechanisms and clinical implications are highlighted in Ch. 9 — Endocrine\nSystem. Amino acid–based, steroid, and eicosanoid/fatty-acid derivatives. This topic integrates\nstructure‑function and homeostasis and is testable via definitions, mechanisms, and clinical\nexamples.",
+    "key_points": [
+      "Define the core concept",
+      "Explain the mechanism",
+      "Connect to homeostasis/clinical angle"
+    ],
+    "common_pitfalls": [
+      "Rote memorization without mechanism understanding"
+    ],
+    "cross_links": [
+      "Ch. 9 — Endocrine System",
+      "Hormone chemistry"
+    ]
+  },
+  {
+    "qnum": 41,
+    "prompt": "Sarcomeres are functional units of muscle (T/F)",
+    "correct_answer": "A",
+    "theory": {
+      "chapter": "Ch. 6 — The Muscular System",
+      "section_or_topic": "Sarcomere structure and function",
+      "pages_approx": "pp. 186–190, 198–200"
+    },
+    "notes": "Sarcomere = structural and functional unit of striated muscle; Z-line to Z-line.",
+    "explanation": "Sarcomere structure and function. Key mechanisms and clinical implications are highlighted in Ch. 6\n— The Muscular System. Sarcomere = structural and functional unit of striated muscle; Z-line to\nZ-line. This topic integrates structure‑function and homeostasis and is testable via definitions,\nmechanisms, and clinical examples.",
+    "key_points": [
+      "Define the core concept",
+      "Explain the mechanism",
+      "Connect to homeostasis/clinical angle"
+    ],
+    "common_pitfalls": [
+      "Rote memorization without mechanism understanding"
+    ],
+    "cross_links": [
+      "Ch. 6 — The Muscular System",
+      "Sarcomere structure and function"
+    ]
+  },
+  {
+    "qnum": 42,
+    "prompt": "A fasciculus is made up of fibers (T/F)",
+    "correct_answer": "A",
+    "theory": {
+      "chapter": "Ch. 6 — The Muscular System",
+      "section_or_topic": "Gross muscle organization",
+      "pages_approx": "pp. 181–186"
+    },
+    "notes": "Fasciculus (bundle) contains muscle fibers (cells).",
+    "explanation": "Gross muscle organization. Key mechanisms and clinical implications are highlighted in Ch. 6 — The\nMuscular System. Fasciculus (bundle) contains muscle fibers (cells). This topic integrates\nstructure‑function and homeostasis and is testable via definitions, mechanisms, and clinical\nexamples.",
+    "key_points": [
+      "Define the core concept",
+      "Explain the mechanism",
+      "Connect to homeostasis/clinical angle"
+    ],
+    "common_pitfalls": [
+      "Rote memorization without mechanism understanding"
+    ],
+    "cross_links": [
+      "Ch. 6 — The Muscular System",
+      "Gross muscle organization"
+    ]
+  },
+  {
+    "qnum": 43,
+    "prompt": "In contraction, Z-lines can be further separated (T/F)",
+    "correct_answer": "A",
+    "theory": {
+      "chapter": "Ch. 6 — The Muscular System",
+      "section_or_topic": "Muscle mechanics",
+      "pages_approx": "pp. 187–191"
+    },
+    "notes": "Note: Under relaxation they separate; during contraction Z-lines move closer. (Exam answer key marks A; review context.)",
+    "explanation": "Muscle mechanics. Key mechanisms and clinical implications are highlighted in Ch. 6 — The Muscular\nSystem. Note: Under relaxation they separate; during contraction Z-lines move closer. (Exam answer\nkey marks A; review context.) This topic integrates structure‑function and homeostasis and is\ntestable via definitions, mechanisms, and clinical examples.",
+    "key_points": [
+      "Define the core concept",
+      "Explain the mechanism",
+      "Connect to homeostasis/clinical angle"
+    ],
+    "common_pitfalls": [
+      "Rote memorization without mechanism understanding"
+    ],
+    "cross_links": [
+      "Ch. 6 — The Muscular System",
+      "Muscle mechanics"
+    ]
+  },
+  {
+    "qnum": 44,
+    "prompt": "Fine motor activities require ___ motor units",
+    "correct_answer": "B",
+    "theory": {
+      "chapter": "Ch. 6 — The Muscular System",
+      "section_or_topic": "Motor unit size vs precision",
+      "pages_approx": "pp. 191–196"
+    },
+    "notes": "Small motor units enable precise control (e.g., eye, fingers).",
+    "explanation": "Motor unit size vs precision. Key mechanisms and clinical implications are highlighted in Ch. 6 —\nThe Muscular System. Small motor units enable precise control (e.g., eye, fingers). This topic\nintegrates structure‑function and homeostasis and is testable via definitions, mechanisms, and\nclinical examples.",
+    "key_points": [
+      "Define the core concept",
+      "Explain the mechanism",
+      "Connect to homeostasis/clinical angle"
+    ],
+    "common_pitfalls": [
+      "Rote memorization without mechanism understanding"
+    ],
+    "cross_links": [
+      "Ch. 6 — The Muscular System",
+      "Motor unit size vs precision"
+    ]
+  },
+  {
+    "qnum": 45,
+    "prompt": "ATP yield from Krebs + oxidative phosphorylation per glucose",
+    "correct_answer": "C",
+    "theory": {
+      "chapter": "Ch. 6 — The Muscular System / Ch. 2 Biochem",
+      "section_or_topic": "Cellular respiration overview",
+      "pages_approx": "Ch.2 pp. 55–57; Ch.6 pp. 191–194"
+    },
+    "notes": "Approximately 30–36 ATP per glucose in textbooks; exam uses 36 as canonical figure.",
+    "explanation": "Cellular respiration overview. Key mechanisms and clinical implications are highlighted in Ch. 6 —\nThe Muscular System / Ch. 2 Biochem. Approximately 30–36 ATP per glucose in textbooks; exam uses 36\nas canonical figure. This topic integrates structure‑function and homeostasis and is testable via\ndefinitions, mechanisms, and clinical examples.",
+    "key_points": [
+      "Define the core concept",
+      "Explain the mechanism",
+      "Connect to homeostasis/clinical angle"
+    ],
+    "common_pitfalls": [
+      "Rote memorization without mechanism understanding"
+    ],
+    "cross_links": [
+      "Ch. 6 — The Muscular System / Ch. 2 Biochem",
+      "Cellular respiration overview"
+    ]
+  },
+  {
+    "qnum": 46,
+    "prompt": "Lactate is formed by which metabolic process?",
+    "correct_answer": "B",
+    "theory": {
+      "chapter": "Ch. 6 — The Muscular System",
+      "section_or_topic": "Anaerobic glycolysis",
+      "pages_approx": "pp. 192–194"
+    },
+    "notes": "When O2 is insufficient, pyruvate is reduced to lactate to regenerate NAD+.",
+    "explanation": "Anaerobic glycolysis. Key mechanisms and clinical implications are highlighted in Ch. 6 — The\nMuscular System. When O2 is insufficient, pyruvate is reduced to lactate to regenerate NAD+. This\ntopic integrates structure‑function and homeostasis and is testable via definitions, mechanisms, and\nclinical examples.",
+    "key_points": [
+      "Define the core concept",
+      "Explain the mechanism",
+      "Connect to homeostasis/clinical angle"
+    ],
+    "common_pitfalls": [
+      "Rote memorization without mechanism understanding"
+    ],
+    "cross_links": [
+      "Ch. 6 — The Muscular System",
+      "Anaerobic glycolysis"
+    ]
+  },
+  {
+    "qnum": 47,
+    "prompt": "Synergists are muscles that…",
+    "correct_answer": "A",
+    "theory": {
+      "chapter": "Ch. 6 — The Muscular System",
+      "section_or_topic": "Muscle roles: agonist, antagonist, synergist",
+      "pages_approx": "pp. 196–199"
+    },
+    "notes": "Synergists assist the prime mover and reduce undesirable movements.",
+    "explanation": "Muscle roles: agonist, antagonist, synergist. Key mechanisms and clinical implications are\nhighlighted in Ch. 6 — The Muscular System. Synergists assist the prime mover and reduce undesirable\nmovements. This topic integrates structure‑function and homeostasis and is testable via definitions,\nmechanisms, and clinical examples.",
+    "key_points": [
+      "Define the core concept",
+      "Explain the mechanism",
+      "Connect to homeostasis/clinical angle"
+    ],
+    "common_pitfalls": [
+      "Rote memorization without mechanism understanding"
+    ],
+    "cross_links": [
+      "Ch. 6 — The Muscular System",
+      "Muscle roles: agonist, antagonist, synergist"
+    ]
+  },
+  {
+    "qnum": 48,
+    "prompt": "Anaerobic endurance condition",
+    "correct_answer": "B",
+    "theory": {
+      "chapter": "Ch. 6 — The Muscular System",
+      "section_or_topic": "Anaerobic vs aerobic endurance",
+      "pages_approx": "pp. 194–196"
+    },
+    "notes": "Short bursts with insufficient oxygen delivery; relies on glycolysis and CP.",
+    "explanation": "Anaerobic vs aerobic endurance. Key mechanisms and clinical implications are highlighted in Ch. 6 —\nThe Muscular System. Short bursts with insufficient oxygen delivery; relies on glycolysis and CP.\nThis topic integrates structure‑function and homeostasis and is testable via definitions,\nmechanisms, and clinical examples.",
+    "key_points": [
+      "Define the core concept",
+      "Explain the mechanism",
+      "Connect to homeostasis/clinical angle"
+    ],
+    "common_pitfalls": [
+      "Rote memorization without mechanism understanding"
+    ],
+    "cross_links": [
+      "Ch. 6 — The Muscular System",
+      "Anaerobic vs aerobic endurance"
+    ]
+  },
+  {
+    "qnum": 49,
+    "prompt": "TRUE below the anaerobic threshold",
+    "correct_answer": "C",
+    "theory": {
+      "chapter": "Ch. 6 — The Muscular System",
+      "section_or_topic": "Exercise physiology: ventilatory/anaerobic threshold",
+      "pages_approx": "pp. 194–196"
+    },
+    "notes": "Below threshold, steady state is achievable; lactate spikes above threshold.",
+    "explanation": "Exercise physiology: ventilatory/anaerobic threshold. Key mechanisms and clinical implications are\nhighlighted in Ch. 6 — The Muscular System. Below threshold, steady state is achievable; lactate\nspikes above threshold. This topic integrates structure‑function and homeostasis and is testable via\ndefinitions, mechanisms, and clinical examples.",
+    "key_points": [
+      "Define the core concept",
+      "Explain the mechanism",
+      "Connect to homeostasis/clinical angle"
+    ],
+    "common_pitfalls": [
+      "Rote memorization without mechanism understanding"
+    ],
+    "cross_links": [
+      "Ch. 6 — The Muscular System",
+      "Exercise physiology: ventilatory/anaerobic threshold"
+    ]
+  },
+  {
+    "qnum": 50,
+    "prompt": "Interval training causes mitochondrial number to diminish (T/F)",
+    "correct_answer": "B",
+    "theory": {
+      "chapter": "Ch. 6 — The Muscular System",
+      "section_or_topic": "Training adaptations",
+      "pages_approx": "pp. 194–196"
+    },
+    "notes": "Endurance/interval training generally increases mitochondrial density.",
+    "explanation": "Training adaptations. Key mechanisms and clinical implications are highlighted in Ch. 6 — The\nMuscular System. Endurance/interval training generally increases mitochondrial density. This topic\nintegrates structure‑function and homeostasis and is testable via definitions, mechanisms, and\nclinical examples.",
+    "key_points": [
+      "Define the core concept",
+      "Explain the mechanism",
+      "Connect to homeostasis/clinical angle"
+    ],
+    "common_pitfalls": [
+      "Rote memorization without mechanism understanding"
+    ],
+    "cross_links": [
+      "Ch. 6 — The Muscular System",
+      "Training adaptations"
+    ]
+  },
+  {
+    "qnum": 51,
+    "prompt": "Joint lubrication/nutrition/force distribution by which structure?",
+    "correct_answer": "C",
+    "theory": {
+      "chapter": "Ch. 5 — Skeletal System",
+      "section_or_topic": "Synovial joints and synovial fluid",
+      "pages_approx": "pp. 166–171"
+    },
+    "notes": "Synovia (synovial fluid) lubricates, nourishes cartilage, and distributes loads.",
+    "explanation": "Synovial joints and synovial fluid. Key mechanisms and clinical implications are highlighted in Ch.\n5 — Skeletal System. Synovia (synovial fluid) lubricates, nourishes cartilage, and distributes\nloads. This topic integrates structure‑function and homeostasis and is testable via definitions,\nmechanisms, and clinical examples.",
+    "key_points": [
+      "Define the core concept",
+      "Explain the mechanism",
+      "Connect to homeostasis/clinical angle"
+    ],
+    "common_pitfalls": [
+      "Rote memorization without mechanism understanding"
+    ],
+    "cross_links": [
+      "Ch. 5 — Skeletal System",
+      "Synovial joints and synovial fluid"
+    ]
+  },
+  {
+    "qnum": 52,
+    "prompt": "Inner lining of joint capsule formed by…",
+    "correct_answer": "C",
+    "theory": {
+      "chapter": "Ch. 5 — Skeletal System",
+      "section_or_topic": "Synovial membrane",
+      "pages_approx": "pp. 166–171"
+    },
+    "notes": "Synovial membrane produces synovial fluid; cartilage lines articular surfaces, not capsule.",
+    "explanation": "Synovial membrane. Key mechanisms and clinical implications are highlighted in Ch. 5 — Skeletal\nSystem. Synovial membrane produces synovial fluid; cartilage lines articular surfaces, not capsule.\nThis topic integrates structure‑function and homeostasis and is testable via definitions,\nmechanisms, and clinical examples.",
+    "key_points": [
+      "Define the core concept",
+      "Explain the mechanism",
+      "Connect to homeostasis/clinical angle"
+    ],
+    "common_pitfalls": [
+      "Rote memorization without mechanism understanding"
+    ],
+    "cross_links": [
+      "Ch. 5 — Skeletal System",
+      "Synovial membrane"
+    ]
+  },
+  {
+    "qnum": 53,
+    "prompt": "Pancreas + liver roles in glucose (repeat in later section)",
+    "correct_answer": "C",
+    "theory": {
+      "chapter": "Ch. 9 / Ch. 14",
+      "section_or_topic": "Glucose homeostasis",
+      "pages_approx": "pp. see Q14"
+    },
+    "notes": "Cross-reference Q14 mapping.",
+    "explanation": "Glucose homeostasis. Key mechanisms and clinical implications are highlighted in Ch. 9 / Ch. 14.\nCross-reference Q14 mapping. This topic integrates structure‑function and homeostasis and is\ntestable via definitions, mechanisms, and clinical examples.",
+    "key_points": [
+      "Define the core concept",
+      "Explain the mechanism",
+      "Connect to homeostasis/clinical angle"
+    ],
+    "common_pitfalls": [
+      "Rote memorization without mechanism understanding"
+    ],
+    "cross_links": [
+      "Ch. 9 / Ch. 14",
+      "Glucose homeostasis"
+    ]
+  },
+  {
+    "qnum": 54,
+    "prompt": "Osmosis arrows interpretation (repeat)",
+    "correct_answer": "B",
+    "theory": {
+      "chapter": "Ch. 3",
+      "section_or_topic": "Cell transport",
+      "pages_approx": "pp. 76–81"
+    },
+    "notes": "Cross-reference Q16 mapping.",
+    "explanation": "Cell transport. Key mechanisms and clinical implications are highlighted in Ch. 3. Cross-reference\nQ16 mapping. This topic integrates structure‑function and homeostasis and is testable via\ndefinitions, mechanisms, and clinical examples.",
+    "key_points": [
+      "Define the core concept",
+      "Explain the mechanism",
+      "Connect to homeostasis/clinical angle"
+    ],
+    "common_pitfalls": [
+      "Rote memorization without mechanism understanding"
+    ],
+    "cross_links": [
+      "Ch. 3",
+      "Cell transport"
+    ]
+  },
+  {
+    "qnum": 55,
+    "prompt": "Cytosol definition nuance (repeat)",
+    "correct_answer": "C",
+    "theory": {
+      "chapter": "Ch. 3",
+      "section_or_topic": "Cytoplasm vs cytosol",
+      "pages_approx": "pp. 67–68"
+    },
+    "notes": "Cross-reference Q17 mapping.",
+    "explanation": "Cytoplasm vs cytosol. Key mechanisms and clinical implications are highlighted in Ch. 3. Cross-\nreference Q17 mapping. This topic integrates structure‑function and homeostasis and is testable via\ndefinitions, mechanisms, and clinical examples.",
+    "key_points": [
+      "Define the core concept",
+      "Explain the mechanism",
+      "Connect to homeostasis/clinical angle"
+    ],
+    "common_pitfalls": [
+      "Rote memorization without mechanism understanding"
+    ],
+    "cross_links": [
+      "Ch. 3",
+      "Cytoplasm vs cytosol"
+    ]
+  },
+  {
+    "qnum": 56,
+    "prompt": "Hematopoiesis site (repeat)",
+    "correct_answer": "C",
+    "theory": {
+      "chapter": "Ch. 10",
+      "section_or_topic": "Hematopoiesis",
+      "pages_approx": "pp. 345–347"
+    },
+    "notes": "Cross-reference Q18 mapping.",
+    "explanation": "Hematopoiesis. Key mechanisms and clinical implications are highlighted in Ch. 10. Cross-reference\nQ18 mapping. This topic integrates structure‑function and homeostasis and is testable via\ndefinitions, mechanisms, and clinical examples.",
+    "key_points": [
+      "Define the core concept",
+      "Explain the mechanism",
+      "Connect to homeostasis/clinical angle"
+    ],
+    "common_pitfalls": [
+      "Rote memorization without mechanism understanding"
+    ],
+    "cross_links": [
+      "Ch. 10",
+      "Hematopoiesis"
+    ]
+  },
+  {
+    "qnum": 57,
+    "prompt": "Endocrine organ labeling (repeat)",
+    "correct_answer": "B",
+    "theory": {
+      "chapter": "Ch. 9",
+      "section_or_topic": "Endocrine organs",
+      "pages_approx": "pp. 312–327"
+    },
+    "notes": "Cross-reference Q19 mapping.",
+    "explanation": "Endocrine organs. Key mechanisms and clinical implications are highlighted in Ch. 9. Cross-reference\nQ19 mapping. This topic integrates structure‑function and homeostasis and is testable via\ndefinitions, mechanisms, and clinical examples.",
+    "key_points": [
+      "Define the core concept",
+      "Explain the mechanism",
+      "Connect to homeostasis/clinical angle"
+    ],
+    "common_pitfalls": [
+      "Rote memorization without mechanism understanding"
+    ],
+    "cross_links": [
+      "Ch. 9",
+      "Endocrine organs"
+    ]
+  },
+  {
+    "qnum": 58,
+    "prompt": "Islets hormone (repeat)",
+    "correct_answer": "C",
+    "theory": {
+      "chapter": "Ch. 9",
+      "section_or_topic": "Pancreatic hormones",
+      "pages_approx": "pp. 323–325"
+    },
+    "notes": "Cross-reference Q20 mapping.",
+    "explanation": "Pancreatic hormones. Key mechanisms and clinical implications are highlighted in Ch. 9. Cross-\nreference Q20 mapping. This topic integrates structure‑function and homeostasis and is testable via\ndefinitions, mechanisms, and clinical examples.",
+    "key_points": [
+      "Define the core concept",
+      "Explain the mechanism",
+      "Connect to homeostasis/clinical angle"
+    ],
+    "common_pitfalls": [
+      "Rote memorization without mechanism understanding"
+    ],
+    "cross_links": [
+      "Ch. 9",
+      "Pancreatic hormones"
+    ]
+  },
+  {
+    "qnum": 59,
+    "prompt": "Chronic stress hormone (repeat)",
+    "correct_answer": "A",
+    "theory": {
+      "chapter": "Ch. 9",
+      "section_or_topic": "Cortisol/cortisone",
+      "pages_approx": "pp. 320–322"
+    },
+    "notes": "Cross-reference Q21 mapping.",
+    "explanation": "Cortisol/cortisone. Key mechanisms and clinical implications are highlighted in Ch. 9. Cross-\nreference Q21 mapping. This topic integrates structure‑function and homeostasis and is testable via\ndefinitions, mechanisms, and clinical examples.",
+    "key_points": [
+      "Define the core concept",
+      "Explain the mechanism",
+      "Connect to homeostasis/clinical angle"
+    ],
+    "common_pitfalls": [
+      "Rote memorization without mechanism understanding"
+    ],
+    "cross_links": [
+      "Ch. 9",
+      "Cortisol/cortisone"
+    ]
+  },
+  {
+    "qnum": 60,
+    "prompt": "Urethra definition (repeat)",
+    "correct_answer": "B",
+    "theory": {
+      "chapter": "Ch. 15",
+      "section_or_topic": "Urethra",
+      "pages_approx": "pp. 521–523"
+    },
+    "notes": "Cross-reference Q22 mapping.",
+    "explanation": "Urethra. Key mechanisms and clinical implications are highlighted in Ch. 15. Cross-reference Q22\nmapping. This topic integrates structure‑function and homeostasis and is testable via definitions,\nmechanisms, and clinical examples.",
+    "key_points": [
+      "Define the core concept",
+      "Explain the mechanism",
+      "Connect to homeostasis/clinical angle"
+    ],
+    "common_pitfalls": [
+      "Rote memorization without mechanism understanding"
+    ],
+    "cross_links": [
+      "Ch. 15",
+      "Urethra"
+    ]
+  },
+  {
+    "qnum": 61,
+    "prompt": "Passive transport hallmark (repeat)",
+    "correct_answer": "A",
+    "theory": {
+      "chapter": "Ch. 3",
+      "section_or_topic": "Diffusion/osmosis",
+      "pages_approx": "pp. 76–80"
+    },
+    "notes": "Cross-reference Q23 mapping.",
+    "explanation": "Diffusion/osmosis. Key mechanisms and clinical implications are highlighted in Ch. 3. Cross-\nreference Q23 mapping. This topic integrates structure‑function and homeostasis and is testable via\ndefinitions, mechanisms, and clinical examples.",
+    "key_points": [
+      "Define the core concept",
+      "Explain the mechanism",
+      "Connect to homeostasis/clinical angle"
+    ],
+    "common_pitfalls": [
+      "Rote memorization without mechanism understanding"
+    ],
+    "cross_links": [
+      "Ch. 3",
+      "Diffusion/osmosis"
+    ]
+  },
+  {
+    "qnum": 62,
+    "prompt": "HDL role (repeat)",
+    "correct_answer": "A",
+    "theory": {
+      "chapter": "Ch. 14/10",
+      "section_or_topic": "Lipoproteins",
+      "pages_approx": "pp. see Q24"
+    },
+    "notes": "Cross-reference Q24 mapping.",
+    "explanation": "Lipoproteins. Key mechanisms and clinical implications are highlighted in Ch. 14/10. Cross-reference\nQ24 mapping. This topic integrates structure‑function and homeostasis and is testable via\ndefinitions, mechanisms, and clinical examples.",
+    "key_points": [
+      "Define the core concept",
+      "Explain the mechanism",
+      "Connect to homeostasis/clinical angle"
+    ],
+    "common_pitfalls": [
+      "Rote memorization without mechanism understanding"
+    ],
+    "cross_links": [
+      "Ch. 14/10",
+      "Lipoproteins"
+    ]
+  },
+  {
+    "qnum": 63,
+    "prompt": "Filtrate vs urine false (repeat)",
+    "correct_answer": "A",
+    "theory": {
+      "chapter": "Ch. 15",
+      "section_or_topic": "Filtrate vs urine composition",
+      "pages_approx": "pp. 516–520"
+    },
+    "notes": "Cross-reference Q25 mapping.",
+    "explanation": "Filtrate vs urine composition. Key mechanisms and clinical implications are highlighted in Ch. 15.\nCross-reference Q25 mapping. This topic integrates structure‑function and homeostasis and is\ntestable via definitions, mechanisms, and clinical examples.",
+    "key_points": [
+      "Define the core concept",
+      "Explain the mechanism",
+      "Connect to homeostasis/clinical angle"
+    ],
+    "common_pitfalls": [
+      "Rote memorization without mechanism understanding"
+    ],
+    "cross_links": [
+      "Ch. 15",
+      "Filtrate vs urine composition"
+    ]
+  },
+  {
+    "qnum": 64,
+    "prompt": "Pinocytosis example (repeat)",
+    "correct_answer": "C",
+    "theory": {
+      "chapter": "Ch. 3",
+      "section_or_topic": "Endocytosis",
+      "pages_approx": "pp. 80–82"
+    },
+    "notes": "Cross-reference Q26 mapping.",
+    "explanation": "Endocytosis. Key mechanisms and clinical implications are highlighted in Ch. 3. Cross-reference Q26\nmapping. This topic integrates structure‑function and homeostasis and is testable via definitions,\nmechanisms, and clinical examples.",
+    "key_points": [
+      "Define the core concept",
+      "Explain the mechanism",
+      "Connect to homeostasis/clinical angle"
+    ],
+    "common_pitfalls": [
+      "Rote memorization without mechanism understanding"
+    ],
+    "cross_links": [
+      "Ch. 3",
+      "Endocytosis"
+    ]
+  },
+  {
+    "qnum": 65,
+    "prompt": "Glucagon effect on liver (repeat)",
+    "correct_answer": "B",
+    "theory": {
+      "chapter": "Ch. 9/14",
+      "section_or_topic": "Glucagon action",
+      "pages_approx": "pp. see Q27"
+    },
+    "notes": "Cross-reference Q27 mapping.",
+    "explanation": "Glucagon action. Key mechanisms and clinical implications are highlighted in Ch. 9/14. Cross-\nreference Q27 mapping. This topic integrates structure‑function and homeostasis and is testable via\ndefinitions, mechanisms, and clinical examples.",
+    "key_points": [
+      "Define the core concept",
+      "Explain the mechanism",
+      "Connect to homeostasis/clinical angle"
+    ],
+    "common_pitfalls": [
+      "Rote memorization without mechanism understanding"
+    ],
+    "cross_links": [
+      "Ch. 9/14",
+      "Glucagon action"
+    ]
+  },
+  {
+    "qnum": 66,
+    "prompt": "Sickle cell anemia true (repeat)",
+    "correct_answer": "B",
+    "theory": {
+      "chapter": "Ch. 10",
+      "section_or_topic": "RBC disorders",
+      "pages_approx": "pp. 343–345"
+    },
+    "notes": "Cross-reference Q28 mapping.",
+    "explanation": "RBC disorders. Key mechanisms and clinical implications are highlighted in Ch. 10. Cross-reference\nQ28 mapping. This topic integrates structure‑function and homeostasis and is testable via\ndefinitions, mechanisms, and clinical examples.",
+    "key_points": [
+      "Define the core concept",
+      "Explain the mechanism",
+      "Connect to homeostasis/clinical angle"
+    ],
+    "common_pitfalls": [
+      "Rote memorization without mechanism understanding"
+    ],
+    "cross_links": [
+      "Ch. 10",
+      "RBC disorders"
+    ]
+  },
+  {
+    "qnum": 67,
+    "prompt": "Kidney anatomy statement (repeat)",
+    "correct_answer": "B",
+    "theory": {
+      "chapter": "Ch. 15",
+      "section_or_topic": "Renal gross anatomy",
+      "pages_approx": "pp. 512–514"
+    },
+    "notes": "Cross-reference Q29 mapping.",
+    "explanation": "Renal gross anatomy. Key mechanisms and clinical implications are highlighted in Ch. 15. Cross-\nreference Q29 mapping. This topic integrates structure‑function and homeostasis and is testable via\ndefinitions, mechanisms, and clinical examples.",
+    "key_points": [
+      "Define the core concept",
+      "Explain the mechanism",
+      "Connect to homeostasis/clinical angle"
+    ],
+    "common_pitfalls": [
+      "Rote memorization without mechanism understanding"
+    ],
+    "cross_links": [
+      "Ch. 15",
+      "Renal gross anatomy"
+    ]
+  },
+  {
+    "qnum": 68,
+    "prompt": "Renin trigger (repeat)",
+    "correct_answer": "A",
+    "theory": {
+      "chapter": "Ch. 15",
+      "section_or_topic": "RAAS",
+      "pages_approx": "pp. 517–518"
+    },
+    "notes": "Cross-reference Q30 mapping.",
+    "explanation": "RAAS. Key mechanisms and clinical implications are highlighted in Ch. 15. Cross-reference Q30\nmapping. This topic integrates structure‑function and homeostasis and is testable via definitions,\nmechanisms, and clinical examples.",
+    "key_points": [
+      "Define the core concept",
+      "Explain the mechanism",
+      "Connect to homeostasis/clinical angle"
+    ],
+    "common_pitfalls": [
+      "Rote memorization without mechanism understanding"
+    ],
+    "cross_links": [
+      "Ch. 15",
+      "RAAS"
+    ]
+  },
+  {
+    "qnum": 69,
+    "prompt": "Vaccine effect (repeat)",
+    "correct_answer": "A",
+    "theory": {
+      "chapter": "Ch. 12",
+      "section_or_topic": "Adaptive immunity",
+      "pages_approx": "pp. 410–420"
+    },
+    "notes": "Cross-reference Q31 mapping.",
+    "explanation": "Adaptive immunity. Key mechanisms and clinical implications are highlighted in Ch. 12. Cross-\nreference Q31 mapping. This topic integrates structure‑function and homeostasis and is testable via\ndefinitions, mechanisms, and clinical examples.",
+    "key_points": [
+      "Define the core concept",
+      "Explain the mechanism",
+      "Connect to homeostasis/clinical angle"
+    ],
+    "common_pitfalls": [
+      "Rote memorization without mechanism understanding"
+    ],
+    "cross_links": [
+      "Ch. 12",
+      "Adaptive immunity"
+    ]
+  },
+  {
+    "qnum": 70,
+    "prompt": "Abnormal WBC production (repeat)",
+    "correct_answer": "C",
+    "theory": {
+      "chapter": "Ch. 10",
+      "section_or_topic": "Leukemia",
+      "pages_approx": "pp. 348–350"
+    },
+    "notes": "Cross-reference Q32 mapping.",
+    "explanation": "Leukemia. Key mechanisms and clinical implications are highlighted in Ch. 10. Cross-reference Q32\nmapping. This topic integrates structure‑function and homeostasis and is testable via definitions,\nmechanisms, and clinical examples.",
+    "key_points": [
+      "Define the core concept",
+      "Explain the mechanism",
+      "Connect to homeostasis/clinical angle"
+    ],
+    "common_pitfalls": [
+      "Rote memorization without mechanism understanding"
+    ],
+    "cross_links": [
+      "Ch. 10",
+      "Leukemia"
+    ]
+  },
+  {
+    "qnum": 71,
+    "prompt": "Organ for amino acid synthesis (repeat)",
+    "correct_answer": "C",
+    "theory": {
+      "chapter": "Ch. 14",
+      "section_or_topic": "Amino acid metabolism in liver",
+      "pages_approx": "pp. 470–472, 486–488"
+    },
+    "notes": "Cross-reference Q33 mapping.",
+    "explanation": "Amino acid metabolism in liver. Key mechanisms and clinical implications are highlighted in Ch. 14.\nCross-reference Q33 mapping. This topic integrates structure‑function and homeostasis and is\ntestable via definitions, mechanisms, and clinical examples.",
+    "key_points": [
+      "Define the core concept",
+      "Explain the mechanism",
+      "Connect to homeostasis/clinical angle"
+    ],
+    "common_pitfalls": [
+      "Rote memorization without mechanism understanding"
+    ],
+    "cross_links": [
+      "Ch. 14",
+      "Amino acid metabolism in liver"
+    ]
+  },
+  {
+    "qnum": 72,
+    "prompt": "Hormone action—second messenger (repeat)",
+    "correct_answer": "B",
+    "theory": {
+      "chapter": "Ch. 9",
+      "section_or_topic": "Hormone mechanisms",
+      "pages_approx": "pp. 309–311"
+    },
+    "notes": "Cross-reference Q34 mapping.",
+    "explanation": "Hormone mechanisms. Key mechanisms and clinical implications are highlighted in Ch. 9. Cross-\nreference Q34 mapping. This topic integrates structure‑function and homeostasis and is testable via\ndefinitions, mechanisms, and clinical examples.",
+    "key_points": [
+      "Define the core concept",
+      "Explain the mechanism",
+      "Connect to homeostasis/clinical angle"
+    ],
+    "common_pitfalls": [
+      "Rote memorization without mechanism understanding"
+    ],
+    "cross_links": [
+      "Ch. 9",
+      "Hormone mechanisms"
+    ]
+  },
+  {
+    "qnum": 73,
+    "prompt": "Iron oxidation-linked process (repeat)",
+    "correct_answer": "C",
+    "theory": {
+      "chapter": "Ch. 10",
+      "section_or_topic": "Hemoglobin oxygenation",
+      "pages_approx": "pp. 341–343"
+    },
+    "notes": "Cross-reference Q35 mapping.",
+    "explanation": "Hemoglobin oxygenation. Key mechanisms and clinical implications are highlighted in Ch. 10. Cross-\nreference Q35 mapping. This topic integrates structure‑function and homeostasis and is testable via\ndefinitions, mechanisms, and clinical examples.",
+    "key_points": [
+      "Define the core concept",
+      "Explain the mechanism",
+      "Connect to homeostasis/clinical angle"
+    ],
+    "common_pitfalls": [
+      "Rote memorization without mechanism understanding"
+    ],
+    "cross_links": [
+      "Ch. 10",
+      "Hemoglobin oxygenation"
+    ]
+  },
+  {
+    "qnum": 74,
+    "prompt": "Plasma membrane true (repeat)",
+    "correct_answer": "B",
+    "theory": {
+      "chapter": "Ch. 3",
+      "section_or_topic": "Membrane permeability",
+      "pages_approx": "pp. 64–67, 76–78"
+    },
+    "notes": "Cross-reference Q36 mapping.",
+    "explanation": "Membrane permeability. Key mechanisms and clinical implications are highlighted in Ch. 3. Cross-\nreference Q36 mapping. This topic integrates structure‑function and homeostasis and is testable via\ndefinitions, mechanisms, and clinical examples.",
+    "key_points": [
+      "Define the core concept",
+      "Explain the mechanism",
+      "Connect to homeostasis/clinical angle"
+    ],
+    "common_pitfalls": [
+      "Rote memorization without mechanism understanding"
+    ],
+    "cross_links": [
+      "Ch. 3",
+      "Membrane permeability"
+    ]
+  },
+  {
+    "qnum": 75,
+    "prompt": "Decrease blood pressure (repeat)",
+    "correct_answer": "B",
+    "theory": {
+      "chapter": "Ch. 15",
+      "section_or_topic": "Renal BP control",
+      "pages_approx": "pp. 524–531"
+    },
+    "notes": "Cross-reference Q37 mapping.",
+    "explanation": "Renal BP control. Key mechanisms and clinical implications are highlighted in Ch. 15. Cross-\nreference Q37 mapping. This topic integrates structure‑function and homeostasis and is testable via\ndefinitions, mechanisms, and clinical examples.",
+    "key_points": [
+      "Define the core concept",
+      "Explain the mechanism",
+      "Connect to homeostasis/clinical angle"
+    ],
+    "common_pitfalls": [
+      "Rote memorization without mechanism understanding"
+    ],
+    "cross_links": [
+      "Ch. 15",
+      "Renal BP control"
+    ]
+  },
+  {
+    "qnum": 76,
+    "prompt": "NOT in healthy urine (repeat)",
+    "correct_answer": "A",
+    "theory": {
+      "chapter": "Ch. 15",
+      "section_or_topic": "Urine composition",
+      "pages_approx": "pp. 519–520"
+    },
+    "notes": "Cross-reference Q38 mapping.",
+    "explanation": "Urine composition. Key mechanisms and clinical implications are highlighted in Ch. 15. Cross-\nreference Q38 mapping. This topic integrates structure‑function and homeostasis and is testable via\ndefinitions, mechanisms, and clinical examples.",
+    "key_points": [
+      "Define the core concept",
+      "Explain the mechanism",
+      "Connect to homeostasis/clinical angle"
+    ],
+    "common_pitfalls": [
+      "Rote memorization without mechanism understanding"
+    ],
+    "cross_links": [
+      "Ch. 15",
+      "Urine composition"
+    ]
+  },
+  {
+    "qnum": 77,
+    "prompt": "NOT commonly in plasma (repeat)",
+    "correct_answer": "C",
+    "theory": {
+      "chapter": "Ch. 10",
+      "section_or_topic": "Plasma composition",
+      "pages_approx": "pp. 338–340"
+    },
+    "notes": "Cross-reference Q39 mapping.",
+    "explanation": "Plasma composition. Key mechanisms and clinical implications are highlighted in Ch. 10. Cross-\nreference Q39 mapping. This topic integrates structure‑function and homeostasis and is testable via\ndefinitions, mechanisms, and clinical examples.",
+    "key_points": [
+      "Define the core concept",
+      "Explain the mechanism",
+      "Connect to homeostasis/clinical angle"
+    ],
+    "common_pitfalls": [
+      "Rote memorization without mechanism understanding"
+    ],
+    "cross_links": [
+      "Ch. 10",
+      "Plasma composition"
+    ]
+  },
+  {
+    "qnum": 78,
+    "prompt": "Hormone chemical classes (repeat)",
+    "correct_answer": "A",
+    "theory": {
+      "chapter": "Ch. 9",
+      "section_or_topic": "Hormone chemistry",
+      "pages_approx": "pp. 309–310"
+    },
+    "notes": "Cross-reference Q40 mapping.",
+    "explanation": "Hormone chemistry. Key mechanisms and clinical implications are highlighted in Ch. 9. Cross-\nreference Q40 mapping. This topic integrates structure‑function and homeostasis and is testable via\ndefinitions, mechanisms, and clinical examples.",
+    "key_points": [
+      "Define the core concept",
+      "Explain the mechanism",
+      "Connect to homeostasis/clinical angle"
+    ],
+    "common_pitfalls": [
+      "Rote memorization without mechanism understanding"
+    ],
+    "cross_links": [
+      "Ch. 9",
+      "Hormone chemistry"
+    ]
+  },
+  {
+    "qnum": 79,
+    "prompt": "Sarcomeres functional unit (repeat)",
+    "correct_answer": "B",
+    "theory": {
+      "chapter": "Ch. 6",
+      "section_or_topic": "Sarcomere",
+      "pages_approx": "pp. 186–190"
+    },
+    "notes": "Cross-reference Q41 mapping.",
+    "explanation": "Sarcomere. Key mechanisms and clinical implications are highlighted in Ch. 6. Cross-reference Q41\nmapping. This topic integrates structure‑function and homeostasis and is testable via definitions,\nmechanisms, and clinical examples.",
+    "key_points": [
+      "Define the core concept",
+      "Explain the mechanism",
+      "Connect to homeostasis/clinical angle"
+    ],
+    "common_pitfalls": [
+      "Rote memorization without mechanism understanding"
+    ],
+    "cross_links": [
+      "Ch. 6",
+      "Sarcomere"
+    ]
+  },
+  {
+    "qnum": 80,
+    "prompt": "Fasciculus definition (repeat)",
+    "correct_answer": "C",
+    "theory": {
+      "chapter": "Ch. 6",
+      "section_or_topic": "Muscle organization",
+      "pages_approx": "pp. 181–186"
+    },
+    "notes": "Cross-reference Q42 mapping.",
+    "explanation": "Muscle organization. Key mechanisms and clinical implications are highlighted in Ch. 6. Cross-\nreference Q42 mapping. This topic integrates structure‑function and homeostasis and is testable via\ndefinitions, mechanisms, and clinical examples.",
+    "key_points": [
+      "Define the core concept",
+      "Explain the mechanism",
+      "Connect to homeostasis/clinical angle"
+    ],
+    "common_pitfalls": [
+      "Rote memorization without mechanism understanding"
+    ],
+    "cross_links": [
+      "Ch. 6",
+      "Muscle organization"
+    ]
+  }
+]

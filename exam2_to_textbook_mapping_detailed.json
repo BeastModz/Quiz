@@ -1,0 +1,2114 @@
+[
+  {
+    "qnum": 1,
+    "prompt": "For each question choose the best answer from the options provided. 1p is awarded for each correct answer.",
+    "correct_answer": "D",
+    "theory": {
+      "chapter": "Ch. 1 — The Human Body: An Orientation",
+      "section_or_topic": "General principles",
+      "pages_approx": "pp. 1–5"
+    },
+    "notes": "General concept; see chapter overview sections.",
+    "explanation": "General concept; see chapter overview sections. General principles. Mechanism: identify the\nsensors/effectors (if applicable), the transporters/enzymes involved, and the homeostatic variable\nbeing controlled. Clinically, recognize what happens when the mechanism fails (e.g., loss of\nregulation, abnormal lab values, or compensatory responses).",
+    "key_points": [
+      "Define concept",
+      "Explain mechanism",
+      "Link to clinical relevance"
+    ],
+    "common_pitfalls": [
+      "Memorizing facts without mechanism"
+    ],
+    "cross_links": [
+      "Ch. 1 — The Human Body: An Orientation",
+      "General principles"
+    ]
+  },
+  {
+    "qnum": 2,
+    "prompt": "Which of the following is an example of a negative feedback loop in human physiology?",
+    "correct_answer": "B",
+    "theory": {
+      "chapter": "Ch. 1 — The Human Body: An Orientation",
+      "section_or_topic": "Homeostasis → Negative feedback (thermoregulation)",
+      "pages_approx": "pp. 19–21"
+    },
+    "notes": "Sweating on a warm day is negative feedback—counters a rise in core temperature.",
+    "explanation": "Sweating on a warm day is negative feedback—counters a rise in core temperature. Negative feedback\ncounters a change to restore a set point. When body temperature rises, thermoreceptors signal the\nhypothalamus, sympathetic output increases cutaneous blood flow and activates sweat glands;\nevaporation removes heat and core temperature falls. This loop turns off as the variable normalizes.\nBy contrast, positive feedback amplifies the initial change and is rare (e.g., oxytocin during\nlabor, blood clotting).",
+    "key_points": [
+      "Homeostatic variable + set point",
+      "Sensor → Integrator → Effector",
+      "Negative vs positive feedback outcomes"
+    ],
+    "common_pitfalls": [
+      "Confusing feedback type with desirability"
+    ],
+    "cross_links": [
+      "Ch. 1 Homeostasis",
+      "Ch. 9 Hormonal feedback loops"
+    ]
+  },
+  {
+    "qnum": 3,
+    "prompt": "If a blood test comes back with a result indicating high triglyceride levels, that indicates the person is ingesting too much of which type of organic molecules in its diet?",
+    "correct_answer": "A",
+    "theory": {
+      "chapter": "Ch. 2 — Basic Chemistry",
+      "section_or_topic": "Organic compounds → Lipids (triglycerides)",
+      "pages_approx": "pp. 51–54"
+    },
+    "notes": "High triglycerides reflect dietary lipids; triglyceride = glycerol + 3 fatty acids.",
+    "explanation": "High triglycerides reflect dietary lipids; triglyceride = glycerol + 3 fatty acids. Organic\ncompounds → Lipids (triglycerides). Mechanism: identify the sensors/effectors (if applicable), the\ntransporters/enzymes involved, and the homeostatic variable being controlled. Clinically, recognize\nwhat happens when the mechanism fails (e.g., loss of regulation, abnormal lab values, or\ncompensatory responses).",
+    "key_points": [
+      "Define concept",
+      "Explain mechanism",
+      "Link to clinical relevance"
+    ],
+    "common_pitfalls": [
+      "Memorizing facts without mechanism"
+    ],
+    "cross_links": [
+      "Ch. 2 — Basic Chemistry",
+      "Organic compounds → Lipids (triglycerides)"
+    ]
+  },
+  {
+    "qnum": 4,
+    "prompt": "Carbohydrates.",
+    "correct_answer": "A",
+    "theory": {
+      "chapter": "Ch. 1 — The Human Body: An Orientation",
+      "section_or_topic": "General principles",
+      "pages_approx": "pp. 1–5"
+    },
+    "notes": "General concept; see chapter overview sections.",
+    "explanation": "General concept; see chapter overview sections. General principles. Mechanism: identify the\nsensors/effectors (if applicable), the transporters/enzymes involved, and the homeostatic variable\nbeing controlled. Clinically, recognize what happens when the mechanism fails (e.g., loss of\nregulation, abnormal lab values, or compensatory responses).",
+    "key_points": [
+      "Define concept",
+      "Explain mechanism",
+      "Link to clinical relevance"
+    ],
+    "common_pitfalls": [
+      "Memorizing facts without mechanism"
+    ],
+    "cross_links": [
+      "Ch. 1 — The Human Body: An Orientation",
+      "General principles"
+    ]
+  },
+  {
+    "qnum": 5,
+    "prompt": "Lipids.",
+    "correct_answer": "B",
+    "theory": {
+      "chapter": "Ch. 1 — The Human Body: An Orientation",
+      "section_or_topic": "General principles",
+      "pages_approx": "pp. 1–5"
+    },
+    "notes": "General concept; see chapter overview sections.",
+    "explanation": "General concept; see chapter overview sections. General principles. Mechanism: identify the\nsensors/effectors (if applicable), the transporters/enzymes involved, and the homeostatic variable\nbeing controlled. Clinically, recognize what happens when the mechanism fails (e.g., loss of\nregulation, abnormal lab values, or compensatory responses).",
+    "key_points": [
+      "Define concept",
+      "Explain mechanism",
+      "Link to clinical relevance"
+    ],
+    "common_pitfalls": [
+      "Memorizing facts without mechanism"
+    ],
+    "cross_links": [
+      "Ch. 1 — The Human Body: An Orientation",
+      "General principles"
+    ]
+  },
+  {
+    "qnum": 6,
+    "prompt": "Nucleic acids.",
+    "correct_answer": "B",
+    "theory": {
+      "chapter": "Ch. 1 — The Human Body: An Orientation",
+      "section_or_topic": "General principles",
+      "pages_approx": "pp. 1–5"
+    },
+    "notes": "General concept; see chapter overview sections.",
+    "explanation": "General concept; see chapter overview sections. General principles. Mechanism: identify the\nsensors/effectors (if applicable), the transporters/enzymes involved, and the homeostatic variable\nbeing controlled. Clinically, recognize what happens when the mechanism fails (e.g., loss of\nregulation, abnormal lab values, or compensatory responses).",
+    "key_points": [
+      "Define concept",
+      "Explain mechanism",
+      "Link to clinical relevance"
+    ],
+    "common_pitfalls": [
+      "Memorizing facts without mechanism"
+    ],
+    "cross_links": [
+      "Ch. 1 — The Human Body: An Orientation",
+      "General principles"
+    ]
+  },
+  {
+    "qnum": 7,
+    "prompt": "Proteins.",
+    "correct_answer": "C",
+    "theory": {
+      "chapter": "Ch. 1 — The Human Body: An Orientation",
+      "section_or_topic": "General principles",
+      "pages_approx": "pp. 1–5"
+    },
+    "notes": "General concept; see chapter overview sections.",
+    "explanation": "General concept; see chapter overview sections. General principles. Mechanism: identify the\nsensors/effectors (if applicable), the transporters/enzymes involved, and the homeostatic variable\nbeing controlled. Clinically, recognize what happens when the mechanism fails (e.g., loss of\nregulation, abnormal lab values, or compensatory responses).",
+    "key_points": [
+      "Define concept",
+      "Explain mechanism",
+      "Link to clinical relevance"
+    ],
+    "common_pitfalls": [
+      "Memorizing facts without mechanism"
+    ],
+    "cross_links": [
+      "Ch. 1 — The Human Body: An Orientation",
+      "General principles"
+    ]
+  },
+  {
+    "qnum": 8,
+    "prompt": "One of the important physiological functions of the blood is the regulation of body temperature. Under cold weather conditions, which of the following is TRUE?",
+    "correct_answer": "B",
+    "theory": {
+      "chapter": "Ch. 1 — The Human Body: An Orientation",
+      "section_or_topic": "Thermoregulation → vasoconstriction in cold",
+      "pages_approx": "pp. 20–21"
+    },
+    "notes": "Cold triggers cutaneous vasoconstriction to conserve heat.",
+    "explanation": "Cold triggers cutaneous vasoconstriction to conserve heat. Thermoregulation → vasoconstriction in\ncold. Mechanism: identify the sensors/effectors (if applicable), the transporters/enzymes involved,\nand the homeostatic variable being controlled. Clinically, recognize what happens when the mechanism\nfails (e.g., loss of regulation, abnormal lab values, or compensatory responses).",
+    "key_points": [
+      "Define concept",
+      "Explain mechanism",
+      "Link to clinical relevance"
+    ],
+    "common_pitfalls": [
+      "Memorizing facts without mechanism"
+    ],
+    "cross_links": [
+      "Ch. 1 — The Human Body: An Orientation",
+      "Thermoregulation → vasoconstriction in cold"
+    ]
+  },
+  {
+    "qnum": 9,
+    "prompt": "For the target cells to respond to an hormone they must have specific protein receptors. Where are these receptors located?",
+    "correct_answer": "D",
+    "theory": {
+      "chapter": "Ch. 9 — Endocrine System",
+      "section_or_topic": "Mechanisms of hormone action → membrane vs intracellular receptors",
+      "pages_approx": "pp. 309–311"
+    },
+    "notes": "Peptide hormones use membrane receptors; steroid/thyroid hormones act via intracellular receptors.",
+    "explanation": "Peptide hormones use membrane receptors; steroid/thyroid hormones act via intracellular receptors.\nMechanisms of hormone action → membrane vs intracellular receptors. Mechanism: identify the\nsensors/effectors (if applicable), the transporters/enzymes involved, and the homeostatic variable\nbeing controlled. Clinically, recognize what happens when the mechanism fails (e.g., loss of\nregulation, abnormal lab values, or compensatory responses).",
+    "key_points": [
+      "Define concept",
+      "Explain mechanism",
+      "Link to clinical relevance"
+    ],
+    "common_pitfalls": [
+      "Memorizing facts without mechanism"
+    ],
+    "cross_links": [
+      "Ch. 9 — Endocrine System",
+      "Mechanisms of hormone action → membrane vs intracellular receptors"
+    ]
+  },
+  {
+    "qnum": 10,
+    "prompt": "One of the hormones produced by the pituitary gland is the Antidiuretic Hormone (ADH). What is the main physiological function of this hormone?",
+    "correct_answer": "D",
+    "theory": {
+      "chapter": "Ch. 9 — Endocrine System / Ch. 15 — Urinary System",
+      "section_or_topic": "Posterior pituitary hormones → ADH (water reabsorption in collecting ducts)",
+      "pages_approx": "Ch. 9 pp. 315–317; Ch. 15 pp. 528–530"
+    },
+    "notes": "ADH increases water reabsorption via aquaporins; concentrates urine.",
+    "explanation": "ADH increases water reabsorption via aquaporins; concentrates urine. ADH (vasopressin) is released\nfrom the posterior pituitary in response to increased plasma osmolarity or decreased blood volume.\nIt binds V2 receptors in the collecting duct, triggering insertion of aquaporin‑2 channels and thus\nincreasing water reabsorption. Urine becomes concentrated and plasma osmolarity falls—classic\nnegative feedback. In diabetes insipidus (lack of ADH effect), aquaporins aren’t inserted, causing\npolyuria and polydipsia.",
+    "key_points": [
+      "↑Plasma osmolarity → ↑ADH",
+      "Aquaporin‑2 insertion in collecting duct",
+      "Concentrated urine, conserved water"
+    ],
+    "common_pitfalls": [
+      "Mixing up ADH with aldosterone mechanisms"
+    ],
+    "cross_links": [
+      "Ch. 15 Water balance",
+      "Ch. 9 Posterior pituitary hormones"
+    ]
+  },
+  {
+    "qnum": 11,
+    "prompt": "Where in the body can you find Kuppfer cells, immune system cells that destroy antigens entering the body through the digestive system?",
+    "correct_answer": "B",
+    "theory": {
+      "chapter": "Ch. 14 — Digestive System & Metabolism",
+      "section_or_topic": "Liver → reticuloendothelial (Kupffer) cells",
+      "pages_approx": "pp. 470–472"
+    },
+    "notes": "Kupffer cells are hepatic macrophages filtering portal blood.",
+    "explanation": "Kupffer cells are hepatic macrophages filtering portal blood. Liver → reticuloendothelial (Kupffer)\ncells. Mechanism: identify the sensors/effectors (if applicable), the transporters/enzymes involved,\nand the homeostatic variable being controlled. Clinically, recognize what happens when the mechanism\nfails (e.g., loss of regulation, abnormal lab values, or compensatory responses).",
+    "key_points": [
+      "Hepatic macrophages in sinusoids",
+      "Filter portal blood",
+      "Phagocytosis + cytokine signaling"
+    ],
+    "common_pitfalls": [
+      "Confusing Kupffer with Kuffler or Kupffer ‘cells’ location outside liver"
+    ],
+    "cross_links": [
+      "Ch. 14 Liver functions",
+      "Ch. 12 Innate immunity"
+    ]
+  },
+  {
+    "qnum": 12,
+    "prompt": "In which part of the nephron is most water reabsorbed?",
+    "correct_answer": "C",
+    "theory": {
+      "chapter": "Ch. 15 — The Urinary System",
+      "section_or_topic": "Tubular reabsorption → Proximal convoluted tubule (PCT)",
+      "pages_approx": "pp. 517–519"
+    },
+    "notes": "Bulk obligatory water reabsorption occurs in the PCT.",
+    "explanation": "Bulk obligatory water reabsorption occurs in the PCT. Tubular reabsorption → Proximal convoluted\ntubule (PCT). Mechanism: identify the sensors/effectors (if applicable), the transporters/enzymes\ninvolved, and the homeostatic variable being controlled. Clinically, recognize what happens when the\nmechanism fails (e.g., loss of regulation, abnormal lab values, or compensatory responses).",
+    "key_points": [
+      "Define concept",
+      "Explain mechanism",
+      "Link to clinical relevance"
+    ],
+    "common_pitfalls": [
+      "Memorizing facts without mechanism"
+    ],
+    "cross_links": [
+      "Ch. 15 — The Urinary System",
+      "Tubular reabsorption → Proximal convoluted tubule (PCT)"
+    ]
+  },
+  {
+    "qnum": 13,
+    "prompt": "Mister Smith has O+ blood. Which of the following blood transfusion can be safely done with no risks for the people involved?",
+    "correct_answer": "C",
+    "theory": {
+      "chapter": "Ch. 10 — Blood",
+      "section_or_topic": "ABO/Rh blood groups → compatibility",
+      "pages_approx": "pp. 352–355"
+    },
+    "notes": "O+ can donate to any Rh+ type; cannot receive from A+ safely (anti‑A).",
+    "explanation": "O+ can donate to any Rh+ type; cannot receive from A+ safely (anti‑A). ABO/Rh blood groups →\ncompatibility. Mechanism: identify the sensors/effectors (if applicable), the transporters/enzymes\ninvolved, and the homeostatic variable being controlled. Clinically, recognize what happens when the\nmechanism fails (e.g., loss of regulation, abnormal lab values, or compensatory responses).",
+    "key_points": [
+      "Define concept",
+      "Explain mechanism",
+      "Link to clinical relevance"
+    ],
+    "common_pitfalls": [
+      "Memorizing facts without mechanism"
+    ],
+    "cross_links": [
+      "Ch. 10 — Blood",
+      "ABO/Rh blood groups → compatibility"
+    ]
+  },
+  {
+    "qnum": 14,
+    "prompt": "Which of the following sentences about the plasma membrane is NOT true?",
+    "correct_answer": "C",
+    "theory": {
+      "chapter": "Ch. 3 — Cells and Tissues",
+      "section_or_topic": "Plasma membrane structure and function",
+      "pages_approx": "pp. 64–67, 76–78"
+    },
+    "notes": "All cells have a plasma membrane; options denying that are false.",
+    "explanation": "All cells have a plasma membrane; options denying that are false. Plasma membrane structure and\nfunction. Mechanism: identify the sensors/effectors (if applicable), the transporters/enzymes\ninvolved, and the homeostatic variable being controlled. Clinically, recognize what happens when the\nmechanism fails (e.g., loss of regulation, abnormal lab values, or compensatory responses).",
+    "key_points": [
+      "Define concept",
+      "Explain mechanism",
+      "Link to clinical relevance"
+    ],
+    "common_pitfalls": [
+      "Memorizing facts without mechanism"
+    ],
+    "cross_links": [
+      "Ch. 3 — Cells and Tissues",
+      "Plasma membrane structure and function"
+    ]
+  },
+  {
+    "qnum": 15,
+    "prompt": "Which of these physiological functions in NOT associated with the urinary system?",
+    "correct_answer": "D",
+    "theory": {
+      "chapter": "Ch. 15 — The Urinary System",
+      "section_or_topic": "Overview of renal functions vs hepatic ethanol metabolism",
+      "pages_approx": "pp. 511–513; Ch.14 pp. 470–472"
+    },
+    "notes": "Kidneys excrete nitrogenous wastes and regulate BP; ethanol metabolism is hepatic.",
+    "explanation": "Kidneys excrete nitrogenous wastes and regulate BP; ethanol metabolism is hepatic. Overview of renal\nfunctions vs hepatic ethanol metabolism. Mechanism: identify the sensors/effectors (if applicable),\nthe transporters/enzymes involved, and the homeostatic variable being controlled. Clinically,\nrecognize what happens when the mechanism fails (e.g., loss of regulation, abnormal lab values, or\ncompensatory responses).",
+    "key_points": [
+      "Define concept",
+      "Explain mechanism",
+      "Link to clinical relevance"
+    ],
+    "common_pitfalls": [
+      "Memorizing facts without mechanism"
+    ],
+    "cross_links": [
+      "Ch. 15 — The Urinary System",
+      "Overview of renal functions vs hepatic ethanol metabolism"
+    ]
+  },
+  {
+    "qnum": 16,
+    "prompt": "The Dutch cycling team went to train in the Alps before the start of the Olympic games. Which of the following changes would you expect to see in those athletes?",
+    "correct_answer": "D",
+    "theory": {
+      "chapter": "Ch. 10 — Blood / Ch. 13 — Respiratory System",
+      "section_or_topic": "Acclimatization to altitude → ↑EPO, ↑RBC/Hb",
+      "pages_approx": "Ch.10 pp. 345–347; Ch.13 pp. 450–452"
+    },
+    "notes": "Hypoxia stimulates EPO → ↑RBC mass and Hb concentration.",
+    "explanation": "Hypoxia stimulates EPO → ↑RBC mass and Hb concentration. Acclimatization to altitude → ↑EPO,\n↑RBC/Hb. Mechanism: identify the sensors/effectors (if applicable), the transporters/enzymes\ninvolved, and the homeostatic variable being controlled. Clinically, recognize what happens when the\nmechanism fails (e.g., loss of regulation, abnormal lab values, or compensatory responses).",
+    "key_points": [
+      "Diaphragm as primary inspiratory muscle",
+      "Gas exchange across thin membrane",
+      "CO2 regulates pH via H2CO3/HCO3−"
+    ],
+    "common_pitfalls": [
+      "Assuming expiration is active at rest"
+    ],
+    "cross_links": [
+      "Ch. 13 Mechanics of breathing",
+      "Ch. 10/15 Acid–base control"
+    ]
+  },
+  {
+    "qnum": 17,
+    "prompt": "Look at the picture below showing the internal structure of a kidney. Which structures do numbers 1, 2, 3 and 4 correspond to?",
+    "correct_answer": "C",
+    "theory": {
+      "chapter": "Ch. 15 — The Urinary System",
+      "section_or_topic": "Gross anatomy (cortex, medulla, pyramids, pelvis, capsule)",
+      "pages_approx": "pp. 512–514"
+    },
+    "notes": "Know cortex (outer), medulla/pyramids (inner), pelvis (collecting).",
+    "explanation": "Know cortex (outer), medulla/pyramids (inner), pelvis (collecting). Gross anatomy (cortex, medulla,\npyramids, pelvis, capsule). Mechanism: identify the sensors/effectors (if applicable), the\ntransporters/enzymes involved, and the homeostatic variable being controlled. Clinically, recognize\nwhat happens when the mechanism fails (e.g., loss of regulation, abnormal lab values, or\ncompensatory responses).",
+    "key_points": [
+      "Define concept",
+      "Explain mechanism",
+      "Link to clinical relevance"
+    ],
+    "common_pitfalls": [
+      "Memorizing facts without mechanism"
+    ],
+    "cross_links": [
+      "Ch. 15 — The Urinary System",
+      "Gross anatomy (cortex, medulla, pyramids, pelvis, capsule)"
+    ]
+  },
+  {
+    "qnum": 18,
+    "prompt": "What would happen to the process of urine formation if the renal medulla became hyposmolar (low salt concentration)?",
+    "correct_answer": "B",
+    "theory": {
+      "chapter": "Ch. 15 — The Urinary System",
+      "section_or_topic": "Countercurrent multiplier/gradient; urine concentration",
+      "pages_approx": "pp. 525–529"
+    },
+    "notes": "Low medullary osmolarity impairs water reabsorption → polyuria, dilute urine.",
+    "explanation": "Low medullary osmolarity impairs water reabsorption → polyuria, dilute urine. Countercurrent\nmultiplier/gradient; urine concentration. Mechanism: identify the sensors/effectors (if applicable),\nthe transporters/enzymes involved, and the homeostatic variable being controlled. Clinically,\nrecognize what happens when the mechanism fails (e.g., loss of regulation, abnormal lab values, or\ncompensatory responses).",
+    "key_points": [
+      "Define concept",
+      "Explain mechanism",
+      "Link to clinical relevance"
+    ],
+    "common_pitfalls": [
+      "Memorizing facts without mechanism"
+    ],
+    "cross_links": [
+      "Ch. 15 — The Urinary System",
+      "Countercurrent multiplier/gradient; urine concentration"
+    ]
+  },
+  {
+    "qnum": 19,
+    "prompt": "What is the cytosol?",
+    "correct_answer": "A",
+    "theory": {
+      "chapter": "Ch. 3 — Cells and Tissues",
+      "section_or_topic": "Cytoplasm → cytosol definition",
+      "pages_approx": "pp. 67–68"
+    },
+    "notes": "Cytosol is intracellular fluid; cytoplasm includes organelles.",
+    "explanation": "Cytosol is intracellular fluid; cytoplasm includes organelles. Cytoplasm → cytosol definition.\nMechanism: identify the sensors/effectors (if applicable), the transporters/enzymes involved, and\nthe homeostatic variable being controlled. Clinically, recognize what happens when the mechanism\nfails (e.g., loss of regulation, abnormal lab values, or compensatory responses).",
+    "key_points": [
+      "Define concept",
+      "Explain mechanism",
+      "Link to clinical relevance"
+    ],
+    "common_pitfalls": [
+      "Memorizing facts without mechanism"
+    ],
+    "cross_links": [
+      "Ch. 3 — Cells and Tissues",
+      "Cytoplasm → cytosol definition"
+    ]
+  },
+  {
+    "qnum": 20,
+    "prompt": "Which of the following substances in NOT commonly found in blood plasma?",
+    "correct_answer": "A",
+    "theory": {
+      "chapter": "Ch. 10 — Blood",
+      "section_or_topic": "Plasma composition",
+      "pages_approx": "pp. 338–340"
+    },
+    "notes": "Plasma contains water, ions, nutrients, gases, proteins; collagen is not dissolved.",
+    "explanation": "Plasma contains water, ions, nutrients, gases, proteins; collagen is not dissolved. Plasma\ncomposition. Mechanism: identify the sensors/effectors (if applicable), the transporters/enzymes\ninvolved, and the homeostatic variable being controlled. Clinically, recognize what happens when the\nmechanism fails (e.g., loss of regulation, abnormal lab values, or compensatory responses).",
+    "key_points": [
+      "Define concept",
+      "Explain mechanism",
+      "Link to clinical relevance"
+    ],
+    "common_pitfalls": [
+      "Memorizing facts without mechanism"
+    ],
+    "cross_links": [
+      "Ch. 10 — Blood",
+      "Plasma composition"
+    ]
+  },
+  {
+    "qnum": 21,
+    "prompt": "Which two endocrine organs are involved in regulating calcium metabolism?",
+    "correct_answer": "C",
+    "theory": {
+      "chapter": "Ch. 9 — Endocrine System",
+      "section_or_topic": "Thyroid (calcitonin) & Parathyroid (PTH)",
+      "pages_approx": "pp. 320–323"
+    },
+    "notes": "PTH raises Ca2+; calcitonin lowers Ca2+.",
+    "explanation": "PTH raises Ca2+; calcitonin lowers Ca2+. Thyroid (calcitonin) & Parathyroid (PTH). Mechanism:\nidentify the sensors/effectors (if applicable), the transporters/enzymes involved, and the\nhomeostatic variable being controlled. Clinically, recognize what happens when the mechanism fails\n(e.g., loss of regulation, abnormal lab values, or compensatory responses).",
+    "key_points": [
+      "Define concept",
+      "Explain mechanism",
+      "Link to clinical relevance"
+    ],
+    "common_pitfalls": [
+      "Memorizing facts without mechanism"
+    ],
+    "cross_links": [
+      "Ch. 9 — Endocrine System",
+      "Thyroid (calcitonin) & Parathyroid (PTH)"
+    ]
+  },
+  {
+    "qnum": 22,
+    "prompt": "Which of these symptoms is common in patients suffering from Diabetes Mellitus?",
+    "correct_answer": "B",
+    "theory": {
+      "chapter": "Ch. 9 — Endocrine System / Ch. 15 — Urinary System",
+      "section_or_topic": "Insulin deficiency effects; osmotic diuresis (polyuria)",
+      "pages_approx": "Ch.9 pp. 323–326; Ch.15 pp. 520–523"
+    },
+    "notes": "Glucosuria → osmotic diuresis → polyuria.",
+    "explanation": "Glucosuria → osmotic diuresis → polyuria. Insulin deficiency effects; osmotic diuresis (polyuria).\nMechanism: identify the sensors/effectors (if applicable), the transporters/enzymes involved, and\nthe homeostatic variable being controlled. Clinically, recognize what happens when the mechanism\nfails (e.g., loss of regulation, abnormal lab values, or compensatory responses).",
+    "key_points": [
+      "Define concept",
+      "Explain mechanism",
+      "Link to clinical relevance"
+    ],
+    "common_pitfalls": [
+      "Memorizing facts without mechanism"
+    ],
+    "cross_links": [
+      "Ch. 9 — Endocrine System / Ch. 15 — Urinary System",
+      "Insulin deficiency effects; osmotic diuresis (polyuria)"
+    ]
+  },
+  {
+    "qnum": 23,
+    "prompt": "The figure below shows the results of an experiment where human red blood cells were exposed to three saline solutions with different concentrations. Given the behavior of the cells (upper panel) and the movement of water across their membranes (lower panel), which of these statements is TRUE?",
+    "correct_answer": "D",
+    "theory": {
+      "chapter": "Ch. 3 — Cells and Tissues",
+      "section_or_topic": "Osmosis/tonicity interpretation",
+      "pages_approx": "pp. 76–81"
+    },
+    "notes": "Hypertonic → cells shrink; hypotonic → swell/lyse.",
+    "explanation": "Hypertonic → cells shrink; hypotonic → swell/lyse. Osmosis/tonicity interpretation. Mechanism:\nidentify the sensors/effectors (if applicable), the transporters/enzymes involved, and the\nhomeostatic variable being controlled. Clinically, recognize what happens when the mechanism fails\n(e.g., loss of regulation, abnormal lab values, or compensatory responses).",
+    "key_points": [
+      "Define concept",
+      "Explain mechanism",
+      "Link to clinical relevance"
+    ],
+    "common_pitfalls": [
+      "Memorizing facts without mechanism"
+    ],
+    "cross_links": [
+      "Ch. 3 — Cells and Tissues",
+      "Osmosis/tonicity interpretation"
+    ]
+  },
+  {
+    "qnum": 24,
+    "prompt": "Which of the following processes causes a DECREASE in blood pressure?",
+    "correct_answer": "A",
+    "theory": {
+      "chapter": "Ch. 15 — The Urinary System",
+      "section_or_topic": "Water reabsorption vs RAAS vs vasoconstriction",
+      "pages_approx": "pp. 524–531"
+    },
+    "notes": "Reduced water reabsorption lowers volume/pressure.",
+    "explanation": "Reduced water reabsorption lowers volume/pressure. Water reabsorption vs RAAS vs vasoconstriction.\nMechanism: identify the sensors/effectors (if applicable), the transporters/enzymes involved, and\nthe homeostatic variable being controlled. Clinically, recognize what happens when the mechanism\nfails (e.g., loss of regulation, abnormal lab values, or compensatory responses).",
+    "key_points": [
+      "Define concept",
+      "Explain mechanism",
+      "Link to clinical relevance"
+    ],
+    "common_pitfalls": [
+      "Memorizing facts without mechanism"
+    ],
+    "cross_links": [
+      "Ch. 15 — The Urinary System",
+      "Water reabsorption vs RAAS vs vasoconstriction"
+    ]
+  },
+  {
+    "qnum": 25,
+    "prompt": "Willem was biking along is normal route to school when a speeding car came in his direction. He barely managed to avoid the collision and was still shaking from the scare when he entered the classroom. If you could test his blood before and after the incident, which of these hormones would have had a significant increase?",
+    "correct_answer": "C",
+    "theory": {
+      "chapter": "Ch. 9 — Endocrine System",
+      "section_or_topic": "Adrenal medulla → epinephrine (acute stress)",
+      "pages_approx": "pp. 320–322"
+    },
+    "notes": "Sympathetic activation triggers epinephrine release.",
+    "explanation": "Sympathetic activation triggers epinephrine release. Adrenal medulla → epinephrine (acute stress).\nMechanism: identify the sensors/effectors (if applicable), the transporters/enzymes involved, and\nthe homeostatic variable being controlled. Clinically, recognize what happens when the mechanism\nfails (e.g., loss of regulation, abnormal lab values, or compensatory responses).",
+    "key_points": [
+      "Define concept",
+      "Explain mechanism",
+      "Link to clinical relevance"
+    ],
+    "common_pitfalls": [
+      "Memorizing facts without mechanism"
+    ],
+    "cross_links": [
+      "Ch. 9 — Endocrine System",
+      "Adrenal medulla → epinephrine (acute stress)"
+    ]
+  },
+  {
+    "qnum": 26,
+    "prompt": "Which of the following sentences about steroid-based hormones is TRUE?",
+    "correct_answer": "C",
+    "theory": {
+      "chapter": "Ch. 9 — Endocrine System",
+      "section_or_topic": "Steroid hormones → lipid-soluble; intracellular receptors",
+      "pages_approx": "pp. 309–311"
+    },
+    "notes": "Steroids cross membranes; modulate gene transcription.",
+    "explanation": "Steroids cross membranes; modulate gene transcription. Steroid hormones → lipid-soluble;\nintracellular receptors. Mechanism: identify the sensors/effectors (if applicable), the\ntransporters/enzymes involved, and the homeostatic variable being controlled. Clinically, recognize\nwhat happens when the mechanism fails (e.g., loss of regulation, abnormal lab values, or\ncompensatory responses).",
+    "key_points": [
+      "Define concept",
+      "Explain mechanism",
+      "Link to clinical relevance"
+    ],
+    "common_pitfalls": [
+      "Memorizing facts without mechanism"
+    ],
+    "cross_links": [
+      "Ch. 9 — Endocrine System",
+      "Steroid hormones → lipid-soluble; intracellular receptors"
+    ]
+  },
+  {
+    "qnum": 27,
+    "prompt": "They are only found in the hypothalamus.",
+    "correct_answer": "C",
+    "theory": {
+      "chapter": "Ch. 1 — The Human Body: An Orientation",
+      "section_or_topic": "General principles",
+      "pages_approx": "pp. 1–5"
+    },
+    "notes": "General concept; see chapter overview sections.",
+    "explanation": "General concept; see chapter overview sections. General principles. Mechanism: identify the\nsensors/effectors (if applicable), the transporters/enzymes involved, and the homeostatic variable\nbeing controlled. Clinically, recognize what happens when the mechanism fails (e.g., loss of\nregulation, abnormal lab values, or compensatory responses).",
+    "key_points": [
+      "Define concept",
+      "Explain mechanism",
+      "Link to clinical relevance"
+    ],
+    "common_pitfalls": [
+      "Memorizing facts without mechanism"
+    ],
+    "cross_links": [
+      "Ch. 1 — The Human Body: An Orientation",
+      "General principles"
+    ]
+  },
+  {
+    "qnum": 28,
+    "prompt": "They are resistant to very low pH levels.",
+    "correct_answer": "D",
+    "theory": {
+      "chapter": "Ch. 1 — The Human Body: An Orientation",
+      "section_or_topic": "General principles",
+      "pages_approx": "pp. 1–5"
+    },
+    "notes": "General concept; see chapter overview sections.",
+    "explanation": "General concept; see chapter overview sections. General principles. Mechanism: identify the\nsensors/effectors (if applicable), the transporters/enzymes involved, and the homeostatic variable\nbeing controlled. Clinically, recognize what happens when the mechanism fails (e.g., loss of\nregulation, abnormal lab values, or compensatory responses).",
+    "key_points": [
+      "Define concept",
+      "Explain mechanism",
+      "Link to clinical relevance"
+    ],
+    "common_pitfalls": [
+      "Memorizing facts without mechanism"
+    ],
+    "cross_links": [
+      "Ch. 1 — The Human Body: An Orientation",
+      "General principles"
+    ]
+  },
+  {
+    "qnum": 29,
+    "prompt": "They can to cross cell membranes.",
+    "correct_answer": "A",
+    "theory": {
+      "chapter": "Ch. 1 — The Human Body: An Orientation",
+      "section_or_topic": "General principles",
+      "pages_approx": "pp. 1–5"
+    },
+    "notes": "General concept; see chapter overview sections.",
+    "explanation": "General concept; see chapter overview sections. General principles. Mechanism: identify the\nsensors/effectors (if applicable), the transporters/enzymes involved, and the homeostatic variable\nbeing controlled. Clinically, recognize what happens when the mechanism fails (e.g., loss of\nregulation, abnormal lab values, or compensatory responses).",
+    "key_points": [
+      "Define concept",
+      "Explain mechanism",
+      "Link to clinical relevance"
+    ],
+    "common_pitfalls": [
+      "Memorizing facts without mechanism"
+    ],
+    "cross_links": [
+      "Ch. 1 — The Human Body: An Orientation",
+      "General principles"
+    ]
+  },
+  {
+    "qnum": 30,
+    "prompt": "They regulate glucose levels in the blood.",
+    "correct_answer": "A",
+    "theory": {
+      "chapter": "Ch. 1 — The Human Body: An Orientation",
+      "section_or_topic": "General principles",
+      "pages_approx": "pp. 1–5"
+    },
+    "notes": "General concept; see chapter overview sections.",
+    "explanation": "General concept; see chapter overview sections. General principles. Mechanism: identify the\nsensors/effectors (if applicable), the transporters/enzymes involved, and the homeostatic variable\nbeing controlled. Clinically, recognize what happens when the mechanism fails (e.g., loss of\nregulation, abnormal lab values, or compensatory responses).",
+    "key_points": [
+      "Define concept",
+      "Explain mechanism",
+      "Link to clinical relevance"
+    ],
+    "common_pitfalls": [
+      "Memorizing facts without mechanism"
+    ],
+    "cross_links": [
+      "Ch. 1 — The Human Body: An Orientation",
+      "General principles"
+    ]
+  },
+  {
+    "qnum": 31,
+    "prompt": "Which of these blood components carries cholesterol to the liver?",
+    "correct_answer": "D",
+    "theory": {
+      "chapter": "Ch. 14 — Metabolism & Ch. 10 — Blood",
+      "section_or_topic": "Lipoproteins → HDL reverse cholesterol transport",
+      "pages_approx": "Ch.14 p. 490; Ch.10 p. 338"
+    },
+    "notes": "HDL returns cholesterol to liver.",
+    "explanation": "HDL returns cholesterol to liver. Lipoproteins → HDL reverse cholesterol transport. Mechanism:\nidentify the sensors/effectors (if applicable), the transporters/enzymes involved, and the\nhomeostatic variable being controlled. Clinically, recognize what happens when the mechanism fails\n(e.g., loss of regulation, abnormal lab values, or compensatory responses).",
+    "key_points": [
+      "Define concept",
+      "Explain mechanism",
+      "Link to clinical relevance"
+    ],
+    "common_pitfalls": [
+      "Memorizing facts without mechanism"
+    ],
+    "cross_links": [
+      "Ch. 14 — Metabolism & Ch. 10 — Blood",
+      "Lipoproteins → HDL reverse cholesterol transport"
+    ]
+  },
+  {
+    "qnum": 32,
+    "prompt": "The glomerular filtrate is the result of blood filtration in the kidneys, but not yet urine. Which of the following differences between glomerular filtrate and urine is FALSE?",
+    "correct_answer": "D",
+    "theory": {
+      "chapter": "Ch. 15 — The Urinary System",
+      "section_or_topic": "Filtrate vs urine composition",
+      "pages_approx": "pp. 516–520"
+    },
+    "notes": "Filtrate is dilute and glucose-containing (normally reabsorbed).",
+    "explanation": "Filtrate is dilute and glucose-containing (normally reabsorbed). Glomerular filtrate forms by\npressure‑driven filtration at the renal corpuscle and initially resembles plasma minus proteins.\nAlong the tubule, nearly all glucose and much water/salt are reabsorbed. Urine, in contrast, is the\nconcentrated, compositionally altered fluid after tubular processing. Thus, statements implying\nequal osmolarity or pH, or persistent glucose in urine of healthy individuals, are false.",
+    "key_points": [
+      "Define concept",
+      "Explain mechanism",
+      "Link to clinical relevance"
+    ],
+    "common_pitfalls": [
+      "Memorizing facts without mechanism"
+    ],
+    "cross_links": [
+      "Ch. 15 — The Urinary System",
+      "Filtrate vs urine composition"
+    ]
+  },
+  {
+    "qnum": 33,
+    "prompt": "One of the items of safety equipment of a spacecraft removes carbon dioxide from the inside to keep the environment healthy for the astronauts. After an accident happened, the equipment stopped working, what do you expect would happen to the pH level of the astronaut’s blood?",
+    "correct_answer": "B",
+    "theory": {
+      "chapter": "Ch. 1 — The Human Body: An Orientation",
+      "section_or_topic": "General principles",
+      "pages_approx": "pp. 1–5"
+    },
+    "notes": "General concept; see chapter overview sections.",
+    "explanation": "General concept; see chapter overview sections. General principles. Mechanism: identify the\nsensors/effectors (if applicable), the transporters/enzymes involved, and the homeostatic variable\nbeing controlled. Clinically, recognize what happens when the mechanism fails (e.g., loss of\nregulation, abnormal lab values, or compensatory responses).",
+    "key_points": [
+      "Define concept",
+      "Explain mechanism",
+      "Link to clinical relevance"
+    ],
+    "common_pitfalls": [
+      "Memorizing facts without mechanism"
+    ],
+    "cross_links": [
+      "Ch. 1 — The Human Body: An Orientation",
+      "General principles"
+    ]
+  },
+  {
+    "qnum": 34,
+    "prompt": "Which of this conditions are characterized by the production of abnormal white blood cells?",
+    "correct_answer": "A",
+    "theory": {
+      "chapter": "Ch. 10 — Blood",
+      "section_or_topic": "Leukocyte disorders → leukemia",
+      "pages_approx": "pp. 348–350"
+    },
+    "notes": "Malignant leukocytes; affects immunity and blood function.",
+    "explanation": "Malignant leukocytes; affects immunity and blood function. Leukocyte disorders → leukemia.\nMechanism: identify the sensors/effectors (if applicable), the transporters/enzymes involved, and\nthe homeostatic variable being controlled. Clinically, recognize what happens when the mechanism\nfails (e.g., loss of regulation, abnormal lab values, or compensatory responses).",
+    "key_points": [
+      "Define concept",
+      "Explain mechanism",
+      "Link to clinical relevance"
+    ],
+    "common_pitfalls": [
+      "Memorizing facts without mechanism"
+    ],
+    "cross_links": [
+      "Ch. 10 — Blood",
+      "Leukocyte disorders → leukemia"
+    ]
+  },
+  {
+    "qnum": 35,
+    "prompt": "What is the ureter?",
+    "correct_answer": "C",
+    "theory": {
+      "chapter": "Ch. 15 — The Urinary System",
+      "section_or_topic": "Ureters: structure and function",
+      "pages_approx": "pp. 520–522"
+    },
+    "notes": "Ureter carries urine from kidney to bladder.",
+    "explanation": "Ureter carries urine from kidney to bladder. Ureters: structure and function. Mechanism: identify\nthe sensors/effectors (if applicable), the transporters/enzymes involved, and the homeostatic\nvariable being controlled. Clinically, recognize what happens when the mechanism fails (e.g., loss\nof regulation, abnormal lab values, or compensatory responses).",
+    "key_points": [
+      "Define concept",
+      "Explain mechanism",
+      "Link to clinical relevance"
+    ],
+    "common_pitfalls": [
+      "Memorizing facts without mechanism"
+    ],
+    "cross_links": [
+      "Ch. 15 — The Urinary System",
+      "Ureters: structure and function"
+    ]
+  },
+  {
+    "qnum": 36,
+    "prompt": "What is gluconeogenesis?",
+    "correct_answer": "A",
+    "theory": {
+      "chapter": "Ch. 14 — Digestive System & Metabolism",
+      "section_or_topic": "Gluconeogenesis from fats/amino acids",
+      "pages_approx": "pp. 480–483"
+    },
+    "notes": "Hepatic glucose production from non-carbohydrates.",
+    "explanation": "Hepatic glucose production from non-carbohydrates. Gluconeogenesis is hepatic and (to a lesser\nextent) renal synthesis of glucose from non‑carbohydrate precursors such as lactate, glycerol, and\nglucogenic amino acids. It is essential during fasting to maintain plasma glucose for obligate\nglucose users (e.g., CNS, RBCs). Glucagon and cortisol promote it; insulin inhibits it.",
+    "key_points": [
+      "Produces glucose from non‑carbs",
+      "Stimulated by glucagon/cortisol",
+      "Occurs in liver (± kidney)"
+    ],
+    "common_pitfalls": [
+      "Confusing with glycogenolysis or glycolysis"
+    ],
+    "cross_links": [
+      "Ch. 14 Metabolism overview",
+      "Ch. 9 Pancreatic hormones"
+    ]
+  },
+  {
+    "qnum": 37,
+    "prompt": "Our body can only synthesize 11 of the 20 standard aminoacids. If the diet is lacking some of the other nine aminoacids this means we might be unable to synthesize which of these organic compounds?",
+    "correct_answer": "D",
+    "theory": {
+      "chapter": "Ch. 2 — Basic Chemistry / Ch. 14 — Metabolism",
+      "section_or_topic": "Protein synthesis requires essential amino acids",
+      "pages_approx": "Ch.2 pp. 46–51; Ch.14 pp. 486–488"
+    },
+    "notes": "Missing essential AAs limit protein synthesis.",
+    "explanation": "Missing essential AAs limit protein synthesis. Protein synthesis requires essential amino acids.\nMechanism: identify the sensors/effectors (if applicable), the transporters/enzymes involved, and\nthe homeostatic variable being controlled. Clinically, recognize what happens when the mechanism\nfails (e.g., loss of regulation, abnormal lab values, or compensatory responses).",
+    "key_points": [
+      "Define concept",
+      "Explain mechanism",
+      "Link to clinical relevance"
+    ],
+    "common_pitfalls": [
+      "Memorizing facts without mechanism"
+    ],
+    "cross_links": [
+      "Ch. 2 — Basic Chemistry / Ch. 14 — Metabolism",
+      "Protein synthesis requires essential amino acids"
+    ]
+  },
+  {
+    "qnum": 38,
+    "prompt": "The figure below shows the results of a test to determine the blood type of a patient. Given the pattern of coagulation of the blood, what is the blood type of this patient?",
+    "correct_answer": "C",
+    "theory": {
+      "chapter": "Ch. 10 — Blood",
+      "section_or_topic": "ABO/Rh typing and agglutination logic",
+      "pages_approx": "pp. 352–355"
+    },
+    "notes": "Agglutination where antibody meets antigen implies presence of that antigen.",
+    "explanation": "Agglutination where antibody meets antigen implies presence of that antigen. ABO/Rh typing and\nagglutination logic. Mechanism: identify the sensors/effectors (if applicable), the\ntransporters/enzymes involved, and the homeostatic variable being controlled. Clinically, recognize\nwhat happens when the mechanism fails (e.g., loss of regulation, abnormal lab values, or\ncompensatory responses).",
+    "key_points": [
+      "Define concept",
+      "Explain mechanism",
+      "Link to clinical relevance"
+    ],
+    "common_pitfalls": [
+      "Memorizing facts without mechanism"
+    ],
+    "cross_links": [
+      "Ch. 10 — Blood",
+      "ABO/Rh typing and agglutination logic"
+    ]
+  },
+  {
+    "qnum": 39,
+    "prompt": "Which of these is an example of an hormonal stimuli regulating hormone release?",
+    "correct_answer": "B",
+    "theory": {
+      "chapter": "Ch. 9 — Endocrine System",
+      "section_or_topic": "Control of hormone release → hormonal stimuli",
+      "pages_approx": "p. 311"
+    },
+    "notes": "Hormone causing release of another hormone (e.g., TSH→T3/T4).",
+    "explanation": "Hormone causing release of another hormone (e.g., TSH→T3/T4). Control of hormone release → hormonal\nstimuli. Mechanism: identify the sensors/effectors (if applicable), the transporters/enzymes\ninvolved, and the homeostatic variable being controlled. Clinically, recognize what happens when the\nmechanism fails (e.g., loss of regulation, abnormal lab values, or compensatory responses).",
+    "key_points": [
+      "Define concept",
+      "Explain mechanism",
+      "Link to clinical relevance"
+    ],
+    "common_pitfalls": [
+      "Memorizing facts without mechanism"
+    ],
+    "cross_links": [
+      "Ch. 9 — Endocrine System",
+      "Control of hormone release → hormonal stimuli"
+    ]
+  },
+  {
+    "qnum": 40,
+    "prompt": "Why is it impossible for humans to survive at very high altitudes?",
+    "correct_answer": "A",
+    "theory": {
+      "chapter": "Ch. 13 — The Respiratory System",
+      "section_or_topic": "Partial pressure of oxygen and hypoxia limits",
+      "pages_approx": "pp. 446–452"
+    },
+    "notes": "Low PO2 limits O2 loading; acclimatization has limits.",
+    "explanation": "Low PO2 limits O2 loading; acclimatization has limits. Partial pressure of oxygen and hypoxia\nlimits. Mechanism: identify the sensors/effectors (if applicable), the transporters/enzymes\ninvolved, and the homeostatic variable being controlled. Clinically, recognize what happens when the\nmechanism fails (e.g., loss of regulation, abnormal lab values, or compensatory responses).",
+    "key_points": [
+      "Diaphragm as primary inspiratory muscle",
+      "Gas exchange across thin membrane",
+      "CO2 regulates pH via H2CO3/HCO3−"
+    ],
+    "common_pitfalls": [
+      "Assuming expiration is active at rest"
+    ],
+    "cross_links": [
+      "Ch. 13 Mechanics of breathing",
+      "Ch. 10/15 Acid–base control"
+    ]
+  },
+  {
+    "qnum": 41,
+    "prompt": "The thyroid gland produces two hormones Triiodothyronine (T3) and Thyroxine (T4) together know as thyroid hormones. Which of the following is NOT a physiological response to the release of these hormones?",
+    "correct_answer": null,
+    "theory": {
+      "chapter": "Ch. 9 — Endocrine System",
+      "section_or_topic": "Thyroid hormone actions and HPT axis (TSH feedback)",
+      "pages_approx": "pp. 317–319"
+    },
+    "notes": "T3/T4 increase metabolic rate; high T3/T4 suppress TSH (negative feedback).",
+    "explanation": "T3/T4 increase metabolic rate; high T3/T4 suppress TSH (negative feedback). Thyroid hormone actions\nand HPT axis (TSH feedback). Mechanism: identify the sensors/effectors (if applicable), the\ntransporters/enzymes involved, and the homeostatic variable being controlled. Clinically, recognize\nwhat happens when the mechanism fails (e.g., loss of regulation, abnormal lab values, or\ncompensatory responses).",
+    "key_points": [
+      "Homeostatic variable + set point",
+      "Sensor → Integrator → Effector",
+      "Negative vs positive feedback outcomes"
+    ],
+    "common_pitfalls": [
+      "Confusing feedback type with desirability"
+    ],
+    "cross_links": [
+      "Ch. 1 Homeostasis",
+      "Ch. 9 Hormonal feedback loops"
+    ]
+  },
+  {
+    "qnum": 42,
+    "prompt": "Which of these is the LOWEST level of organization in our body?",
+    "correct_answer": null,
+    "theory": {
+      "chapter": "Ch. 1 — The Human Body: An Orientation",
+      "section_or_topic": "Levels of organization",
+      "pages_approx": "pp. 2–3"
+    },
+    "notes": "Atoms → molecules → organelles → cells → tissues → organs → systems → organism.",
+    "explanation": "Atoms → molecules → organelles → cells → tissues → organs → systems → organism. Levels of\norganization. Mechanism: identify the sensors/effectors (if applicable), the transporters/enzymes\ninvolved, and the homeostatic variable being controlled. Clinically, recognize what happens when the\nmechanism fails (e.g., loss of regulation, abnormal lab values, or compensatory responses).",
+    "key_points": [
+      "Define concept",
+      "Explain mechanism",
+      "Link to clinical relevance"
+    ],
+    "common_pitfalls": [
+      "Memorizing facts without mechanism"
+    ],
+    "cross_links": [
+      "Ch. 1 — The Human Body: An Orientation",
+      "Levels of organization"
+    ]
+  },
+  {
+    "qnum": 43,
+    "prompt": "The hormone hCG (human chorionic gonadotropin) is very important in the initial stages of pregnancy has it avoids menstruations, thus allowing the embryo to safely attach to the uterine wall. Where is it produced?",
+    "correct_answer": null,
+    "theory": {
+      "chapter": "Ch. 16 — The Reproductive System",
+      "section_or_topic": "Placenta (embryonic tissues) → hCG",
+      "pages_approx": "pp. 548–552"
+    },
+    "notes": "hCG from trophoblast/placenta maintains corpus luteum early in pregnancy.",
+    "explanation": "hCG from trophoblast/placenta maintains corpus luteum early in pregnancy. Placenta (embryonic\ntissues) → hCG. Mechanism: identify the sensors/effectors (if applicable), the transporters/enzymes\ninvolved, and the homeostatic variable being controlled. Clinically, recognize what happens when the\nmechanism fails (e.g., loss of regulation, abnormal lab values, or compensatory responses).",
+    "key_points": [
+      "Define concept",
+      "Explain mechanism",
+      "Link to clinical relevance"
+    ],
+    "common_pitfalls": [
+      "Memorizing facts without mechanism"
+    ],
+    "cross_links": [
+      "Ch. 16 — The Reproductive System",
+      "Placenta (embryonic tissues) → hCG"
+    ]
+  },
+  {
+    "qnum": 44,
+    "prompt": "How do you call the process of filtrating the blood outside the body in patients suffering from renal failure?",
+    "correct_answer": null,
+    "theory": {
+      "chapter": "Ch. 15 — The Urinary System",
+      "section_or_topic": "Renal failure management → hemodialysis",
+      "pages_approx": "pp. 531–533"
+    },
+    "notes": "Dialyzer filters blood across semi-permeable membrane.",
+    "explanation": "Dialyzer filters blood across semi-permeable membrane. Renal failure management → hemodialysis.\nMechanism: identify the sensors/effectors (if applicable), the transporters/enzymes involved, and\nthe homeostatic variable being controlled. Clinically, recognize what happens when the mechanism\nfails (e.g., loss of regulation, abnormal lab values, or compensatory responses).",
+    "key_points": [
+      "Define concept",
+      "Explain mechanism",
+      "Link to clinical relevance"
+    ],
+    "common_pitfalls": [
+      "Memorizing facts without mechanism"
+    ],
+    "cross_links": [
+      "Ch. 15 — The Urinary System",
+      "Renal failure management → hemodialysis"
+    ]
+  },
+  {
+    "qnum": 45,
+    "prompt": "Which of the following sentences regarding kidney vascularization is CORRECT?",
+    "correct_answer": null,
+    "theory": {
+      "chapter": "Ch. 15 — The Urinary System",
+      "section_or_topic": "Renal vasculature (afferent/efferent/segmental/interlobar)",
+      "pages_approx": "pp. 512–514, 517"
+    },
+    "notes": "Afferent→glomerulus→efferent; segmental→interlobar→arcuate→cortical radiate.",
+    "explanation": "Afferent→glomerulus→efferent; segmental→interlobar→arcuate→cortical radiate. Renal vasculature\n(afferent/efferent/segmental/interlobar). Mechanism: identify the sensors/effectors (if applicable),\nthe transporters/enzymes involved, and the homeostatic variable being controlled. Clinically,\nrecognize what happens when the mechanism fails (e.g., loss of regulation, abnormal lab values, or\ncompensatory responses).",
+    "key_points": [
+      "Define concept",
+      "Explain mechanism",
+      "Link to clinical relevance"
+    ],
+    "common_pitfalls": [
+      "Memorizing facts without mechanism"
+    ],
+    "cross_links": [
+      "Ch. 15 — The Urinary System",
+      "Renal vasculature (afferent/efferent/segmental/interlobar)"
+    ]
+  },
+  {
+    "qnum": 46,
+    "prompt": "Which of following cases is an example of pinocytosis?",
+    "correct_answer": null,
+    "theory": {
+      "chapter": "Ch. 3 — Cells and Tissues",
+      "section_or_topic": "Endocytosis (fluid uptake)",
+      "pages_approx": "pp. 80–82"
+    },
+    "notes": "Intestinal cells take up extracellular fluid by pinocytosis.",
+    "explanation": "Intestinal cells take up extracellular fluid by pinocytosis. Endocytosis (fluid uptake). Mechanism:\nidentify the sensors/effectors (if applicable), the transporters/enzymes involved, and the\nhomeostatic variable being controlled. Clinically, recognize what happens when the mechanism fails\n(e.g., loss of regulation, abnormal lab values, or compensatory responses).",
+    "key_points": [
+      "Define concept",
+      "Explain mechanism",
+      "Link to clinical relevance"
+    ],
+    "common_pitfalls": [
+      "Memorizing facts without mechanism"
+    ],
+    "cross_links": [
+      "Ch. 3 — Cells and Tissues",
+      "Endocytosis (fluid uptake)"
+    ]
+  },
+  {
+    "qnum": 47,
+    "prompt": "Which of the following sentences regarding kidney anatomy is TRUE?",
+    "correct_answer": null,
+    "theory": {
+      "chapter": "Ch. 15 — The Urinary System",
+      "section_or_topic": "Gross anatomy; cortex outer; pelvis collects urine",
+      "pages_approx": "pp. 512–514"
+    },
+    "notes": "Pelvis collects urine; cortex is outer region.",
+    "explanation": "Pelvis collects urine; cortex is outer region. Gross anatomy; cortex outer; pelvis collects urine.\nMechanism: identify the sensors/effectors (if applicable), the transporters/enzymes involved, and\nthe homeostatic variable being controlled. Clinically, recognize what happens when the mechanism\nfails (e.g., loss of regulation, abnormal lab values, or compensatory responses).",
+    "key_points": [
+      "Define concept",
+      "Explain mechanism",
+      "Link to clinical relevance"
+    ],
+    "common_pitfalls": [
+      "Memorizing facts without mechanism"
+    ],
+    "cross_links": [
+      "Ch. 15 — The Urinary System",
+      "Gross anatomy; cortex outer; pelvis collects urine"
+    ]
+  },
+  {
+    "qnum": 48,
+    "prompt": "As part of the monitoring of impacts caused by gas-drilling induced earthquakes in the province of Groningen, you were asked to measure the effect of these earthquakes on the long-term stress response of people living in the affected areas. Which of these hormones would you measure in those people?",
+    "correct_answer": null,
+    "theory": {
+      "chapter": "Ch. 9 — Endocrine System",
+      "section_or_topic": "Cortisol/cortisone as chronic stress markers",
+      "pages_approx": "pp. 320–322"
+    },
+    "notes": "Measure cortisol/cortisone for long-term stress.",
+    "explanation": "Measure cortisol/cortisone for long-term stress. Cortisol/cortisone as chronic stress markers.\nMechanism: identify the sensors/effectors (if applicable), the transporters/enzymes involved, and\nthe homeostatic variable being controlled. Clinically, recognize what happens when the mechanism\nfails (e.g., loss of regulation, abnormal lab values, or compensatory responses).",
+    "key_points": [
+      "Define concept",
+      "Explain mechanism",
+      "Link to clinical relevance"
+    ],
+    "common_pitfalls": [
+      "Memorizing facts without mechanism"
+    ],
+    "cross_links": [
+      "Ch. 9 — Endocrine System",
+      "Cortisol/cortisone as chronic stress markers"
+    ]
+  },
+  {
+    "qnum": 49,
+    "prompt": "Which of the following is NOT a physiological function of the blood?",
+    "correct_answer": null,
+    "theory": {
+      "chapter": "Ch. 10 — Blood",
+      "section_or_topic": "Functions: transport, regulation, protection",
+      "pages_approx": "pp. 336–339"
+    },
+    "notes": "Coordination of systems is endocrine/nervous, not a blood function.",
+    "explanation": "Coordination of systems is endocrine/nervous, not a blood function. Functions: transport,\nregulation, protection. Mechanism: identify the sensors/effectors (if applicable), the\ntransporters/enzymes involved, and the homeostatic variable being controlled. Clinically, recognize\nwhat happens when the mechanism fails (e.g., loss of regulation, abnormal lab values, or\ncompensatory responses).",
+    "key_points": [
+      "Define concept",
+      "Explain mechanism",
+      "Link to clinical relevance"
+    ],
+    "common_pitfalls": [
+      "Memorizing facts without mechanism"
+    ],
+    "cross_links": [
+      "Ch. 10 — Blood",
+      "Functions: transport, regulation, protection"
+    ]
+  },
+  {
+    "qnum": 50,
+    "prompt": "The sarcomeres are the functional units of the muscle.",
+    "correct_answer": null,
+    "theory": {
+      "chapter": "Ch. 6 — The Muscular System",
+      "section_or_topic": "Sarcomere structure",
+      "pages_approx": "pp. 186–190"
+    },
+    "notes": "Sarcomere is functional unit of striated muscle.",
+    "explanation": "Sarcomere is functional unit of striated muscle. Sarcomere structure. Mechanism: identify the\nsensors/effectors (if applicable), the transporters/enzymes involved, and the homeostatic variable\nbeing controlled. Clinically, recognize what happens when the mechanism fails (e.g., loss of\nregulation, abnormal lab values, or compensatory responses).",
+    "key_points": [
+      "Define concept",
+      "Explain mechanism",
+      "Link to clinical relevance"
+    ],
+    "common_pitfalls": [
+      "Memorizing facts without mechanism"
+    ],
+    "cross_links": [
+      "Ch. 6 — The Muscular System",
+      "Sarcomere structure"
+    ]
+  },
+  {
+    "qnum": 51,
+    "prompt": "Myosin heads need calcium ions to make a cross-bridge.",
+    "correct_answer": null,
+    "theory": {
+      "chapter": "Ch. 6 — The Muscular System",
+      "section_or_topic": "Excitation-contraction coupling (Ca2+, troponin)",
+      "pages_approx": "pp. 188–193"
+    },
+    "notes": "Ca2+ binds troponin, exposes actin; myosin needs ATP for cross‑bridge cycling.",
+    "explanation": "Ca2+ binds troponin, exposes actin; myosin needs ATP for cross‑bridge cycling. Excitation-\ncontraction coupling (Ca2+, troponin). Mechanism: identify the sensors/effectors (if applicable),\nthe transporters/enzymes involved, and the homeostatic variable being controlled. Clinically,\nrecognize what happens when the mechanism fails (e.g., loss of regulation, abnormal lab values, or\ncompensatory responses).",
+    "key_points": [
+      "Define concept",
+      "Explain mechanism",
+      "Link to clinical relevance"
+    ],
+    "common_pitfalls": [
+      "Memorizing facts without mechanism"
+    ],
+    "cross_links": [
+      "Ch. 6 — The Muscular System",
+      "Excitation-contraction coupling (Ca2+, troponin)"
+    ]
+  },
+  {
+    "qnum": 52,
+    "prompt": "No ATP is required for an isometric muscle contraction.",
+    "correct_answer": null,
+    "theory": {
+      "chapter": "Ch. 6 — The Muscular System",
+      "section_or_topic": "Muscle energetics; isometric vs isotonic",
+      "pages_approx": "pp. 191–196"
+    },
+    "notes": "All contractions require ATP; isometric uses ATP without length change.",
+    "explanation": "All contractions require ATP; isometric uses ATP without length change. Muscle energetics; isometric\nvs isotonic. Mechanism: identify the sensors/effectors (if applicable), the transporters/enzymes\ninvolved, and the homeostatic variable being controlled. Clinically, recognize what happens when the\nmechanism fails (e.g., loss of regulation, abnormal lab values, or compensatory responses).",
+    "key_points": [
+      "Define concept",
+      "Explain mechanism",
+      "Link to clinical relevance"
+    ],
+    "common_pitfalls": [
+      "Memorizing facts without mechanism"
+    ],
+    "cross_links": [
+      "Ch. 6 — The Muscular System",
+      "Muscle energetics; isometric vs isotonic"
+    ]
+  },
+  {
+    "qnum": 53,
+    "prompt": "Myoglobin ensures the supply of what in the muscles?",
+    "correct_answer": null,
+    "theory": {
+      "chapter": "Ch. 6 — The Muscular System",
+      "section_or_topic": "Muscle O2 handling → myoglobin",
+      "pages_approx": "pp. 193–195"
+    },
+    "notes": "Myoglobin stores/delivers O2 within muscle fibers.",
+    "explanation": "Myoglobin stores/delivers O2 within muscle fibers. Muscle O2 handling → myoglobin. Mechanism:\nidentify the sensors/effectors (if applicable), the transporters/enzymes involved, and the\nhomeostatic variable being controlled. Clinically, recognize what happens when the mechanism fails\n(e.g., loss of regulation, abnormal lab values, or compensatory responses).",
+    "key_points": [
+      "Define concept",
+      "Explain mechanism",
+      "Link to clinical relevance"
+    ],
+    "common_pitfalls": [
+      "Memorizing facts without mechanism"
+    ],
+    "cross_links": [
+      "Ch. 6 — The Muscular System",
+      "Muscle O2 handling → myoglobin"
+    ]
+  },
+  {
+    "qnum": 54,
+    "prompt": "How is lactate formed in the muscles?",
+    "correct_answer": null,
+    "theory": {
+      "chapter": "Ch. 6 — The Muscular System",
+      "section_or_topic": "Anaerobic glycolysis → lactate",
+      "pages_approx": "pp. 192–194"
+    },
+    "notes": "Pyruvate → lactate regenerates NAD+ anaerobically.",
+    "explanation": "Pyruvate → lactate regenerates NAD+ anaerobically. Anaerobic glycolysis → lactate. Mechanism:\nidentify the sensors/effectors (if applicable), the transporters/enzymes involved, and the\nhomeostatic variable being controlled. Clinically, recognize what happens when the mechanism fails\n(e.g., loss of regulation, abnormal lab values, or compensatory responses).",
+    "key_points": [
+      "Define concept",
+      "Explain mechanism",
+      "Link to clinical relevance"
+    ],
+    "common_pitfalls": [
+      "Memorizing facts without mechanism"
+    ],
+    "cross_links": [
+      "Ch. 6 — The Muscular System",
+      "Anaerobic glycolysis → lactate"
+    ]
+  },
+  {
+    "qnum": 55,
+    "prompt": "Aerobic metabolism CANNOT be combined with anaerobic metabolism in a muscle cell.",
+    "correct_answer": null,
+    "theory": {
+      "chapter": "Ch. 6 — The Muscular System",
+      "section_or_topic": "Energy systems interplay",
+      "pages_approx": "pp. 191–196"
+    },
+    "notes": "Energy systems overlap; both can contribute.",
+    "explanation": "Energy systems overlap; both can contribute. Energy systems interplay. Mechanism: identify the\nsensors/effectors (if applicable), the transporters/enzymes involved, and the homeostatic variable\nbeing controlled. Clinically, recognize what happens when the mechanism fails (e.g., loss of\nregulation, abnormal lab values, or compensatory responses).",
+    "key_points": [
+      "Define concept",
+      "Explain mechanism",
+      "Link to clinical relevance"
+    ],
+    "common_pitfalls": [
+      "Memorizing facts without mechanism"
+    ],
+    "cross_links": [
+      "Ch. 6 — The Muscular System",
+      "Energy systems interplay"
+    ]
+  },
+  {
+    "qnum": 56,
+    "prompt": "To run a marathon you benefit mostly from which of the following?",
+    "correct_answer": null,
+    "theory": {
+      "chapter": "Ch. 6 — The Muscular System",
+      "section_or_topic": "Endurance → Krebs/oxidative phosphorylation",
+      "pages_approx": "pp. 191–196"
+    },
+    "notes": "Long-duration efforts rely on aerobic metabolism.",
+    "explanation": "Long-duration efforts rely on aerobic metabolism. Endurance → Krebs/oxidative phosphorylation.\nMechanism: identify the sensors/effectors (if applicable), the transporters/enzymes involved, and\nthe homeostatic variable being controlled. Clinically, recognize what happens when the mechanism\nfails (e.g., loss of regulation, abnormal lab values, or compensatory responses).",
+    "key_points": [
+      "Define concept",
+      "Explain mechanism",
+      "Link to clinical relevance"
+    ],
+    "common_pitfalls": [
+      "Memorizing facts without mechanism"
+    ],
+    "cross_links": [
+      "Ch. 6 — The Muscular System",
+      "Endurance → Krebs/oxidative phosphorylation"
+    ]
+  },
+  {
+    "qnum": 57,
+    "prompt": "If a muscle’s length remains the same, what type of contraction did it make?",
+    "correct_answer": null,
+    "theory": {
+      "chapter": "Ch. 6 — The Muscular System",
+      "section_or_topic": "Isometric contraction",
+      "pages_approx": "pp. 191–193"
+    },
+    "notes": "Tension increases without length change.",
+    "explanation": "Tension increases without length change. Isometric contraction. Mechanism: identify the\nsensors/effectors (if applicable), the transporters/enzymes involved, and the homeostatic variable\nbeing controlled. Clinically, recognize what happens when the mechanism fails (e.g., loss of\nregulation, abnormal lab values, or compensatory responses).",
+    "key_points": [
+      "Define concept",
+      "Explain mechanism",
+      "Link to clinical relevance"
+    ],
+    "common_pitfalls": [
+      "Memorizing facts without mechanism"
+    ],
+    "cross_links": [
+      "Ch. 6 — The Muscular System",
+      "Isometric contraction"
+    ]
+  },
+  {
+    "qnum": 58,
+    "prompt": "How do you call muscles that have the opposite working mechanism?",
+    "correct_answer": null,
+    "theory": {
+      "chapter": "Ch. 6 — The Muscular System",
+      "section_or_topic": "Agonists vs antagonists vs synergists",
+      "pages_approx": "pp. 196–199"
+    },
+    "notes": "Antagonists produce opposite action at a joint.",
+    "explanation": "Antagonists produce opposite action at a joint. Agonists vs antagonists vs synergists. Mechanism:\nidentify the sensors/effectors (if applicable), the transporters/enzymes involved, and the\nhomeostatic variable being controlled. Clinically, recognize what happens when the mechanism fails\n(e.g., loss of regulation, abnormal lab values, or compensatory responses).",
+    "key_points": [
+      "Define concept",
+      "Explain mechanism",
+      "Link to clinical relevance"
+    ],
+    "common_pitfalls": [
+      "Memorizing facts without mechanism"
+    ],
+    "cross_links": [
+      "Ch. 6 — The Muscular System",
+      "Agonists vs antagonists vs synergists"
+    ]
+  },
+  {
+    "qnum": 59,
+    "prompt": "Anaerobic endurance is the capacity of muscles to perform for a short period under which conditions?",
+    "correct_answer": null,
+    "theory": {
+      "chapter": "Ch. 6 — The Muscular System",
+      "section_or_topic": "Anaerobic capacity conditions",
+      "pages_approx": "pp. 194–196"
+    },
+    "notes": "Performance with insufficient O2 supply for oxidative metabolism.",
+    "explanation": "Performance with insufficient O2 supply for oxidative metabolism. Anaerobic capacity conditions.\nMechanism: identify the sensors/effectors (if applicable), the transporters/enzymes involved, and\nthe homeostatic variable being controlled. Clinically, recognize what happens when the mechanism\nfails (e.g., loss of regulation, abnormal lab values, or compensatory responses).",
+    "key_points": [
+      "Define concept",
+      "Explain mechanism",
+      "Link to clinical relevance"
+    ],
+    "common_pitfalls": [
+      "Memorizing facts without mechanism"
+    ],
+    "cross_links": [
+      "Ch. 6 — The Muscular System",
+      "Anaerobic capacity conditions"
+    ]
+  },
+  {
+    "qnum": 60,
+    "prompt": "The VO2max is the maximal oxygen consumption during incremental exercise. In which unit is it expressed?",
+    "correct_answer": null,
+    "theory": {
+      "chapter": "Ch. 6 — The Muscular System",
+      "section_or_topic": "VO2max definition and units",
+      "pages_approx": "pp. 194–196"
+    },
+    "notes": "Expressed as ml·min⁻¹·kg⁻¹ for relative VO2max.",
+    "explanation": "Expressed as ml·min⁻¹·kg⁻¹ for relative VO2max. VO2max is the maximal rate of oxygen uptake during\nincremental exercise. Reporting it relative to body mass (ml·min⁻¹·kg⁻¹) allows comparison between\nindividuals. It reflects integrated cardiovascular, respiratory, and muscular capacities (cardiac\noutput, ventilation, diffusion, capillary density, mitochondrial content).",
+    "key_points": [
+      "Define concept",
+      "Explain mechanism",
+      "Link to clinical relevance"
+    ],
+    "common_pitfalls": [
+      "Memorizing facts without mechanism"
+    ],
+    "cross_links": [
+      "Ch. 6 — The Muscular System",
+      "VO2max definition and units"
+    ]
+  },
+  {
+    "qnum": 61,
+    "prompt": "Which of the following is TRUE below the anaerobic threshold?",
+    "correct_answer": null,
+    "theory": {
+      "chapter": "Ch. 6 — The Muscular System",
+      "section_or_topic": "Steady-state vs lactate accumulation",
+      "pages_approx": "pp. 194–196"
+    },
+    "notes": "Below threshold: steady-state possible.",
+    "explanation": "Below threshold: steady-state possible. Steady-state vs lactate accumulation. Mechanism: identify\nthe sensors/effectors (if applicable), the transporters/enzymes involved, and the homeostatic\nvariable being controlled. Clinically, recognize what happens when the mechanism fails (e.g., loss\nof regulation, abnormal lab values, or compensatory responses).",
+    "key_points": [
+      "Define concept",
+      "Explain mechanism",
+      "Link to clinical relevance"
+    ],
+    "common_pitfalls": [
+      "Memorizing facts without mechanism"
+    ],
+    "cross_links": [
+      "Ch. 6 — The Muscular System",
+      "Steady-state vs lactate accumulation"
+    ]
+  },
+  {
+    "qnum": 62,
+    "prompt": "The figure below represents a synovial joint. What structure is represented by the number 4?",
+    "correct_answer": null,
+    "theory": {
+      "chapter": "Ch. 5 — The Skeletal System",
+      "section_or_topic": "Synovial joint components",
+      "pages_approx": "pp. 166–171"
+    },
+    "notes": "Synovial membrane produces synovial fluid; ligaments reinforce capsule.",
+    "explanation": "Synovial membrane produces synovial fluid; ligaments reinforce capsule. Synovial joint components.\nMechanism: identify the sensors/effectors (if applicable), the transporters/enzymes involved, and\nthe homeostatic variable being controlled. Clinically, recognize what happens when the mechanism\nfails (e.g., loss of regulation, abnormal lab values, or compensatory responses).",
+    "key_points": [
+      "Synovial membrane → fluid",
+      "Cartilage reduces friction",
+      "Ligaments stabilize capsule"
+    ],
+    "common_pitfalls": [
+      "Mixing cartilage (covers bone ends) with capsule lining (membrane)"
+    ],
+    "cross_links": [
+      "Ch. 5 Joint anatomy",
+      "Ch. 6 Movement mechanics"
+    ]
+  },
+  {
+    "qnum": 63,
+    "prompt": "Which part of a joint is responsible for lubrication, nutrition and strength distribution?",
+    "correct_answer": null,
+    "theory": {
+      "chapter": "Ch. 1 — The Human Body: An Orientation",
+      "section_or_topic": "General principles",
+      "pages_approx": "pp. 1–5"
+    },
+    "notes": "General concept; see chapter overview sections.",
+    "explanation": "General concept; see chapter overview sections. General principles. Mechanism: identify the\nsensors/effectors (if applicable), the transporters/enzymes involved, and the homeostatic variable\nbeing controlled. Clinically, recognize what happens when the mechanism fails (e.g., loss of\nregulation, abnormal lab values, or compensatory responses).",
+    "key_points": [
+      "Define concept",
+      "Explain mechanism",
+      "Link to clinical relevance"
+    ],
+    "common_pitfalls": [
+      "Memorizing facts without mechanism"
+    ],
+    "cross_links": [
+      "Ch. 1 — The Human Body: An Orientation",
+      "General principles"
+    ]
+  },
+  {
+    "qnum": 64,
+    "prompt": "What forms the inner lining of the joint capsule?",
+    "correct_answer": null,
+    "theory": {
+      "chapter": "Ch. 5 — The Skeletal System",
+      "section_or_topic": "Synovial joint components",
+      "pages_approx": "pp. 166–171"
+    },
+    "notes": "Synovial membrane produces synovial fluid; ligaments reinforce capsule.",
+    "explanation": "Synovial membrane produces synovial fluid; ligaments reinforce capsule. Synovial joint components.\nMechanism: identify the sensors/effectors (if applicable), the transporters/enzymes involved, and\nthe homeostatic variable being controlled. Clinically, recognize what happens when the mechanism\nfails (e.g., loss of regulation, abnormal lab values, or compensatory responses).",
+    "key_points": [
+      "Synovial membrane → fluid",
+      "Cartilage reduces friction",
+      "Ligaments stabilize capsule"
+    ],
+    "common_pitfalls": [
+      "Mixing cartilage (covers bone ends) with capsule lining (membrane)"
+    ],
+    "cross_links": [
+      "Ch. 5 Joint anatomy",
+      "Ch. 6 Movement mechanics"
+    ]
+  },
+  {
+    "qnum": 65,
+    "prompt": "What is the function of the ligaments in a joint?",
+    "correct_answer": null,
+    "theory": {
+      "chapter": "Ch. 5 — The Skeletal System",
+      "section_or_topic": "Synovial joint components",
+      "pages_approx": "pp. 166–171"
+    },
+    "notes": "Synovial membrane produces synovial fluid; ligaments reinforce capsule.",
+    "explanation": "Synovial membrane produces synovial fluid; ligaments reinforce capsule. Synovial joint components.\nMechanism: identify the sensors/effectors (if applicable), the transporters/enzymes involved, and\nthe homeostatic variable being controlled. Clinically, recognize what happens when the mechanism\nfails (e.g., loss of regulation, abnormal lab values, or compensatory responses).",
+    "key_points": [
+      "Synovial membrane → fluid",
+      "Cartilage reduces friction",
+      "Ligaments stabilize capsule"
+    ],
+    "common_pitfalls": [
+      "Mixing cartilage (covers bone ends) with capsule lining (membrane)"
+    ],
+    "cross_links": [
+      "Ch. 5 Joint anatomy",
+      "Ch. 6 Movement mechanics"
+    ]
+  },
+  {
+    "qnum": 66,
+    "prompt": "What type of joint is the elbow joint?",
+    "correct_answer": null,
+    "theory": {
+      "chapter": "Ch. 5 — The Skeletal System",
+      "section_or_topic": "Joint classifications",
+      "pages_approx": "pp. 170–173"
+    },
+    "notes": "Elbow is a hinge (ginglymus).",
+    "explanation": "Elbow is a hinge (ginglymus). Joint classifications. Mechanism: identify the sensors/effectors (if\napplicable), the transporters/enzymes involved, and the homeostatic variable being controlled.\nClinically, recognize what happens when the mechanism fails (e.g., loss of regulation, abnormal lab\nvalues, or compensatory responses).",
+    "key_points": [
+      "Define concept",
+      "Explain mechanism",
+      "Link to clinical relevance"
+    ],
+    "common_pitfalls": [
+      "Memorizing facts without mechanism"
+    ],
+    "cross_links": [
+      "Ch. 5 — The Skeletal System",
+      "Joint classifications"
+    ]
+  },
+  {
+    "qnum": 67,
+    "prompt": "Which of these processes results in the acidification of the muscle?",
+    "correct_answer": null,
+    "theory": {
+      "chapter": "Ch. 6 — The Muscular System",
+      "section_or_topic": "Lactate/H+ production under anaerobic work",
+      "pages_approx": "pp. 192–195"
+    },
+    "notes": "Glycolysis/lactate production associates with acidosis.",
+    "explanation": "Glycolysis/lactate production associates with acidosis. Lactate/H+ production under anaerobic work.\nMechanism: identify the sensors/effectors (if applicable), the transporters/enzymes involved, and\nthe homeostatic variable being controlled. Clinically, recognize what happens when the mechanism\nfails (e.g., loss of regulation, abnormal lab values, or compensatory responses).",
+    "key_points": [
+      "Define concept",
+      "Explain mechanism",
+      "Link to clinical relevance"
+    ],
+    "common_pitfalls": [
+      "Memorizing facts without mechanism"
+    ],
+    "cross_links": [
+      "Ch. 6 — The Muscular System",
+      "Lactate/H+ production under anaerobic work"
+    ]
+  },
+  {
+    "qnum": 68,
+    "prompt": "Which of the following should be consumed to prevent fatigue during activity?",
+    "correct_answer": null,
+    "theory": {
+      "chapter": "Ch. 1 — The Human Body: An Orientation",
+      "section_or_topic": "General principles",
+      "pages_approx": "pp. 1–5"
+    },
+    "notes": "General concept; see chapter overview sections.",
+    "explanation": "General concept; see chapter overview sections. General principles. Mechanism: identify the\nsensors/effectors (if applicable), the transporters/enzymes involved, and the homeostatic variable\nbeing controlled. Clinically, recognize what happens when the mechanism fails (e.g., loss of\nregulation, abnormal lab values, or compensatory responses).",
+    "key_points": [
+      "Define concept",
+      "Explain mechanism",
+      "Link to clinical relevance"
+    ],
+    "common_pitfalls": [
+      "Memorizing facts without mechanism"
+    ],
+    "cross_links": [
+      "Ch. 1 — The Human Body: An Orientation",
+      "General principles"
+    ]
+  },
+  {
+    "qnum": 69,
+    "prompt": "How do you call a joint based on a link with connective tissue between two bones?",
+    "correct_answer": null,
+    "theory": {
+      "chapter": "Ch. 5 — The Skeletal System",
+      "section_or_topic": "Fibrous joints → syndesmosis",
+      "pages_approx": "pp. 164–166"
+    },
+    "notes": "Syndesmosis is a fibrous joint with connective tissue.",
+    "explanation": "Syndesmosis is a fibrous joint with connective tissue. Fibrous joints → syndesmosis. Mechanism:\nidentify the sensors/effectors (if applicable), the transporters/enzymes involved, and the\nhomeostatic variable being controlled. Clinically, recognize what happens when the mechanism fails\n(e.g., loss of regulation, abnormal lab values, or compensatory responses).",
+    "key_points": [
+      "Define concept",
+      "Explain mechanism",
+      "Link to clinical relevance"
+    ],
+    "common_pitfalls": [
+      "Memorizing facts without mechanism"
+    ],
+    "cross_links": [
+      "Ch. 5 — The Skeletal System",
+      "Fibrous joints → syndesmosis"
+    ]
+  },
+  {
+    "qnum": 70,
+    "prompt": "Which of the following is a capacity vessel?",
+    "correct_answer": null,
+    "theory": {
+      "chapter": "Ch. 11 — The Cardiovascular System",
+      "section_or_topic": "Vascular roles: veins as capacitance vessels",
+      "pages_approx": "pp. 374–378"
+    },
+    "notes": "Veins store most blood volume; have valves.",
+    "explanation": "Veins store most blood volume; have valves. Vascular roles: veins as capacitance vessels. Mechanism:\nidentify the sensors/effectors (if applicable), the transporters/enzymes involved, and the\nhomeostatic variable being controlled. Clinically, recognize what happens when the mechanism fails\n(e.g., loss of regulation, abnormal lab values, or compensatory responses).",
+    "key_points": [
+      "Define concept",
+      "Explain mechanism",
+      "Link to clinical relevance"
+    ],
+    "common_pitfalls": [
+      "Memorizing facts without mechanism"
+    ],
+    "cross_links": [
+      "Ch. 11 — The Cardiovascular System",
+      "Vascular roles: veins as capacitance vessels"
+    ]
+  },
+  {
+    "qnum": 71,
+    "prompt": "In which type of blood vessel will you find valves?",
+    "correct_answer": null,
+    "theory": {
+      "chapter": "Ch. 11 — The Cardiovascular System",
+      "section_or_topic": "Veins and venous valves",
+      "pages_approx": "pp. 376–378"
+    },
+    "notes": "Valves prevent backflow in low-pressure veins.",
+    "explanation": "Valves prevent backflow in low-pressure veins. Veins and venous valves. Mechanism: identify the\nsensors/effectors (if applicable), the transporters/enzymes involved, and the homeostatic variable\nbeing controlled. Clinically, recognize what happens when the mechanism fails (e.g., loss of\nregulation, abnormal lab values, or compensatory responses).",
+    "key_points": [
+      "Define concept",
+      "Explain mechanism",
+      "Link to clinical relevance"
+    ],
+    "common_pitfalls": [
+      "Memorizing facts without mechanism"
+    ],
+    "cross_links": [
+      "Ch. 11 — The Cardiovascular System",
+      "Veins and venous valves"
+    ]
+  },
+  {
+    "qnum": 72,
+    "prompt": "How are substances transported over the capillary wall?",
+    "correct_answer": null,
+    "theory": {
+      "chapter": "Ch. 11 — The Cardiovascular System",
+      "section_or_topic": "Capillary exchange: diffusion & filtration",
+      "pages_approx": "pp. 372–374"
+    },
+    "notes": "Both diffusion and bulk flow operate.",
+    "explanation": "Both diffusion and bulk flow operate. Capillary exchange: diffusion & filtration. Mechanism:\nidentify the sensors/effectors (if applicable), the transporters/enzymes involved, and the\nhomeostatic variable being controlled. Clinically, recognize what happens when the mechanism fails\n(e.g., loss of regulation, abnormal lab values, or compensatory responses).",
+    "key_points": [
+      "Define concept",
+      "Explain mechanism",
+      "Link to clinical relevance"
+    ],
+    "common_pitfalls": [
+      "Memorizing facts without mechanism"
+    ],
+    "cross_links": [
+      "Ch. 11 — The Cardiovascular System",
+      "Capillary exchange: diffusion & filtration"
+    ]
+  },
+  {
+    "qnum": 73,
+    "prompt": "Relatively speaking, arterioles have the largest amount of smooth muscle tissue among all blood vessels.",
+    "correct_answer": null,
+    "theory": {
+      "chapter": "Ch. 11 — The Cardiovascular System",
+      "section_or_topic": "Vessel wall histology",
+      "pages_approx": "pp. 368–372"
+    },
+    "notes": "Arterioles have proportionally thick tunica media.",
+    "explanation": "Arterioles have proportionally thick tunica media. Vessel wall histology. Mechanism: identify the\nsensors/effectors (if applicable), the transporters/enzymes involved, and the homeostatic variable\nbeing controlled. Clinically, recognize what happens when the mechanism fails (e.g., loss of\nregulation, abnormal lab values, or compensatory responses).",
+    "key_points": [
+      "Define concept",
+      "Explain mechanism",
+      "Link to clinical relevance"
+    ],
+    "common_pitfalls": [
+      "Memorizing facts without mechanism"
+    ],
+    "cross_links": [
+      "Ch. 11 — The Cardiovascular System",
+      "Vessel wall histology"
+    ]
+  },
+  {
+    "qnum": 74,
+    "prompt": "Where is the smooth muscle tissue of the vascular walls located?",
+    "correct_answer": null,
+    "theory": {
+      "chapter": "Ch. 11 — The Cardiovascular System",
+      "section_or_topic": "Tunics: intima, media, adventitia",
+      "pages_approx": "pp. 368–372"
+    },
+    "notes": "Smooth muscle is in tunica media.",
+    "explanation": "Smooth muscle is in tunica media. Tunics: intima, media, adventitia. Mechanism: identify the\nsensors/effectors (if applicable), the transporters/enzymes involved, and the homeostatic variable\nbeing controlled. Clinically, recognize what happens when the mechanism fails (e.g., loss of\nregulation, abnormal lab values, or compensatory responses).",
+    "key_points": [
+      "Define concept",
+      "Explain mechanism",
+      "Link to clinical relevance"
+    ],
+    "common_pitfalls": [
+      "Memorizing facts without mechanism"
+    ],
+    "cross_links": [
+      "Ch. 11 — The Cardiovascular System",
+      "Tunics: intima, media, adventitia"
+    ]
+  },
+  {
+    "qnum": 75,
+    "prompt": "Which muscle fibers are wired by the most capillaries?",
+    "correct_answer": null,
+    "theory": {
+      "chapter": "Ch. 6 — The Muscular System",
+      "section_or_topic": "Muscle fiber types → red (type I) high capillary density",
+      "pages_approx": "pp. 194–196"
+    },
+    "notes": "Red fibers are oxidative and highly vascularized.",
+    "explanation": "Red fibers are oxidative and highly vascularized. Muscle fiber types → red (type I) high capillary\ndensity. Mechanism: identify the sensors/effectors (if applicable), the transporters/enzymes\ninvolved, and the homeostatic variable being controlled. Clinically, recognize what happens when the\nmechanism fails (e.g., loss of regulation, abnormal lab values, or compensatory responses).",
+    "key_points": [
+      "Define concept",
+      "Explain mechanism",
+      "Link to clinical relevance"
+    ],
+    "common_pitfalls": [
+      "Memorizing facts without mechanism"
+    ],
+    "cross_links": [
+      "Ch. 6 — The Muscular System",
+      "Muscle fiber types → red (type I) high capillary density"
+    ]
+  },
+  {
+    "qnum": 76,
+    "prompt": "The figure below represents the heart and its main blood vessels. Which blood vessel is represented by the letter A?",
+    "correct_answer": null,
+    "theory": {
+      "chapter": "Ch. 11 — The Cardiovascular System",
+      "section_or_topic": "Great vessels of the heart",
+      "pages_approx": "pp. 354–360"
+    },
+    "notes": "Aorta leaves LV; pulmonary artery from RV; pulmonary veins to LA.",
+    "explanation": "Aorta leaves LV; pulmonary artery from RV; pulmonary veins to LA. Great vessels of the heart.\nMechanism: identify the sensors/effectors (if applicable), the transporters/enzymes involved, and\nthe homeostatic variable being controlled. Clinically, recognize what happens when the mechanism\nfails (e.g., loss of regulation, abnormal lab values, or compensatory responses).",
+    "key_points": [
+      "Define concept",
+      "Explain mechanism",
+      "Link to clinical relevance"
+    ],
+    "common_pitfalls": [
+      "Memorizing facts without mechanism"
+    ],
+    "cross_links": [
+      "Ch. 11 — The Cardiovascular System",
+      "Great vessels of the heart"
+    ]
+  },
+  {
+    "qnum": 77,
+    "prompt": "According to the Frank-Starling effect, what happens to the beat volume when the filling of the ventricles increases?",
+    "correct_answer": null,
+    "theory": {
+      "chapter": "Ch. 11 — The Cardiovascular System",
+      "section_or_topic": "Frank–Starling mechanism (preload → stroke volume)",
+      "pages_approx": "pp. 360–362"
+    },
+    "notes": "Increased end-diastolic filling increases stroke volume.",
+    "explanation": "Increased end-diastolic filling increases stroke volume. Frank–Starling mechanism (preload → stroke\nvolume). Mechanism: identify the sensors/effectors (if applicable), the transporters/enzymes\ninvolved, and the homeostatic variable being controlled. Clinically, recognize what happens when the\nmechanism fails (e.g., loss of regulation, abnormal lab values, or compensatory responses).",
+    "key_points": [
+      "CO = SV × HR",
+      "↑Preload → ↑Stroke volume",
+      "Autonomic tone modulates HR/contractility"
+    ],
+    "common_pitfalls": [
+      "Equating HR alone with CO"
+    ],
+    "cross_links": [
+      "Ch. 11 Hemodynamics",
+      "Ch. 11 Conduction system"
+    ]
+  },
+  {
+    "qnum": 78,
+    "prompt": "The cardiac output is the volume of blood ejected by the heart per minute. It equals which of the following options?",
+    "correct_answer": null,
+    "theory": {
+      "chapter": "Ch. 11 — The Cardiovascular System",
+      "section_or_topic": "CO = SV × HR",
+      "pages_approx": "pp. 360–363"
+    },
+    "notes": "Cardiac output is product of stroke volume and heart rate.",
+    "explanation": "Cardiac output is product of stroke volume and heart rate. CO = SV × HR. Mechanism: identify the\nsensors/effectors (if applicable), the transporters/enzymes involved, and the homeostatic variable\nbeing controlled. Clinically, recognize what happens when the mechanism fails (e.g., loss of\nregulation, abnormal lab values, or compensatory responses).",
+    "key_points": [
+      "Define concept",
+      "Explain mechanism",
+      "Link to clinical relevance"
+    ],
+    "common_pitfalls": [
+      "Memorizing facts without mechanism"
+    ],
+    "cross_links": [
+      "Ch. 11 — The Cardiovascular System",
+      "CO = SV × HR"
+    ]
+  },
+  {
+    "qnum": 79,
+    "prompt": "Electric stimuli pass the bundle of His on their way to where?",
+    "correct_answer": null,
+    "theory": {
+      "chapter": "Ch. 11 — The Cardiovascular System",
+      "section_or_topic": "Cardiac conduction → His bundle → Purkinje",
+      "pages_approx": "pp. 358–360"
+    },
+    "notes": "Impulse travels AV node → His → bundle branches → Purkinje.",
+    "explanation": "Impulse travels AV node → His → bundle branches → Purkinje. Cardiac conduction → His bundle →\nPurkinje. Mechanism: identify the sensors/effectors (if applicable), the transporters/enzymes\ninvolved, and the homeostatic variable being controlled. Clinically, recognize what happens when the\nmechanism fails (e.g., loss of regulation, abnormal lab values, or compensatory responses).",
+    "key_points": [
+      "Define concept",
+      "Explain mechanism",
+      "Link to clinical relevance"
+    ],
+    "common_pitfalls": [
+      "Memorizing facts without mechanism"
+    ],
+    "cross_links": [
+      "Ch. 11 — The Cardiovascular System",
+      "Cardiac conduction → His bundle → Purkinje"
+    ]
+  },
+  {
+    "qnum": 80,
+    "prompt": "What effect does the sympathetic nervous system have on the heart frequency?",
+    "correct_answer": null,
+    "theory": {
+      "chapter": "Ch. 11 — The Cardiovascular System",
+      "section_or_topic": "Autonomic control of HR",
+      "pages_approx": "pp. 360–363"
+    },
+    "notes": "Sympathetic increases HR; parasympathetic decreases.",
+    "explanation": "Sympathetic increases HR; parasympathetic decreases. Autonomic control of HR. Mechanism: identify\nthe sensors/effectors (if applicable), the transporters/enzymes involved, and the homeostatic\nvariable being controlled. Clinically, recognize what happens when the mechanism fails (e.g., loss\nof regulation, abnormal lab values, or compensatory responses).",
+    "key_points": [
+      "Define concept",
+      "Explain mechanism",
+      "Link to clinical relevance"
+    ],
+    "common_pitfalls": [
+      "Memorizing facts without mechanism"
+    ],
+    "cross_links": [
+      "Ch. 11 — The Cardiovascular System",
+      "Autonomic control of HR"
+    ]
+  },
+  {
+    "qnum": 81,
+    "prompt": "What is the consequence of exertion on the QRS complex?",
+    "correct_answer": null,
+    "theory": {
+      "chapter": "Ch. 11 — The Cardiovascular System",
+      "section_or_topic": "ECG basics under exercise",
+      "pages_approx": "pp. 363–366"
+    },
+    "notes": "Exercise increases HR → more QRS per minute.",
+    "explanation": "Exercise increases HR → more QRS per minute. ECG basics under exercise. Mechanism: identify the\nsensors/effectors (if applicable), the transporters/enzymes involved, and the homeostatic variable\nbeing controlled. Clinically, recognize what happens when the mechanism fails (e.g., loss of\nregulation, abnormal lab values, or compensatory responses).",
+    "key_points": [
+      "Define concept",
+      "Explain mechanism",
+      "Link to clinical relevance"
+    ],
+    "common_pitfalls": [
+      "Memorizing facts without mechanism"
+    ],
+    "cross_links": [
+      "Ch. 11 — The Cardiovascular System",
+      "ECG basics under exercise"
+    ]
+  },
+  {
+    "qnum": 82,
+    "prompt": "What happens to blood pressure during exercise?",
+    "correct_answer": null,
+    "theory": {
+      "chapter": "Ch. 11 — The Cardiovascular System",
+      "section_or_topic": "Hemodynamics during exercise",
+      "pages_approx": "pp. 363–366"
+    },
+    "notes": "Systolic BP rises with workload.",
+    "explanation": "Systolic BP rises with workload. Hemodynamics during exercise. Mechanism: identify the\nsensors/effectors (if applicable), the transporters/enzymes involved, and the homeostatic variable\nbeing controlled. Clinically, recognize what happens when the mechanism fails (e.g., loss of\nregulation, abnormal lab values, or compensatory responses).",
+    "key_points": [
+      "Define concept",
+      "Explain mechanism",
+      "Link to clinical relevance"
+    ],
+    "common_pitfalls": [
+      "Memorizing facts without mechanism"
+    ],
+    "cross_links": [
+      "Ch. 11 — The Cardiovascular System",
+      "Hemodynamics during exercise"
+    ]
+  },
+  {
+    "qnum": 83,
+    "prompt": "Which of the following is the most important respiratory muscle?",
+    "correct_answer": null,
+    "theory": {
+      "chapter": "Ch. 13 — The Respiratory System",
+      "section_or_topic": "Mechanics of breathing → diaphragm",
+      "pages_approx": "pp. 432–436"
+    },
+    "notes": "Diaphragm is primary inspiratory muscle.",
+    "explanation": "Diaphragm is primary inspiratory muscle. Mechanics of breathing → diaphragm. Mechanism: identify the\nsensors/effectors (if applicable), the transporters/enzymes involved, and the homeostatic variable\nbeing controlled. Clinically, recognize what happens when the mechanism fails (e.g., loss of\nregulation, abnormal lab values, or compensatory responses).",
+    "key_points": [
+      "Diaphragm as primary inspiratory muscle",
+      "Gas exchange across thin membrane",
+      "CO2 regulates pH via H2CO3/HCO3−"
+    ],
+    "common_pitfalls": [
+      "Assuming expiration is active at rest"
+    ],
+    "cross_links": [
+      "Ch. 13 Mechanics of breathing",
+      "Ch. 10/15 Acid–base control"
+    ]
+  },
+  {
+    "qnum": 84,
+    "prompt": "Which of the following is TRUE regarding relaxed respiration?",
+    "correct_answer": null,
+    "theory": {
+      "chapter": "Ch. 13 — The Respiratory System",
+      "section_or_topic": "Quiet expiration is passive (elastic recoil)",
+      "pages_approx": "pp. 434–437"
+    },
+    "notes": "Quiet expiration requires no muscle contraction.",
+    "explanation": "Quiet expiration requires no muscle contraction. Quiet expiration is passive (elastic recoil).\nMechanism: identify the sensors/effectors (if applicable), the transporters/enzymes involved, and\nthe homeostatic variable being controlled. Clinically, recognize what happens when the mechanism\nfails (e.g., loss of regulation, abnormal lab values, or compensatory responses).",
+    "key_points": [
+      "Diaphragm as primary inspiratory muscle",
+      "Gas exchange across thin membrane",
+      "CO2 regulates pH via H2CO3/HCO3−"
+    ],
+    "common_pitfalls": [
+      "Assuming expiration is active at rest"
+    ],
+    "cross_links": [
+      "Ch. 13 Mechanics of breathing",
+      "Ch. 10/15 Acid–base control"
+    ]
+  },
+  {
+    "qnum": 85,
+    "prompt": "The wall of a pulmonary alveolus has a thickness of a single cell layer.",
+    "correct_answer": null,
+    "theory": {
+      "chapter": "Ch. 13 — The Respiratory System",
+      "section_or_topic": "Respiratory membrane thickness",
+      "pages_approx": "pp. 439–441"
+    },
+    "notes": "Type I pneumocytes form a thin single layer with capillary endothelium.",
+    "explanation": "Type I pneumocytes form a thin single layer with capillary endothelium. Respiratory membrane\nthickness. Mechanism: identify the sensors/effectors (if applicable), the transporters/enzymes\ninvolved, and the homeostatic variable being controlled. Clinically, recognize what happens when the\nmechanism fails (e.g., loss of regulation, abnormal lab values, or compensatory responses).",
+    "key_points": [
+      "Diaphragm as primary inspiratory muscle",
+      "Gas exchange across thin membrane",
+      "CO2 regulates pH via H2CO3/HCO3−"
+    ],
+    "common_pitfalls": [
+      "Assuming expiration is active at rest"
+    ],
+    "cross_links": [
+      "Ch. 13 Mechanics of breathing",
+      "Ch. 10/15 Acid–base control"
+    ]
+  },
+  {
+    "qnum": 86,
+    "prompt": "All pulmonary alveoli are encompassed by capillaries.",
+    "correct_answer": null,
+    "theory": {
+      "chapter": "Ch. 13 — The Respiratory System",
+      "section_or_topic": "Pulmonary capillary network (not literally every alveolus)",
+      "pages_approx": "pp. 439–442"
+    },
+    "notes": "Extensive network; not every alveolus is fully ensheathed.",
+    "explanation": "Extensive network; not every alveolus is fully ensheathed. Pulmonary capillary network (not\nliterally every alveolus). Mechanism: identify the sensors/effectors (if applicable), the\ntransporters/enzymes involved, and the homeostatic variable being controlled. Clinically, recognize\nwhat happens when the mechanism fails (e.g., loss of regulation, abnormal lab values, or\ncompensatory responses).",
+    "key_points": [
+      "Diaphragm as primary inspiratory muscle",
+      "Gas exchange across thin membrane",
+      "CO2 regulates pH via H2CO3/HCO3−"
+    ],
+    "common_pitfalls": [
+      "Assuming expiration is active at rest"
+    ],
+    "cross_links": [
+      "Ch. 13 Mechanics of breathing",
+      "Ch. 10/15 Acid–base control"
+    ]
+  },
+  {
+    "qnum": 87,
+    "prompt": "Where is the respiratory regulation center located?",
+    "correct_answer": null,
+    "theory": {
+      "chapter": "Ch. 13 — The Respiratory System",
+      "section_or_topic": "Medullary/pons respiratory centers",
+      "pages_approx": "pp. 446–448"
+    },
+    "notes": "Located in brainstem (medulla/pons).",
+    "explanation": "Located in brainstem (medulla/pons). Medullary/pons respiratory centers. Mechanism: identify the\nsensors/effectors (if applicable), the transporters/enzymes involved, and the homeostatic variable\nbeing controlled. Clinically, recognize what happens when the mechanism fails (e.g., loss of\nregulation, abnormal lab values, or compensatory responses).",
+    "key_points": [
+      "Diaphragm as primary inspiratory muscle",
+      "Gas exchange across thin membrane",
+      "CO2 regulates pH via H2CO3/HCO3−"
+    ],
+    "common_pitfalls": [
+      "Assuming expiration is active at rest"
+    ],
+    "cross_links": [
+      "Ch. 13 Mechanics of breathing",
+      "Ch. 10/15 Acid–base control"
+    ]
+  },
+  {
+    "qnum": 88,
+    "prompt": "The figure below represents part of the respiratory system. Which number corresponds to the bifurcation?",
+    "correct_answer": null,
+    "theory": {
+      "chapter": "Ch. 13 — The Respiratory System",
+      "section_or_topic": "Tracheal bifurcation (carina)",
+      "pages_approx": "pp. 438–439"
+    },
+    "notes": "Trachea splits into main bronchi at the carina.",
+    "explanation": "Trachea splits into main bronchi at the carina. Tracheal bifurcation (carina). Mechanism: identify\nthe sensors/effectors (if applicable), the transporters/enzymes involved, and the homeostatic\nvariable being controlled. Clinically, recognize what happens when the mechanism fails (e.g., loss\nof regulation, abnormal lab values, or compensatory responses).",
+    "key_points": [
+      "Diaphragm as primary inspiratory muscle",
+      "Gas exchange across thin membrane",
+      "CO2 regulates pH via H2CO3/HCO3−"
+    ],
+    "common_pitfalls": [
+      "Assuming expiration is active at rest"
+    ],
+    "cross_links": [
+      "Ch. 13 Mechanics of breathing",
+      "Ch. 10/15 Acid–base control"
+    ]
+  }
+]

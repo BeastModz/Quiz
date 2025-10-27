@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clear Quiz Data</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 20px;
+      background: #f5f5f5;
+    }
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    h1 {
+      color: #333;
+      margin-bottom: 20px;
+    }
+    button {
+      background: #3b82f6;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      margin: 10px 5px;
+      width: 100%;
+    }
+    button:hover {
+      background: #2563eb;
+    }
+    button.danger {
+      background: #ef4444;
+    }
+    button.danger:hover {
+      background: #dc2626;
+    }
+    button.success {
+      background: #10b981;
+    }
+    button.success:hover {
+      background: #059669;
+    }
+    .info {
+      background: #e0f2fe;
+      border-left: 4px solid #3b82f6;
+      padding: 15px;
+      margin: 20px 0;
+      border-radius: 4px;
+    }
+    .success-msg {
+      background: #d1fae5;
+      border-left: 4px solid #10b981;
+      padding: 15px;
+      margin: 20px 0;
+      border-radius: 4px;
+      display: none;
+    }
+    pre {
+      background: #f8f9fa;
+      padding: 15px;
+      border-radius: 4px;
+      overflow-x: auto;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🔧 Quiz Data Management</h1>
+    
+    <div class="info">
+      <strong>Problem:</strong> The quiz is showing "undefined" because it's loading old data from browser storage instead of the updated JSON file.
+    </div>
+    
+    <button onclick="clearLocalStorage()" class="danger">
+      🗑️ Clear Old Quiz Data (localStorage)
+    </button>
+    
+    <button onclick="forceReloadFromJSON()" class="success">
+      ♻️ Force Reload from JSON File
+    </button>
+    
+    <button onclick="openQuiz()">
+      🚀 Open Quiz Application
+    </button>
+    
+    <div id="success" class="success-msg"></div>
+    
+    <h3>Current Storage Info:</h3>
+    <pre id="storageInfo">Loading...</pre>
+  </div>
+
+  <script>
+    function updateStorageInfo() {
+      const quizData = localStorage.getItem('quizQuestions');
+      let info = '';
+      
+      if (quizData) {
+        try {
+          const questions = JSON.parse(quizData);
+          info += `📦 Questions in localStorage: ${questions.length}\n`;
+          
+          const exams = [...new Set(questions.map(q => q.exam || 'undefined'))];
+          info += `📚 Exams found: ${exams.join(', ')}\n`;
+          
+          exams.forEach(exam => {
+            const count = questions.filter(q => q.exam === exam).length;
+            info += `  - ${exam}: ${count} questions\n`;
+          });
+        } catch (e) {
+          info = '❌ Error: localStorage data is corrupted\n' + e.message;
+        }
+      } else {
+        info = '✅ No localStorage data (will load from JSON file)';
+      }
+      
+      document.getElementById('storageInfo').textContent = info;
+    }
+
+    function clearLocalStorage() {
+      if (confirm('This will delete the old quiz data from browser storage. The quiz will reload from the JSON file. Continue?')) {
+        localStorage.removeItem('quizQuestions');
+        localStorage.removeItem('theme');
+        showSuccess('✅ localStorage cleared! Now reload the quiz to load from JSON file.');
+        updateStorageInfo();
+      }
+    }
+
+    function forceReloadFromJSON() {
+      // Clear storage and open quiz
+      localStorage.removeItem('quizQuestions');
+      showSuccess('✅ Storage cleared! Opening quiz...');
+      setTimeout(() => {
+        window.location.href = 'quiz_practice.html';
+      }, 1000);
+    }
+
+    function openQuiz() {
+      window.location.href = 'quiz_practice.html';
+    }
+
+    function showSuccess(message) {
+      const successDiv = document.getElementById('success');
+      successDiv.textContent = message;
+      successDiv.style.display = 'block';
+      setTimeout(() => {
+        successDiv.style.display = 'none';
+      }, 5000);
+    }
+
+    // Update info on load
+    updateStorageInfo();
+    
+    // Update every 2 seconds
+    setInterval(updateStorageInfo, 2000);
+  </script>
+</body>
+</html>

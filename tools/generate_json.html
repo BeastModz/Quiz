@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generate Quiz JSON</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 20px;
+      background: #f5f5f5;
+    }
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    h1 {
+      color: #333;
+      margin-bottom: 20px;
+    }
+    button {
+      background: #3b82f6;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      margin: 10px 5px;
+    }
+    button:hover {
+      background: #2563eb;
+    }
+    .info {
+      background: #e0f2fe;
+      border-left: 4px solid #3b82f6;
+      padding: 15px;
+      margin: 20px 0;
+      border-radius: 4px;
+    }
+    .success {
+      background: #d1fae5;
+      border-left: 4px solid #10b981;
+      padding: 15px;
+      margin: 20px 0;
+      border-radius: 4px;
+      display: none;
+    }
+    pre {
+      background: #f8f9fa;
+      padding: 15px;
+      border-radius: 4px;
+      overflow-x: auto;
+      font-size: 12px;
+      max-height: 300px;
+      overflow-y: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>📝 Quiz Questions JSON Generator</h1>
+    
+    <div class="info">
+      <strong>Instructions:</strong><br>
+      1. Click "Generate JSON from Quiz HTML" to extract questions<br>
+      2. Review the generated JSON below<br>
+      3. Click "Download quiz_questions.json" to save the file<br>
+      4. Place the downloaded file in the same directory as quiz_practice.html
+    </div>
+    
+    <button onclick="generateFromLocalStorage()">📦 Generate from LocalStorage</button>
+    <button onclick="generateFromHTML()">📄 Generate JSON from Quiz HTML</button>
+    <button onclick="downloadJSON()" id="downloadBtn" style="display:none;">⬇️ Download quiz_questions.json</button>
+    
+    <div id="success" class="success">
+      ✅ JSON generated successfully! Click the download button to save it.
+    </div>
+    
+    <h3>Generated JSON Preview:</h3>
+    <pre id="jsonOutput">No JSON generated yet...</pre>
+  </div>
+
+  <script>
+    let generatedData = null;
+
+    function generateFromLocalStorage() {
+      const stored = localStorage.getItem('quizQuestions');
+      if (stored) {
+        try {
+          generatedData = JSON.parse(stored);
+          displayJSON(generatedData);
+        } catch (e) {
+          alert('Error loading from localStorage: ' + e.message);
+        }
+      } else {
+        alert('No questions found in localStorage. Please open quiz_practice.html first and let it load.');
+      }
+    }
+
+    function generateFromHTML() {
+      // This will open the quiz page and let the user export from there
+      alert('Please:\n1. Open quiz_practice.html\n2. Press Ctrl+Alt+A to open Admin Mode\n3. Click "Export JSON" button\n4. Save the file as quiz_questions.json');
+    }
+
+    function displayJSON(data) {
+      document.getElementById('jsonOutput').textContent = JSON.stringify(data, null, 2);
+      document.getElementById('success').style.display = 'block';
+      document.getElementById('downloadBtn').style.display = 'inline-block';
+    }
+
+    function downloadJSON() {
+      if (!generatedData) {
+        alert('Please generate JSON first!');
+        return;
+      }
+
+      const dataStr = JSON.stringify(generatedData, null, 2);
+      const dataBlob = new Blob([dataStr], { type: 'application/json' });
+      const url = URL.createObjectURL(dataBlob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = 'quiz_questions.json';
+      link.click();
+      URL.revokeObjectURL(url);
+      
+      alert('File downloaded! Place it in the same directory as quiz_practice.html');
+    }
+  </script>
+</body>
+</html>
