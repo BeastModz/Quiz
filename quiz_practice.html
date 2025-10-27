@@ -3237,32 +3237,43 @@ D. 7.
                 }
             }
 
-            initializeData() {
-                // Check if we're using Flask API (http/https)
-                if (window.location.protocol === 'http:' || window.location.protocol === 'https:') {
-                    console.log('Loading questions from Flask API...');
-                    fetch('/api/questions')
-                        .then(response => {
-                            if (!response.ok) throw new Error('Failed to load from API');
-                            return response.json();
-                        })
-                        .then(allQuestions => {
-                            if (allQuestions && allQuestions.length > 0) {
-                                console.log('Loaded', allQuestions.length, 'questions from API');
-                                this.loadQuestionsData(allQuestions);
-                            } else {
-                                throw new Error('API returned empty data');
-                            }
-                        })
-                        .catch(error => {
-                            console.error('Error loading from API:', error);
-                            alert('Failed to load questions from server. Please make sure the Flask server is running.');
-                        });
-                    return;
+            async initializeData() {
+                // Try loading from JSON file first (works on GitHub Pages)
+                try {
+                    console.log('Attempting to load from data/quiz_questions.json...');
+                    const response = await fetch('data/quiz_questions.json');
+                    if (response.ok) {
+                        const allQuestions = await response.json();
+                        if (allQuestions && allQuestions.length > 0) {
+                            console.log('✓ Loaded', allQuestions.length, 'questions from JSON file');
+                            this.loadQuestionsData(allQuestions);
+                            return;
+                        }
+                    }
+                } catch (error) {
+                    console.log('Could not load from JSON file:', error.message);
                 }
                 
-                // Fallback for file:// protocol - use embedded text data
-                console.log('File protocol detected - loading from embedded text data');
+                // Try Flask API if JSON file fails
+                if (window.location.protocol === 'http:' || window.location.protocol === 'https:') {
+                    try {
+                        console.log('Attempting to load from Flask API...');
+                        const response = await fetch('/api/questions');
+                        if (response.ok) {
+                            const allQuestions = await response.json();
+                            if (allQuestions && allQuestions.length > 0) {
+                                console.log('✓ Loaded', allQuestions.length, 'questions from API');
+                                this.loadQuestionsData(allQuestions);
+                                return;
+                            }
+                        }
+                    } catch (error) {
+                        console.log('Could not load from Flask API:', error.message);
+                    }
+                }
+                
+                // Final fallback - use embedded text data
+                console.log('Using embedded fallback data');
                 this.initializeDataFromText();
             }
             
