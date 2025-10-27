@@ -3237,45 +3237,52 @@ D. 7.
                 }
             }
 
-            async initializeData() {
-                // Try loading from JSON file first (works on GitHub Pages)
-                try {
-                    console.log('Attempting to load from data/quiz_questions.json...');
-                    const response = await fetch('data/quiz_questions.json');
-                    if (response.ok) {
-                        const allQuestions = await response.json();
-                        if (allQuestions && allQuestions.length > 0) {
-                            console.log('✓ Loaded', allQuestions.length, 'questions from JSON file');
-                            this.loadQuestionsData(allQuestions);
-                            return;
-                        }
-                    }
-                } catch (error) {
-                    console.log('Could not load from JSON file:', error.message);
-                }
-                
-                // Try Flask API if JSON file fails
-                if (window.location.protocol === 'http:' || window.location.protocol === 'https:') {
-                    try {
-                        console.log('Attempting to load from Flask API...');
-                        const response = await fetch('/api/questions');
-                        if (response.ok) {
-                            const allQuestions = await response.json();
-                            if (allQuestions && allQuestions.length > 0) {
-                                console.log('✓ Loaded', allQuestions.length, 'questions from API');
-                                this.loadQuestionsData(allQuestions);
-                                return;
-                            }
-                        }
-                    } catch (error) {
-                        console.log('Could not load from Flask API:', error.message);
-                    }
-                }
-                
-                // Final fallback - use embedded text data
-                console.log('Using embedded fallback data');
-                this.initializeDataFromText();
+      async initializeData() {
+        // Try loading from the richer JSON file first (if you added it)
+        const candidateFiles = [
+          'data/quiz_questions_exam1_exam2_cleaned_verified.json',
+          'data/quiz_questions.json'
+        ];
+
+        for (const path of candidateFiles) {
+          try {
+            console.log(`Attempting to load ${path}...`);
+            const resp = await fetch(path);
+            if (resp.ok) {
+              const allQuestions = await resp.json();
+              if (allQuestions && allQuestions.length > 0) {
+                console.log('✓ Loaded', allQuestions.length, 'questions from', path);
+                this.loadQuestionsData(allQuestions);
+                return;
+              }
             }
+          } catch (err) {
+            console.log(`Could not load ${path}:`, err.message);
+          }
+        }
+
+        // Try Flask API if JSON files fail (useful for local dev)
+        if (window.location.protocol === 'http:' || window.location.protocol === 'https:') {
+          try {
+            console.log('Attempting to load from Flask API...');
+            const response = await fetch('/api/questions');
+            if (response.ok) {
+              const allQuestions = await response.json();
+              if (allQuestions && allQuestions.length > 0) {
+                console.log('✓ Loaded', allQuestions.length, 'questions from API');
+                this.loadQuestionsData(allQuestions);
+                return;
+              }
+            }
+          } catch (error) {
+            console.log('Could not load from Flask API:', error.message);
+          }
+        }
+
+        // Final fallback - use embedded text data
+        console.log('Using embedded fallback data');
+        this.initializeDataFromText();
+      }
             
             loadQuestionsData(allQuestions) {
                 // Update the dataset selector with available exams
@@ -3852,6 +3859,34 @@ D. 7.
                             </ul>
                         </div>`;
                     }
+
+          // Add explanation mechanism if available (concise mechanism summary)
+          if (question.explanation_mechanism) {
+            supplementaryHTML += `<div class="mechanism-box info-box" style="background: #eef2ff; border-left: 4px solid #4f46e5;">
+              <strong style="color: #3730a3;">⚙️ Mechanism / How it works</strong>
+              <div style="margin-top: 0.5rem; color: #334155; line-height: 1.6;">${question.explanation_mechanism}</div>
+            </div>`;
+          }
+
+          // Add "why the other options are wrong" if available
+          if (question.why_others_are_wrong && question.why_others_are_wrong.length > 0) {
+            supplementaryHTML += `<div class="why-others-box info-box" style="background: #fff7ed; border-left: 4px solid #c2410c;">
+              <strong style="color: #7c2d12;">🧠 Why the other options are wrong</strong>
+              <ul style="margin: 0.5rem 0 0 1.5rem; color: #5b2d0d; line-height: 1.6;">
+                ${question.why_others_are_wrong.map(item => `<li style="margin-bottom: 0.25rem;">${item}</li>`).join('')}
+              </ul>
+            </div>`;
+          }
+
+          // Add citations if present (show page index and snippet)
+          if (question.citations && question.citations.length > 0) {
+            supplementaryHTML += `<div class="citations-box info-box" style="background: #f8fafc; border-left: 4px solid #0ea5a4;">
+              <strong style="color: #064e3b;">📑 Citations</strong>
+              <div style="margin-top: 0.5rem; color: #0f172a; line-height: 1.6;">
+                ${question.citations.map(c => `<div style="margin-bottom:0.5rem;"><em>pdf page ${c.pdf_page_index_1based || '-'}:</em> ${c.snippet ? c.snippet.replace(/\n/g, ' ') : ''}</div>`).join('')}
+              </div>
+            </div>`;
+          }
                     
                     // Combine main and supplementary content
                     const answerClass = isCorrect ? 'correct-answer' : 'incorrect-answer';
