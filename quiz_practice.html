@@ -2530,18 +2530,14 @@
       }
             
             loadQuestionsData(allQuestions) {
+                // Store all questions for later filtering
+                this.allQuestions = allQuestions;
+                
                 // Update the dataset selector with available exams
                 this.updateDatasetSelector(allQuestions);
                 
                 // Filter questions based on selected dataset
-                if (this.dataset === 'Both') {
-                    this.questions = allQuestions;
-                } else {
-                    this.questions = allQuestions.filter(q => q.exam === this.dataset);
-                }
-
-                this.activeQuestions = [...this.questions];
-                this.resetQuiz();
+                this.filterQuestionsByDataset();
             }
             
             updateDatasetSelector(allQuestions) {
@@ -2558,13 +2554,35 @@
                     `<option value="${exam}">${exam}</option>`
                 ).join('') + '<option value="Both">All Exams</option>';
                 
-                // Try to restore previous selection
+                // Try to restore previous selection or keep current dataset
                 if ([...selector.options].some(opt => opt.value === currentValue)) {
                     selector.value = currentValue;
+                } else if ([...selector.options].some(opt => opt.value === this.dataset)) {
+                    // Keep the dataset that was set in constructor or by user
+                    selector.value = this.dataset;
                 } else if (uniqueExams.length > 0) {
+                    // Fallback to first exam only if current dataset doesn't exist
                     selector.value = uniqueExams[0];
                     this.dataset = uniqueExams[0];
                 }
+            }
+
+            filterQuestionsByDataset() {
+                // Filter questions based on selected dataset
+                if (!this.allQuestions || this.allQuestions.length === 0) {
+                    this.questions = [];
+                    this.activeQuestions = [];
+                    return;
+                }
+                
+                if (this.dataset === 'Both') {
+                    this.questions = this.allQuestions;
+                } else {
+                    this.questions = this.allQuestions.filter(q => q.exam === this.dataset);
+                }
+
+                this.activeQuestions = [...this.questions];
+                this.resetQuiz();
             }
 
             initializeDataFromText() {
@@ -2631,7 +2649,7 @@
 
                 document.getElementById('datasetSelect').addEventListener('change', (e) => {
                     this.dataset = e.target.value;
-                    this.initializeData();
+                    this.filterQuestionsByDataset();
                     this.updateDisplay();
                 });
 
@@ -2699,12 +2717,12 @@
             }
 
             startExam() {
-                // Get selected exam
+                // Get selected exam from start screen
                 this.dataset = document.getElementById('startExamSelect').value;
                 document.getElementById('datasetSelect').value = this.dataset;
                 
-                // Reset and start quiz
-                this.resetQuiz();
+                // Refilter questions based on selected exam
+                this.filterQuestionsByDataset();
                 
                 // Hide start screen, show quiz
                 document.getElementById('startExamScreen').classList.add('hidden');
