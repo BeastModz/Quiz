@@ -4095,24 +4095,26 @@ D. 7.
                 }
                 
                 // Calculate DYNAMIC per-question target time
-                // Formula: (time remaining) / (questions not yet answered correctly)
-                // BUT: Show ALL remaining time if only 1 question left
-                const questionsRemaining = this.questions.length - this.answeredCorrectOnce.size;
+                // Count questions in the CURRENT active queue (not all questions)
+                // In retry mode, this is only the questions you got wrong
+                // In normal mode, this is remaining questions in current pass
+                const questionsLeftInQueue = this.activeQuestions.length - this.currentQuestionIndex - 1;
+                
                 let targetSecondsPerQuestion;
                 
-                if (questionsRemaining <= 1) {
-                    // Last question or done - show all remaining time
+                if (questionsLeftInQueue <= 0) {
+                    // Last question in queue - show all remaining time
                     targetSecondsPerQuestion = remainingSeconds;
                 } else {
-                    // Multiple questions - divide time equally
-                    targetSecondsPerQuestion = Math.floor(remainingSeconds / questionsRemaining);
+                    // Multiple questions left - divide time equally among them
+                    targetSecondsPerQuestion = Math.floor(remainingSeconds / (questionsLeftInQueue + 1));
                 }
                 
                 // Calculate time left for current question
                 if (this.currentQuestionStartTime && remainingSeconds > 0) {
                     this.questionTimeElapsed = Math.floor((Date.now() - this.currentQuestionStartTime) / 1000);
                     
-                    // Time left = total time left minus time already spent on this question
+                    // Time left = target time minus time already spent on this question
                     const questionTimeRemaining = Math.max(0, targetSecondsPerQuestion - this.questionTimeElapsed);
                     
                     const qHours = Math.floor(questionTimeRemaining / 3600);
