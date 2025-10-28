@@ -112,6 +112,115 @@
       color: #6b7280;
     }
 
+    /* Timer specific styles */
+    .timer-section {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+      padding: 1rem;
+      background: white;
+      border-radius: 0.5rem;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    .timer-box {
+      flex: 1;
+      padding: 0.75rem;
+      border-radius: 0.5rem;
+      text-align: center;
+    }
+
+    .timer-exam {
+      background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+      border: 2px solid #3b82f6;
+    }
+
+    .timer-exam.warning {
+      background: linear-gradient(135deg, #fed7aa 0%, #fdba74 100%);
+      border-color: #f97316;
+    }
+
+    .timer-exam.danger {
+      background: linear-gradient(135deg, #fecaca 0%, #fca5a5 100%);
+      border-color: #ef4444;
+      animation: pulse-timer 1s infinite;
+    }
+
+    .timer-question {
+      background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%);
+      border: 2px solid #a855f7;
+    }
+
+    .timer-question.over-target {
+      background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+      border-color: #eab308;
+    }
+
+    @keyframes pulse-timer {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.8; }
+    }
+
+    .timer-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #64748b;
+      margin-bottom: 0.25rem;
+    }
+
+    .timer-value {
+      font-size: 1.5rem;
+      font-weight: 700;
+      font-variant-numeric: tabular-nums;
+      color: #1e293b;
+    }
+
+    .timer-subtitle {
+      font-size: 0.7rem;
+      color: #64748b;
+      margin-top: 0.25rem;
+    }
+
+    [data-theme="dark"] .timer-section {
+      background: #1e293b;
+    }
+
+    [data-theme="dark"] .timer-label,
+    [data-theme="dark"] .timer-subtitle {
+      color: #94a3b8;
+    }
+
+    [data-theme="dark"] .timer-value {
+      color: #f1f5f9;
+    }
+
+    [data-theme="dark"] .timer-exam {
+      background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+      border-color: #60a5fa;
+    }
+
+    [data-theme="dark"] .timer-exam.warning {
+      background: linear-gradient(135deg, #7c2d12 0%, #9a3412 100%);
+      border-color: #fb923c;
+    }
+
+    [data-theme="dark"] .timer-exam.danger {
+      background: linear-gradient(135deg, #7f1d1d 0%, #991b1b 100%);
+      border-color: #f87171;
+    }
+
+    [data-theme="dark"] .timer-question {
+      background: linear-gradient(135deg, #581c87 0%, #6b21a8 100%);
+      border-color: #c084fc;
+    }
+
+    [data-theme="dark"] .timer-question.over-target {
+      background: linear-gradient(135deg, #713f12 0%, #854d0e 100%);
+      border-color: #fbbf24;
+    }
+
     .progress-bar {
       margin-top: 1rem;
       background: #e5e7eb;
@@ -1702,6 +1811,20 @@
           </div>
         </div>
 
+        <!-- Timers -->
+        <div class="timer-section">
+          <div class="timer-box timer-exam" id="timerExamBox">
+            <div class="timer-label">⏱️ Exam Time</div>
+            <div class="timer-value" id="timerExamValue">2:00:00</div>
+            <div class="timer-subtitle">Total time remaining</div>
+          </div>
+          <div class="timer-box timer-question" id="timerQuestionBox">
+            <div class="timer-label">⏳ Question Time</div>
+            <div class="timer-value" id="timerQuestionValue">0:00</div>
+            <div class="timer-subtitle">Target: <span id="timerQuestionTarget">1:30</span> per question</div>
+          </div>
+        </div>
+
         <div class="progress-bar">
           <div class="progress-fill" id="progressFill"></div>
         </div>
@@ -1979,6 +2102,15 @@
       </div>
       
       <div class="admin-footer">
+        <div style="display: flex; align-items: center; gap: 1rem; margin-right: auto;">
+          <label style="font-weight: 600; color: #1f2937;">⏱️ Exam Duration:</label>
+          <input type="number" id="adminExamDuration" min="1" max="999" value="120" 
+                 style="width: 80px; padding: 0.5rem; border: 1px solid #d1d5db; border-radius: 0.375rem;">
+          <span style="color: #6b7280;">minutes</span>
+          <button id="adminSaveDurationBtn" class="admin-btn-secondary" style="padding: 0.5rem 1rem;">
+            Save Duration
+          </button>
+        </div>
         <button id="adminExportBtn" class="admin-btn-secondary" title="Export questions to quiz_questions.json file">
           <i data-lucide="download"></i> Export JSON
         </button>
@@ -3169,6 +3301,14 @@ D. 7.
                 this.isRetryMode = false;
                 this.questionsJsonUrl = 'quiz_questions.json'; // Path to JSON file
 
+                // Timer settings
+                this.examDurationMinutes = parseInt(localStorage.getItem('examDurationMinutes')) || 120;
+                this.examStartTime = null;
+                this.examTimeElapsed = 0; // seconds elapsed in this session
+                this.examTimerInterval = null;
+                this.currentQuestionStartTime = null;
+                this.questionTimeElapsed = 0; // seconds on current question
+
                 this.initializeDarkMode();
                 this.initializeData();
                 this.bindEvents();
@@ -3432,6 +3572,12 @@ D. 7.
                 this.isRetryMode = false;
                 this.isReviewMode = false;
                 
+                // Reset and start timers
+                this.stopExamTimer();
+                this.examStartTime = null;
+                this.examTimeElapsed = 0;
+                this.startExamTimer();
+                
                 // Hide back to overview button and show next button
                 document.getElementById('backToOverviewBtn').classList.add('hidden');
                 document.getElementById('nextButton').style.display = '';
@@ -3512,6 +3658,9 @@ D. 7.
                     this.selectedAnswer = null;
                     this.selectedAnswers = [];
                     this.showFeedback = false;
+                    
+                    // Start timer for next question
+                    this.startQuestionTimer();
                 } else {
                     if (this.incorrectIds.size > 0 && !this.quizComplete) {
                         const retryQuestions = this.questions.filter(q => this.incorrectIds.has(q.id));
@@ -3522,8 +3671,14 @@ D. 7.
                         this.showFeedback = false;
                         this.isRetryMode = true;
                         this.attemptCount++;
+                        
+                        // Start timer for first retry question
+                        this.startQuestionTimer();
                     } else {
                         this.quizComplete = true;
+                        
+                        // Stop timers when quiz is complete
+                        this.stopExamTimer();
                     }
                 }
                 
@@ -3570,6 +3725,107 @@ D. 7.
                 } else {
                     progressFill.style.background = 'linear-gradient(90deg, #3b82f6 0%, #2563eb 100%)'; // Blue default
                 }
+
+                // Update timers
+                this.updateTimerDisplay();
+            }
+
+            // Timer Methods
+            startExamTimer() {
+                if (!this.examStartTime) {
+                    this.examStartTime = Date.now();
+                    this.examTimeElapsed = 0;
+                }
+                
+                // Clear any existing interval
+                if (this.examTimerInterval) {
+                    clearInterval(this.examTimerInterval);
+                }
+                
+                // Start timer interval (update every second)
+                this.examTimerInterval = setInterval(() => {
+                    this.examTimeElapsed = Math.floor((Date.now() - this.examStartTime) / 1000);
+                    this.updateTimerDisplay();
+                    
+                    // Check if time is up
+                    const examDurationSeconds = this.examDurationMinutes * 60;
+                    if (this.examTimeElapsed >= examDurationSeconds) {
+                        this.handleExamTimeout();
+                    }
+                }, 1000);
+
+                // Start question timer
+                this.startQuestionTimer();
+            }
+
+            stopExamTimer() {
+                if (this.examTimerInterval) {
+                    clearInterval(this.examTimerInterval);
+                    this.examTimerInterval = null;
+                }
+            }
+
+            startQuestionTimer() {
+                this.currentQuestionStartTime = Date.now();
+                this.questionTimeElapsed = 0;
+            }
+
+            updateTimerDisplay() {
+                const examDurationSeconds = this.examDurationMinutes * 60;
+                const remainingSeconds = Math.max(0, examDurationSeconds - this.examTimeElapsed);
+                
+                // Format exam timer (H:MM:SS)
+                const hours = Math.floor(remainingSeconds / 3600);
+                const minutes = Math.floor((remainingSeconds % 3600) / 60);
+                const seconds = remainingSeconds % 60;
+                const examTimeStr = `${hours}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+                
+                document.getElementById('timerExamValue').textContent = examTimeStr;
+                
+                // Update exam timer styling based on remaining time
+                const examBox = document.getElementById('timerExamBox');
+                examBox.classList.remove('warning', 'danger');
+                const percentRemaining = (remainingSeconds / examDurationSeconds) * 100;
+                if (percentRemaining <= 10) {
+                    examBox.classList.add('danger');
+                } else if (percentRemaining <= 25) {
+                    examBox.classList.add('warning');
+                }
+                
+                // Calculate and display question timer
+                if (this.currentQuestionStartTime) {
+                    this.questionTimeElapsed = Math.floor((Date.now() - this.currentQuestionStartTime) / 1000);
+                }
+                
+                const qMinutes = Math.floor(this.questionTimeElapsed / 60);
+                const qSeconds = this.questionTimeElapsed % 60;
+                const questionTimeStr = `${qMinutes}:${String(qSeconds).padStart(2, '0')}`;
+                
+                document.getElementById('timerQuestionValue').textContent = questionTimeStr;
+                
+                // Calculate target time per question
+                const totalQuestions = this.questions.length || 1;
+                const targetSecondsPerQuestion = Math.floor(examDurationSeconds / totalQuestions);
+                const targetMinutes = Math.floor(targetSecondsPerQuestion / 60);
+                const targetSeconds = targetSecondsPerQuestion % 60;
+                const targetStr = `${targetMinutes}:${String(targetSeconds).padStart(2, '0')}`;
+                
+                document.getElementById('timerQuestionTarget').textContent = targetStr;
+                
+                // Highlight if over target
+                const questionBox = document.getElementById('timerQuestionBox');
+                if (this.questionTimeElapsed > targetSecondsPerQuestion) {
+                    questionBox.classList.add('over-target');
+                } else {
+                    questionBox.classList.remove('over-target');
+                }
+            }
+
+            handleExamTimeout() {
+                this.stopExamTimer();
+                this.quizComplete = true;
+                alert('⏰ Time\'s up! The exam has ended.');
+                this.updateDisplay();
             }
 
             showQuestionCard() {
@@ -4298,6 +4554,9 @@ D. 7.
                 document.getElementById('adminUploadImageBtn').addEventListener('click', () => document.getElementById('adminImageUpload').click());
                 document.getElementById('adminImageUpload').addEventListener('change', (e) => this.handleImageUpload(e));
                 
+                // Save exam duration
+                document.getElementById('adminSaveDurationBtn').addEventListener('click', () => this.saveExamDuration());
+                
                 // Keyboard shortcut (Ctrl+Alt+A)
                 document.addEventListener('keydown', (e) => {
                     if (e.ctrlKey && e.altKey && e.key === 'a') {
@@ -4307,12 +4566,30 @@ D. 7.
                 });
             }
 
+            saveExamDuration() {
+                const durationInput = document.getElementById('adminExamDuration');
+                const duration = parseInt(durationInput.value);
+                
+                if (duration && duration > 0 && duration <= 999) {
+                    localStorage.setItem('examDurationMinutes', duration);
+                    this.quizApp.examDurationMinutes = duration;
+                    this.quizApp.updateTimerDisplay();
+                    alert(`✓ Exam duration set to ${duration} minutes`);
+                } else {
+                    alert('Please enter a valid duration between 1 and 999 minutes');
+                }
+            }
+
             async open() {
                 console.log('Reloading questions from API...');
                 // Reload questions from API when admin panel opens
                 await this.reloadQuestionsFromAPI();
                 console.log('Opening admin panel with', this.questions.length, 'questions');
                 document.getElementById('adminPanel').style.display = 'block';
+                
+                // Load current exam duration into input
+                document.getElementById('adminExamDuration').value = this.quizApp.examDurationMinutes;
+                
                 this.updateQuestionList();
                 if (window.lucide) lucide.createIcons();
             }
