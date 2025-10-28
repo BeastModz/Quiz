@@ -3594,8 +3594,8 @@
                 this.quizApp = quizApp;
                 this.currentQuestion = null;
                 this.filteredQuestions = [];
-                // Use the quiz app's questions (already loaded from JSON or embedded data)
-                this.questions = this.quizApp.questions;
+                // Use all questions from the quiz app (not just filtered ones)
+                this.questions = this.quizApp.allQuestions || this.quizApp.questions;
                 this.init();
             }
 
@@ -3786,6 +3786,10 @@
                 console.log('Reloading questions from API...');
                 // Reload questions from API when admin panel opens
                 await this.reloadQuestionsFromAPI();
+                
+                // Refresh admin questions from quizApp's allQuestions
+                this.questions = this.quizApp.allQuestions || this.quizApp.questions;
+                
                 console.log('Opening admin panel with', this.questions.length, 'questions');
                 document.getElementById('adminPanel').style.display = 'block';
                 
@@ -3813,7 +3817,8 @@
                         if (allQuestions && allQuestions.length > 0) {
                             console.log('Reloaded', allQuestions.length, 'questions from API');
                             this.questions = allQuestions;
-                            this.quizApp.questions = allQuestions;
+                            this.quizApp.allQuestions = allQuestions;
+                            this.quizApp.filterQuestionsByDataset();
                         }
                     } catch (error) {
                         console.error('Error reloading from API:', error);
