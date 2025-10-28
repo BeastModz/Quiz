@@ -4096,19 +4096,35 @@ D. 7.
                 
                 // Calculate DYNAMIC per-question target time
                 // Formula: (time remaining) / (questions not yet answered correctly)
+                // BUT: Show ALL remaining time if only 1 question left
                 const questionsRemaining = this.questions.length - this.answeredCorrectOnce.size;
-                const targetSecondsPerQuestion = questionsRemaining > 0 
-                    ? Math.floor(remainingSeconds / questionsRemaining)
-                    : 0;
+                let targetSecondsPerQuestion;
                 
-                // Calculate time left for current question based on dynamic target
-                if (this.currentQuestionStartTime && questionsRemaining > 0) {
+                if (questionsRemaining <= 1) {
+                    // Last question or done - show all remaining time
+                    targetSecondsPerQuestion = remainingSeconds;
+                } else {
+                    // Multiple questions - divide time equally
+                    targetSecondsPerQuestion = Math.floor(remainingSeconds / questionsRemaining);
+                }
+                
+                // Calculate time left for current question
+                if (this.currentQuestionStartTime && remainingSeconds > 0) {
                     this.questionTimeElapsed = Math.floor((Date.now() - this.currentQuestionStartTime) / 1000);
+                    
+                    // Time left = total time left minus time already spent on this question
                     const questionTimeRemaining = Math.max(0, targetSecondsPerQuestion - this.questionTimeElapsed);
                     
-                    const qMinutes = Math.floor(questionTimeRemaining / 60);
+                    const qHours = Math.floor(questionTimeRemaining / 3600);
+                    const qMinutes = Math.floor((questionTimeRemaining % 3600) / 60);
                     const qSeconds = questionTimeRemaining % 60;
-                    const questionTimeStr = `${qMinutes}:${String(qSeconds).padStart(2, '0')}`;
+                    
+                    let questionTimeStr;
+                    if (qHours > 0) {
+                        questionTimeStr = `${qHours}:${String(qMinutes).padStart(2, '0')}:${String(qSeconds).padStart(2, '0')}`;
+                    } else {
+                        questionTimeStr = `${qMinutes}:${String(qSeconds).padStart(2, '0')}`;
+                    }
                     
                     document.getElementById('questionTimeValue').textContent = questionTimeStr;
                     
@@ -4116,11 +4132,13 @@ D. 7.
                     const questionTimer = document.getElementById('questionTimer');
                     questionTimer.classList.remove('warning', 'danger');
                     
-                    const percentQuestionRemaining = (questionTimeRemaining / targetSecondsPerQuestion) * 100;
-                    if (percentQuestionRemaining <= 0) {
-                        questionTimer.classList.add('danger');
-                    } else if (percentQuestionRemaining <= 25) {
-                        questionTimer.classList.add('warning');
+                    if (targetSecondsPerQuestion > 0) {
+                        const percentQuestionRemaining = (questionTimeRemaining / targetSecondsPerQuestion) * 100;
+                        if (percentQuestionRemaining <= 0) {
+                            questionTimer.classList.add('danger');
+                        } else if (percentQuestionRemaining <= 25) {
+                            questionTimer.classList.add('warning');
+                        }
                     }
                 }
             }
