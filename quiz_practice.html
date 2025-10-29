@@ -2036,7 +2036,10 @@
           </div>
           <h1 class="start-exam-title">Ready to Start Your Exam?</h1>
           <p class="start-exam-description">
-            Select your exam and begin. You'll have <strong id="startExamDuration">2 hours</strong> to complete all questions.
+            Select your exam and begin. You'll have <strong id="startExamDuration">2 hours</strong> to complete all questions.<br>
+            <span style="color: #667eea; font-size: 0.9rem; margin-top: 0.5rem; display: inline-block;">
+              🎲 Each exam randomly selects 80 questions with shuffled answer positions
+            </span>
           </p>
           
           <div class="start-exam-form">
@@ -2575,14 +2578,74 @@
                     return;
                 }
                 
+                let filteredQuestions;
                 if (this.dataset === 'Both') {
-                    this.questions = this.allQuestions;
+                    filteredQuestions = this.allQuestions;
                 } else {
-                    this.questions = this.allQuestions.filter(q => q.exam === this.dataset);
+                    filteredQuestions = this.allQuestions.filter(q => q.exam === this.dataset);
                 }
 
+                // Randomize: pick 80 random questions and shuffle them
+                this.questions = this.randomizeQuestions(filteredQuestions, 80);
                 this.activeQuestions = [...this.questions];
                 this.resetQuiz();
+            }
+
+            randomizeQuestions(questionPool, count) {
+                // Make a copy to avoid modifying original
+                const shuffled = [...questionPool];
+                
+                // Shuffle the entire pool using Fisher-Yates algorithm
+                for (let i = shuffled.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+                }
+                
+                // Take first 'count' questions (or all if pool is smaller)
+                const selectedQuestions = shuffled.slice(0, Math.min(count, shuffled.length));
+                
+                // Shuffle answer options for each question
+                return selectedQuestions.map(q => this.shuffleAnswerOptions(q));
+            }
+
+            shuffleAnswerOptions(question) {
+                // Create a deep copy to avoid modifying original
+                const q = JSON.parse(JSON.stringify(question));
+                
+                if (!q.options || q.options.length === 0) return q;
+                
+                // Create array of indices [0, 1, 2, 3] to track original positions
+                const indices = q.options.map((_, i) => i);
+                
+                // Shuffle indices using Fisher-Yates
+                for (let i = indices.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [indices[i], indices[j]] = [indices[j], indices[i]];
+                }
+                
+                // Reorder options according to shuffled indices
+                const shuffledOptions = indices.map(i => q.options[i]);
+                
+                // Find where the correct answer moved to
+                let correctIndex = q.correct;
+                if (typeof correctIndex === 'string') {
+                    correctIndex = correctIndex.charCodeAt(0) - 65; // Convert A->0, B->1, etc.
+                }
+                
+                // Handle multiple correct answers (for multiple-answer questions)
+                if (Array.isArray(q.correct)) {
+                    const correctIndices = q.correct.map(ans => 
+                        typeof ans === 'string' ? ans.charCodeAt(0) - 65 : ans
+                    );
+                    // Map old indices to new indices
+                    q.correct = correctIndices.map(oldIdx => indices.indexOf(oldIdx));
+                } else {
+                    // Single correct answer - find new position
+                    q.correct = indices.indexOf(correctIndex);
+                }
+                
+                q.options = shuffledOptions;
+                return q;
             }
 
             initializeDataFromText() {
