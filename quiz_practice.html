@@ -1406,6 +1406,45 @@
       background: #334155 !important;
       color: #f1f5f9 !important;
     }
+    
+    [data-theme="dark"] .mechanism-box {
+      background: #312e81 !important;
+      border-left-color: #818cf8 !important;
+      color: #e0e7ff !important;
+    }
+    
+    [data-theme="dark"] .why-others-box {
+      background: #7c2d12 !important;
+      border-left-color: #fb923c !important;
+      color: #fed7aa !important;
+    }
+    
+    [data-theme="dark"] .citations-box {
+      background: #164e63 !important;
+      border-left-color: #22d3ee !important;
+      color: #cffafe !important;
+    }
+    
+    [data-theme="dark"] #firstAttemptDialog > div {
+      background: #1e293b !important;
+      color: #f1f5f9 !important;
+    }
+    
+    [data-theme="dark"] #firstAttemptDialog h2 {
+      color: #f1f5f9 !important;
+    }
+    
+    [data-theme="dark"] #firstAttemptDialog p {
+      color: #94a3b8 !important;
+    }
+    
+    [data-theme="dark"] #firstAttemptDialog > div > div:nth-child(2) {
+      background: #334155 !important;
+    }
+    
+    [data-theme="dark"] #stopRetryBtn:hover {
+      background: #dc2626 !important;
+    }
 
     [data-theme="dark"] .completion-screen {
       background: #1e293b;
@@ -2070,7 +2109,14 @@
 
       <!-- Retry Notice -->
       <div id="retryNotice" class="retry-notice hidden">
-        Retry Mode: Answer the <span id="retryCount">0</span> question<span id="retryPlural">s</span> you got wrong
+        <div style="display: flex; align-items: center; justify-content: space-between; gap: 1rem;">
+          <div>
+            <strong>Retry Mode:</strong> Answer the <span id="retryCount">0</span> question<span id="retryPlural">s</span> you got wrong
+          </div>
+          <button id="stopRetryBtn" style="padding: 0.5rem 1rem; background: #ef4444; color: white; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; white-space: nowrap;">
+            Stop & View Results
+          </button>
+        </div>
       </div>
 
       <!-- Quiz Layout: Two Column Grid -->
@@ -2399,6 +2445,8 @@
                 this.answeredCorrectOnce = new Set();
                 this.quizComplete = false;
                 this.isRetryMode = false;
+                this.firstAttemptComplete = false; // Track if first attempt is done
+                this.firstAttemptStats = null; // Store stats from first attempt
                 this.questionsJsonUrl = 'quiz_questions.json'; // Path to JSON file
 
                 // Timer settings
@@ -2692,6 +2740,14 @@
                         this.showCompletionScreen();
                     }
                 });
+                
+                document.getElementById('stopRetryBtn').addEventListener('click', () => {
+                    if (confirm('Stop retrying and view your first attempt results?')) {
+                        this.quizComplete = true;
+                        this.stopExamTimer();
+                        this.showCompletionScreen();
+                    }
+                });
 
                 document.getElementById('completionRestartBtn').addEventListener('click', () => {
                     this.showStartScreen();
@@ -2776,6 +2832,8 @@
                 this.quizComplete = false;
                 this.isRetryMode = false;
                 this.isReviewMode = false;
+                this.firstAttemptComplete = false;
+                this.firstAttemptStats = null;
                 
                 // Reset and start timers
                 this.stopExamTimer();
@@ -2867,7 +2925,23 @@
                     // Start timer for next question
                     this.startQuestionTimer();
                 } else {
-                    if (this.incorrectIds.size > 0 && !this.quizComplete) {
+                    // Finished current set of questions
+                    if (!this.firstAttemptComplete && this.incorrectIds.size > 0) {
+                        // First attempt done, but there are incorrect answers
+                        this.firstAttemptComplete = true;
+                        
+                        // Save first attempt stats
+                        this.firstAttemptStats = {
+                            incorrectIds: new Set(this.incorrectIds),
+                            answersTotal: this.answersTotal,
+                            answersCorrect: this.answersCorrect,
+                            answeredCorrectOnce: new Set(this.answeredCorrectOnce)
+                        };
+                        
+                        // Show completion screen with option to retry
+                        this.showFirstAttemptCompletion();
+                    } else if (this.incorrectIds.size > 0 && !this.quizComplete) {
+                        // In retry mode, continue until all correct or user stops
                         const retryQuestions = this.questions.filter(q => this.incorrectIds.has(q.id));
                         this.activeQuestions = retryQuestions;
                         this.currentQuestionIndex = 0;
@@ -3390,16 +3464,157 @@
                 }
             }
 
+            showFirstAttemptCompletion() {
+                // Show intermediate completion screen after first attempt
+                // This allows user to see their first attempt results before retrying
+                
+                // Hide quiz layout
+                document.querySelector('.quiz-layout').classList.add('hidden');
+                
+                // Create or show first attempt completion dialog
+                let dialog = document.getElementById('firstAttemptDialog');
+                if (!dialog) {
+                    dialog = document.createElement('div');
+                    dialog.id = 'firstAttemptDialog';
+                    dialog.style.cssText = `
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background: rgba(0, 0, 0, 0.5);
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        z-index: 10000;
+                    `;
+                    
+                    const totalQuestions = this.questions.length || 1;
+                    const correctAnswers = this.firstAttemptStats.answeredCorrectOnce.size;
+                    const progress = Math.round((correctAnswers / totalQuestions) * 100);
+                    const passingScore = Math.ceil(totalQuestions * 0.65);
+                    const hasPassed = correctAnswers >= passingScore;
+                    const incorrectCount = this.firstAttemptStats.incorrectIds.size;
+                    
+                    dialog.innerHTML = `
+                        <div style="background: white; border-radius: 16px; padding: 2rem; max-width: 500px; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);">
+                            <div style="text-align: center; margin-bottom: 2rem;">
+                                <div style="font-size: 3rem; margin-bottom: 1rem;">${hasPassed ? '🎉' : '📊'}</div>
+                                <h2 style="font-size: 1.75rem; font-weight: bold; color: #1f2937; margin-bottom: 0.5rem;">
+                                    First Attempt Complete!
+                                </h2>
+                                <p style="color: #6b7280; font-size: 1rem;">
+                                    ${hasPassed ? 'Great job! You passed on your first try!' : 'Review your results below'}
+                                </p>
+                            </div>
+                            
+                            <div style="background: #f9fafb; border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem;">
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+                                    <div style="text-align: center;">
+                                        <div style="font-size: 2rem; font-weight: bold; color: ${hasPassed ? '#10b981' : '#f59e0b'};">
+                                            ${correctAnswers}/${totalQuestions}
+                                        </div>
+                                        <div style="font-size: 0.875rem; color: #6b7280;">Correct</div>
+                                    </div>
+                                    <div style="text-align: center;">
+                                        <div style="font-size: 2rem; font-weight: bold; color: #3b82f6;">
+                                            ${progress}%
+                                        </div>
+                                        <div style="font-size: 0.875rem; color: #6b7280;">Progress</div>
+                                    </div>
+                                </div>
+                                
+                                <div style="background: ${hasPassed ? '#d1fae5' : '#fef3c7'}; border-radius: 8px; padding: 1rem; text-align: center;">
+                                    <div style="font-weight: 600; color: ${hasPassed ? '#065f46' : '#92400e'};">
+                                        ${hasPassed ? `✓ Passed (${passingScore}/${totalQuestions} needed)` : `${incorrectCount} question${incorrectCount !== 1 ? 's' : ''} to retry`}
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div style="display: flex; gap: 1rem;">
+                                <button id="viewResultsBtn" style="flex: 1; padding: 0.75rem 1.5rem; background: #3b82f6; color: white; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; transition: background 0.2s;">
+                                    View Full Results
+                                </button>
+                                ${!hasPassed ? `
+                                <button id="startRetryBtn" style="flex: 1; padding: 0.75rem 1.5rem; background: #10b981; color: white; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; transition: background 0.2s;">
+                                    Retry Incorrect (${incorrectCount})
+                                </button>
+                                ` : ''}
+                            </div>
+                        </div>
+                    `;
+                    
+                    document.body.appendChild(dialog);
+                    
+                    // Add event listeners
+                    document.getElementById('viewResultsBtn').addEventListener('click', () => {
+                        dialog.remove();
+                        this.quizComplete = true;
+                        this.showCompletionScreen();
+                    });
+                    
+                    if (!hasPassed) {
+                        document.getElementById('startRetryBtn').addEventListener('click', () => {
+                            dialog.remove();
+                            this.startRetryMode();
+                        });
+                    }
+                    
+                    // Add hover effects
+                    const buttons = dialog.querySelectorAll('button');
+                    buttons.forEach(btn => {
+                        btn.addEventListener('mouseenter', () => {
+                            btn.style.opacity = '0.9';
+                            btn.style.transform = 'translateY(-2px)';
+                        });
+                        btn.addEventListener('mouseleave', () => {
+                            btn.style.opacity = '1';
+                            btn.style.transform = 'translateY(0)';
+                        });
+                    });
+                } else {
+                    dialog.style.display = 'flex';
+                }
+            }
+            
+            startRetryMode() {
+                // Start retry mode for incorrect questions
+                const retryQuestions = this.questions.filter(q => this.incorrectIds.has(q.id));
+                this.activeQuestions = retryQuestions;
+                this.currentQuestionIndex = 0;
+                this.selectedAnswer = null;
+                this.selectedAnswers = [];
+                this.showFeedback = false;
+                this.isRetryMode = true;
+                this.attemptCount++;
+                
+                // Show quiz layout
+                document.querySelector('.quiz-layout').classList.remove('hidden');
+                
+                // Start timer for first retry question
+                this.startQuestionTimer();
+                
+                this.updateDisplay();
+            }
+
             showCompletionScreen() {
                 // Hide quiz layout and show completion screen
                 document.querySelector('.quiz-layout').classList.add('hidden');
                 const completionScreen = document.getElementById('completionScreen');
                 completionScreen.classList.remove('hidden');
                 
+                // Use first attempt stats if available, otherwise current stats
+                const statsToUse = this.firstAttemptStats || {
+                    incorrectIds: this.incorrectIds,
+                    answersTotal: this.answersTotal,
+                    answersCorrect: this.answersCorrect,
+                    answeredCorrectOnce: this.answeredCorrectOnce
+                };
+                
                 const totalQuestions = this.questions.length || 1;
-                const correctAnswers = this.answeredCorrectOnce.size;
+                const correctAnswers = statsToUse.answeredCorrectOnce.size;
                 const progress = Math.round((correctAnswers / totalQuestions) * 100);
-                const accuracy = this.answersTotal > 0 ? ((this.answersCorrect / this.answersTotal) * 100).toFixed(1) : '0.0';
+                const accuracy = statsToUse.answersTotal > 0 ? ((statsToUse.answersCorrect / statsToUse.answersTotal) * 100).toFixed(1) : '0.0';
                 
                 // Calculate pass/fail (need 52 out of 80 = 65%)
                 const passingScore = Math.ceil(totalQuestions * 0.65); // 65% to pass
@@ -3415,20 +3630,20 @@
                 // Add banner class to completion screen
                 completionScreen.classList.add('has-banner');
                 
-                // Update stats
+                // Update stats (show first attempt stats)
                 document.getElementById('finalScore').textContent = `${correctAnswers}/${totalQuestions}`;
                 document.getElementById('finalProgress').textContent = `${progress}%`;
                 document.getElementById('finalAccuracy').textContent = `${accuracy}%`;
-                document.getElementById('finalAttempts').textContent = this.attemptCount;
+                document.getElementById('finalAttempts').textContent = '1'; // Always show 1 for first attempt
                 
-                // Generate visual overview
-                this.generateVisualOverview();
+                // Generate visual overview (using first attempt stats)
+                this.generateVisualOverview(statsToUse);
                 
-                // Generate study recommendations
-                this.generateStudyRecommendations();
+                // Generate study recommendations (using first attempt stats)
+                this.generateStudyRecommendations(statsToUse);
                 
-                // Generate missed questions list
-                this.generateMissedQuestionsList();
+                // Generate missed questions list (using first attempt stats)
+                this.generateMissedQuestionsList(statsToUse);
                 
                 // Re-initialize Lucide icons
                 if (window.lucide) {
@@ -3436,8 +3651,13 @@
                 }
             }
             
-            generateStudyRecommendations() {
-                const missedQuestions = this.questions.filter(q => this.incorrectIds.has(q.id));
+            generateStudyRecommendations(statsToUse) {
+                // Use provided stats or fall back to current stats
+                const stats = statsToUse || {
+                    incorrectIds: this.incorrectIds
+                };
+                
+                const missedQuestions = this.questions.filter(q => stats.incorrectIds.has(q.id));
                 const content = document.getElementById('studyRecommendationsContent');
                 
                 if (missedQuestions.length === 0) {
@@ -3511,8 +3731,13 @@
                 `).join('');
             }
             
-            generateMissedQuestionsList() {
-                const missedQuestions = this.questions.filter(q => this.incorrectIds.has(q.id));
+            generateMissedQuestionsList(statsToUse) {
+                // Use provided stats or fall back to current stats
+                const stats = statsToUse || {
+                    incorrectIds: this.incorrectIds
+                };
+                
+                const missedQuestions = this.questions.filter(q => stats.incorrectIds.has(q.id));
                 const section = document.getElementById('missedQuestionsSection');
                 const list = document.getElementById('missedQuestionsList');
                 const count = document.getElementById('missedQuestionsCount');
@@ -3551,12 +3776,18 @@
                 });
             }
             
-            generateVisualOverview() {
+            generateVisualOverview(statsToUse) {
+                // Use provided stats or fall back to current stats
+                const stats = statsToUse || {
+                    answeredCorrectOnce: this.answeredCorrectOnce,
+                    incorrectIds: this.incorrectIds
+                };
+                
                 const grid = document.getElementById('visualOverviewGrid');
                 
                 grid.innerHTML = this.questions.map((q, index) => {
-                    const isCorrect = this.answeredCorrectOnce.has(q.id);
-                    const isIncorrect = this.incorrectIds.has(q.id);
+                    const isCorrect = stats.answeredCorrectOnce.has(q.id);
+                    const isIncorrect = stats.incorrectIds.has(q.id);
                     const statusClass = isCorrect ? 'correct' : (isIncorrect ? 'incorrect' : 'unanswered');
                     
                     // Create tooltip text
