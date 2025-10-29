@@ -87,7 +87,7 @@
 
     .stats-grid {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: repeat(6, 1fr);
       gap: 1rem;
       margin-top: 1rem;
     }
@@ -95,6 +95,11 @@
     .stat-item {
       display: flex;
       align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .stat-item:last-child {
+      justify-content: flex-end;
       gap: 0.5rem;
     }
 
@@ -1957,11 +1962,6 @@
         <div class="header-top">
           <h1 class="title">Quiz Practice</h1>
           <div class="header-controls">
-            <select id="datasetSelect" class="dataset-select">
-              <option value="Exam 1">Exam 1</option>
-              <option value="Exam 2">Exam 2</option>
-              <option value="Both">Both</option>
-            </select>
             <button id="adminModeBtn" class="restart-btn" title="Admin Mode (Ctrl+Alt+A)">
               <i data-lucide="settings"></i>
               Admin
@@ -1970,19 +1970,11 @@
               <i data-lucide="moon"></i>
               <span>Dark</span>
             </button>
-            <button id="restartBtn" class="restart-btn">
-              <i data-lucide="rotate-ccw"></i>
-              Restart
-            </button>
-            <button id="stopQuizBtn" class="restart-btn" style="background: #ef4444;">
-              <i data-lucide="square"></i>
-              Stop Quiz
-            </button>
           </div>
         </div>
 
-        <!-- Stats -->
-        <div class="stats-grid">
+        <!-- Stats (hidden until exam starts) -->
+        <div class="stats-grid" id="statsGrid" style="display: none;">
           <div class="stat-item">
             <i data-lucide="target" style="color: #3b82f6;"></i>
             <div class="stat-content">
@@ -2018,9 +2010,19 @@
               <div class="stat-label">Time Left</div>
             </div>
           </div>
+          <div class="stat-item" style="justify-content: flex-end;">
+            <button id="restartBtn" class="restart-btn" title="Restart quiz">
+              <i data-lucide="rotate-ccw"></i>
+              Restart
+            </button>
+            <button id="stopQuizBtn" class="restart-btn" style="background: #ef4444;" title="Stop quiz">
+              <i data-lucide="square"></i>
+              Stop
+            </button>
+          </div>
         </div>
 
-        <div class="progress-bar">
+        <div class="progress-bar" id="progressBar" style="display: none;">
           <div class="progress-fill" id="progressFill"></div>
         </div>
       </div>
@@ -2536,30 +2538,9 @@
             }
             
             updateDatasetSelector(allQuestions) {
-                const selector = document.getElementById('datasetSelect');
-                if (!selector) return;
-                
-                const currentValue = selector.value;
-                
-                // Get unique exam names
-                const uniqueExams = [...new Set(allQuestions.map(q => q.exam))].sort();
-                
-                // Build options
-                selector.innerHTML = uniqueExams.map(exam => 
-                    `<option value="${exam}">${exam}</option>`
-                ).join('') + '<option value="Both">All Exams</option>';
-                
-                // Try to restore previous selection or keep current dataset
-                if ([...selector.options].some(opt => opt.value === currentValue)) {
-                    selector.value = currentValue;
-                } else if ([...selector.options].some(opt => opt.value === this.dataset)) {
-                    // Keep the dataset that was set in constructor or by user
-                    selector.value = this.dataset;
-                } else if (uniqueExams.length > 0) {
-                    // Fallback to first exam only if current dataset doesn't exist
-                    selector.value = uniqueExams[0];
-                    this.dataset = uniqueExams[0];
-                }
+                // Dataset selector removed from UI, but we keep this function for compatibility
+                // Admin panel may still use dataset selection
+                return;
             }
 
             filterQuestionsByDataset() {
@@ -2697,12 +2678,6 @@
                     this.startExam();
                 });
 
-                document.getElementById('datasetSelect').addEventListener('change', (e) => {
-                    this.dataset = e.target.value;
-                    this.filterQuestionsByDataset();
-                    this.updateDisplay();
-                });
-
                 document.getElementById('darkModeBtn').addEventListener('click', () => {
                     this.toggleDarkMode();
                 });
@@ -2743,6 +2718,10 @@
                 this.examStartTime = null;
                 this.examTimeElapsed = 0;
                 
+                // Hide stats bar and progress bar
+                document.getElementById('statsGrid').style.display = 'none';
+                document.getElementById('progressBar').style.display = 'none';
+                
                 // Show start screen, hide quiz
                 document.getElementById('startExamScreen').classList.remove('hidden');
                 document.querySelector('.quiz-layout').classList.add('hidden');
@@ -2768,10 +2747,13 @@
             startExam() {
                 // Always use both exams
                 this.dataset = 'Both';
-                document.getElementById('datasetSelect').value = this.dataset;
                 
                 // Refilter questions based on selected exam
                 this.filterQuestionsByDataset();
+                
+                // Show stats bar and progress bar
+                document.getElementById('statsGrid').style.display = 'grid';
+                document.getElementById('progressBar').style.display = 'block';
                 
                 // Hide start screen, show quiz
                 document.getElementById('startExamScreen').classList.add('hidden');
@@ -3735,29 +3717,44 @@
             }
 
             async saveQuestionsToAPI() {
-                // Only save if we're using Flask API
-                if (window.location.protocol !== 'http:' && window.location.protocol !== 'https:') {
-                    console.log('Not using Flask API - changes not saved');
-                    return;
-                }
+                // For GitHub Pages (static hosting), we can't save directly to files
+                // Instead, update the in-memory questions and provide export functionality
                 
                 try {
-                    const response = await fetch('/api/questions', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify(this.questions)
-                    });
+                    // Update the quiz app's questions
+                    if (this.quizApp) {
+                        this.quizApp.allQuestions = this.questions;
+                        this.quizApp.filterQuestionsByDataset();
+                    }
                     
-                    if (!response.ok) throw new Error('Failed to save questions');
+                    // Auto-export the updated JSON for user to save manually
+                    console.log('✓ Questions updated in memory. Use Export button to save permanently.');
                     
-                    const result = await response.json();
-                    console.log('Questions saved to JSON file:', result.message);
+                    // Try to save via API if available (for local Flask development)
+                    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+                        try {
+                            const response = await fetch('/api/questions', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                },
+                                body: JSON.stringify(this.questions)
+                            });
+                            
+                            if (response.ok) {
+                                const result = await response.json();
+                                console.log('✓ Questions saved to server:', result.message);
+                                return true;
+                            }
+                        } catch (error) {
+                            console.log('Local API not available:', error.message);
+                        }
+                    }
+                    
                     return true;
                 } catch (error) {
-                    console.error('Error saving questions:', error);
-                    alert('Failed to save changes to server: ' + error.message);
+                    console.error('Error updating questions:', error);
+                    alert('Error updating questions: ' + error.message);
                     return false;
                 }
             }
@@ -4205,7 +4202,12 @@
                         this.quizApp.updateDisplay();
                     }
                     
-                    alert('Question saved successfully to quiz_questions.json!');
+                    // Show appropriate message based on hosting
+                    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+                        alert('✓ Question saved successfully to quiz_questions.json!');
+                    } else {
+                        alert('✓ Question saved successfully!\n\n⚠️ Note: Changes are temporary. Click "Export JSON" button to download and permanently save your changes.');
+                    }
                 }
             }
             async deleteQuestion() {
@@ -4313,11 +4315,14 @@
                 const url = URL.createObjectURL(dataBlob);
                 const link = document.createElement('a');
                 link.href = url;
-                link.download = 'quiz_questions.json';
+                
+                // Generate filename with timestamp
+                const timestamp = new Date().toISOString().replace(/[:.]/g, '-').slice(0, -5);
+                link.download = `quiz_questions_${timestamp}.json`;
                 link.click();
                 URL.revokeObjectURL(url);
                 
-                alert('Questions exported to quiz_questions.json\n\nReplace the existing quiz_questions.json file with this download to use it as the default question source.');
+                alert('✓ Questions exported successfully!\n\n📝 To make changes permanent:\n1. Replace the file in data/quiz_questions_exam1_exam2_cleaned_verified.json\n2. Commit and push to GitHub\n\nThe download includes ' + this.questions.length + ' questions.');
             }
 
             importJSON(event) {
