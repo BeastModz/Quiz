@@ -2036,20 +2036,13 @@
           </div>
           <h1 class="start-exam-title">Ready to Start Your Exam?</h1>
           <p class="start-exam-description">
-            Select your exam and begin. You'll have <strong id="startExamDuration">2 hours</strong> to complete all questions.<br>
+            Click the button below to begin. You'll have <strong id="startExamDuration">2 hours</strong> to complete all questions.<br>
             <span style="color: #667eea; font-size: 0.9rem; margin-top: 0.5rem; display: inline-block;">
               🎲 Each exam randomly selects 80 questions with shuffled answer positions
             </span>
           </p>
           
           <div class="start-exam-form">
-            <label for="startExamSelect" class="start-exam-label">Select Exam:</label>
-            <select id="startExamSelect" class="start-exam-select">
-              <option value="Exam 1">Exam 1</option>
-              <option value="Exam 2">Exam 2</option>
-              <option value="Both">Both Exams</option>
-            </select>
-            
             <button id="startExamBtn" class="start-exam-button">
               <i data-lucide="play-circle" style="width: 20px; height: 20px;"></i>
               <span>Start Exam</span>
@@ -2084,7 +2077,6 @@
         <div class="question-container">
           <div id="questionCard" class="question-card">
             <div class="question-header">
-              <span class="subject-badge" id="subjectBadge">Exam 1</span>
               <span class="question-counter" id="questionCounter">Question 1 of 80</span>
               <span class="question-timer" id="questionTimer">
                 <i data-lucide="hourglass" style="width: 14px; height: 14px;"></i>
@@ -2705,11 +2697,6 @@
                     this.startExam();
                 });
 
-                // Dataset selector on start screen
-                document.getElementById('startExamSelect').addEventListener('change', (e) => {
-                    this.dataset = e.target.value;
-                });
-
                 document.getElementById('datasetSelect').addEventListener('change', (e) => {
                     this.dataset = e.target.value;
                     this.filterQuestionsByDataset();
@@ -2773,15 +2760,14 @@
                     durationText = `${mins} minutes`;
                 }
                 document.getElementById('startExamDuration').textContent = durationText;
-                document.getElementById('startExamSelect').value = this.dataset;
                 
                 // Re-initialize icons
                 if (window.lucide) lucide.createIcons();
             }
 
             startExam() {
-                // Get selected exam from start screen
-                this.dataset = document.getElementById('startExamSelect').value;
+                // Always use both exams
+                this.dataset = 'Both';
                 document.getElementById('datasetSelect').value = this.dataset;
                 
                 // Refilter questions based on selected exam
@@ -3115,7 +3101,6 @@
                 }
                 
                 // Update question content
-                document.getElementById('subjectBadge').textContent = currentQuestion.exam || 'Unknown';
                 document.getElementById('questionCounter').textContent = `Question ${this.currentQuestionIndex + 1} of ${this.activeQuestions.length}`;
                 
                 // Display question text and image if available
@@ -3778,8 +3763,15 @@
             }
 
             bindEvents() {
-                // Admin button
-                document.getElementById('adminModeBtn').addEventListener('click', () => this.open());
+                // Admin button with password protection
+                document.getElementById('adminModeBtn').addEventListener('click', () => {
+                    const password = prompt('Enter admin password:');
+                    if (password === 'admin123') {
+                        this.open();
+                    } else if (password !== null) {
+                        alert('Incorrect password!');
+                    }
+                });
                 
                 // Close button
                 document.getElementById('closeAdminBtn').addEventListener('click', () => this.close());
