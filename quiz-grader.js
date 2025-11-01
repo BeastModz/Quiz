@@ -3,7 +3,15 @@
 // Env: export OPENAI_API_KEY="sk-..."
 
 import OpenAI from "openai";
-const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+
+// Initialize OpenAI client lazily to allow environment variables to be loaded first
+let client = null;
+function getClient() {
+  if (!client) {
+    client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+  }
+  return client;
+}
 
 // --- Publieke API ------------------------------------------------------------
 // gradeAnswer(studentText, rubric, opts)
@@ -112,7 +120,7 @@ async function llmArbiter(model, studentText, rubric) {
     "Taak: Bepaal grade volgens rubric. Output: alleen JSON."
   ].filter(Boolean).join("\n");
 
-  const resp = await client.chat.completions.create({
+  const resp = await getClient().chat.completions.create({
     model,
     temperature: 0,
     max_tokens: 64,
@@ -130,7 +138,7 @@ const embCache = new Map();
 async function embed(model, text) {
   const key = model + "\u0000" + text;
   if (embCache.has(key)) return embCache.get(key);
-  const out = await client.embeddings.create({ model, input: text });
+  const out = await getClient().embeddings.create({ model, input: text });
   const emb = out.data[0].embedding;
   embCache.set(key, emb);
   return emb;
