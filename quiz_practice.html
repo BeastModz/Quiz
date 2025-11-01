@@ -2501,6 +2501,9 @@
                 this.firstAttemptStats = null; // Store stats from first attempt
                 this.questionsJsonUrl = 'quiz_questions.json'; // Path to JSON file
 
+                // AI Grading API Configuration
+                this.graderApiUrl = 'http://153.92.221.225'; // VPS backend API
+
                 // Timer settings
                 this.examDurationMinutes = parseInt(localStorage.getItem('examDurationMinutes')) || 120;
                 this.examStartTime = null;
