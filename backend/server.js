@@ -5,7 +5,7 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import { readFile } from 'fs/promises';
-import { gradeAnswer } from '../quiz-grader.js';
+import { gradeAnswer } from './quiz-grader.js';
 
 dotenv.config();
 
