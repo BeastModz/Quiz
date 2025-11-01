@@ -1,0 +1,980 @@
+{
+  "rubric_set_id": "practice-exam-en-20251101",
+  "language": "en",
+  "questions": [
+    {
+      "question_id": "1a",
+      "title": "Reynolds number: which forces?",
+      "max_points": 2,
+      "references": [
+        "Reynolds number is the ratio of inertial forces to viscous forces."
+      ],
+      "concepts": [
+        {
+          "id": "inertial_forces",
+          "synonyms": [
+            "inertial forces",
+            "inertial"
+          ],
+          "required": true,
+          "weight": 1
+        },
+        {
+          "id": "viscous_forces",
+          "synonyms": [
+            "viscous forces",
+            "viscous"
+          ],
+          "required": true,
+          "weight": 1
+        },
+        {
+          "id": "ratio",
+          "synonyms": [
+            "ratio"
+          ],
+          "required": false,
+          "weight": 0.5
+        }
+      ],
+      "forbidden": [],
+      "weights": {
+        "semantic": 0.3,
+        "concepts": 0.65,
+        "numbers": 0.0,
+        "structure": 0.05
+      },
+      "thresholds": {
+        "correct_score": 0.85,
+        "partial_score": 0.7,
+        "min_concept_hit_required": 0.8,
+        "gray_zone_low": 0.68,
+        "gray_zone_high": 0.78,
+        "contradiction_penalty": 0.25
+      }
+    },
+    {
+      "question_id": "1b_i",
+      "title": "Conservation of mass (explain)",
+      "max_points": 4,
+      "references": [
+        "Within a fixed system mass cannot be created or destroyed; mass in minus mass out equals accumulation."
+      ],
+      "concepts": [
+        {
+          "id": "fixed_system",
+          "synonyms": [
+            "fixed system",
+            "control volume"
+          ],
+          "required": true,
+          "weight": 1
+        },
+        {
+          "id": "no_creation_destruction",
+          "synonyms": [
+            "cannot be created or destroyed"
+          ],
+          "required": true,
+          "weight": 1
+        },
+        {
+          "id": "balance_form",
+          "synonyms": [
+            "in - out = accumulation",
+            "mass balance"
+          ],
+          "required": false,
+          "weight": 1
+        }
+      ],
+      "forbidden": [],
+      "weights": {
+        "semantic": 0.45,
+        "concepts": 0.4,
+        "numbers": 0.1,
+        "structure": 0.05
+      },
+      "thresholds": {
+        "correct_score": 0.85,
+        "partial_score": 0.7,
+        "min_concept_hit_required": 0.6,
+        "gray_zone_low": 0.68,
+        "gray_zone_high": 0.78,
+        "contradiction_penalty": 0.25
+      }
+    },
+    {
+      "question_id": "1b_ii",
+      "title": "Conservation of momentum (linear/ angular)",
+      "max_points": 4,
+      "references": [
+        "Unless acted on by an external force or torque, a fluid keeps the same velocity or angular speed."
+      ],
+      "concepts": [
+        {
+          "id": "external_force",
+          "synonyms": [
+            "external force"
+          ],
+          "required": true,
+          "weight": 1
+        },
+        {
+          "id": "external_torque",
+          "synonyms": [
+            "torque",
+            "external torque"
+          ],
+          "required": false,
+          "weight": 0.5
+        },
+        {
+          "id": "velocity_rotation_const",
+          "synonyms": [
+            "same velocity",
+            "same angular speed"
+          ],
+          "required": true,
+          "weight": 1
+        },
+        {
+          "id": "momentum",
+          "synonyms": [
+            "momentum"
+          ],
+          "required": false,
+          "weight": 0.5
+        }
+      ],
+      "forbidden": [],
+      "weights": {
+        "semantic": 0.45,
+        "concepts": 0.4,
+        "numbers": 0.1,
+        "structure": 0.05
+      },
+      "thresholds": {
+        "correct_score": 0.85,
+        "partial_score": 0.7,
+        "min_concept_hit_required": 0.6,
+        "gray_zone_low": 0.68,
+        "gray_zone_high": 0.78,
+        "contradiction_penalty": 0.25
+      }
+    },
+    {
+      "question_id": "1c",
+      "title": "Right heart: where and why?",
+      "max_points": 5,
+      "references": [
+        "The right heart pumps to the lungs for gas exchange: remove CO2 and absorb O2 from the alveoli."
+      ],
+      "concepts": [
+        {
+          "id": "lungs",
+          "synonyms": [
+            "lungs",
+            "pulmonary circulation"
+          ],
+          "required": true,
+          "weight": 2
+        },
+        {
+          "id": "o2_uptake",
+          "synonyms": [
+            "absorb oxygen",
+            "oxygen uptake",
+            "O2 uptake"
+          ],
+          "required": true,
+          "weight": 1.5
+        },
+        {
+          "id": "co2_release",
+          "synonyms": [
+            "remove carbon dioxide",
+            "CO2 release"
+          ],
+          "required": true,
+          "weight": 1.5
+        },
+        {
+          "id": "alveoli",
+          "synonyms": [
+            "alveoli"
+          ],
+          "required": false,
+          "weight": 0.5
+        }
+      ],
+      "forbidden": [
+        "systemic circulation",
+        "throughout the body"
+      ],
+      "weights": {
+        "semantic": 0.45,
+        "concepts": 0.4,
+        "numbers": 0.1,
+        "structure": 0.05
+      },
+      "thresholds": {
+        "correct_score": 0.85,
+        "partial_score": 0.7,
+        "min_concept_hit_required": 0.6,
+        "gray_zone_low": 0.68,
+        "gray_zone_high": 0.78,
+        "contradiction_penalty": 0.25
+      }
+    },
+    {
+      "question_id": "1d",
+      "title": "Heart valves: opening/closing",
+      "max_points": 2,
+      "references": [
+        "Pressure gradients open and close the valves; muscles do not open the valves."
+      ],
+      "concepts": [
+        {
+          "id": "pressure_gradient",
+          "synonyms": [
+            "pressure gradient",
+            "pressure difference"
+          ],
+          "required": true,
+          "weight": 1.5
+        },
+        {
+          "id": "not_muscle",
+          "synonyms": [
+            "muscles do not open"
+          ],
+          "required": true,
+          "weight": 0.5
+        }
+      ],
+      "forbidden": [
+        "muscles open the valves"
+      ],
+      "weights": {
+        "semantic": 0.25,
+        "concepts": 0.7,
+        "numbers": 0.0,
+        "structure": 0.05
+      },
+      "thresholds": {
+        "correct_score": 0.85,
+        "partial_score": 0.7,
+        "min_concept_hit_required": 0.6,
+        "gray_zone_low": 0.68,
+        "gray_zone_high": 0.78,
+        "contradiction_penalty": 0.25
+      }
+    },
+    {
+      "question_id": "1e",
+      "title": "Respiratory interface: what happens?",
+      "max_points": 3,
+      "references": [
+        "At the alveoli-capillary boundary: blood receives O2 and releases CO2 into the alveoli."
+      ],
+      "concepts": [
+        {
+          "id": "interface",
+          "synonyms": [
+            "alveoli-capillary",
+            "alveoli capillary",
+            "capillary-alveoli"
+          ],
+          "required": true,
+          "weight": 1
+        },
+        {
+          "id": "o2_to_blood",
+          "synonyms": [
+            "oxygen to blood",
+            "O2 to blood"
+          ],
+          "required": true,
+          "weight": 1
+        },
+        {
+          "id": "co2_to_alveoli",
+          "synonyms": [
+            "CO2 to alveoli",
+            "carbon dioxide to alveoli"
+          ],
+          "required": true,
+          "weight": 1
+        }
+      ],
+      "forbidden": [],
+      "weights": {
+        "semantic": 0.45,
+        "concepts": 0.4,
+        "numbers": 0.1,
+        "structure": 0.05
+      },
+      "thresholds": {
+        "correct_score": 0.85,
+        "partial_score": 0.7,
+        "min_concept_hit_required": 0.6,
+        "gray_zone_low": 0.68,
+        "gray_zone_high": 0.78,
+        "contradiction_penalty": 0.25
+      }
+    },
+    {
+      "question_id": "1f",
+      "title": "Synovial fluid: storage and lubrication",
+      "max_points": 5,
+      "references": [
+        "Synovial fluid is stored in cartilage, squeezed out like a sponge to lubricate during motion, then reabsorbed."
+      ],
+      "concepts": [
+        {
+          "id": "stored_in_cartilage",
+          "synonyms": [
+            "stored in cartilage"
+          ],
+          "required": true,
+          "weight": 2
+        },
+        {
+          "id": "squeezed_out",
+          "synonyms": [
+            "squeezed out",
+            "weeping"
+          ],
+          "required": true,
+          "weight": 1.5
+        },
+        {
+          "id": "lubrication",
+          "synonyms": [
+            "lubrication"
+          ],
+          "required": true,
+          "weight": 1
+        },
+        {
+          "id": "reabsorbed",
+          "synonyms": [
+            "reabsorbed"
+          ],
+          "required": false,
+          "weight": 0.5
+        }
+      ],
+      "forbidden": [],
+      "weights": {
+        "semantic": 0.45,
+        "concepts": 0.4,
+        "numbers": 0.1,
+        "structure": 0.05
+      },
+      "thresholds": {
+        "correct_score": 0.85,
+        "partial_score": 0.7,
+        "min_concept_hit_required": 0.6,
+        "gray_zone_low": 0.68,
+        "gray_zone_high": 0.78,
+        "contradiction_penalty": 0.25
+      }
+    },
+    {
+      "question_id": "1g",
+      "title": "Titanium advantages (name two)",
+      "max_points": 4,
+      "references": [
+        "Two advantages: corrosion resistance/oxide layer, light but strong, modulus closer to bone, non-magnetic, biocompatible, osseointegration."
+      ],
+      "concepts": [
+        {
+          "id": "corrosion_resistance",
+          "synonyms": [
+            "corrosion resistance",
+            "oxide layer"
+          ],
+          "required": false,
+          "weight": 1
+        },
+        {
+          "id": "light_strong",
+          "synonyms": [
+            "light weight",
+            "light but strong",
+            "low density"
+          ],
+          "required": false,
+          "weight": 1
+        },
+        {
+          "id": "modulus_closer_bone",
+          "synonyms": [
+            "modulus closer to bone",
+            "lower stiffness than steel"
+          ],
+          "required": false,
+          "weight": 1
+        },
+        {
+          "id": "non_magnetic",
+          "synonyms": [
+            "non-magnetic"
+          ],
+          "required": false,
+          "weight": 1
+        },
+        {
+          "id": "biocompatible",
+          "synonyms": [
+            "biocompatible"
+          ],
+          "required": false,
+          "weight": 1
+        },
+        {
+          "id": "osseointegration",
+          "synonyms": [
+            "osseointegration"
+          ],
+          "required": false,
+          "weight": 1
+        }
+      ],
+      "forbidden": [],
+      "weights": {
+        "semantic": 0.25,
+        "concepts": 0.7,
+        "numbers": 0.0,
+        "structure": 0.05
+      },
+      "thresholds": {
+        "correct_score": 0.85,
+        "partial_score": 0.7,
+        "min_concept_hit_required": 0.5,
+        "gray_zone_low": 0.68,
+        "gray_zone_high": 0.78,
+        "contradiction_penalty": 0.25
+      }
+    },
+    {
+      "question_id": "1h",
+      "title": "Volume-based CFD and mesh independence",
+      "max_points": 5,
+      "references": [
+        "CFD uses a grid of small elements with local velocities/pressures; combining them models the flow. Mesh independent: further refinement does not materially change results."
+      ],
+      "concepts": [
+        {
+          "id": "grid_cells",
+          "synonyms": [
+            "grid",
+            "cells",
+            "elements",
+            "finite volume"
+          ],
+          "required": true,
+          "weight": 1.5
+        },
+        {
+          "id": "local_properties",
+          "synonyms": [
+            "local flow variables",
+            "velocity and pressure"
+          ],
+          "required": false,
+          "weight": 0.5
+        },
+        {
+          "id": "mesh_independence",
+          "synonyms": [
+            "mesh independent",
+            "mesh independence"
+          ],
+          "required": true,
+          "weight": 2
+        },
+        {
+          "id": "unchanged_results",
+          "synonyms": [
+            "results unchanged",
+            "refinement doesn't change"
+          ],
+          "required": false,
+          "weight": 1
+        }
+      ],
+      "forbidden": [],
+      "weights": {
+        "semantic": 0.45,
+        "concepts": 0.4,
+        "numbers": 0.1,
+        "structure": 0.05
+      },
+      "thresholds": {
+        "correct_score": 0.85,
+        "partial_score": 0.7,
+        "min_concept_hit_required": 0.6,
+        "gray_zone_low": 0.68,
+        "gray_zone_high": 0.78,
+        "contradiction_penalty": 0.25
+      }
+    },
+    {
+      "question_id": "1i_i",
+      "title": "Function: red blood cells",
+      "max_points": 2,
+      "references": [
+        "Red blood cells transport oxygen and carbon dioxide."
+      ],
+      "concepts": [
+        {
+          "id": "transport",
+          "synonyms": [
+            "transport",
+            "carry"
+          ],
+          "required": true,
+          "weight": 0.5
+        },
+        {
+          "id": "oxygen",
+          "synonyms": [
+            "oxygen",
+            "O2"
+          ],
+          "required": true,
+          "weight": 0.75
+        },
+        {
+          "id": "carbon_dioxide",
+          "synonyms": [
+            "carbon dioxide",
+            "CO2"
+          ],
+          "required": true,
+          "weight": 0.75
+        }
+      ],
+      "forbidden": [],
+      "weights": {
+        "semantic": 0.3,
+        "concepts": 0.65,
+        "numbers": 0.0,
+        "structure": 0.05
+      },
+      "thresholds": {
+        "correct_score": 0.85,
+        "partial_score": 0.7,
+        "min_concept_hit_required": 0.6,
+        "gray_zone_low": 0.68,
+        "gray_zone_high": 0.78,
+        "contradiction_penalty": 0.25
+      }
+    },
+    {
+      "question_id": "1i_ii",
+      "title": "Function: white blood cells",
+      "max_points": 2,
+      "references": [
+        "White blood cells fight infections and eliminate foreign particles."
+      ],
+      "concepts": [
+        {
+          "id": "fight_infections",
+          "synonyms": [
+            "fight infections"
+          ],
+          "required": true,
+          "weight": 1
+        },
+        {
+          "id": "remove_foreign",
+          "synonyms": [
+            "eliminate foreign particles"
+          ],
+          "required": false,
+          "weight": 1
+        }
+      ],
+      "forbidden": [],
+      "weights": {
+        "semantic": 0.3,
+        "concepts": 0.65,
+        "numbers": 0.0,
+        "structure": 0.05
+      },
+      "thresholds": {
+        "correct_score": 0.85,
+        "partial_score": 0.7,
+        "min_concept_hit_required": 0.6,
+        "gray_zone_low": 0.68,
+        "gray_zone_high": 0.78,
+        "contradiction_penalty": 0.25
+      }
+    },
+    {
+      "question_id": "1i_iii",
+      "title": "Function: platelets",
+      "max_points": 2,
+      "references": [
+        "Platelets stop blood loss and maintain hemostasis."
+      ],
+      "concepts": [
+        {
+          "id": "hemostasis",
+          "synonyms": [
+            "hemostasis",
+            "stop blood loss",
+            "clotting"
+          ],
+          "required": true,
+          "weight": 2
+        }
+      ],
+      "forbidden": [],
+      "weights": {
+        "semantic": 0.3,
+        "concepts": 0.65,
+        "numbers": 0.0,
+        "structure": 0.05
+      },
+      "thresholds": {
+        "correct_score": 0.85,
+        "partial_score": 0.7,
+        "min_concept_hit_required": 0.6,
+        "gray_zone_low": 0.68,
+        "gray_zone_high": 0.78,
+        "contradiction_penalty": 0.25
+      }
+    },
+    {
+      "question_id": "1j",
+      "title": "Blood velocity profile vs inviscid Newtonian",
+      "max_points": 10,
+      "references": [
+        "Blood is shear-thinning: viscosity decreases with shear; the profile has a blunt core (plug flow) due to yield stress; unlike an inviscid Newtonian parabolic profile."
+      ],
+      "concepts": [
+        {
+          "id": "shear_thinning",
+          "synonyms": [
+            "shear-thinning",
+            "shear thinning"
+          ],
+          "required": true,
+          "weight": 3
+        },
+        {
+          "id": "blunt_core",
+          "synonyms": [
+            "blunt core",
+            "plug flow"
+          ],
+          "required": true,
+          "weight": 3
+        },
+        {
+          "id": "yield_stress",
+          "synonyms": [
+            "yield stress"
+          ],
+          "required": true,
+          "weight": 2
+        },
+        {
+          "id": "compare_newtonian",
+          "synonyms": [
+            "not parabolic",
+            "difference from Newtonian",
+            "inviscid Newtonian"
+          ],
+          "required": true,
+          "weight": 2
+        }
+      ],
+      "forbidden": [
+        "blood is Newtonian",
+        "parabolic profile for blood"
+      ],
+      "weights": {
+        "semantic": 0.45,
+        "concepts": 0.4,
+        "numbers": 0.1,
+        "structure": 0.05
+      },
+      "thresholds": {
+        "correct_score": 0.85,
+        "partial_score": 0.7,
+        "min_concept_hit_required": 0.6,
+        "gray_zone_low": 0.68,
+        "gray_zone_high": 0.78,
+        "contradiction_penalty": 0.25
+      }
+    },
+    {
+      "question_id": "2",
+      "title": "Hydrostatics: pressure at point a",
+      "max_points": 15,
+      "references": [
+        "Expected answer: 103065.8 Pa (~103 kPa) using hydrostatic balances and atmospheric offset."
+      ],
+      "concepts": [
+        {
+          "id": "hydrostatic_terms",
+          "synonyms": [
+            "rho g h",
+            "density*gravity*height",
+            "hydrostatic balance",
+            "height difference"
+          ],
+          "required": false,
+          "weight": 1
+        },
+        {
+          "id": "atmospheric_added",
+          "synonyms": [
+            "+101.3 kPa",
+            "atmospheric pressure added"
+          ],
+          "required": false,
+          "weight": 1
+        }
+      ],
+      "numbers": [
+        {
+          "id": "pressure_a",
+          "value": 103065.8,
+          "unit": "Pa",
+          "tolerance": 0.02
+        }
+      ],
+      "forbidden": [],
+      "weights": {
+        "semantic": 0.2,
+        "concepts": 0.3,
+        "numbers": 0.45,
+        "structure": 0.05
+      },
+      "thresholds": {
+        "correct_score": 0.85,
+        "partial_score": 0.7,
+        "min_concept_hit_required": 0.6,
+        "gray_zone_low": 0.68,
+        "gray_zone_high": 0.78,
+        "contradiction_penalty": 0.25
+      }
+    },
+    {
+      "question_id": "3",
+      "title": "Partial pressures while diving (safety)",
+      "max_points": 7,
+      "references": [
+        "Total pressure at 30 m ≈ 395.6 kPa; pO2 = 0.2 × P ≈ 79.1 kPa; unsafe (>60 kPa)."
+      ],
+      "concepts": [
+        {
+          "id": "partial_pressure_rule",
+          "synonyms": [
+            "partial pressure = fraction * total",
+            "0.2 * P"
+          ],
+          "required": true,
+          "weight": 2
+        },
+        {
+          "id": "unsafe_conclusion",
+          "synonyms": [
+            "unsafe"
+          ],
+          "required": true,
+          "weight": 1
+        }
+      ],
+      "numbers": [
+        {
+          "id": "p_total",
+          "value": 395600,
+          "unit": "Pa",
+          "tolerance": 0.02
+        },
+        {
+          "id": "p_o2",
+          "value": 79.12,
+          "unit": "kPa",
+          "tolerance": 0.02
+        }
+      ],
+      "forbidden": [
+        "safe"
+      ],
+      "weights": {
+        "semantic": 0.25,
+        "concepts": 0.35,
+        "numbers": 0.35,
+        "structure": 0.05
+      },
+      "thresholds": {
+        "correct_score": 0.85,
+        "partial_score": 0.7,
+        "min_concept_hit_required": 0.6,
+        "gray_zone_low": 0.68,
+        "gray_zone_high": 0.78,
+        "contradiction_penalty": 0.25
+      }
+    },
+    {
+      "question_id": "4",
+      "title": "Composite: Young's modulus parallel",
+      "max_points": 5,
+      "references": [
+        "Rule of mixtures: E = 0.1*100 + 0.9*3 = 12.7 GPa."
+      ],
+      "concepts": [
+        {
+          "id": "rule_of_mixtures",
+          "synonyms": [
+            "rule of mixtures",
+            "E = vf*Ef + vm*Em"
+          ],
+          "required": false,
+          "weight": 1
+        }
+      ],
+      "numbers": [
+        {
+          "id": "E_parallel",
+          "value": 12.7,
+          "unit": "GPa",
+          "tolerance": 0.02
+        }
+      ],
+      "forbidden": [],
+      "weights": {
+        "semantic": 0.2,
+        "concepts": 0.3,
+        "numbers": 0.45,
+        "structure": 0.05
+      },
+      "thresholds": {
+        "correct_score": 0.85,
+        "partial_score": 0.7,
+        "min_concept_hit_required": 0.6,
+        "gray_zone_low": 0.68,
+        "gray_zone_high": 0.78,
+        "contradiction_penalty": 0.25
+      }
+    },
+    {
+      "question_id": "5",
+      "title": "Flowing water: elevation difference Δz",
+      "max_points": 15,
+      "references": [
+        "Using continuity and Bernoulli: v_out ≈ 2.34375 m/s; Δz ≈ 0.21187 m (21.2 cm)."
+      ],
+      "concepts": [
+        {
+          "id": "continuity",
+          "synonyms": [
+            "continuity",
+            "vA constant",
+            "Qin=Qout"
+          ],
+          "required": true,
+          "weight": 1.5
+        },
+        {
+          "id": "bernoulli",
+          "synonyms": [
+            "Bernoulli",
+            "energy equation"
+          ],
+          "required": true,
+          "weight": 1
+        }
+      ],
+      "numbers": [
+        {
+          "id": "delta_z",
+          "value": 0.21187,
+          "unit": "m",
+          "tolerance": 0.05
+        },
+        {
+          "id": "v_out",
+          "value": 2.34375,
+          "unit": "m",
+          "tolerance": 0.05
+        }
+      ],
+      "forbidden": [],
+      "weights": {
+        "semantic": 0.2,
+        "concepts": 0.35,
+        "numbers": 0.4,
+        "structure": 0.05
+      },
+      "thresholds": {
+        "correct_score": 0.85,
+        "partial_score": 0.7,
+        "min_concept_hit_required": 0.6,
+        "gray_zone_low": 0.68,
+        "gray_zone_high": 0.78,
+        "contradiction_penalty": 0.25
+      }
+    },
+    {
+      "question_id": "6",
+      "title": "Boyle/ideal gas with temperature correction",
+      "max_points": 8,
+      "references": [
+        "P1*V1/T1 = P2*V2/T2 with T in Kelvin; V1 ≈ 1.079 L."
+      ],
+      "concepts": [
+        {
+          "id": "ideal_gas_relation",
+          "synonyms": [
+            "P1V1/T1 = P2V2/T2",
+            "ideal gas with temperature"
+          ],
+          "required": true,
+          "weight": 1
+        },
+        {
+          "id": "kelvin",
+          "synonyms": [
+            "Kelvin",
+            "K"
+          ],
+          "required": false,
+          "weight": 0.5
+        }
+      ],
+      "numbers": [
+        {
+          "id": "V1",
+          "value": 1.079,
+          "unit": "L",
+          "tolerance": 0.02
+        }
+      ],
+      "forbidden": [],
+      "weights": {
+        "semantic": 0.25,
+        "concepts": 0.35,
+        "numbers": 0.35,
+        "structure": 0.05
+      },
+      "thresholds": {
+        "correct_score": 0.85,
+        "partial_score": 0.7,
+        "min_concept_hit_required": 0.6,
+        "gray_zone_low": 0.68,
+        "gray_zone_high": 0.78,
+        "contradiction_penalty": 0.25
+      }
+    }
+  ]
+}
