@@ -778,6 +778,21 @@
     .start-exam-button:active {
       transform: translateY(0);
     }
+    
+    #examSelector {
+      transition: all 0.2s;
+    }
+    
+    #examSelector:hover {
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+    
+    #examSelector:focus {
+      outline: none;
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+    }
 
     .start-exam-info {
       display: flex;
@@ -820,6 +835,21 @@
 
     [data-theme="dark"] .start-exam-select:hover {
       border-color: #8b5cf6;
+    }
+    
+    [data-theme="dark"] #examSelector {
+      background: #0f172a;
+      color: #f1f5f9;
+      border-color: #334155;
+    }
+    
+    [data-theme="dark"] #examSelector:hover {
+      border-color: #8b5cf6;
+    }
+    
+    [data-theme="dark"] #examSelector option {
+      background: #0f172a;
+      color: #f1f5f9;
     }
 
     [data-theme="dark"] .start-exam-info {
@@ -2077,13 +2107,23 @@
           </div>
           <h1 class="start-exam-title">Ready to Start Your Exam?</h1>
           <p class="start-exam-description">
-            Click the button below to begin. You'll have <strong id="startExamDuration">2 hours</strong> to complete all questions.<br>
+            Select your exam and begin. You'll have <strong id="startExamDuration">2 hours</strong> to complete all questions.<br>
             <span style="color: #667eea; font-size: 0.9rem; margin-top: 0.5rem; display: inline-block;">
               🎲 Each exam randomly selects 80 questions with shuffled answer positions
             </span>
           </p>
           
           <div class="start-exam-form">
+            <div style="margin-bottom: 1.5rem;">
+              <label style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #374151; font-size: 0.95rem;">
+                Choose Your Exam:
+              </label>
+              <select id="examSelector" style="width: 100%; padding: 0.875rem 1rem; border: 2px solid #d1d5db; border-radius: 12px; font-size: 1rem; background: white; cursor: pointer; transition: all 0.2s;">
+                <option value="anatomy">Anatomy & Physiology (160 questions)</option>
+                <option value="human-dynamics">Human Dynamics (Coming Soon)</option>
+              </select>
+            </div>
+            
             <button id="startExamBtn" class="start-exam-button">
               <i data-lucide="play-circle" style="width: 20px; height: 20px;"></i>
               <span>Start Exam</span>
@@ -2801,8 +2841,21 @@
             }
 
             startExam() {
-                // Always use both exams
-                this.dataset = 'Both';
+                // Get selected exam
+                const examSelector = document.getElementById('examSelector');
+                const selectedExam = examSelector.value;
+                
+                if (selectedExam === 'human-dynamics') {
+                    alert('Human Dynamics questions coming soon! Please select Anatomy & Physiology for now.');
+                    return;
+                }
+                
+                // Set dataset based on selection
+                if (selectedExam === 'anatomy') {
+                    this.dataset = 'Both'; // Load both Exam 1 and Exam 2
+                } else if (selectedExam === 'human-dynamics') {
+                    this.dataset = 'Human Dynamics';
+                }
                 
                 // Refilter questions based on selected exam
                 this.filterQuestionsByDataset();

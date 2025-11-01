@@ -1,0 +1,269 @@
+1 
+  
+Examination code :  
+ 
+Code  ELVH18GBM      
+ Subject:  
+  
+Human Dynamics  
+Date:  
+     
+Practice  
+ Starting time:  
+ 
+ School:  
+ 
+ School  
+Room:  
+  
+ Group:  
+  
+BME Minor  
+ Duration:  
+ 
+2.5 hours  
+ 
+During the Exam the following Lecturers can be 
+contacted;  
+Name:   
+Telephone number:   
+ Number of pages:      9 
+ 
+Aids and appliances:  
+ 
+Calculator : 
+ -Casio FX 82 MS  and / or  
+ -TI-30XB multiview  and / or  
+ -TI-30XS multiview  
+ 
+ 
+ 
+ 
+ Remaining namely:  
+ 
+Examination paper  
+Hand in Exampaper:  Yes 
+ 
+Hand in scribble -paper:  No           
+  
+Particulars:  
+ 
+A total amount of 100 points can be achieved. The final grade for this exam is the 
+total number of points divided by 10.  
+55 points are needed to pass the exam. The lowest grade is a 1  
+ 
+Student Name :                                                            
+ 
+ 
+ 
+ 
+  
+Student number:  
+ 
+ 
+ 
+ 
+ 
+ 
+
+2 
+ 1) Theory  (50 points):  
+ 
+a) The unitless dimension ‘Reynold’s number’ represents the ratio of two 
+types of forces, what are they?  (2 points)  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+b) Give a brief explanation of what the governing laws of fluid flow mean : 
+i) Conservation of Mass  (4 points)  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ii) Conservation of Linear / Angular Momentum  (4 points)  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+c) The left half of the heart pumps blood throughout the body but the right 
+part is dedicated to one area. What is this area of the body and why is 
+half of the heart dedicated to it? (5 points)  
+ 
+  
+
+3 
+ d) How are the valves within the heart opened and closed?  (2 poin ts) 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+e) What occurs at the respiratory boundary ? (3 points)  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+f) Explain the mechanism of how synovial fluid is stored in a joint and 
+how it is used to lubricate the joint during motion.  (5 points)  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+g) Give two advantages of using titanium as an implant material . (4 
+points)  
+ 
+ 
+ 
+ 
+ 
+  
+
+4 
+ h) Briefly explain how volume based computational fluid dynamics can 
+model flows within the human body and what it means to be ‘mesh 
+independent’. (5 points)  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+i) What is the main function o f: 
+i) Red blood cells (2 points)  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ii) White blood cells (2 points)  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+iii) Platelets (2 points)  
+ 
+ 
+  
+
+5 
+ j) Draw below how the velocity profile of blood will look as it flows through 
+a cylindrical blood vessel. Explain any differences between your 
+velocity profile and that of an inviscid Newtonian fluid shown as an 
+example.  (10 points)  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  Blood      Inviscid Newtonian Fluid  
+ 
+ 
+  
+
+6 
+ 2) Static Fluid Pressures  (15 Points)  
+Determine the pressure at point a . 
+ 
+  
+
+
+7 
+ 3) Partial Pressures  (7 Points)  
+Is it safe to dive at a depth of 30m with a mixture containing 20% oxygen for a 
+long period of time when a partial pressure of oxygen above 60kPa can be 
+dangerous? Proof your answer with a calculation. (Assume other components 
+of the gas are not dangerous and the surface of the water is at  sea level)  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+4) Composite Materials ( 5 Points)  
+A composite material is to be put into the body as an implant material. This 
+composite has a plastic matrix with carbon fibres aligned parallel to the load. 
+The fibres make up 10% of the volume of the composite and has a Young’s 
+modulus of 100GPa and the m atrix has a Young’s modulus of 3GPa. 
+Determine the Young’s modulus of the entire composite in this direction.  
+  
+
+8 
+ 5) Moving Fluid Flows  (15 points)  
+Determine the distance between the inlet and outlet of th is system  containing 
+water . Assume the inlet and outlet are both circular.  The inlet has a radius of 
+5cm and the outlet has a radius of 4cm. The water flows into the inlet at a rate 
+of 1.5m/s.  The pressure at the inlet is 105kPa and the pressure at the outlet is 
+101.3kPa.  
+ 
+  
+
+
+9 
+ 6) Boyle’s Law  (8 points)  
+Determine the volume of air that you blow from your lungs into a balloon if you 
+want the balloon to expand 1L in volume. The elasticity of the balloon applies 
+some extra pressure, you can treat the pressure and density of the  air in the  
+balloon as constants of 103kPa and 1.2kg/m3. Your body temperature is 37 °𝐶 
+and the room is 20 °𝐶. The pressure in the atmosphere is 101kPa.  
+ 
+ 
+ 
+
