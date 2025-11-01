@@ -10,3 +10,7 @@ __pycache__/
 *.egg-info/
 dist/
 build/
+
+# Backend config with API keys
+backend/config.php
+.env
