@@ -179,7 +179,8 @@
     </div>
 
     <script>
-        const API_URL = 'http://153.92.221.225:3000';
+        // Use dynamic URL - works on both localhost and VPS
+        const API_URL = window.location.protocol + '//' + window.location.hostname + ':3000';
         
         function updateStatus(success) {
             const badge = document.getElementById('apiStatus');
