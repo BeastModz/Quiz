@@ -131,10 +131,10 @@
 <body>
     <div class="container">
         <h1>🚀 Quiz Grader API Test</h1>
-        <p class="subtitle">Test your Hostinger VPS deployment at <strong>153.92.221.225</strong></p>
+        <p class="subtitle">Test your Hostinger VPS deployment at <strong>153.92.221.225:3000</strong></p>
 
         <div class="api-info">
-            <strong>📍 API Endpoint:</strong> http://153.92.221.225<br>
+            <strong>📍 API Endpoint:</strong> http://153.92.221.225:3000<br>
             <strong>🎯 Status:</strong> <span id="apiStatus" class="status-badge status-pending">Not tested</span>
         </div>
 
@@ -179,7 +179,7 @@
     </div>
 
     <script>
-        const API_URL = 'http://153.92.221.225';
+        const API_URL = 'http://153.92.221.225:3000';
         
         function updateStatus(success) {
             const badge = document.getElementById('apiStatus');
