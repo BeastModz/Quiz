@@ -1,144 +1,305 @@
-# InfinityFree Deployment Guide
+# Node.js Backend Deployment Guide
 
-## 🚀 Deploy Quiz Grader API to InfinityFree
+## 🎯 Deploy to Hostinger/Premium Hosting with Node.js Support
 
-### Step 1: Sign Up
-1. Go to https://www.infinityfree.com/
-2. Click "Sign Up" and create a free account
-3. Create a new website (choose a subdomain like `quiz-grader.infinityfreeapp.com`)
+Perfect for the $2.50/month plan with Node.js support!
 
-### Step 2: Prepare Files
-Upload these files to your InfinityFree hosting via FTP:
+---
+
+## 📦 **Step 1: Prepare Files**
+
+Upload these files via FTP/cPanel File Manager:
 
 ```
-htdocs/
-├── api/
-│   └── grade.php          (rename grade-api.php to this)
-├── data/
-│   └── all_rubrics.en.json
-└── config.php             (copy from config.example.php)
+backend/
+├── server.js                    (Express API server)
+├── package.json                 (Dependencies)
+├── .env                         (Your config - copy from .env.example)
+├── quiz-grader.js              (Main grading logic)
+└── data/
+    └── all_rubrics.en.json     (Question rubrics)
 ```
 
-### Step 3: Configure
-1. **Edit `config.php`**:
-   ```php
-   define('OPENAI_API_KEY', 'sk-your-real-key-here');
-   ```
+---
 
-2. **Update CORS in `grade.php`**:
-   ```php
-   header('Access-Control-Allow-Origin: https://beastmodz.github.io');
-   ```
+## 🔑 **Step 2: Configure Environment**
 
-### Step 4: Upload via FTP
-1. Download an FTP client (FileZilla recommended)
-2. Get FTP credentials from InfinityFree control panel
-3. Connect and upload files to `htdocs/` folder
+1. Copy `.env.example` to `.env`
+2. Edit `.env` with your settings:
 
-**FTP Details from InfinityFree:**
-- Host: `ftpupload.net`
-- Username: Your InfinityFree username
-- Password: Your InfinityFree password
-- Port: 21
+```env
+OPENAI_API_KEY=sk-your-actual-key-here
+PORT=3000
+ALLOWED_ORIGINS=https://beastmodz.github.io
+OPENAI_MODEL_EMBEDDING=text-embedding-3-small
+OPENAI_MODEL_LLM=gpt-4o-mini
+USE_LLM_FALLBACK=true
+```
 
-### Step 5: Update Quiz App
-In your `quiz_practice.html`, add this JavaScript function:
+---
 
-```javascript
-async function gradeEssayAnswer(questionId, studentAnswer) {
-    const response = await fetch('https://your-subdomain.infinityfreeapp.com/api/grade.php', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            question_id: questionId,
-            student_answer: studentAnswer
-        })
-    });
-    
-    if (!response.ok) {
-        throw new Error('Grading failed');
-    }
-    
-    const data = await response.json();
-    return data.result;
+## 🚀 **Step 3: Install & Start**
+
+### Via SSH (if available):
+```bash
+cd ~/backend
+npm install
+npm start
+```
+
+### Via cPanel Node.js App Manager:
+1. Go to cPanel → **Setup Node.js App**
+2. Create new application:
+   - **Node.js version**: 18.x or higher
+   - **Application mode**: Production
+   - **Application root**: `/home/username/backend`
+   - **Application URL**: `your-domain.com` or subdomain
+   - **Application startup file**: `server.js`
+3. Click "Create"
+4. Click "Run NPM Install"
+5. Click "Start Application"
+
+---
+
+## 🧪 **Step 4: Test the API**
+
+### Health Check:
+```bash
+curl https://your-domain.com/health
+```
+
+Expected response:
+```json
+{
+  "status": "ok",
+  "timestamp": "2025-11-01T12:00:00.000Z",
+  "node": "v18.17.0"
 }
 ```
 
-### Step 6: Test
-1. Open browser console on your quiz page
-2. Test the API:
-   ```javascript
-   gradeEssayAnswer('1a', 'inertial and viscous forces').then(console.log);
-   ```
+### Test Grading:
+```bash
+curl -X POST https://your-domain.com/api/grade \
+  -H "Content-Type: application/json" \
+  -d '{
+    "question_id": "1a",
+    "student_answer": "Reynolds number represents the ratio of inertial forces to viscous forces"
+  }'
+```
 
-3. Should return:
-   ```json
-   {
-     "grade": "correct",
-     "score": 0.95,
-     "points": 2,
-     "feedback": "Excellent! You correctly identified both forces.",
-     "missing_concepts": [],
-     "strengths": ["Identified inertial forces", "Identified viscous forces"],
-     "improvements": []
-   }
-   ```
+Expected response:
+```json
+{
+  "success": true,
+  "question_id": "1a",
+  "question_title": "Reynolds number: which forces?",
+  "max_points": 2,
+  "result": {
+    "label": "correct",
+    "score": 0.950,
+    "points": 2,
+    "breakdown": {
+      "semantic": 0.95,
+      "concepts": 1.0,
+      "numbers": 1.0,
+      "structure": 0.5,
+      "penalty": 0.0
+    },
+    "missing_concepts": [],
+    "decided_by": "heuristic"
+  }
+}
+```
 
-## 🔒 Security Notes
+---
 
-### ⚠️ API Key Protection
-- **NEVER** commit `config.php` to Git
-- Add to `.gitignore`:
-  ```
-  backend/config.php
-  ```
+## 🔗 **Step 5: Connect Quiz App**
 
-### 🛡️ CORS Protection
-- Only allow requests from your GitHub Pages URL
-- Update `ALLOWED_ORIGINS` in config.php
+Update your `quiz_practice.html` to use the API:
 
-### 📊 Rate Limiting (Optional)
-InfinityFree has some limits:
-- **50,000 hits/day** (should be plenty)
-- **CPU usage limits** (keep requests fast)
+```javascript
+// Add this to your quiz app
+class HumanDynamicsGrader {
+    constructor(apiUrl) {
+        this.apiUrl = apiUrl || 'https://your-domain.com';
+    }
 
-## 🐛 Troubleshooting
+    async gradeAnswer(questionId, studentAnswer) {
+        try {
+            const response = await fetch(`${this.apiUrl}/api/grade`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    question_id: questionId,
+                    student_answer: studentAnswer
+                })
+            });
 
-### "API key not configured"
-- Check that `config.php` exists and has correct key
-- Verify file is in same directory as `grade.php`
+            if (!response.ok) {
+                throw new Error(`HTTP ${response.status}`);
+            }
+
+            const data = await response.json();
+            return data.result;
+        } catch (err) {
+            console.error('Grading error:', err);
+            throw err;
+        }
+    }
+
+    async getAvailableQuestions() {
+        const response = await fetch(`${this.apiUrl}/api/questions`);
+        return await response.json();
+    }
+}
+
+// Usage example
+const grader = new HumanDynamicsGrader('https://your-domain.com');
+
+// When student submits an essay answer
+async function handleEssaySubmit(questionId, answer) {
+    const result = await grader.gradeAnswer(questionId, answer);
+    
+    console.log(`Grade: ${result.label}`);
+    console.log(`Score: ${result.score}`);
+    console.log(`Points: ${result.points}/${maxPoints}`);
+    console.log(`Feedback: ${result.breakdown}`);
+    
+    // Show to user...
+}
+```
+
+---
+
+## 🎨 **API Endpoints**
+
+### `GET /health`
+Check if server is running
+
+### `GET /api/questions`
+Get list of all available questions
+```json
+{
+  "rubric_set_id": "practice-exam-en-20251101",
+  "total_questions": 17,
+  "questions": [
+    { "question_id": "1a", "title": "Reynolds number: which forces?", "max_points": 2 },
+    ...
+  ]
+}
+```
+
+### `POST /api/grade`
+Grade a single answer
+```json
+{
+  "question_id": "1a",
+  "student_answer": "your answer here"
+}
+```
+
+### `POST /api/grade/batch`
+Grade multiple answers at once
+```json
+{
+  "answers": [
+    { "question_id": "1a", "student_answer": "..." },
+    { "question_id": "1b_i", "student_answer": "..." }
+  ]
+}
+```
+
+---
+
+## 🔒 **Security Checklist**
+
+✅ **Never commit `.env` file** - Already in `.gitignore`  
+✅ **Use HTTPS** - Configure SSL certificate in cPanel  
+✅ **CORS protection** - Only allow your GitHub Pages domain  
+✅ **Rate limiting** - Consider adding if needed  
+✅ **API key rotation** - Change periodically  
+
+---
+
+## 💰 **Cost Estimates**
+
+### Hosting: **$2.50/month** ($30/year)
+- 5 GB storage
+- 250 GB bandwidth
+- Node.js support
+- cPanel
+
+### OpenAI API: **~$1 per 10,000 questions**
+- Embeddings: ~$0.00001 per question
+- GPT-4o-mini: ~$0.0001 per question
+- Total: ~$0.00011 per graded answer
+
+**Example:** 100 students × 17 questions = 1,700 answers = **~$0.19** in API costs
+
+---
+
+## 🐛 **Troubleshooting**
+
+### "Cannot find module 'openai'"
+```bash
+cd ~/backend
+npm install
+```
+
+### "OPENAI_API_KEY ontbreekt"
+- Check `.env` file exists
+- Verify API key starts with `sk-`
+- Restart Node.js application
 
 ### "CORS error"
-- Update `Access-Control-Allow-Origin` header
-- Make sure your GitHub Pages URL is correct
+- Update `ALLOWED_ORIGINS` in `.env`
+- Add your GitHub Pages URL
+- Restart server
 
-### "OpenAI API error"
-- Check your OpenAI account has credits
-- Verify API key is valid (starts with `sk-`)
+### "Port already in use"
+- Check cPanel Node.js App Manager
+- Stop other Node.js apps if needed
+- Use different PORT in `.env`
 
-### "500 Internal Server Error"
-- Check PHP error logs in InfinityFree control panel
-- Verify file permissions (should be 644)
-- Check that curl extension is enabled
+### High CPU usage
+- Embeddings are cached automatically
+- Consider adding Redis cache for even better performance
+- Monitor via cPanel resource usage
 
-## 💰 Costs
+---
 
-- **InfinityFree**: FREE
-- **OpenAI API**: 
-  - GPT-4o-mini: ~$0.15 per 1M input tokens
-  - ~$0.0001 per question graded
-  - 10,000 questions = ~$1
+## 🚀 **Performance Tips**
 
-## 🆚 Alternative Free Hosting
+1. **Caching**: Embeddings are cached in memory (Map)
+2. **Batch requests**: Use `/api/grade/batch` for multiple questions
+3. **CDN**: Use Cloudflare (free) in front of your domain
+4. **Compression**: Enable gzip in cPanel
+5. **Keep-alive**: Already configured in Express
 
-If InfinityFree doesn't work:
+---
 
-1. **Railway.app** - Free Node.js hosting (500 hrs/month)
-2. **Render.com** - Free tier with 750 hrs/month
-3. **Vercel** - Free serverless functions (Node.js)
-4. **Netlify** - Free serverless functions
-5. **000webhost.com** - Free PHP hosting (alternative to InfinityFree)
+## 📊 **Monitoring**
 
-Railway/Render are better because they support Node.js natively, so you can use the original `quiz-grader.js` without converting to PHP.
+Check logs in cPanel:
+- **Error log**: `~/logs/error.log`
+- **Access log**: `~/logs/access.log`
+- **Node.js log**: cPanel Node.js App Manager
+
+---
+
+## 🆚 **Why This Is Better Than Free Hosting**
+
+| Feature | Free (InfinityFree) | Hostinger ($2.50/mo) |
+|---------|-------------------|---------------------|
+| Node.js | ❌ PHP only | ✅ Full Node.js |
+| Embeddings | ❌ | ✅ |
+| Advanced scoring | ❌ | ✅ |
+| LLM fallback | ❌ | ✅ |
+| Caching | ❌ | ✅ |
+| SSH access | ❌ | ✅ |
+| Custom domains | Limited | ✅ |
+| Performance | Slow | Fast |
+
+**Bottom line**: For $2.50/month, you get the FULL power of the advanced grader! 🎉

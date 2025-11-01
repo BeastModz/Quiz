@@ -1,0 +1,24 @@
+{
+  "name": "quiz-grader-api",
+  "version": "1.0.0",
+  "description": "AI-powered quiz grading API with embeddings and LLM fallback",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "test": "node quiz-grader.js data/all_rubrics.en.json --qid 1a \"inertial and viscous forces\""
+  },
+  "keywords": ["quiz", "grading", "openai", "ai", "education"],
+  "author": "BeastModz",
+  "license": "MIT",
+  "dependencies": {
+    "openai": "^4.20.0",
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

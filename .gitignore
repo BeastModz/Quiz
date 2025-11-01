@@ -13,4 +13,6 @@ build/
 
 # Backend config with API keys
 backend/config.php
+backend/.env
+backend/node_modules/
 .env
