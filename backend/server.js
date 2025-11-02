@@ -168,6 +168,48 @@ app.post('/api/grade/batch', async (req, res) => {
   }
 });
 
+// Chat endpoint - simple conversational interface
+app.post('/api/chat', async (req, res) => {
+  try {
+    const { message } = req.body;
+
+    if (!message || typeof message !== 'string') {
+      return res.status(400).json({
+        error: 'Missing or invalid message',
+        required: ['message']
+      });
+    }
+
+    // Simple echo response with helpful info
+    const response = `You said: "${message}"
+
+✅ The AI Grader API is online and running!
+
+Available endpoints:
+• GET /health - Check server status
+• GET /api/questions - List all 18 questions
+• POST /api/grade - Grade a single answer
+• POST /api/chat - This endpoint (simple chat)
+
+To test grading, try sending an answer to any question ID (1a, 1b_i, etc.)
+
+Example: "Reynolds number compares inertial and viscous forces"`;
+
+    res.json({
+      success: true,
+      response,
+      timestamp: new Date().toISOString()
+    });
+
+  } catch (err) {
+    console.error('Chat error:', err);
+    res.status(500).json({
+      error: 'Chat failed',
+      message: err.message
+    });
+  }
+});
+
 // 404 handler
 app.use((req, res) => {
   res.status(404).json({
@@ -176,7 +218,8 @@ app.use((req, res) => {
       'GET /health',
       'GET /api/questions',
       'POST /api/grade',
-      'POST /api/grade/batch'
+      'POST /api/grade/batch',
+      'POST /api/chat'
     ]
   });
 });
