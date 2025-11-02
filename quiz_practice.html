@@ -2931,10 +2931,11 @@
                     
                     // Convert API format to quiz format
                     this.questions = data.questions.map(q => ({
-                        id: q.id,
-                        question: q.text,
+                        id: q.question_id,
+                        question: q.title,
                         type: 'essay',
                         dataset: 'Human Dynamics',
+                        max_points: q.max_points,
                         rubric: q // Store full rubric for grading
                     }));
                     
@@ -3039,15 +3040,17 @@
                         },
                         body: JSON.stringify({
                             question_id: currentQuestion.id,
-                            answer: answer
+                            student_answer: answer
                         })
                     });
                     
                     if (!response.ok) {
-                        throw new Error('Grading API request failed');
+                        const errorData = await response.json();
+                        throw new Error(errorData.error || 'Grading API request failed');
                     }
                     
-                    const result = await response.json();
+                    const responseData = await response.json();
+                    const result = responseData.result; // Extract nested result
                     
                     // Store grading result
                     currentQuestion.gradingResult = result;
