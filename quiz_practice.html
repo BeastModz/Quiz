@@ -4262,7 +4262,8 @@
                 
                 try {
                     // Try to use OpenAI to respond
-                    const response = await fetch(`${this.graderApiUrl}/api/chat`, {
+                    const apiUrl = this.quizApp.graderApiUrl || (window.location.protocol + '//' + window.location.hostname + ':3000');
+                    const response = await fetch(`${apiUrl}/api/chat`, {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
@@ -4295,13 +4296,14 @@
                     messagesDiv.removeChild(loadingMsg);
                     
                     // Show simple echo response since chat endpoint might not exist
+                    const apiUrl = this.quizApp.graderApiUrl || (window.location.protocol + '//' + window.location.hostname + ':3000');
                     const aiMsg = document.createElement('div');
                     aiMsg.style.cssText = 'margin-bottom: 1rem;';
                     aiMsg.innerHTML = `
                         <div style="display: inline-block; max-width: 80%; background: white; padding: 0.75rem 1rem; border-radius: 1rem 1rem 1rem 0; border: 1px solid #e5e7eb;">
                             <p style="margin: 0 0 0.5rem 0;">You said: "${message}"</p>
                             <p style="margin: 0; color: #6b7280; font-size: 0.875rem;">
-                                💡 This is a simple chat test. The AI grading API is running at <code>${this.graderApiUrl}</code>
+                                💡 This is a simple chat test. The AI grading API is running at <code>${apiUrl}</code>
                             </p>
                         </div>
                     `;
