@@ -2121,7 +2121,7 @@
               </label>
               <select id="examSelector" style="width: 100%; padding: 0.875rem 1rem; border: 2px solid #d1d5db; border-radius: 12px; font-size: 1rem; background: white; cursor: pointer; transition: all 0.2s;">
                 <option value="anatomy">Anatomy & Physiology (160 questions)</option>
-                <option value="human-dynamics">Human Dynamics (Coming Soon)</option>
+                <option value="human-dynamics">Human Dynamics (18 essay questions)</option>
               </select>
             </div>
             
@@ -2889,16 +2889,14 @@
                 const examSelector = document.getElementById('examSelector');
                 const selectedExam = examSelector.value;
                 
-                if (selectedExam === 'human-dynamics') {
-                    alert('Human Dynamics questions coming soon! Please select Anatomy & Physiology for now.');
-                    return;
-                }
-                
                 // Set dataset based on selection
                 if (selectedExam === 'anatomy') {
                     this.dataset = 'Both'; // Load both Exam 1 and Exam 2
                 } else if (selectedExam === 'human-dynamics') {
                     this.dataset = 'Human Dynamics';
+                    // Load Human Dynamics questions from API
+                    this.loadHumanDynamicsQuestions();
+                    return; // Return early, let loadHumanDynamicsQuestions handle the rest
                 }
                 
                 // Refilter questions based on selected exam
@@ -2913,6 +2911,53 @@
                 document.querySelector('.quiz-layout').classList.remove('hidden');
                 
                 this.updateDisplay();
+            }
+
+            async loadHumanDynamicsQuestions() {
+                try {
+                    // Show loading state
+                    const startScreen = document.getElementById('startExamScreen');
+                    startScreen.innerHTML = '<div style="text-align: center; padding: 2rem;"><p>Loading Human Dynamics questions...</p></div>';
+                    
+                    // Load questions from the grading API
+                    const apiUrl = `${window.location.protocol}//${window.location.hostname}:3000`;
+                    const response = await fetch(`${apiUrl}/api/questions`);
+                    
+                    if (!response.ok) {
+                        throw new Error('Failed to load questions from API');
+                    }
+                    
+                    const data = await response.json();
+                    
+                    // Convert API format to quiz format
+                    this.questions = data.questions.map(q => ({
+                        id: q.id,
+                        question: q.text,
+                        type: 'essay',
+                        dataset: 'Human Dynamics',
+                        rubric: q // Store full rubric for grading
+                    }));
+                    
+                    this.activeQuestions = [...this.questions];
+                    this.dataset = 'Human Dynamics';
+                    
+                    // Show stats bar and progress bar
+                    document.getElementById('statsGrid').style.display = 'grid';
+                    document.getElementById('progressBar').style.display = 'block';
+                    
+                    // Hide start screen, show quiz
+                    document.getElementById('startExamScreen').classList.add('hidden');
+                    document.querySelector('.quiz-layout').classList.remove('hidden');
+                    
+                    this.resetQuiz();
+                    this.updateDisplay();
+                    
+                } catch (err) {
+                    console.error('Error loading Human Dynamics questions:', err);
+                    alert(`Failed to load Human Dynamics questions: ${err.message}\n\nPlease make sure the grading API is running.`);
+                    // Reload the page to reset
+                    window.location.reload();
+                }
             }
 
             resetQuiz() {
@@ -2962,6 +3007,72 @@
                     // Single answer - submit immediately
                     this.selectedAnswer = index;
                     this.submitAnswer();
+                }
+            }
+
+            async submitEssayAnswer() {
+                const textarea = document.getElementById('essayAnswer');
+                const answer = textarea.value.trim();
+                
+                if (!answer) {
+                    alert('Please write an answer before submitting.');
+                    return;
+                }
+                
+                const currentQuestion = this.activeQuestions[this.currentQuestionIndex];
+                
+                // Save the answer
+                currentQuestion.userAnswer = answer;
+                
+                // Show loading state
+                const submitBtn = document.getElementById('submitEssayBtn');
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Grading...';
+                
+                try {
+                    // Call the grading API
+                    const apiUrl = `${window.location.protocol}//${window.location.hostname}:3000`;
+                    const response = await fetch(`${apiUrl}/api/grade`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            question_id: currentQuestion.id,
+                            answer: answer
+                        })
+                    });
+                    
+                    if (!response.ok) {
+                        throw new Error('Grading API request failed');
+                    }
+                    
+                    const result = await response.json();
+                    
+                    // Store grading result
+                    currentQuestion.gradingResult = result;
+                    currentQuestion.isCorrect = result.label === 'correct';
+                    currentQuestion.score = result.score;
+                    currentQuestion.points = result.points;
+                    
+                    // Update stats
+                    this.answersTotal++;
+                    if (currentQuestion.isCorrect) {
+                        this.answersCorrect++;
+                        this.answeredCorrectOnce.add(currentQuestion.id);
+                    } else {
+                        this.incorrectIds.add(currentQuestion.id);
+                    }
+                    
+                    // Show feedback
+                    this.showFeedback = true;
+                    this.updateDisplay();
+                    
+                } catch (err) {
+                    console.error('Error grading essay:', err);
+                    alert(`Failed to grade your answer: ${err.message}\n\nPlease check your connection and try again.`);
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Submit Answer';
                 }
             }
 
@@ -3335,6 +3446,58 @@
 
                 const questionType = question.type || 'multiple-choice';
                 
+                // Handle essay questions
+                if (questionType === 'essay') {
+                    const textarea = document.createElement('textarea');
+                    textarea.id = 'essayAnswer';
+                    textarea.className = 'essay-textarea';
+                    textarea.placeholder = 'Type your answer here...';
+                    textarea.style.cssText = `
+                        width: 100%;
+                        min-height: 200px;
+                        padding: 1rem;
+                        border: 2px solid #d1d5db;
+                        border-radius: 12px;
+                        font-size: 1rem;
+                        font-family: inherit;
+                        resize: vertical;
+                        margin-bottom: 1rem;
+                    `;
+                    
+                    // Load saved answer if in feedback mode
+                    if (this.showFeedback && question.userAnswer) {
+                        textarea.value = question.userAnswer;
+                        textarea.disabled = true;
+                    }
+                    
+                    container.appendChild(textarea);
+                    
+                    // Add submit button for essay questions
+                    if (!this.showFeedback) {
+                        const submitBtn = document.createElement('button');
+                        submitBtn.id = 'submitEssayBtn';
+                        submitBtn.className = 'submit-button';
+                        submitBtn.textContent = 'Submit Answer';
+                        submitBtn.style.cssText = `
+                            padding: 0.75rem 1.5rem;
+                            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+                            color: white;
+                            border: none;
+                            border-radius: 8px;
+                            font-size: 1rem;
+                            font-weight: 600;
+                            cursor: pointer;
+                            transition: all 0.2s;
+                        `;
+                        submitBtn.addEventListener('click', () => this.submitEssayAnswer());
+                        container.appendChild(submitBtn);
+                    }
+                    
+                    return;
+                }
+                
+                // Original multiple choice logic
+                
                 // Determine correct answers
                 let correctIndices = [];
                 if (questionType === 'multiple-answer') {
@@ -3411,6 +3574,59 @@
             showFeedbackSection(question) {
                 const feedbackSection = document.getElementById('feedbackSection');
                 
+                // Handle essay questions differently
+                if (question.type === 'essay' && question.gradingResult) {
+                    const result = question.gradingResult;
+                    const isCorrect = result.label === 'correct';
+                    
+                    feedbackSection.innerHTML = `
+                        <div class="feedback-header ${isCorrect ? 'correct' : 'incorrect'}" style="display: flex; align-items: center; gap: 0.5rem; padding: 1rem; border-radius: 8px; margin-bottom: 1rem; background: ${isCorrect ? '#d1fae5' : '#fee2e2'};">
+                            <i data-lucide="${isCorrect ? 'check-circle' : 'x-circle'}" style="width: 24px; height: 24px; color: ${isCorrect ? '#10b981' : '#ef4444'};"></i>
+                            <div>
+                                <strong style="color: ${isCorrect ? '#065f46' : '#991b1b'}; font-size: 1.125rem;">
+                                    ${isCorrect ? 'Correct!' : 'Needs Improvement'}
+                                </strong>
+                                <p style="margin: 0.25rem 0 0 0; color: ${isCorrect ? '#047857' : '#b91c1c'};">
+                                    Score: ${result.score.toFixed(1)}% (${result.points}/${result.rubric?.points || 2} points)
+                                </p>
+                            </div>
+                        </div>
+                        
+                        ${result.breakdown ? `
+                            <div style="background: #f9fafb; padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
+                                <h4 style="margin: 0 0 0.75rem 0; color: #374151;">Detailed Breakdown:</h4>
+                                <ul style="margin: 0; padding-left: 1.5rem; color: #6b7280;">
+                                    ${Object.entries(result.breakdown).map(([key, value]) => `
+                                        <li><strong>${key}:</strong> ${typeof value === 'number' ? (value * 100).toFixed(1) + '%' : value}</li>
+                                    `).join('')}
+                                </ul>
+                            </div>
+                        ` : ''}
+                        
+                        ${result.missing_concepts && result.missing_concepts.length > 0 ? `
+                            <div style="background: #fef3c7; padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
+                                <h4 style="margin: 0 0 0.75rem 0; color: #92400e;">Missing Concepts:</h4>
+                                <ul style="margin: 0; padding-left: 1.5rem; color: #78350f;">
+                                    ${result.missing_concepts.map(c => `<li>${c}</li>`).join('')}
+                                </ul>
+                            </div>
+                        ` : ''}
+                        
+                        ${result.decided_by ? `
+                            <p style="font-size: 0.875rem; color: #9ca3af; margin-top: 1rem;">
+                                <em>Grading method: ${result.decided_by}</em>
+                            </p>
+                        ` : ''}
+                    `;
+                    
+                    // Re-initialize Lucide icons
+                    if (window.lucide) {
+                        lucide.createIcons();
+                    }
+                    return;
+                }
+                
+                // Original multiple choice feedback logic
                 // Handle both letter format (A, B, C) and numeric format (0, 1, 2)
                 let correctIndex = question.correct;
                 let correctLetter = question.correct;
