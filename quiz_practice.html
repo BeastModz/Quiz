@@ -4273,7 +4273,9 @@
                         })
                     });
                     
-                    messagesDiv.removeChild(loadingMsg);
+                    if (loadingMsg.parentNode) {
+                        messagesDiv.removeChild(loadingMsg);
+                    }
                     
                     if (!response.ok) {
                         throw new Error(`HTTP ${response.status}`);
@@ -4293,7 +4295,9 @@
                     
                 } catch (error) {
                     console.error('Chat error:', error);
-                    messagesDiv.removeChild(loadingMsg);
+                    if (loadingMsg.parentNode) {
+                        messagesDiv.removeChild(loadingMsg);
+                    }
                     
                     // Show simple echo response since chat endpoint might not exist
                     const apiUrl = this.quizApp.graderApiUrl || (window.location.protocol + '//' + window.location.hostname + ':3000');
