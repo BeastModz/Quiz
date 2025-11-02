@@ -180,20 +180,27 @@ app.post('/api/chat', async (req, res) => {
       });
     }
 
-    // Simple echo response with helpful info
-    const response = `You said: "${message}"
+    // Use OpenAI to respond conversationally
+    const { OpenAI } = await import('openai');
+    const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+    
+    const completion = await openai.chat.completions.create({
+      model: 'gpt-4o-mini',
+      messages: [
+        {
+          role: 'system',
+          content: 'You are a helpful AI assistant for a quiz grading system. You help students understand Human Dynamics concepts related to anatomy, physiology, fluid mechanics, biomechanics, and biomaterials. Be concise, friendly, and educational. If asked about the system, explain that you can help with questions about the 18 Human Dynamics quiz questions covering topics like Reynolds number, cardiovascular system, joints, composites, etc.'
+        },
+        {
+          role: 'user',
+          content: message
+        }
+      ],
+      temperature: 0.7,
+      max_tokens: 500
+    });
 
-✅ The AI Grader API is online and running!
-
-Available endpoints:
-• GET /health - Check server status
-• GET /api/questions - List all 18 questions
-• POST /api/grade - Grade a single answer
-• POST /api/chat - This endpoint (simple chat)
-
-To test grading, try sending an answer to any question ID (1a, 1b_i, etc.)
-
-Example: "Reynolds number compares inertial and viscous forces"`;
+    const response = completion.choices[0].message.content;
 
     res.json({
       success: true,
