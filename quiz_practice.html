@@ -2121,7 +2121,8 @@
               </label>
               <select id="examSelector" style="width: 100%; padding: 0.875rem 1rem; border: 2px solid #d1d5db; border-radius: 12px; font-size: 1rem; background: white; cursor: pointer; transition: all 0.2s;">
                 <option value="anatomy">Anatomy & Physiology (160 questions)</option>
-                <option value="human-dynamics">Human Dynamics (18 essay questions)</option>
+                <option value="human-dynamics-mcq">Human Dynamics MCQ (19 questions)</option>
+                <option value="human-dynamics-essay">Human Dynamics Essay (18 questions)</option>
               </select>
             </div>
             
@@ -2892,11 +2893,16 @@
                 // Set dataset based on selection
                 if (selectedExam === 'anatomy') {
                     this.dataset = 'Both'; // Load both Exam 1 and Exam 2
-                } else if (selectedExam === 'human-dynamics') {
+                } else if (selectedExam === 'human-dynamics-mcq') {
                     this.dataset = 'Human Dynamics';
-                    // Load Human Dynamics questions from API
-                    this.loadHumanDynamicsQuestions();
-                    return; // Return early, let loadHumanDynamicsQuestions handle the rest
+                    // Load Human Dynamics MCQ questions from JSON
+                    this.loadHumanDynamicsMCQ();
+                    return; // Return early, let loadHumanDynamicsMCQ handle the rest
+                } else if (selectedExam === 'human-dynamics-essay') {
+                    this.dataset = 'Human Dynamics';
+                    // Load Human Dynamics essay questions from API
+                    this.loadHumanDynamicsEssay();
+                    return; // Return early, let loadHumanDynamicsEssay handle the rest
                 }
                 
                 // Refilter questions based on selected exam
@@ -2913,7 +2919,64 @@
                 this.updateDisplay();
             }
 
-            async loadHumanDynamicsQuestions() {
+            async loadHumanDynamicsMCQ() {
+                try {
+                    // Show loading state
+                    const startScreen = document.getElementById('startExamScreen');
+                    startScreen.innerHTML = '<div style="text-align: center; padding: 2rem;"><p>Loading Human Dynamics MCQ questions...</p></div>';
+                    
+                    // Load questions from JSON file
+                    const response = await fetch('data/quiz_questions_human_dynamics_detailed.json');
+                    
+                    if (!response.ok) {
+                        throw new Error('Failed to load Human Dynamics MCQ questions');
+                    }
+                    
+                    const data = await response.json();
+                    
+                    // Convert to quiz format
+                    this.questions = data.questions.map(q => {
+                        // Find the correct answer index
+                        const correctAnswerText = q.correct_answers[0];
+                        const correctIndex = q.options.findIndex(opt => opt === correctAnswerText);
+                        
+                        return {
+                            id: q.id,
+                            question: q.question,
+                            options: q.options,
+                            correct: correctIndex, // Use index (0, 1, 2, 3)
+                            type: 'multiple-choice',
+                            dataset: 'Human Dynamics',
+                            exam: q.exam,
+                            topic: q.topic,
+                            explanation: q.detailed_explanation || q.explanation,
+                            source: q.source,
+                            rationales: q.rationales
+                        };
+                    });
+                    
+                    this.activeQuestions = [...this.questions];
+                    this.dataset = 'Human Dynamics';
+                    
+                    // Show stats bar and progress bar
+                    document.getElementById('statsGrid').style.display = 'grid';
+                    document.getElementById('progressBar').style.display = 'block';
+                    
+                    // Hide start screen, show quiz
+                    document.getElementById('startExamScreen').classList.add('hidden');
+                    document.querySelector('.quiz-layout').classList.remove('hidden');
+                    
+                    this.resetQuiz();
+                    this.updateDisplay();
+                    
+                } catch (err) {
+                    console.error('Error loading Human Dynamics MCQ questions:', err);
+                    alert(`Failed to load Human Dynamics MCQ questions: ${err.message}`);
+                    window.location.reload();
+                }
+            }
+
+            async loadHumanDynamicsEssay() {
                 try {
                     // Show loading state
                     const startScreen = document.getElementById('startExamScreen');

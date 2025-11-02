@@ -1,0 +1,484 @@
+{
+  "meta": {
+    "created_at": "2025-11-02T14:39:10.908218Z",
+    "course": "Human Dynamics",
+    "notes": "Questions derived from the provided practice exam. Keep English wording for fidelity."
+  },
+  "questions": [
+    {
+      "id": "HD-1",
+      "exam": "Human Dynamics - Practice",
+      "topic": "Fluid Mechanics",
+      "type": "mcq",
+      "question": "Reynolds number is a ratio between which two types of forces?",
+      "options": [
+        "Elastic to inertial",
+        "Inertial to viscous",
+        "Pressure to gravitational",
+        "Surface tension to buoyant"
+      ],
+      "correct_answers": [
+        "Inertial to viscous"
+      ],
+      "explanation": "Re = (inertial forces) / (viscous forces); it predicts laminar vs turbulent regimes.",
+      "source": "Practice Exam 1a",
+      "detailed_explanation": "Reynolds number Re = (ρ V L)/μ compares inertia (ρ V² over length scale L) to viscous stresses (μ V/L). At low Re (≪1), viscous forces dominate—flow is creeping/Stokesian, disturbances diffuse away and streamlines remain orderly. At high Re (≫~2000 in pipes), inertia dominates—perturbations amplify and flow can become turbulent. Re is dimensionless (all units cancel), so it transfers across scales (e.g., microfluidics vs aortic flow).",
+      "rationales": {
+        "Inertial to viscous": "Correct. Re grows when density, speed, or length scale increase (more inertia) or when viscosity decreases (less viscous damping).",
+        "Elastic to inertial": "Wrong. Elastic vs inertial is captured by the Weissenberg or Deborah numbers (polymeric/viscoelastic flows), not Reynolds.",
+        "Pressure to gravitational": "Wrong. Froude compares inertia to gravity; Euler compares pressure to inertia; neither matches the Re definition.",
+        "Surface tension to buoyant": "Wrong. Bond number compares gravity to surface tension; Weber compares inertia to surface tension; buoyancy isn’t part of Re."
+      }
+    },
+    {
+      "id": "HD-2",
+      "exam": "Human Dynamics - Practice",
+      "topic": "Fluid Mechanics",
+      "type": "mcq",
+      "question": "Conservation of mass in a control volume implies:",
+      "options": [
+        "Mass can be created by pressure gradients",
+        "Mass entering - mass leaving = rate of accumulation inside",
+        "Velocity must be constant everywhere",
+        "Density remains constant in all flows"
+      ],
+      "correct_answers": [
+        "Mass entering - mass leaving = rate of accumulation inside"
+      ],
+      "explanation": "Continuity: mass is neither created nor destroyed in the system.",
+      "source": "Practice Exam 1b(i)",
+      "detailed_explanation": "Integral continuity (conservation of mass) for a control volume says: (ṁ_in − ṁ_out) = d/dt ∫_CV ρ dV. In steady, incompressible flow this reduces to ∑(ρ V·A)_in = ∑(ρ V·A)_out and to A₁V₁ = A₂V₂ if density is constant and only one inlet/outlet. No creation/annihilation terms exist; pressure gradients can redistribute mass but not create it.",
+      "rationales": {
+        "Mass entering - mass leaving = rate of accumulation inside": "Correct. This is the general continuity statement.",
+        "Mass can be created by pressure gradients": "Wrong. Pressure moves mass; it doesn’t create it.",
+        "Velocity must be constant everywhere": "Wrong. Continuity relates fluxes, not uniform velocity fields.",
+        "Density remains constant in all flows": "Wrong. Constant density is a special case (incompressible). Gases often violate this."
+      }
+    },
+    {
+      "id": "HD-3",
+      "exam": "Human Dynamics - Practice",
+      "topic": "Fluid Mechanics",
+      "type": "mcq",
+      "question": "Conservation of linear/angular momentum states that a fluid element will:",
+      "options": [
+        "Accelerate unless acted on by a net force",
+        "Continue with the same velocity or rotation unless acted on by a net force or moment",
+        "Always decelerate due to viscosity",
+        "Move only in streamwise direction"
+      ],
+      "correct_answers": [
+        "Continue with the same velocity or rotation unless acted on by a net force or moment"
+      ],
+      "explanation": "Newton’s second law for fluids; external forces/moments change momentum.",
+      "source": "Practice Exam 1b(ii)",
+      "detailed_explanation": "Linear/angular momentum equations are fluid statements of Newton’s second law: a material element keeps its state of motion (translation/rotation) unless a net external force/moment acts. Surface forces (pressure/viscous stress) and body forces (gravity) change linear momentum; surface couples and distributed torques change angular momentum. In integral form: d/dt ∫_CV ρu dV + ∮ ρu(u·n) dA = ∑F; a similar balance holds for angular momentum with moments.",
+      "rationales": {
+        "Continue with the same velocity or rotation unless acted on by a net force or moment": "Correct. This is the fluid analogue of Newton’s first/second laws.",
+        "Accelerate unless acted on by a net force": "Wrong. Acceleration requires net force, not its absence.",
+        "Always decelerate due to viscosity": "Wrong. Viscosity dissipates energy but doesn’t force universal deceleration; driving pressure can offset it.",
+        "Move only in streamwise direction": "Wrong. Secondary flows and vortices exist; direction is set by the force/moment balance."
+      }
+    },
+    {
+      "id": "HD-4",
+      "exam": "Human Dynamics - Practice",
+      "topic": "Cardiovascular/Respiratory",
+      "type": "mcq",
+      "question": "Which region does the right side of the heart pump blood to, and why?",
+      "options": [
+        "Liver, for nutrient storage",
+        "Lungs, for CO₂ removal and O₂ uptake",
+        "Kidneys, for filtration",
+        "Brain, for thermoregulation"
+      ],
+      "correct_answers": [
+        "Lungs, for CO₂ removal and O₂ uptake"
+      ],
+      "explanation": "The pulmonary circuit exchanges gases at the alveoli.",
+      "source": "Practice Exam 1c",
+      "detailed_explanation": "The right ventricle drives deoxygenated blood through the pulmonary artery to the lungs. In alveolar capillaries, CO₂ diffuses from blood to alveolar gas and O₂ diffuses into blood. Pulmonary pressures are lower than systemic to protect delicate alveoli; total transit is ~0.75 s at rest, yet O₂ equilibrates in ~0.25 s, leaving reserve for exercise.",
+      "rationales": {
+        "Lungs, for CO₂ removal and O₂ uptake": "Correct. That is the pulmonary circuit’s role.",
+        "Liver, for nutrient storage": "Wrong circuit. Hepatic portal flow comes from gut to liver, not right ventricle output.",
+        "Kidneys, for filtration": "Wrong circuit. Renal circulation is supplied by the aorta (left heart/systemic).",
+        "Brain, for thermoregulation": "Thermoregulation is secondary and systemic; right heart does not uniquely target the brain."
+      }
+    },
+    {
+      "id": "HD-5",
+      "exam": "Human Dynamics - Practice",
+      "topic": "Cardiovascular",
+      "type": "mcq",
+      "question": "Cardiac valves open and close primarily due to:",
+      "options": [
+        "Muscle contraction of valve leaflets",
+        "Autonomic neural impulses",
+        "Pressure gradients across the valve",
+        "Gravity"
+      ],
+      "correct_answers": [
+        "Pressure gradients across the valve"
+      ],
+      "explanation": "Valve leaflets are passive; pressure differences drive motion.",
+      "source": "Practice Exam 1d",
+      "detailed_explanation": "Atrioventricular (AV) and semilunar valves are passive. They open when upstream pressure exceeds downstream pressure and close when the gradient reverses. Leaflet motion is influenced by flow-induced forces and chordae/papillary muscles prevent prolapse but do not actively open the valve. Timing aligns with pressure tracings: e.g., aortic valve opens when LV pressure surpasses aortic pressure.",
+      "rationales": {
+        "Pressure gradients across the valve": "Correct. Pressure difference is the primary driver.",
+        "Muscle contraction of valve leaflets": "Wrong. Leaflets are connective tissue; no contractile myocardium.",
+        "Autonomic neural impulses": "Wrong. Autonomics modulate rates/pressures but don’t directly open valves.",
+        "Gravity": "Wrong. Works in specific postures but is not the control mechanism."
+      }
+    },
+    {
+      "id": "HD-6",
+      "exam": "Human Dynamics - Practice",
+      "topic": "Respiration",
+      "type": "mcq",
+      "question": "What occurs at the respiratory boundary (alveoli-capillary interface)?",
+      "options": [
+        "O₂ enters blood and CO₂ leaves blood",
+        "CO₂ enters blood and O₂ leaves blood",
+        "Only O₂ diffuses; CO₂ is convected",
+        "No gas exchange occurs here"
+      ],
+      "correct_answers": [
+        "O₂ enters blood and CO₂ leaves blood"
+      ],
+      "explanation": "Bidirectional diffusion enables gas exchange between air and blood.",
+      "source": "Practice Exam 1e",
+      "detailed_explanation": "At the alveolar–capillary membrane (~0.5–1 μm), O₂ and CO₂ exchange by diffusion down partial-pressure gradients (Fick’s law). Typical end-capillary values: PaO₂ ≈ 100 mmHg, PaCO₂ ≈ 40 mmHg at sea level. O₂ binds hemoglobin (sigmoidal saturation curve); CO₂ is carried dissolved, as bicarbonate (via carbonic anhydrase), and as carbamino compounds.",
+      "rationales": {
+        "O₂ enters blood and CO₂ leaves blood": "Correct for normal physiology at the lung.",
+        "CO₂ enters blood and O₂ leaves blood": "Wrong; that happens in tissues, not in the lungs.",
+        "Only O₂ diffuses; CO₂ is convected": "Wrong. Both gases diffuse; convection moves bulk gas/blood to the interface.",
+        "No gas exchange occurs here": "Wrong. This interface is precisely where exchange occurs."
+      }
+    },
+    {
+      "id": "HD-7",
+      "exam": "Human Dynamics - Practice",
+      "topic": "Musculoskeletal",
+      "type": "mcq",
+      "question": "Synovial fluid lubricates joints primarily because it is:",
+      "options": [
+        "Secreted into the joint space and continuously pumped",
+        "Stored in cartilage and squeezed out during motion, then reabsorbed",
+        "A non-Newtonian gas trapped in cavities",
+        "Generated by muscle metabolism during exercise"
+      ],
+      "correct_answers": [
+        "Stored in cartilage and squeezed out during motion, then reabsorbed"
+      ],
+      "explanation": "Poroviscoelastic cartilage acts like a sponge: exudes lubricant in motion, re-imbibes at rest.",
+      "source": "Practice Exam 1f",
+      "detailed_explanation": "Articular cartilage is poroviscoelastic. Under load and motion, interstitial fluid is pressurized and expressed (“weeping lubrication”), reducing direct asperity contact and friction. During rest, fluid re-enters by imbibition. Lubrication is mixed/boundary/hydrodynamic depending on speed and load; hyaluronan and lubricin aid boundary lubrication. The dominant supply during motion is from the cartilage matrix, not an active pump.",
+      "rationales": {
+        "Stored in cartilage and squeezed out during motion, then reabsorbed": "Correct. This is weeping/poroelastic lubrication.",
+        "Secreted into the joint space and continuously pumped": "Wrong. There’s secretion by synovium but not a continuous mechanical pump.",
+        "A non-Newtonian gas trapped in cavities": "Wrong. Synovial fluid is a liquid with shear-thinning properties, not a gas.",
+        "Generated by muscle metabolism during exercise": "Wrong. Muscles don’t generate synovial fluid."
+      }
+    },
+    {
+      "id": "HD-8",
+      "exam": "Human Dynamics - Practice",
+      "topic": "Biomaterials",
+      "type": "mcq",
+      "question": "Which of the following is NOT an advantage of titanium for implants?",
+      "options": [
+        "High corrosion resistance via oxide layer",
+        "Osseointegration and biocompatibility",
+        "Non-magnetic behavior",
+        "Young’s modulus identical to bone"
+      ],
+      "correct_answers": [
+        "Young’s modulus identical to bone"
+      ],
+      "explanation": "Ti’s modulus is closer to bone than steel but not identical.",
+      "source": "Practice Exam 1g",
+      "detailed_explanation": "Titanium (and Ti-6Al-4V) resists corrosion via a stable TiO₂ passive film, is biocompatible, and osseointegrates (bone grows onto/into surface). It’s non-ferromagnetic and MRI-compatible with minimal artifacts. Its Young’s modulus (~110 GPa for Ti-6Al-4V; cp-Ti ~100 GPa) is lower than stainless steel (~200 GPa) but still higher than cortical bone (~15–25 GPa), so stress shielding can still occur—modulus is not ‘identical’ to bone.",
+      "rationales": {
+        "Young’s modulus identical to bone": "Correct choice as NOT an advantage. Ti’s modulus is closer than steel but not equal to bone.",
+        "High corrosion resistance via oxide layer": "Advantage. The passive film protects in vivo.",
+        "Osseointegration and biocompatibility": "Advantage. Supports long-term fixation.",
+        "Non-magnetic behavior": "Advantage. Safe in MRI; minimal ferromagnetism."
+      }
+    },
+    {
+      "id": "HD-9",
+      "exam": "Human Dynamics - Practice",
+      "topic": "CFD",
+      "type": "mcq",
+      "question": "In volume-based CFD, 'mesh independence' means:",
+      "options": [
+        "The solver does not use a mesh at all",
+        "Refining or rearranging the mesh no longer changes results significantly",
+        "Mesh elements are always cubes",
+        "Results depend strongly on element count"
+      ],
+      "correct_answers": [
+        "Refining or rearranging the mesh no longer changes results significantly"
+      ],
+      "explanation": "After grid refinement, solution converges; further changes yield negligible differences.",
+      "source": "Practice Exam 1h",
+      "detailed_explanation": "Mesh/grid independence means solution observables (pressure drop, wall shear stress, lift/drag, etc.) change negligibly with further grid refinement or redistribution. Procedure: perform systematic h-refinement (and possibly p/k-refinement), monitor a QoI, and apply Richardson extrapolation/Grid Convergence Index to quantify discretization error. Only then are physical conclusions trustworthy; otherwise changes could be numerical artifacts.",
+      "rationales": {
+        "Refining or rearranging the mesh no longer changes results significantly": "Correct. That’s the operational definition.",
+        "The solver does not use a mesh at all": "Wrong. That would be meshless methods; different topic.",
+        "Mesh elements are always cubes": "Wrong. Tets/hexes/prisms/polys are all used; shape isn’t the criterion.",
+        "Results depend strongly on element count": "Wrong. Strong dependence indicates lack of independence."
+      }
+    },
+    {
+      "id": "HD-10",
+      "exam": "Human Dynamics - Practice",
+      "topic": "Hematology",
+      "type": "mcq",
+      "question": "Main function of red blood cells (erythrocytes)?",
+      "options": [
+        "Immune defense",
+        "Blood clotting",
+        "Transport O₂ and CO₂",
+        "Hormone delivery"
+      ],
+      "correct_answers": [
+        "Transport O₂ and CO₂"
+      ],
+      "explanation": "Hemoglobin binds O₂; RBCs also carry CO₂ as bicarbonate/carbamino compounds.",
+      "source": "Practice Exam 1i(i)",
+      "detailed_explanation": "Erythrocytes transport O₂ from lungs to tissues via hemoglobin binding (four heme sites; cooperative binding yields the sigmoidal dissociation curve). They also facilitate CO₂ carriage: ~5–10% dissolved, ~20–30% carbaminohemoglobin, majority as bicarbonate after conversion by carbonic anhydrase within RBCs. Lack nuclei/mitochondria to maximize Hb content and avoid consuming O₂ they carry.",
+      "rationales": {
+        "Transport O₂ and CO₂": "Correct. This is the primary role.",
+        "Immune defense": "Wrong. That’s leukocytes.",
+        "Blood clotting": "Wrong. That’s platelets and coagulation factors.",
+        "Hormone delivery": "Wrong. Hormones circulate in plasma/binding proteins, not via RBC-specific mechanism."
+      }
+    },
+    {
+      "id": "HD-11",
+      "exam": "Human Dynamics - Practice",
+      "topic": "Immunology",
+      "type": "mcq",
+      "question": "Main function of white blood cells (leukocytes)?",
+      "options": [
+        "Immune defense and removal of foreign particles",
+        "O₂ transport",
+        "Thermoregulation",
+        "Lipid transport"
+      ],
+      "correct_answers": [
+        "Immune defense and removal of foreign particles"
+      ],
+      "explanation": "Leukocytes recognize and eliminate pathogens and debris.",
+      "source": "Practice Exam 1i(ii)",
+      "detailed_explanation": "Leukocytes (neutrophils, lymphocytes, monocytes/macrophages, eosinophils, basophils) detect, neutralize, and clear pathogens and debris. Innate cells provide rapid, non-specific responses; adaptive lymphocytes provide specificity and memory (B/T cells). They also orchestrate inflammation via cytokines and chemotaxis.",
+      "rationales": {
+        "Immune defense and removal of foreign particles": "Correct.",
+        "O₂ transport": "Wrong. That’s RBCs.",
+        "Thermoregulation": "Wrong. Mediated centrally/peripherally; WBCs aren’t the primary mechanism.",
+        "Lipid transport": "Wrong. Chylomicrons/LDL/HDL in plasma handle that."
+      }
+    },
+    {
+      "id": "HD-12",
+      "exam": "Human Dynamics - Practice",
+      "topic": "Hematology",
+      "type": "mcq",
+      "question": "Main function of platelets (thrombocytes)?",
+      "options": [
+        "Osmotic regulation",
+        "Immune surveillance",
+        "Hemostasis (stop bleeding)",
+        "Endocrine signaling"
+      ],
+      "correct_answers": [
+        "Hemostasis (stop bleeding)"
+      ],
+      "explanation": "Platelets aggregate and activate the coagulation cascade to limit blood loss.",
+      "source": "Practice Exam 1i(iii)",
+      "detailed_explanation": "Platelets adhere (via vWF/GPIb) to exposed subendothelium, activate (shape change, granule release—ADP, TXA₂), and aggregate (GPIIb/IIIa–fibrinogen bridges) to form the primary hemostatic plug. Coagulation cascade generates fibrin to stabilize the clot. They are small anucleate fragments from megakaryocytes.",
+      "rationales": {
+        "Hemostasis (stop bleeding)": "Correct. This is the key function.",
+        "Osmotic regulation": "Wrong. Plasma proteins (albumin) dominate colloid osmotic pressure.",
+        "Immune surveillance": "Wrong/incomplete. Platelets modulate immunity but that’s not their main role.",
+        "Endocrine signaling": "Wrong. Not endocrine glands."
+      }
+    },
+    {
+      "id": "HD-13",
+      "exam": "Human Dynamics - Practice",
+      "topic": "Rheology",
+      "type": "mcq",
+      "question": "Compared to an inviscid Newtonian fluid, blood’s velocity profile in a vessel is blunter mainly because:",
+      "options": [
+        "Blood is shear-thickening with no yield stress",
+        "Blood is shear-thinning and exhibits an apparent yield stress",
+        "Blood is inviscid",
+        "No-slip boundary condition is absent"
+      ],
+      "correct_answers": [
+        "Blood is shear-thinning and exhibits an apparent yield stress"
+      ],
+      "explanation": "At higher shear rates viscosity drops; central region moves as a plug due to yield-like behavior.",
+      "source": "Practice Exam 1j",
+      "detailed_explanation": "Whole blood is shear-thinning and exhibits an apparent yield stress at low shear (Casson/Herschel–Bulkley behavior). RBC aggregation and deformation produce a blunter (plug-like) core velocity profile compared with the parabolic profile of a Newtonian fluid in laminar pipe flow. The cell-depleted layer near the wall lowers effective viscosity there (Fåhræus–Lindqvist effect), reinforcing the bluntness.",
+      "rationales": {
+        "Blood is shear-thinning and exhibits an apparent yield stress": "Correct. These non-Newtonian features flatten the profile.",
+        "Blood is shear-thickening with no yield stress": "Wrong. Opposite trend.",
+        "Blood is inviscid": "Wrong. Blood is highly viscous compared to water.",
+        "No-slip boundary condition is absent": "Wrong. No-slip generally holds in vessels; deviations are not the cause of bluntness."
+      }
+    },
+    {
+      "id": "HD-14",
+      "exam": "Human Dynamics - Practice",
+      "topic": "Hydrostatics",
+      "type": "mcq",
+      "question": "Given fluid columns with densities 1200 kg/m³, 1000 kg/m³, and 800 kg/m³ as in the figure, what is the pressure at point a?",
+      "options": [
+        "~95 kPa",
+        "~101 kPa",
+        "~103 kPa",
+        "~110 kPa"
+      ],
+      "correct_answers": [
+        "~103 kPa"
+      ],
+      "explanation": "Summing hydrostatic differences yields ≈ 103,066 Pa.",
+      "source": "Practice Exam Q2",
+      "detailed_explanation": "Hydrostatics: p = p₀ + ρ g h for each vertical column. When columns connect, pressures at the same elevation in the same connected fluid must match. Summing the weighted contributions of segments with given densities (1200, 1000, 800 kg·m⁻³) to point a yields p_a ≈ 103 kPa (given g ≈ 9.81 m·s⁻² and the stated height differences). The key method is to walk from a reference point of known pressure (often open surface at ~101.3 kPa) through each column segment, adding ρ g Δh when going down and subtracting when going up, switching ρ when the fluid changes.",
+      "rationales": {
+        "~103 kPa": "Correct. Matches the net hydrostatic sum across the multi-fluid manometer.",
+        "~95 kPa": "Too low; would imply a large net rise relative to the reference that isn’t in the geometry.",
+        "~101 kPa": "Atmospheric only; ignores nonzero column differences.",
+        "~110 kPa": "Too high; would require larger effective ρ·h downward than present."
+      }
+    },
+    {
+      "id": "HD-15",
+      "exam": "Human Dynamics - Practice",
+      "topic": "Respiratory Physiology / Diving",
+      "type": "mcq",
+      "question": "At 30 m depth breathing 20% O₂, is the O₂ partial pressure safe for prolonged exposure (threshold 60 kPa)?",
+      "options": [
+        "Safe; ≈ 40 kPa",
+        "Unsafe; ≈ 79 kPa",
+        "Safe; ≈ 60 kPa",
+        "Unsafe; ≈ 120 kPa"
+      ],
+      "correct_answers": [
+        "Unsafe; ≈ 79 kPa"
+      ],
+      "explanation": "Total pressure ≈ 395.6 kPa; PO₂ = 0.2×395.6 ≈ 79.1 kPa (>60).",
+      "source": "Practice Exam Q3",
+      "detailed_explanation": "Ambient absolute pressure at 30 m seawater ≈ 1 atm (surface) + ρ g h / (101.3 kPa·atm⁻¹) ≈ 1 + (1025·9.81·30)/101300 ≈ ~3.94 atm ≈ 395–400 kPa. Breathing 20% O₂ gives P_O2 ≈ 0.20×~395 kPa ≈ ~79 kPa. Long-exposure safety guidelines target ≤~60 kPa O₂ to reduce CNS/O₂ toxicity risk; ~79 kPa exceeds that, acceptable only for shorter exposures with strict limits. Nitrogen narcosis and decompression obligations also rise with depth regardless of O₂ fraction.",
+      "rationales": {
+        "Unsafe; ≈ 79 kPa": "Correct. Exceeds ~60 kPa long-duration guideline.",
+        "Safe; ≈ 40 kPa": "Wrong math: 0.2×~395 ≠ 40 kPa.",
+        "Safe; ≈ 60 kPa": "Borderline number and still below the computed PO₂ at 30 m.",
+        "Unsafe; ≈ 120 kPa": "Too high; would require ~6 atm or 30–40% O₂ at this depth."
+      }
+    },
+    {
+      "id": "HD-16",
+      "exam": "Human Dynamics - Practice",
+      "topic": "Composite Materials",
+      "type": "mcq",
+      "question": "For a unidirectional composite with Vf=0.1 (fiber), Ef=100 GPa, Em=3 GPa (parallel to fibers), the effective E is:",
+      "options": [
+        "3.0 GPa",
+        "10.3 GPa",
+        "12.7 GPa",
+        "13.0 GPa"
+      ],
+      "correct_answers": [
+        "12.7 GPa"
+      ],
+      "explanation": "Rule of mixtures: E = Vf*Ef + Vm*Em = 0.1*100 + 0.9*3 = 12.7 GPa.",
+      "source": "Practice Exam Q4",
+      "detailed_explanation": "Rule of mixtures (longitudinal, iso-strain): E‖ = V_f E_f + (1−V_f) E_m. With V_f=0.1, E_f=100 GPa, E_m=3 GPa: E‖ = 0.1·100 + 0.9·3 = 10 + 2.7 = 12.7 GPa. The iso-stress (transverse) approximation would be (E^{-1} weighted), yielding much lower stiffness; here orientation is parallel to fibers, so iso-strain applies.",
+      "rationales": {
+        "12.7 GPa": "Correct from the rule of mixtures (longitudinal).",
+        "3.0 GPa": "Wrong. That’s just the matrix; ignores stiff fibers.",
+        "10.3 GPa": "Wrong arithmetic or misapplied fractions.",
+        "13.0 GPa": "Close but rounding up beyond inputs; exact is 12.7 GPa."
+      }
+    },
+    {
+      "id": "HD-17",
+      "exam": "Human Dynamics - Practice",
+      "topic": "Fluid Mechanics",
+      "type": "mcq",
+      "question": "Continuity: Water enters a 5 cm radius inlet at 1.5 m/s and exits a 4 cm radius outlet. What is v_out?",
+      "options": [
+        "1.2 m/s",
+        "1.5 m/s",
+        "2.34 m/s",
+        "3.75 m/s"
+      ],
+      "correct_answers": [
+        "2.34 m/s"
+      ],
+      "explanation": "Q in = Q out: v_out = v_in*(r_in/r_out)^2 = 1.5*(0.05/0.04)^2 ≈ 2.34 m/s.",
+      "source": "Practice Exam Q5 (continuity)",
+      "detailed_explanation": "Continuity for incompressible flow: Q = A V is conserved. A_in = π r_in², A_out = π r_out². With r_in=0.05 m, r_out=0.04 m, V_in=1.5 m·s⁻¹: V_out = V_in (A_in/A_out) = 1.5 (0.05²/0.04²) = 1.5 (0.0025/0.0016) ≈ 1.5·1.5625 ≈ 2.34 m·s⁻¹.",
+      "rationales": {
+        "2.34 m/s": "Correct by area ratio scaling.",
+        "1.2 m/s": "Wrong direction; smaller outlet area increases velocity.",
+        "1.5 m/s": "Wrong; that would require equal areas.",
+        "3.75 m/s": "Too high; would need a much smaller outlet radius."
+      }
+    },
+    {
+      "id": "HD-18",
+      "exam": "Human Dynamics - Practice",
+      "topic": "Bernoulli",
+      "type": "mcq",
+      "question": "With p_in=105 kPa, p_out=101.3 kPa and speeds from Q5, what is Δz (inlet minus outlet elevation)?",
+      "options": [
+        "~0.05 m",
+        "~0.21 m",
+        "~0.50 m",
+        "~1.0 m"
+      ],
+      "correct_answers": [
+        "~0.21 m"
+      ],
+      "explanation": "Bernoulli with ρ=1000 kg/m³ gives Δz ≈ 0.212 m.",
+      "source": "Practice Exam Q5 (Bernoulli)",
+      "detailed_explanation": "Bernoulli (neglecting losses): p_in/ρg + V_in²/(2g) + z_in = p_out/ρg + V_out²/(2g) + z_out. Rearranged for Δz = z_in − z_out:\nΔz = (p_out − p_in)/(ρ g) + (V_out² − V_in²)/(2 g).\nInsert p_in=105 kPa, p_out=101.3 kPa, ρ=1000 kg·m⁻³, V_in=1.5 m·s⁻¹, V_out≈2.34 m·s⁻¹: \n(p_out−p_in)/(ρg) = (101300−105000)/(1000·9.81) ≈ −0.377 m, \n(V_out²−V_in²)/(2g) = (5.48−2.25)/(19.62) ≈ 0.165 m. \nSum: Δz ≈ −0.377 + 0.165 ≈ −0.212 m, so z_in − z_out ≈ −0.21 m → the inlet is ~0.21 m lower (equivalently, magnitude ~0.21 m).",
+      "rationales": {
+        "~0.21 m": "Correct magnitude from Bernoulli with given values.",
+        "~0.05 m": "Too small; underestimates the pressure term.",
+        "~0.50 m": "Too large; overestimates net head change.",
+        "~1.0 m": "Far too large given Δp and speeds."
+      }
+    },
+    {
+      "id": "HD-19",
+      "exam": "Human Dynamics - Practice",
+      "topic": "Gas Laws",
+      "type": "mcq",
+      "question": "You want the balloon to expand by 1.0 L at 103 kPa and 20°C; air exhaled is at 37°C and 101 kPa. How much air do you exhale?",
+      "options": [
+        "0.93 L",
+        "1.00 L",
+        "1.08 L",
+        "1.20 L"
+      ],
+      "correct_answers": [
+        "1.08 L"
+      ],
+      "explanation": "Combined gas law: V1 = (P2 V2 T1)/(T2 P1) ≈ 1.079 L.",
+      "source": "Practice Exam Q6",
+      "detailed_explanation": "Combined gas law (assuming ideal gas, negligible H₂O condensation changes volume only slightly for this estimate): (P₁ V₁)/T₁ = (P₂ V₂)/T₂. Exhaled air: T₁=37°C=310 K, P₁=101 kPa. Balloon environment: T₂=20°C=293 K, P₂=103 kPa. Desired V₂=1.00 L expansion. Solve V₁ = (P₂ V₂ T₁)/(T₂ P₁) = (103·1.00·310)/(293·101) ≈ 1.079 L → ~1.08 L. Warmer air cools and slightly compresses at the higher ambient pressure, so you must exhale a bit more than 1 L to end with 1 L in the balloon.",
+      "rationales": {
+        "1.08 L": "Correct from the combined gas law with given temperatures and pressures.",
+        "0.93 L": "Too low; ignores cooling/compression effects.",
+        "1.00 L": "Would be true only if temperatures/pressures matched exactly.",
+        "1.20 L": "Too high; overshoots the required compensation."
+      }
+    }
+  ]
+}
