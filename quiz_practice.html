@@ -7,6 +7,23 @@
   <title>Quiz Practice</title>
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
   <script src="openai_integration.js"></script>
+  
+  <!-- MathJax for rendering mathematical formulas -->
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true,
+        processEnvironments: true
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+      }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" async></script>
+  
   <style>
     * {
       margin: 0;
@@ -2610,6 +2627,16 @@
                 if (window.lucide) {
                     lucide.createIcons();
                 }
+                
+                // Re-render MathJax if available
+                this.renderMath();
+            }
+
+            renderMath() {
+                // Trigger MathJax to re-render formulas
+                if (window.MathJax && window.MathJax.typesetPromise) {
+                    window.MathJax.typesetPromise().catch((err) => console.log('MathJax error:', err));
+                }
             }
 
       async initializeData() {
@@ -3635,6 +3662,9 @@
                 if (window.lucide) {
                     lucide.createIcons();
                 }
+                
+                // Render math formulas
+                this.renderMath();
             }
 
             showFeedbackSection(question) {
@@ -3689,6 +3719,9 @@
                     if (window.lucide) {
                         lucide.createIcons();
                     }
+                    
+                    // Render math formulas
+                    this.renderMath();
                     return;
                 }
                 
@@ -3841,6 +3874,9 @@
                 if (window.lucide) {
                     lucide.createIcons();
                 }
+                
+                // Render math formulas
+                this.renderMath();
             }
 
             showFirstAttemptCompletion() {
@@ -4028,6 +4064,9 @@
                 if (window.lucide) {
                     lucide.createIcons();
                 }
+                
+                // Render math formulas
+                this.renderMath();
             }
             
             generateStudyRecommendations(statsToUse) {
@@ -5164,6 +5203,11 @@
             // Update dark mode button after DOM is ready with a small delay
             setTimeout(() => {
                 app.updateDarkModeButton();
+                
+                // Render initial math if MathJax is ready
+                if (window.MathJax && window.MathJax.typesetPromise) {
+                    window.MathJax.typesetPromise().catch((err) => console.log('MathJax init error:', err));
+                }
             }, 50);
         });
   </script>
