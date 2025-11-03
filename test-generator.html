@@ -20,6 +20,9 @@
     .state { background: #e2e3e5; padding: 10px; border-radius: 4px; margin: 10px 0; font-family: monospace; font-size: 11px; white-space: pre-wrap; }
     .error { background: #f8d7da; color: #721c24; padding: 15px; border-radius: 4px; margin: 15px 0; }
     .loading { color: #666; font-style: italic; }
+    .hidden { display: none; }
+    .show-answer-btn { background: #28a745; color: white; border: none; padding: 8px 16px; cursor: pointer; border-radius: 4px; margin: 10px 0; }
+    .show-answer-btn:hover { background: #218838; }
   </style>
 </head>
 <body>
@@ -130,14 +133,19 @@
       const box = document.createElement('div');
       box.className = 'question-box';
       
+      const questionId = 'q-' + Math.random().toString(36).substr(2, 9);
+      
       box.innerHTML = `
         <div>${q.question_html}</div>
-        <div class="answer"><strong>Answer:</strong> ${q.answer_html}</div>
-        <div class="explanation"><strong>Explanation:</strong> ${q.explain_html}</div>
-        <div class="meta">
-          <strong>Label:</strong> ${q.label} | 
-          <strong>Value:</strong> ${q.answer_value} | 
-          <strong>Unit:</strong> ${q.answer_unit}
+        <button class="show-answer-btn" onclick="toggleAnswer('${questionId}')">Show Answer</button>
+        <div id="${questionId}" class="hidden">
+          <div class="answer"><strong>Answer:</strong> ${q.answer_html}</div>
+          <div class="explanation"><strong>Explanation:</strong> ${q.explain_html}</div>
+          <div class="meta">
+            <strong>Label:</strong> ${q.label} | 
+            <strong>Value:</strong> ${q.answer_value} | 
+            <strong>Unit:</strong> ${q.answer_unit}
+          </div>
         </div>
         <details>
           <summary style="cursor: pointer; color: #007bff; margin-top: 10px;">View State Data</summary>
@@ -146,6 +154,21 @@
       `;
       
       return box;
+    }
+
+    function toggleAnswer(id) {
+      const answerDiv = document.getElementById(id);
+      const button = event.target;
+      
+      if (answerDiv.classList.contains('hidden')) {
+        answerDiv.classList.remove('hidden');
+        button.textContent = 'Hide Answer';
+        button.style.background = '#dc3545';
+      } else {
+        answerDiv.classList.add('hidden');
+        button.textContent = 'Show Answer';
+        button.style.background = '#28a745';
+      }
     }
   </script>
 </body>
