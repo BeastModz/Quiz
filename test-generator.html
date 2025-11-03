@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Question Generator Test</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 900px; margin: 40px auto; padding: 20px; }
+    h1 { color: #333; }
+    .control { margin: 20px 0; }
+    label { display: inline-block; width: 100px; font-weight: bold; }
+    select, input, button { padding: 8px; font-size: 14px; }
+    button { background: #007bff; color: white; border: none; cursor: pointer; padding: 10px 20px; }
+    button:hover { background: #0056b3; }
+    .output { margin-top: 30px; }
+    .question-box { background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 8px; padding: 20px; margin: 15px 0; }
+    .meta { font-size: 12px; color: #666; margin-top: 10px; }
+    .answer { background: #d4edda; padding: 10px; border-radius: 4px; margin: 10px 0; }
+    .explanation { background: #fff3cd; padding: 10px; border-radius: 4px; margin: 10px 0; }
+    .state { background: #e2e3e5; padding: 10px; border-radius: 4px; margin: 10px 0; font-family: monospace; font-size: 11px; white-space: pre-wrap; }
+    .error { background: #f8d7da; color: #721c24; padding: 15px; border-radius: 4px; margin: 15px 0; }
+    .loading { color: #666; font-style: italic; }
+  </style>
+</head>
+<body>
+  <h1>🧪 AI Question Generator Test</h1>
+  
+  <div class="control">
+    <label for="topic">Topic:</label>
+    <select id="topic">
+      <option value="continuity">Continuity</option>
+      <option value="bernoulli">Bernoulli (head form)</option>
+      <option value="combined_gas_law">Combined Gas Law</option>
+      <option value="dalton">Dalton's Law</option>
+    </select>
+  </div>
+
+  <div class="control">
+    <label for="count">Count:</label>
+    <input type="number" id="count" value="1" min="1" max="20" style="width: 80px;">
+  </div>
+
+  <div class="control">
+    <label for="seed">Seed:</label>
+    <input type="number" id="seed" placeholder="Optional" style="width: 80px;">
+  </div>
+
+  <div class="control">
+    <button onclick="generateQuestion()">Generate Single Question</button>
+    <button onclick="generateBatch()">Generate Batch</button>
+  </div>
+
+  <div id="output" class="output"></div>
+
+  <script>
+    const API_BASE = 'http://153.92.221.225:3000';
+
+    async function generateQuestion() {
+      const topic = document.getElementById('topic').value;
+      const seed = document.getElementById('seed').value;
+      const output = document.getElementById('output');
+
+      output.innerHTML = '<p class="loading">Generating question...</p>';
+
+      try {
+        const body = { topic };
+        if (seed) body.seed = parseInt(seed);
+
+        const response = await fetch(`${API_BASE}/api/generate/question`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body)
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+          displayQuestion(data.question);
+        } else {
+          output.innerHTML = `<div class="error">Error: ${data.error || 'Unknown error'}</div>`;
+        }
+      } catch (error) {
+        output.innerHTML = `<div class="error">Request failed: ${error.message}</div>`;
+      }
+    }
+
+    async function generateBatch() {
+      const topic = document.getElementById('topic').value;
+      const count = parseInt(document.getElementById('count').value);
+      const seed = document.getElementById('seed').value;
+      const output = document.getElementById('output');
+
+      output.innerHTML = `<p class="loading">Generating ${count} questions...</p>`;
+
+      try {
+        const body = { topic, count };
+        if (seed) body.seed = parseInt(seed);
+
+        const response = await fetch(`${API_BASE}/api/generate/batch`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body)
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+          output.innerHTML = `<h2>Generated ${data.count} Questions</h2>`;
+          data.questions.forEach((q, i) => {
+            const div = document.createElement('div');
+            div.innerHTML = `<h3>Question ${i + 1}</h3>`;
+            div.appendChild(createQuestionDisplay(q));
+            output.appendChild(div);
+          });
+        } else {
+          output.innerHTML = `<div class="error">Error: ${data.error || 'Unknown error'}</div>`;
+        }
+      } catch (error) {
+        output.innerHTML = `<div class="error">Request failed: ${error.message}</div>`;
+      }
+    }
+
+    function displayQuestion(q) {
+      const output = document.getElementById('output');
+      output.innerHTML = '';
+      output.appendChild(createQuestionDisplay(q));
+    }
+
+    function createQuestionDisplay(q) {
+      const box = document.createElement('div');
+      box.className = 'question-box';
+      
+      box.innerHTML = `
+        <div>${q.question_html}</div>
+        <div class="answer"><strong>Answer:</strong> ${q.answer_html}</div>
+        <div class="explanation"><strong>Explanation:</strong> ${q.explain_html}</div>
+        <div class="meta">
+          <strong>Label:</strong> ${q.label} | 
+          <strong>Value:</strong> ${q.answer_value} | 
+          <strong>Unit:</strong> ${q.answer_unit}
+        </div>
+        <details>
+          <summary style="cursor: pointer; color: #007bff; margin-top: 10px;">View State Data</summary>
+          <div class="state">${JSON.stringify(q.state, null, 2)}</div>
+        </details>
+      `;
+      
+      return box;
+    }
+  </script>
+</body>
+</html>
