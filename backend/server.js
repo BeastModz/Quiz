@@ -6,8 +6,12 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import { readFile } from 'fs/promises';
 import { gradeAnswer } from './quiz-grader.js';
+import QuestionGenerator from './question-generator.js';
 
 dotenv.config();
+
+// Initialize question generator
+const questionGenerator = new QuestionGenerator(process.env.OPENAI_API_KEY);
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -217,6 +221,81 @@ app.post('/api/chat', async (req, res) => {
   }
 });
 
+// Generate AI question endpoint
+app.post('/api/generate/question', async (req, res) => {
+  try {
+    const { topic, unknown, seed } = req.body;
+
+    if (!topic) {
+      return res.status(400).json({
+        error: 'Missing required field: topic',
+        valid_topics: ['continuity', 'bernoulli', 'combined_gas_law', 'dalton']
+      });
+    }
+
+    const options = {};
+    if (unknown) options.unknown = unknown;
+    if (seed !== undefined) options.seed = seed;
+
+    console.log(`🔧 Generating ${topic} question...`);
+    const question = await questionGenerator.generate(topic, options);
+
+    res.json({
+      success: true,
+      question,
+      timestamp: new Date().toISOString()
+    });
+
+  } catch (err) {
+    console.error('Question generation error:', err);
+    res.status(500).json({
+      error: 'Question generation failed',
+      message: err.message
+    });
+  }
+});
+
+// Generate batch of AI questions endpoint
+app.post('/api/generate/batch', async (req, res) => {
+  try {
+    const { topic, count = 5, unknown, seed } = req.body;
+
+    if (!topic) {
+      return res.status(400).json({
+        error: 'Missing required field: topic',
+        valid_topics: ['continuity', 'bernoulli', 'combined_gas_law', 'dalton']
+      });
+    }
+
+    if (count < 1 || count > 20) {
+      return res.status(400).json({
+        error: 'count must be between 1 and 20'
+      });
+    }
+
+    const options = {};
+    if (unknown) options.unknown = unknown;
+    if (seed !== undefined) options.seed = seed;
+
+    console.log(`🔧 Generating ${count} ${topic} questions...`);
+    const questions = await questionGenerator.generateBatch(topic, count, options);
+
+    res.json({
+      success: true,
+      count: questions.length,
+      questions,
+      timestamp: new Date().toISOString()
+    });
+
+  } catch (err) {
+    console.error('Batch generation error:', err);
+    res.status(500).json({
+      error: 'Batch generation failed',
+      message: err.message
+    });
+  }
+});
+
 // 404 handler
 app.use((req, res) => {
   res.status(404).json({
@@ -226,7 +305,9 @@ app.use((req, res) => {
       'GET /api/questions',
       'POST /api/grade',
       'POST /api/grade/batch',
-      'POST /api/chat'
+      'POST /api/chat',
+      'POST /api/generate/question',
+      'POST /api/generate/batch'
     ]
   });
 });
