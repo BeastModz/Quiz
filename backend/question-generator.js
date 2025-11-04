@@ -44,17 +44,27 @@ const TOPIC_SPECS = {
       partial: [15, 60]
     },
     unknowns: ['component', 'Ptot']
+  },
+  continuity_bernoulli: {
+    ranges: {
+      d1: [0.020, 0.080],
+      diameter_ratio: [0.5, 1.5],
+      v1: [0.50, 3.00],
+      p1: [180, 320],
+      z_diff: [-2, 2]
+    },
+    unknowns: ['p2']
   }
 };
 
 const FULL_SPEC = `# AI-Assisted Question Generator — Specification
 
 ## 0) Scope
-Four topics: Continuity, Bernoulli (head form), Combined Gas Law, Dalton's Law.
+Five topics: Continuity, Bernoulli (head form), Combined Gas Law, Dalton's Law, Continuity+Bernoulli Multi-Part.
 
 ## 1) Global Output Contract (JSON)
 {
-  "topic": "continuity | bernoulli | combined_gas_law | dalton",
+  "topic": "continuity | bernoulli | combined_gas_law | dalton | continuity_bernoulli",
   "question_html": "<p>Stem with givens…</p>",
   "answer_html": "v₂ = 2.31 m/s",
   "explain_html": "<p>Short derivation…</p>",
@@ -90,6 +100,199 @@ Model: P_total = ΣPᵢ
 Variables: pressures (kPa)
 Ranges: n∈{3,4}, Pᵢ∈[15,60]
 Unknown: one component Pₖ or total
+
+## 2.5 Continuity + Bernoulli Multi-Part Problem
+**CRITICAL: This is a TWO-STEP sequential problem where Part A feeds into Part B.**
+
+### Problem Structure:
+**Part A:** Use continuity equation to find unknown velocity v₂
+**Part B:** Use v₂ from Part A in Bernoulli equation to find unknown pressure p₂
+
+### Given Information Template:
+- Pipe diameter at point 1: d₁ (m)
+- Pipe diameter at point 2: d₂ (m)
+- Velocity at point 1: v₁ (m/s)
+- Pressure at point 1: p₁ (kPa)
+- Elevation at point 1: z₁ (m) [can be set to 0 for reference]
+- Elevation at point 2: z₂ (m)
+- Fluid: Water (ρ = 1000 kg/m³, incompressible)
+
+### Part A Specifications:
+Model: Q₁ = Q₂ → A₁v₁ = A₂v₂ → (πd₁²/4)v₁ = (πd₂²/4)v₂
+Solve for: v₂ = v₁(d₁/d₂)²
+Ranges:
+  - d₁ ∈ [0.020, 0.080] m (20-80 mm)
+  - d₂/d₁ ∈ [0.5, 1.5] (contraction or expansion)
+  - v₁ ∈ [0.50, 3.00] m/s
+Result: v₂ must be calculated to 4 significant figures for use in Part B
+
+### Part B Specifications:
+Model: p₁/(ρg) + v₁²/(2g) + z₁ = p₂/(ρg) + v₂²/(2g) + z₂
+Constants: ρ = 1000 kg/m³, g = 9.81 m/s²
+Rearrange to solve for p₂:
+  p₂ = p₁ + ρg[(v₁² - v₂²)/(2g) + (z₁ - z₂)]
+  p₂ = p₁ + (ρ/2)(v₁² - v₂²) + ρg(z₁ - z₂)
+
+Ranges:
+  - p₁ ∈ [180, 320] kPa (gauge or absolute - specify)
+  - z₁ - z₂ ∈ [-2, 2] m (can be 0 for horizontal pipe)
+  - v₂ comes from Part A calculation
+
+Constraint: Final p₂ ∈ [80, 400] kPa (must be physically reasonable)
+
+### Output Format Requirements:
+
+**question_html:** Must clearly present a TWO-PART problem structure:
+\`\`\`html
+<p><strong>A horizontal pipe carries water. The pipe contracts from diameter d₁ = [value] m at point 1 to d₂ = [value] m at point 2.</strong></p>
+<p><strong>Given:</strong></p>
+<ul>
+  <li>d₁ = [value] m</li>
+  <li>d₂ = [value] m</li>
+  <li>v₁ = [value] m/s</li>
+  <li>p₁ = [value] kPa (gauge)</li>
+  <li>z₁ = [value] m</li>
+  <li>z₂ = [value] m</li>
+  <li>ρ = 1000 kg/m³</li>
+  <li>g = 9.81 m/s²</li>
+</ul>
+<p><strong>Part A:</strong> Using the continuity equation, calculate the velocity v₂ at point 2.</p>
+<p><strong>Part B:</strong> Using your answer from Part A and the Bernoulli equation, calculate the gauge pressure p₂ at point 2.</p>
+<p><strong>Find: p₂ (kPa)</strong></p>
+\`\`\`
+
+**answer_html:** The FINAL answer for p₂ (since this is what the problem asks for):
+\`\`\`
+p₂ = [value] kPa
+\`\`\`
+
+**explain_html:** Must show COMPLETE step-by-step solution for BOTH parts:
+\`\`\`html
+<p><strong>Part A Solution: Find v₂ using Continuity Equation</strong></p>
+<ol>
+  <li>Calculate cross-sectional areas:
+    <ul>
+      <li>A₁ = πd₁²/4 = π([d1_value])²/4 = [A1_value] m²</li>
+      <li>A₂ = πd₂²/4 = π([d2_value])²/4 = [A2_value] m²</li>
+    </ul>
+  </li>
+  <li>Apply continuity: Q₁ = Q₂ → A₁v₁ = A₂v₂</li>
+  <li>Solve for v₂:
+    <ul>
+      <li>v₂ = (A₁/A₂)v₁ = ([A1_value]/[A2_value]) × [v1_value]</li>
+      <li>v₂ = (d₁/d₂)² × v₁ = ([d1_value]/[d2_value])² × [v1_value]</li>
+      <li><strong>v₂ = [v2_value] m/s</strong> ✓</li>
+    </ul>
+  </li>
+</ol>
+
+<p><strong>Part B Solution: Find p₂ using Bernoulli Equation</strong></p>
+<ol>
+  <li>Write Bernoulli equation (head form):
+    <ul>
+      <li>p₁/(ρg) + v₁²/(2g) + z₁ = p₂/(ρg) + v₂²/(2g) + z₂</li>
+    </ul>
+  </li>
+  <li>Calculate velocity heads:
+    <ul>
+      <li>v₁²/(2g) = ([v1_value])²/(2×9.81) = [v1_head] m</li>
+      <li>v₂²/(2g) = ([v2_value])²/(2×9.81) = [v2_head] m</li>
+    </ul>
+  </li>
+  <li>Calculate pressure head at point 1:
+    <ul>
+      <li>p₁/(ρg) = ([p1_value]×1000)/(1000×9.81) = [p1_head] m</li>
+    </ul>
+  </li>
+  <li>Calculate total head at point 1:
+    <ul>
+      <li>H₁ = [p1_head] + [v1_head] + [z1_value] = [H1_total] m</li>
+    </ul>
+  </li>
+  <li>Calculate pressure head at point 2:
+    <ul>
+      <li>H₁ = H₂ (conservation of energy)</li>
+      <li>p₂/(ρg) = H₁ - v₂²/(2g) - z₂</li>
+      <li>p₂/(ρg) = [H1_total] - [v2_head] - [z2_value] = [p2_head] m</li>
+    </ul>
+  </li>
+  <li>Convert to pressure:
+    <ul>
+      <li>p₂ = (ρg) × [p2_head] = (1000 × 9.81) × [p2_head]</li>
+      <li>p₂ = [p2_pa] Pa = [p2_kpa] kPa</li>
+      <li><strong>p₂ = [p2_final] kPa</strong> ✓</li>
+    </ul>
+  </li>
+</ol>
+
+<p><strong>Verification:</strong></p>
+<ul>
+  <li>Check: v₂ = v₁(d₁/d₂)² = [v1_value] × ([d1_value]/[d2_value])² = [v2_value] m/s ✓</li>
+  <li>Check: p₂ ∈ [80, 400] kPa → [p2_final] kPa ✓</li>
+</ul>
+\`\`\`
+
+**label:** "p₂"
+
+**answer_value:** [numeric value of p₂ in kPa, to 3-4 significant figures]
+
+**answer_unit:** "kPa"
+
+**state object:** Must contain ALL intermediate values for validation:
+\`\`\`json
+{
+  "d1": [value in m],
+  "d2": [value in m],
+  "v1": [value in m/s],
+  "p1": [value in kPa],
+  "z1": [value in m],
+  "z2": [value in m],
+  "rho": 1000,
+  "g": 9.81,
+  "A1": [calculated area in m²],
+  "A2": [calculated area in m²],
+  "v2": [calculated from continuity, in m/s, 4+ sig figs],
+  "v1_head": [v₁²/(2g) in m],
+  "v2_head": [v₂²/(2g) in m],
+  "p1_head": [p₁/(ρg) in m],
+  "p2_head": [p₂/(ρg) in m],
+  "H1": [total head at point 1 in m],
+  "p2_pa": [pressure in Pa],
+  "p2_kpa": [pressure in kPa - FINAL ANSWER]
+}
+\`\`\`
+
+### Critical Validation Rules:
+1. **Continuity must be satisfied:** A₁v₁ = A₂v₂ within 1e-6
+2. **Bernoulli must be satisfied:** H₁ = H₂ within 1e-4 (accounting for head losses negligible assumption)
+3. **Final pressure realistic:** 80 ≤ p₂ ≤ 400 kPa
+4. **Use exactly p/(ρg) NOT p/ρ** in Bernoulli equation
+5. **Pressure units:** Convert kPa to Pa for calculations: p[Pa] = p[kPa] × 1000
+6. **All intermediate calculations:** Keep 4+ significant figures, round only final answer to 3 sig figs
+
+### Common Errors to AVOID:
+❌ Using p/ρ instead of p/(ρg) in Bernoulli
+❌ Forgetting to convert kPa to Pa before calculation
+❌ Using v₂ before calculating it in Part A
+❌ Mixing gauge and absolute pressure
+❌ Not showing the intermediate v₂ calculation
+❌ Rounding v₂ too early (must keep 4+ sig figs for Part B)
+
+### Example Problem Structure:
+Given: d₁=0.050 m, d₂=0.030 m, v₁=1.20 m/s, p₁=250 kPa, z₁=0 m, z₂=0 m
+
+Part A: Find v₂
+- A₁ = π(0.050)²/4 = 0.001963 m²
+- A₂ = π(0.030)²/4 = 0.0007069 m²
+- v₂ = v₁(A₁/A₂) = 1.20 × (0.001963/0.0007069) = 3.333 m/s ✓
+
+Part B: Find p₂
+- v₁²/(2g) = (1.20)²/(2×9.81) = 0.07339 m
+- v₂²/(2g) = (3.333)²/(2×9.81) = 0.5669 m
+- p₁/(ρg) = (250×1000)/(1000×9.81) = 25.48 m
+- H₁ = 25.48 + 0.07339 + 0 = 25.55 m
+- p₂/(ρg) = 25.55 - 0.5669 - 0 = 24.99 m
+- p₂ = 24.99 × 1000 × 9.81 = 245,100 Pa = 245.1 kPa ✓
 
 All givens to 3 s.f., answers to 3 s.f. for display.
 Use subscript digits (v₂, P₁). No stories, exam voice only.
@@ -249,6 +452,39 @@ class QuestionGenerator {
           if (diff > 1e-6) {
             throw new Error(`Dalton violated: sum=${sum} != Ptot=${state.Ptot}`);
           }
+        }
+        break;
+
+      case 'continuity_bernoulli':
+        // Validate Part A: Continuity equation
+        if (state.A1 && state.A2 && state.v1 && state.v2) {
+          const Q1 = state.A1 * state.v1;
+          const Q2 = state.A2 * state.v2;
+          const diff = Math.abs(Q1 - Q2);
+          if (diff > 1e-6) {
+            throw new Error(`Part A Continuity violated: A1*v1=${Q1} != A2*v2=${Q2}`);
+          }
+        }
+        
+        // Validate Part B: Bernoulli equation (total head conservation)
+        if (state.p1_head && state.v1_head && state.z1 !== undefined && 
+            state.p2_head && state.v2_head && state.z2 !== undefined) {
+          const H1 = state.p1_head + state.v1_head + state.z1;
+          const H2 = state.p2_head + state.v2_head + state.z2;
+          const diff = Math.abs(H1 - H2);
+          if (diff > 1e-4) {
+            throw new Error(`Part B Bernoulli violated: H1=${H1} != H2=${H2}, diff=${diff}`);
+          }
+        }
+        
+        // Check final pressure is in valid range
+        if (state.p2_kpa && (state.p2_kpa < 80 || state.p2_kpa > 400)) {
+          throw new Error(`p2 out of range: ${state.p2_kpa} kPa`);
+        }
+        
+        // Check v2 is calculated with sufficient precision (should have 4+ sig figs)
+        if (state.v2 && state.v2.toString().replace('.', '').length < 4) {
+          console.warn(`Warning: v2 precision may be too low: ${state.v2} m/s`);
         }
         break;
     }
