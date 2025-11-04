@@ -429,10 +429,9 @@ class QuestionGenerator {
       if (v2 < v2_min || v2 > v2_max) continue;
       if (Math.abs(v2 - v1) < min_v_delta) continue;
       
-      // Sample inlet pressure (gauge)
+      // Sample inlet pressure (gauge) - work entirely in gauge
       const p1_gauge_kpa = this._randomInRange(180, 320, rng);
       const p1_gauge_pa = p1_gauge_kpa * 1000;
-      const p1_abs_pa = p1_gauge_pa + p_atm;
       
       // Sample elevation difference
       const z1 = 0; // Reference level
@@ -446,16 +445,15 @@ class QuestionGenerator {
       const v_ref = ratio < 1 ? v2 : v1; // contraction uses v2, expansion uses v1
       const h_loss = withLoss ? K * Math.pow(v_ref, 2) / (2 * g) : 0;
       
-      // Part B: Calculate p2 using Bernoulli (full precision)
+      // Part B: Calculate p2 using Bernoulli in gauge pressure (full precision)
       const v1_head = Math.pow(v1, 2) / (2 * g);
       const v2_head = Math.pow(v2, 2) / (2 * g);
-      const p1_head = p1_abs_pa / (rho * g);
+      const p1_head = p1_gauge_pa / (rho * g);
       
       const H1 = p1_head + v1_head + z1;
       const H2_without_loss = p1_head + v1_head + z1; // H1 = H2 when no losses
       const p2_head = H1 - v2_head - z2 - h_loss;
-      const p2_abs_pa = p2_head * rho * g;
-      const p2_gauge_pa = p2_abs_pa - p_atm;
+      const p2_gauge_pa = p2_head * rho * g;
       const p2_gauge_kpa = p2_gauge_pa / 1000;
       
       // Physics-aware validation
@@ -473,9 +471,9 @@ class QuestionGenerator {
       return this._buildMultiPartOutput({
         seed, d1, d2, A1, A2, v1, v2, Q, z1, z2,
         rho, g, p_atm,
-        p1_gauge_kpa, p1_gauge_pa, p1_abs_pa,
+        p1_gauge_kpa, p1_gauge_pa,
         v1_head, v2_head, p1_head,
-        H1, p2_head, p2_abs_pa, p2_gauge_pa, p2_gauge_kpa,
+        H1, p2_head, p2_gauge_pa, p2_gauge_kpa,
         is_horizontal, is_contraction,
         withLoss, K, v_ref, h_loss
       });
@@ -488,9 +486,9 @@ class QuestionGenerator {
     const {
       seed, d1, d2, A1, A2, v1, v2, Q, z1, z2,
       rho, g, p_atm,
-      p1_gauge_kpa, p1_gauge_pa, p1_abs_pa,
+      p1_gauge_kpa, p1_gauge_pa,
       v1_head, v2_head, p1_head,
-      H1, p2_head, p2_abs_pa, p2_gauge_pa, p2_gauge_kpa,
+      H1, p2_head, p2_gauge_pa, p2_gauge_kpa,
       is_horizontal, is_contraction,
       withLoss, K, v_ref, h_loss
     } = data;
@@ -562,87 +560,110 @@ class QuestionGenerator {
     const answer_html = `p₂ = ${p2_disp} kPa (gauge)`;
     
     // Build detailed explanation
-    const loss_term = withLoss ? ` + h_L` : '';
-    const loss_calc = withLoss ? `
-  <li>Calculate minor loss head:
-    <ul>
-      <li>h_L = K × v_ref²/(2g) = ${K.toFixed(2)} × (${v_ref.toPrecision(4)})²/(2×9.81)</li>
-      <li>h_L = ${h_loss.toFixed(4)} m</li>
-    </ul>
-  </li>` : '';
-    
+    const loss_explanation = withLoss ? `
+<p><strong>Energy Balance with Minor Loss:</strong></p>
+<p>The Bernoulli equation with minor loss is:</p>
+<p style="text-align: center; font-size: 1.1em; margin: 15px 0;">
+  <strong>p₁/(ρg) + v₁²/(2g) + z₁ = p₂/(ρg) + v₂²/(2g) + z₂ + h<sub>L</sub></strong>
+</p>
+<p>Or equivalently: <strong>H₁ = H₂ + h<sub>L</sub></strong></p>
+<p>where H₁ = p₁/(ρg) + v₁²/(2g) + z₁ is the total head at point 1,<br>
+   H₂ = p₂/(ρg) + v₂²/(2g) + z₂ is the total head at point 2,<br>
+   and h<sub>L</sub> = K v<sub>ref</sub>²/(2g) is the head loss.</p>
+` : `
+<p><strong>Energy Balance (No Losses):</strong></p>
+<p>The Bernoulli equation (neglecting losses) is:</p>
+<p style="text-align: center; font-size: 1.1em; margin: 15px 0;">
+  <strong>p₁/(ρg) + v₁²/(2g) + z₁ = p₂/(ρg) + v₂²/(2g) + z₂</strong>
+</p>
+<p>Or equivalently: <strong>H₁ = H₂</strong></p>
+`;
+
     const explain_html = `
 <p><strong>Part A Solution: Find v₂ using Continuity Equation</strong></p>
+<p>The continuity equation for incompressible flow:</p>
+<p style="text-align: center; font-size: 1.1em; margin: 10px 0;">
+  <strong>Q₁ = Q₂ &nbsp;→&nbsp; A₁v₁ = A₂v₂</strong>
+</p>
 <ol>
-  <li>Calculate cross-sectional areas:
-    <ul>
-      <li>A₁ = πd₁²/4 = π(${d1_m})²/4 = ${A1.toExponential(4)} m²</li>
-      <li>A₂ = πd₂²/4 = π(${d2_m})²/4 = ${A2.toExponential(4)} m²</li>
-    </ul>
+  <li><strong>Calculate cross-sectional areas:</strong>
+    <div style="margin-left: 20px;">
+      A₁ = πd₁²/4 = π(${d1_m})²/4 = ${A1.toExponential(4)} m²<br>
+      A₂ = πd₂²/4 = π(${d2_m})²/4 = ${A2.toExponential(4)} m²
+    </div>
   </li>
-  <li>Apply continuity: Q₁ = Q₂ → A₁v₁ = A₂v₂</li>
-  <li>Solve for v₂:
-    <ul>
-      <li>v₂ = (A₁/A₂)v₁ = (${A1.toExponential(4)}/${A2.toExponential(4)}) × ${v1_disp}</li>
-      <li>v₂ = (d₁/d₂)² × v₁ = (${d1_m}/${d2_m})² × ${v1_disp}</li>
-      <li><strong>v₂ = ${v2_disp} m/s</strong> ✓</li>
-    </ul>
+  <li><strong>Solve for v₂:</strong>
+    <div style="margin-left: 20px;">
+      v₂ = (A₁/A₂)v₁ = (${A1.toExponential(4)}/${A2.toExponential(4)}) × ${v1_disp}<br>
+      v₂ = (d₁/d₂)² × v₁ = (${d1_m}/${d2_m})² × ${v1_disp}<br>
+      <strong style="color: #28a745;">v₂ = ${v2_disp} m/s ✓</strong>
+    </div>
   </li>
-  <li>Verify: Q₁ = ${(Q).toExponential(4)} m³/s, Q₂ = ${(A2*v2).toExponential(4)} m³/s ✓</li>
+  <li><strong>Verify continuity:</strong>
+    <div style="margin-left: 20px;">
+      Q₁ = A₁v₁ = ${(Q).toExponential(4)} m³/s<br>
+      Q₂ = A₂v₂ = ${(A2*v2).toExponential(4)} m³/s<br>
+      Relative error: ${continuity_rel_err.toExponential(2)} &lt; 10⁻¹² ✓
+    </div>
+  </li>
 </ol>
 
 <p><strong>Part B Solution: Find p₂ using Bernoulli Equation</strong></p>
+${loss_explanation}
+<p><strong>Strategy:</strong> We'll work entirely in gauge pressure to avoid unit conversion errors.</p>
+
 <ol>
-  <li>Write Bernoulli equation (head form):
-    <ul>
-      <li>p₁/(ρg) + v₁²/(2g) + z₁ = p₂/(ρg) + v₂²/(2g) + z₂${loss_term}</li>
-      <li>Note: p₁ and p₂ are absolute pressures in the equation</li>
-    </ul>
+  <li><strong>Calculate velocity heads:</strong>
+    <div style="margin-left: 20px;">
+      v₁²/(2g) = (${v1_disp})²/(2×9.81) = ${v1_head.toFixed(4)} m<br>
+      v₂²/(2g) = (${v2_disp})²/(2×9.81) = ${v2_head.toFixed(4)} m
+    </div>
+  </li>${withLoss ? `
+  <li><strong>Calculate minor loss head:</strong>
+    <div style="margin-left: 20px;">
+      h<sub>L</sub> = K × v<sub>ref</sub>²/(2g) = ${K.toFixed(2)} × (${v_ref.toPrecision(4)})²/(2×9.81)<br>
+      <strong>h<sub>L</sub> = ${h_loss.toFixed(5)} m</strong>
+    </div>
+  </li>` : ''}
+  <li><strong>Rearrange Bernoulli to solve for p₂/(ρg):</strong>
+    <div style="margin-left: 20px; margin-top: 10px;">
+      p₂/(ρg) = p₁/(ρg) + v₁²/(2g) + z₁ − v₂²/(2g) − z₂${withLoss ? ' − h<sub>L</sub>' : ''}<br>
+      ${withLoss ? '<em>Note: We subtract h<sub>L</sub> because H₁ = H₂ + h<sub>L</sub>, so H₂ = H₁ − h<sub>L</sub></em>' : ''}
+    </div>
   </li>
-  <li>Convert gauge to absolute pressure:
-    <ul>
-      <li>p₁(abs) = p₁(gauge) + p_atm = ${p1_gauge_kpa.toFixed(1)} + ${(p_atm/1000).toFixed(1)} = ${(p1_abs_pa/1000).toFixed(1)} kPa</li>
-      <li>p₁(abs) = ${p1_abs_pa.toFixed(0)} Pa</li>
-    </ul>
+  <li><strong>Convert gauge pressure to pressure head at point 1:</strong>
+    <div style="margin-left: 20px;">
+      p₁(gauge) = ${p1_gauge_kpa.toFixed(1)} kPa = ${p1_gauge_pa.toFixed(0)} Pa<br>
+      p₁/(ρg) = ${p1_gauge_pa.toFixed(0)}/(1000×9.81) = ${(p1_gauge_pa/(rho*g)).toFixed(4)} m
+    </div>
   </li>
-  <li>Calculate velocity heads:
-    <ul>
-      <li>v₁²/(2g) = (${v1_disp})²/(2×9.81) = ${v1_head.toFixed(4)} m</li>
-      <li>v₂²/(2g) = (${v2_disp})²/(2×9.81) = ${v2_head.toFixed(4)} m</li>
-    </ul>
-  </li>${loss_calc}
-  <li>Calculate pressure head at point 1:
-    <ul>
-      <li>p₁/(ρg) = ${p1_abs_pa.toFixed(0)}/(1000×9.81) = ${p1_head.toFixed(4)} m</li>
-    </ul>
+  <li><strong>Calculate pressure head at point 2:</strong>
+    <div style="margin-left: 20px;">
+      p₂/(ρg) = ${(p1_gauge_pa/(rho*g)).toFixed(4)} + ${v1_head.toFixed(4)} + ${z1.toFixed(2)} − ${v2_head.toFixed(4)} − ${z2.toFixed(2)}${withLoss ? ` − ${h_loss.toFixed(5)}` : ''}<br>
+      <strong>p₂/(ρg) = ${(p2_gauge_pa/(rho*g)).toFixed(4)} m</strong>
+    </div>
   </li>
-  <li>Calculate total head at point 1:
-    <ul>
-      <li>H₁ = ${p1_head.toFixed(4)} + ${v1_head.toFixed(4)} + ${z1.toFixed(2)} = ${H1.toFixed(4)} m</li>
-    </ul>
-  </li>
-  <li>Calculate pressure head at point 2:
-    <ul>
-      <li>H₁ = H₂ (energy conservation${withLoss ? ' with losses' : ''})</li>
-      <li>p₂/(ρg) = H₁ - v₂²/(2g) - z₂${loss_term}</li>
-      <li>p₂/(ρg) = ${H1.toFixed(4)} - ${v2_head.toFixed(4)} - ${z2.toFixed(2)}${withLoss ? ` - ${h_loss.toFixed(4)}` : ''} = ${p2_head.toFixed(4)} m</li>
-    </ul>
-  </li>
-  <li>Convert to gauge pressure:
-    <ul>
-      <li>p₂(abs) = (ρg) × ${p2_head.toFixed(4)} = (1000 × 9.81) × ${p2_head.toFixed(4)}</li>
-      <li>p₂(abs) = ${p2_abs_pa.toFixed(0)} Pa = ${(p2_abs_pa/1000).toFixed(1)} kPa</li>
-      <li>p₂(gauge) = p₂(abs) - p_atm = ${(p2_abs_pa/1000).toFixed(1)} - ${(p_atm/1000).toFixed(1)}</li>
-      <li><strong>p₂ = ${p2_disp} kPa (gauge)</strong> ✓</li>
-    </ul>
+  <li><strong>Convert back to gauge pressure:</strong>
+    <div style="margin-left: 20px;">
+      p₂(gauge) = (ρg) × ${(p2_gauge_pa/(rho*g)).toFixed(4)} = (1000 × 9.81) × ${(p2_gauge_pa/(rho*g)).toFixed(4)}<br>
+      p₂(gauge) = ${p2_gauge_pa.toFixed(0)} Pa = ${p2_gauge_kpa.toFixed(2)} kPa<br>
+      <strong style="color: #28a745;">p₂ = ${p2_disp} kPa (gauge) ✓</strong>
+    </div>
   </li>
 </ol>
 
 <p><strong>Verification:</strong></p>
-<ul>
-  <li>✓ Continuity: |Q₁ - Q₂|/Q₁ = ${continuity_rel_err.toExponential(2)} < 10⁻¹²</li>
-  <li>✓ Bernoulli: |H₁ - H₂|/H₁ = ${bernoulli_rel_err.toExponential(2)} < 10⁻¹²</li>
-  <li>✓ Gauge pressure positive: p₂(gauge) = ${p2_gauge_kpa.toFixed(1)} kPa > 0</li>
+<ul style="background: #e7f3ff; padding: 15px; border-radius: 5px;">
+  <li><strong>Continuity check:</strong> |Q₁ − Q₂|/Q₁ = ${continuity_rel_err.toExponential(2)} &lt; 10⁻¹² ✓</li>
+  <li><strong>Bernoulli check:</strong> ${withLoss ? `|H₁ − (H₂ + h<sub>L</sub>)|/H₁` : '|H₁ − H₂|/H₁'} = ${bernoulli_rel_err.toExponential(2)} &lt; 10⁻¹² ✓</li>
+  <li><strong>Pressure validity:</strong> p₂(gauge) = ${p2_gauge_kpa.toFixed(2)} kPa &gt; 0 ✓</li>
+  <li><strong>Total head balance:</strong>
+    <div style="margin-left: 20px; font-size: 0.95em;">
+      H₁ = ${(p1_gauge_pa/(rho*g)).toFixed(4)} + ${v1_head.toFixed(4)} + ${z1.toFixed(2)} = ${H1.toFixed(4)} m<br>
+      H₂ = ${(p2_gauge_pa/(rho*g)).toFixed(4)} + ${v2_head.toFixed(4)} + ${z2.toFixed(2)} = ${H2.toFixed(4)} m<br>
+      ${withLoss ? `H₁ − (H₂ + h<sub>L</sub>) = ${H1.toFixed(4)} − (${H2.toFixed(4)} + ${h_loss.toFixed(5)}) ≈ 0 ✓` : `H₁ − H₂ = ${H1.toFixed(4)} − ${H2.toFixed(4)} ≈ 0 ✓`}
+    </div>
+  </li>
 </ul>
     `.trim();
     
