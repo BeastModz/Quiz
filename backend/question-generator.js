@@ -335,8 +335,10 @@ class QuestionGenerator {
     const userPrompt = this._buildUserPrompt(topic, options);
 
     try {
+      const modelToUse = options.model || 'gpt-4o-mini';
+      
       const response = await this.openai.chat.completions.create({
-        model: 'gpt-4o-mini',
+        model: modelToUse,
         messages: [
           { role: 'system', content: SYSTEM_PROMPT },
           { role: 'user', content: userPrompt }

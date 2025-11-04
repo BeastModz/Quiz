@@ -224,20 +224,21 @@ app.post('/api/chat', async (req, res) => {
 // Generate AI question endpoint
 app.post('/api/generate/question', async (req, res) => {
   try {
-    const { topic, unknown, seed } = req.body;
+    const { topic, unknown, seed, model } = req.body;
 
     if (!topic) {
       return res.status(400).json({
         error: 'Missing required field: topic',
-        valid_topics: ['continuity', 'bernoulli', 'combined_gas_law', 'dalton']
+        valid_topics: ['continuity', 'bernoulli', 'combined_gas_law', 'dalton', 'continuity_bernoulli']
       });
     }
 
     const options = {};
     if (unknown) options.unknown = unknown;
     if (seed !== undefined) options.seed = seed;
+    if (model) options.model = model;
 
-    console.log(`🔧 Generating ${topic} question...`);
+    console.log(`🔧 Generating ${topic} question${model ? ` with ${model}` : ''}...`);
     
     // Retry up to 3 times if validation fails (AI sometimes makes calculation errors)
     let question = null;
@@ -280,12 +281,12 @@ app.post('/api/generate/question', async (req, res) => {
 // Generate batch of AI questions endpoint
 app.post('/api/generate/batch', async (req, res) => {
   try {
-    const { topic, count = 5, unknown, seed } = req.body;
+    const { topic, count = 5, unknown, seed, model } = req.body;
 
     if (!topic) {
       return res.status(400).json({
         error: 'Missing required field: topic',
-        valid_topics: ['continuity', 'bernoulli', 'combined_gas_law', 'dalton']
+        valid_topics: ['continuity', 'bernoulli', 'combined_gas_law', 'dalton', 'continuity_bernoulli']
       });
     }
 
@@ -297,6 +298,7 @@ app.post('/api/generate/batch', async (req, res) => {
 
     const options = {};
     if (unknown) options.unknown = unknown;
+    if (model) options.model = model;
     if (seed !== undefined) options.seed = seed;
 
     console.log(`🔧 Generating ${count} ${topic} questions...`);

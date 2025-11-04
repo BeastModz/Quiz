@@ -40,6 +40,29 @@
   </div>
 
   <div class="control">
+    <label for="model">AI Model:</label>
+    <select id="model">
+      <optgroup label="🚀 Frontier Models (Recommended)">
+        <option value="gpt-5-mini">GPT-5 mini - Faster, cost-efficient</option>
+        <option value="gpt-5">GPT-5 - Best for coding & complex tasks</option>
+        <option value="gpt-5-nano">GPT-5 nano - Fastest, cheapest</option>
+        <option value="gpt-5-pro">GPT-5 pro - Smarter, more precise</option>
+        <option value="gpt-4.1">GPT-4.1 - Smartest non-reasoning</option>
+      </optgroup>
+      <optgroup label="⚡ Current Models">
+        <option value="gpt-4o-mini" selected>GPT-4o mini - Current (default)</option>
+        <option value="gpt-4o">GPT-4o - Fast & intelligent</option>
+        <option value="o3-mini">o3-mini - Small reasoning model</option>
+        <option value="o3">o3 - Reasoning for complex tasks</option>
+      </optgroup>
+      <optgroup label="🔧 Legacy Models">
+        <option value="gpt-4-turbo">GPT-4 Turbo - Older high-intelligence</option>
+        <option value="gpt-3.5-turbo">GPT-3.5 Turbo - Legacy cheap</option>
+      </optgroup>
+    </select>
+  </div>
+
+  <div class="control">
     <label for="count">Count:</label>
     <input type="number" id="count" value="1" min="1" max="20" style="width: 80px;">
   </div>
@@ -61,13 +84,15 @@
 
     async function generateQuestion() {
       const topic = document.getElementById('topic').value;
+      const model = document.getElementById('model').value;
       const seed = document.getElementById('seed').value;
       const output = document.getElementById('output');
 
-      output.innerHTML = '<p class="loading">Generating question...</p>';
+      output.innerHTML = `<p class="loading">Generating question with ${model}...</p>`;
 
       try {
         const body = { topic };
+        if (model) body.model = model;
         if (seed) body.seed = parseInt(seed);
 
         const response = await fetch(`${API_BASE}/api/generate/question`, {
@@ -90,14 +115,16 @@
 
     async function generateBatch() {
       const topic = document.getElementById('topic').value;
+      const model = document.getElementById('model').value;
       const count = parseInt(document.getElementById('count').value);
       const seed = document.getElementById('seed').value;
       const output = document.getElementById('output');
 
-      output.innerHTML = `<p class="loading">Generating ${count} questions...</p>`;
+      output.innerHTML = `<p class="loading">Generating ${count} questions with ${model}...</p>`;
 
       try {
         const body = { topic, count };
+        if (model) body.model = model;
         if (seed) body.seed = parseInt(seed);
 
         const response = await fetch(`${API_BASE}/api/generate/batch`, {
@@ -109,7 +136,7 @@
         const data = await response.json();
 
         if (data.success) {
-          output.innerHTML = `<h2>Generated ${data.count} Questions</h2>`;
+          output.innerHTML = `<h2>Generated ${data.count} Questions (Model: ${model})</h2>`;
           data.questions.forEach((q, i) => {
             const div = document.createElement('div');
             div.innerHTML = `<h3>Question ${i + 1}</h3>`;
