@@ -318,13 +318,18 @@ class QuestionGenerator {
 
   /**
    * Generate a question for the specified topic
-   * @param {string} topic - One of: continuity, bernoulli, combined_gas_law, dalton
+   * @param {string} topic - One of: continuity, bernoulli, combined_gas_law, dalton, continuity_bernoulli
    * @param {object} options - { unknown: 'v2', seed: 42 } (optional)
    * @returns {Promise<object>} - Question JSON per contract
    */
   async generate(topic, options = {}) {
     if (!TOPIC_SPECS[topic]) {
       throw new Error(`Invalid topic: ${topic}. Must be one of: ${Object.keys(TOPIC_SPECS).join(', ')}`);
+    }
+
+    // For multi-part problems, generate programmatically instead of using AI
+    if (topic === 'continuity_bernoulli') {
+      return this._generateMultiPartProgrammatic(options);
     }
 
     const userPrompt = this._buildUserPrompt(topic, options);
@@ -369,6 +374,179 @@ class QuestionGenerator {
       questions.push(question);
     }
     return questions;
+  }
+
+  /**
+   * Generate multi-part continuity+bernoulli question programmatically
+   * This bypasses AI to ensure mathematical correctness
+   */
+  _generateMultiPartProgrammatic(options = {}) {
+    const seed = options.seed || Math.random() * 10000;
+    const rng = this._seededRandom(seed);
+    
+    // Generate random input values
+    const d1 = this._randomInRange(0.020, 0.080, rng);
+    const ratio = this._randomInRange(0.5, 1.5, rng);
+    const d2 = d1 * ratio;
+    const v1 = this._randomInRange(0.50, 3.00, rng);
+    const p1 = this._randomInRange(180, 320, rng);
+    const z1 = 0; // Reference level
+    const zDiff = this._randomInRange(-2, 2, rng);
+    const z2 = z1 + zDiff;
+    
+    // Constants
+    const rho = 1000; // kg/m³
+    const g = 9.81; // m/s²
+    const PI = Math.PI;
+    
+    // Part A: Calculate v2 using continuity
+    const A1 = PI * Math.pow(d1, 2) / 4;
+    const A2 = PI * Math.pow(d2, 2) / 4;
+    const v2 = (A1 * v1) / A2;
+    
+    // Part B: Calculate p2 using Bernoulli
+    const v1_head = Math.pow(v1, 2) / (2 * g);
+    const v2_head = Math.pow(v2, 2) / (2 * g);
+    const p1_pa = p1 * 1000;
+    const p1_head = p1_pa / (rho * g);
+    
+    const H1 = p1_head + v1_head + z1;
+    const p2_head = H1 - v2_head - z2;
+    const p2_pa = p2_head * rho * g;
+    const p2_kpa = p2_pa / 1000;
+    
+    // Check if p2 is in valid range, if not regenerate
+    if (p2_kpa < 80 || p2_kpa > 400) {
+      // Retry with different seed
+      return this._generateMultiPartProgrammatic({ seed: seed + 1 });
+    }
+    
+    // Format values for display
+    const d1_mm = (d1 * 1000).toFixed(1);
+    const d2_mm = (d2 * 1000).toFixed(1);
+    const v1_disp = v1.toFixed(2);
+    const v2_disp = v2.toFixed(3);
+    const p1_disp = p1.toFixed(1);
+    const p2_disp = p2_kpa.toFixed(1);
+    
+    // Build HTML output
+    const question_html = `
+<p><strong>A horizontal pipe carries water. The pipe ${ratio < 1 ? 'contracts' : 'expands'} from diameter d₁ at point 1 to diameter d₂ at point 2.</strong></p>
+<p><strong>Given:</strong></p>
+<ul>
+  <li>d₁ = ${d1_mm} mm = ${d1.toFixed(4)} m</li>
+  <li>d₂ = ${d2_mm} mm = ${d2.toFixed(4)} m</li>
+  <li>v₁ = ${v1_disp} m/s</li>
+  <li>p₁ = ${p1_disp} kPa (gauge)</li>
+  <li>z₁ = ${z1.toFixed(1)} m (reference level)</li>
+  <li>z₂ = ${z2.toFixed(2)} m</li>
+  <li>ρ = 1000 kg/m³ (water)</li>
+  <li>g = 9.81 m/s²</li>
+</ul>
+<p><strong>Part A:</strong> Using the continuity equation, calculate the velocity v₂ at point 2.</p>
+<p><strong>Part B:</strong> Using your answer from Part A and the Bernoulli equation, calculate the gauge pressure p₂ at point 2.</p>
+<p><strong>Find: p₂ (kPa)</strong></p>
+    `.trim();
+    
+    const answer_html = `p₂ = ${p2_disp} kPa`;
+    
+    const explain_html = `
+<p><strong>Part A Solution: Find v₂ using Continuity Equation</strong></p>
+<ol>
+  <li>Calculate cross-sectional areas:
+    <ul>
+      <li>A₁ = πd₁²/4 = π(${d1.toFixed(4)})²/4 = ${A1.toExponential(4)} m²</li>
+      <li>A₂ = πd₂²/4 = π(${d2.toFixed(4)})²/4 = ${A2.toExponential(4)} m²</li>
+    </ul>
+  </li>
+  <li>Apply continuity: Q₁ = Q₂ → A₁v₁ = A₂v₂</li>
+  <li>Solve for v₂:
+    <ul>
+      <li>v₂ = (A₁/A₂)v₁ = (${A1.toExponential(4)}/${A2.toExponential(4)}) × ${v1_disp}</li>
+      <li>v₂ = (d₁/d₂)² × v₁ = (${d1.toFixed(4)}/${d2.toFixed(4)})² × ${v1_disp}</li>
+      <li><strong>v₂ = ${v2_disp} m/s</strong> ✓</li>
+    </ul>
+  </li>
+  <li>Verify: A₁v₁ = ${(A1*v1).toExponential(4)}, A₂v₂ = ${(A2*v2).toExponential(4)} ✓</li>
+</ol>
+
+<p><strong>Part B Solution: Find p₂ using Bernoulli Equation</strong></p>
+<ol>
+  <li>Write Bernoulli equation (head form):
+    <ul>
+      <li>p₁/(ρg) + v₁²/(2g) + z₁ = p₂/(ρg) + v₂²/(2g) + z₂</li>
+    </ul>
+  </li>
+  <li>Calculate velocity heads:
+    <ul>
+      <li>v₁²/(2g) = (${v1_disp})²/(2×9.81) = ${v1_head.toFixed(4)} m</li>
+      <li>v₂²/(2g) = (${v2_disp})²/(2×9.81) = ${v2_head.toFixed(4)} m</li>
+    </ul>
+  </li>
+  <li>Calculate pressure head at point 1:
+    <ul>
+      <li>p₁/(ρg) = (${p1_disp}×1000)/(1000×9.81) = ${p1_head.toFixed(3)} m</li>
+    </ul>
+  </li>
+  <li>Calculate total head at point 1:
+    <ul>
+      <li>H₁ = ${p1_head.toFixed(3)} + ${v1_head.toFixed(4)} + ${z1.toFixed(1)} = ${H1.toFixed(3)} m</li>
+    </ul>
+  </li>
+  <li>Calculate pressure head at point 2:
+    <ul>
+      <li>H₁ = H₂ (conservation of energy)</li>
+      <li>p₂/(ρg) = H₁ - v₂²/(2g) - z₂</li>
+      <li>p₂/(ρg) = ${H1.toFixed(3)} - ${v2_head.toFixed(4)} - ${z2.toFixed(2)} = ${p2_head.toFixed(3)} m</li>
+    </ul>
+  </li>
+  <li>Convert to pressure:
+    <ul>
+      <li>p₂ = (ρg) × ${p2_head.toFixed(3)} = (1000 × 9.81) × ${p2_head.toFixed(3)}</li>
+      <li>p₂ = ${p2_pa.toFixed(0)} Pa = ${p2_disp} kPa</li>
+      <li><strong>p₂ = ${p2_disp} kPa</strong> ✓</li>
+    </ul>
+  </li>
+</ol>
+
+<p><strong>Verification:</strong></p>
+<ul>
+  <li>✓ Continuity: A₁v₁ = A₂v₂ → ${(A1*v1).toExponential(4)} = ${(A2*v2).toExponential(4)}</li>
+  <li>✓ Bernoulli: H₁ = H₂ → ${H1.toFixed(3)} m = ${(p2_head + v2_head + z2).toFixed(3)} m</li>
+  <li>✓ Pressure range: 80 ≤ ${p2_disp} ≤ 400 kPa</li>
+</ul>
+    `.trim();
+    
+    return {
+      topic: 'continuity_bernoulli',
+      question_html,
+      answer_html,
+      explain_html,
+      label: 'p₂',
+      answer_value: parseFloat(p2_disp),
+      answer_unit: 'kPa',
+      state: {
+        d1, d2, v1, v2, p1, z1, z2,
+        rho, g,
+        A1, A2,
+        v1_head, v2_head,
+        p1_head, p2_head,
+        H1,
+        p2_pa, p2_kpa
+      }
+    };
+  }
+  
+  _seededRandom(seed) {
+    let state = seed;
+    return () => {
+      state = (state * 1664525 + 1013904223) % 4294967296;
+      return state / 4294967296;
+    };
+  }
+  
+  _randomInRange(min, max, rng) {
+    return min + (max - min) * rng();
   }
 
   _buildUserPrompt(topic, options) {
