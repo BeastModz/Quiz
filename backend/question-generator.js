@@ -8,7 +8,9 @@ import OpenAI from 'openai';
 const SYSTEM_PROMPT = `You generate exam-style STEM practice questions with one unknown. Output STRICT JSON only.
 Follow the provided topic spec, units, ranges, and output contract exactly.
 No stories. No extra keys. No markdown fences.
-If values violate constraints, resample internally before responding.`;
+CRITICAL: You MUST verify all calculations are mathematically correct before responding.
+For multi-part problems, Part A must feed correctly into Part B.
+If values violate constraints or equations don't balance, resample internally before responding.`;
 
 const TOPIC_SPECS = {
   continuity: {
@@ -269,6 +271,17 @@ p₂ = [value] kPa
 4. **Use exactly p/(ρg) NOT p/ρ** in Bernoulli equation
 5. **Pressure units:** Convert kPa to Pa for calculations: p[Pa] = p[kPa] × 1000
 6. **All intermediate calculations:** Keep 4+ significant figures, round only final answer to 3 sig figs
+
+### MANDATORY SELF-CHECK BEFORE RESPONDING:
+Before outputting JSON, YOU MUST verify:
+✓ Step 1: Calculate A₁ = π(d₁)²/4 correctly
+✓ Step 2: Calculate A₂ = π(d₂)²/4 correctly
+✓ Step 3: Verify A₁v₁ = A₂v₂ (difference must be < 1e-6)
+✓ Step 4: Calculate v₁²/(2g) and v₂²/(2g) correctly
+✓ Step 5: Calculate p₁/(ρg) correctly (remember: kPa × 1000 / (1000 × 9.81))
+✓ Step 6: Verify H₁ = H₂ where H = p/(ρg) + v²/(2g) + z
+✓ Step 7: Verify 80 ≤ p₂ ≤ 400 kPa
+If ANY check fails, regenerate values and recompute until all checks pass.
 
 ### Common Errors to AVOID:
 ❌ Using p/ρ instead of p/(ρg) in Bernoulli

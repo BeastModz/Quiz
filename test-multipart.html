@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test Multi-Part Question</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 1000px; margin: 40px auto; padding: 20px; }
+    h1 { color: #333; }
+    button { background: #007bff; color: white; border: none; cursor: pointer; padding: 12px 24px; font-size: 16px; border-radius: 4px; margin: 20px 0; }
+    button:hover { background: #0056b3; }
+    .output { margin-top: 30px; }
+    .question-box { background: #f8f9fa; border: 2px solid #007bff; border-radius: 8px; padding: 25px; margin: 20px 0; }
+    .answer { background: #d4edda; padding: 15px; border-radius: 4px; margin: 15px 0; border-left: 4px solid #28a745; }
+    .explanation { background: #fff3cd; padding: 15px; border-radius: 4px; margin: 15px 0; border-left: 4px solid #ffc107; }
+    .state { background: #e2e3e5; padding: 15px; border-radius: 4px; margin: 15px 0; font-family: 'Courier New', monospace; font-size: 12px; white-space: pre-wrap; overflow-x: auto; }
+    .error { background: #f8d7da; color: #721c24; padding: 20px; border-radius: 4px; margin: 20px 0; border-left: 4px solid #dc3545; }
+    .loading { color: #666; font-style: italic; padding: 20px; }
+    .meta { font-size: 13px; color: #666; margin-top: 15px; padding: 10px; background: #fff; border-radius: 4px; }
+    .validation { background: #d1ecf1; color: #0c5460; padding: 15px; border-radius: 4px; margin: 15px 0; border-left: 4px solid #17a2b8; }
+  </style>
+</head>
+<body>
+  <h1>🧪 Multi-Part Question Generator Test</h1>
+  <h2>Continuity + Bernoulli Sequential Problem</h2>
+  
+  <p>This test generates a two-part problem where:</p>
+  <ul>
+    <li><strong>Part A:</strong> Use continuity equation to find velocity v₂</li>
+    <li><strong>Part B:</strong> Use v₂ from Part A in Bernoulli equation to find pressure p₂</li>
+  </ul>
+
+  <button onclick="generateMultiPart()">🚀 Generate Multi-Part Question</button>
+
+  <div id="output" class="output"></div>
+
+  <script>
+    const API_BASE = 'http://153.92.221.225:3000';
+
+    async function generateMultiPart() {
+      const output = document.getElementById('output');
+      output.innerHTML = '<p class="loading">⏳ Generating multi-part question (this may take 10-15 seconds)...</p>';
+
+      try {
+        const response = await fetch(`${API_BASE}/api/generate/question`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ 
+            topic: 'continuity_bernoulli'
+          })
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+          displayQuestion(data.question);
+        } else {
+          output.innerHTML = `<div class="error"><strong>❌ Error:</strong> ${data.error || 'Unknown error'}</div>`;
+        }
+      } catch (error) {
+        output.innerHTML = `<div class="error"><strong>❌ Request failed:</strong> ${error.message}</div>`;
+      }
+    }
+
+    function displayQuestion(q) {
+      const output = document.getElementById('output');
+      
+      // Validate the state object has required fields for multi-part
+      const hasPartA = q.state.v2 && q.state.A1 && q.state.A2;
+      const hasPartB = q.state.p2_kpa && q.state.v1_head && q.state.v2_head;
+      
+      output.innerHTML = `
+        <div class="question-box">
+          <h3>📝 Generated Multi-Part Question</h3>
+          ${q.question_html}
+          
+          <div class="answer">
+            <h4>✅ Answer</h4>
+            ${q.answer_html}
+          </div>
+          
+          <div class="explanation">
+            <h4>📖 Complete Solution</h4>
+            ${q.explain_html}
+          </div>
+          
+          <div class="validation">
+            <h4>✓ Validation Checks</h4>
+            <ul>
+              <li><strong>Part A (Continuity):</strong> ${hasPartA ? '✓ v₂ calculated' : '✗ Missing'}</li>
+              <li><strong>Part B (Bernoulli):</strong> ${hasPartB ? '✓ p₂ calculated' : '✗ Missing'}</li>
+              <li><strong>Topic:</strong> ${q.topic}</li>
+              <li><strong>Label:</strong> ${q.label}</li>
+              <li><strong>Final Answer:</strong> ${q.answer_value} ${q.answer_unit}</li>
+            </ul>
+          </div>
+          
+          <div class="meta">
+            <strong>🔢 Key Values:</strong><br>
+            v₂ (from Part A) = ${q.state.v2 ? q.state.v2.toFixed(4) : 'N/A'} m/s<br>
+            p₂ (from Part B) = ${q.state.p2_kpa ? q.state.p2_kpa.toFixed(3) : 'N/A'} kPa<br>
+            Continuity Check: A₁v₁ = ${q.state.A1 && q.state.v1 ? (q.state.A1 * q.state.v1).toFixed(6) : 'N/A'}, 
+                              A₂v₂ = ${q.state.A2 && q.state.v2 ? (q.state.A2 * q.state.v2).toFixed(6) : 'N/A'}
+          </div>
+          
+          <details>
+            <summary style="cursor: pointer; color: #007bff; margin-top: 15px; font-weight: bold;">
+              🔍 View Complete State Data (JSON)
+            </summary>
+            <div class="state">${JSON.stringify(q.state, null, 2)}</div>
+          </details>
+        </div>
+      `;
+    }
+  </script>
+</body>
+</html>

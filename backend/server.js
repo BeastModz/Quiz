@@ -238,7 +238,29 @@ app.post('/api/generate/question', async (req, res) => {
     if (seed !== undefined) options.seed = seed;
 
     console.log(`🔧 Generating ${topic} question...`);
-    const question = await questionGenerator.generate(topic, options);
+    
+    // Retry up to 3 times if validation fails (AI sometimes makes calculation errors)
+    let question = null;
+    let lastError = null;
+    const maxRetries = 3;
+    
+    for (let attempt = 1; attempt <= maxRetries; attempt++) {
+      try {
+        question = await questionGenerator.generate(topic, options);
+        console.log(`✅ Question generated successfully on attempt ${attempt}`);
+        break; // Success!
+      } catch (err) {
+        lastError = err;
+        console.log(`⚠️ Attempt ${attempt} failed: ${err.message}`);
+        if (attempt < maxRetries) {
+          console.log(`🔄 Retrying... (${maxRetries - attempt} attempts left)`);
+        }
+      }
+    }
+    
+    if (!question) {
+      throw lastError || new Error('Failed to generate valid question after retries');
+    }
 
     res.json({
       success: true,
