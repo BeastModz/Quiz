@@ -502,14 +502,17 @@ class QuestionGenerator {
     const Q2 = A2 * v2;
     const continuity_rel_err = Math.abs(Q1 - Q2) / Math.max(Q1, Q2);
     
+    // For Bernoulli with losses: H1 = H2 + h_loss, so H2 = p2/(ρg) + v2²/(2g) + z2
+    // Without losses: H1 = H2
     const H2 = p2_head + v2_head + z2;
-    const bernoulli_rel_err = Math.abs(H1 - H2) / Math.max(Math.abs(H1), Math.abs(H2));
+    const H1_expected = H2 + h_loss; // H1 should equal H2 + losses
+    const bernoulli_rel_err = Math.abs(H1 - H1_expected) / Math.max(Math.abs(H1), Math.abs(H1_expected));
     
     if (continuity_rel_err > eps_cont) {
       throw new Error(`Continuity validation failed: rel_err = ${continuity_rel_err}`);
     }
     if (bernoulli_rel_err > eps_head) {
-      throw new Error(`Bernoulli validation failed: rel_err = ${bernoulli_rel_err}`);
+      throw new Error(`Bernoulli validation failed: rel_err = ${bernoulli_rel_err}, H1=${H1}, H1_expected=${H1_expected}, h_loss=${h_loss}`);
     }
     
     // Round for display (4 sig figs for intermediates, 3 for final answer)
