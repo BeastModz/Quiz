@@ -587,23 +587,29 @@ class QuestionGenerator {
 </p>
 <ol>
   <li><strong>Calculate cross-sectional areas:</strong>
-    <div style="margin-left: 20px;">
-      A₁ = πd₁²/4 = π(${d1_m})²/4 = ${A1.toExponential(4)} m²<br>
-      A₂ = πd₂²/4 = π(${d2_m})²/4 = ${A2.toExponential(4)} m²
+    <div style="margin-left: 20px; margin-top: 8px;">
+      <div style="font-family: 'Courier New', monospace; background: #f8f9fa; padding: 10px; border-radius: 4px;">
+        A₁ = πd₁²/4 = π(${d1_mm} mm)²/4 = ${(A1*1e6).toFixed(2)} mm² = ${(A1*1e3).toFixed(3)} × 10⁻³ m²<br>
+        A₂ = πd₂²/4 = π(${d2_mm} mm)²/4 = ${(A2*1e6).toFixed(2)} mm² = ${(A2*1e3).toFixed(3)} × 10⁻³ m²
+      </div>
     </div>
   </li>
   <li><strong>Solve for v₂:</strong>
-    <div style="margin-left: 20px;">
-      v₂ = (A₁/A₂)v₁ = (${A1.toExponential(4)}/${A2.toExponential(4)}) × ${v1_disp}<br>
-      v₂ = (d₁/d₂)² × v₁ = (${d1_m}/${d2_m})² × ${v1_disp}<br>
-      <strong style="color: #28a745;">v₂ = ${v2_disp} m/s ✓</strong>
+    <div style="margin-left: 20px; margin-top: 8px;">
+      <div style="font-family: 'Courier New', monospace; background: #f8f9fa; padding: 10px; border-radius: 4px;">
+        v₂ = (A₁/A₂) × v₁ = (${(A1*1e3).toFixed(3)}/${(A2*1e3).toFixed(3)}) × ${v1_disp} m/s<br>
+        v₂ = (d₁/d₂)² × v₁ = (${d1_mm}/${d2_mm})² × ${v1_disp} m/s<br>
+        <strong style="color: #28a745;">v₂ = ${v2_disp} m/s ✓</strong>
+      </div>
     </div>
   </li>
   <li><strong>Verify continuity:</strong>
-    <div style="margin-left: 20px;">
-      Q₁ = A₁v₁ = ${(Q).toExponential(4)} m³/s<br>
-      Q₂ = A₂v₂ = ${(A2*v2).toExponential(4)} m³/s<br>
-      Relative error: ${continuity_rel_err.toExponential(2)} &lt; 10⁻¹² ✓
+    <div style="margin-left: 20px; margin-top: 8px;">
+      <div style="font-family: 'Courier New', monospace; background: #e8f5e9; padding: 10px; border-radius: 4px;">
+        Q₁ = A₁v₁ = ${(Q*1e3).toFixed(3)} × 10⁻³ m³/s<br>
+        Q₂ = A₂v₂ = ${(A2*v2*1e3).toFixed(3)} × 10⁻³ m³/s<br>
+        Relative error: ${continuity_rel_err.toExponential(2)} &lt; 10⁻¹² ✓
+      </div>
     </div>
   </li>
 </ol>
@@ -614,54 +620,68 @@ ${loss_explanation}
 
 <ol>
   <li><strong>Calculate velocity heads:</strong>
-    <div style="margin-left: 20px;">
-      v₁²/(2g) = (${v1_disp})²/(2×9.81) = ${v1_head.toFixed(4)} m<br>
-      v₂²/(2g) = (${v2_disp})²/(2×9.81) = ${v2_head.toFixed(4)} m
+    <div style="margin-left: 20px; margin-top: 8px;">
+      <div style="font-family: 'Courier New', monospace; background: #f8f9fa; padding: 10px; border-radius: 4px;">
+        v₁²/(2g) = (${v1_disp})² / (2 × 9.81) = ${v1_head.toFixed(4)} m<br>
+        v₂²/(2g) = (${v2_disp})² / (2 × 9.81) = ${v2_head.toFixed(4)} m
+      </div>
     </div>
   </li>${withLoss ? `
   <li><strong>Calculate minor loss head:</strong>
-    <div style="margin-left: 20px;">
-      h<sub>L</sub> = K × v<sub>ref</sub>²/(2g) = ${K.toFixed(2)} × (${v_ref.toPrecision(4)})²/(2×9.81)<br>
-      <strong>h<sub>L</sub> = ${h_loss.toFixed(5)} m</strong>
+    <div style="margin-left: 20px; margin-top: 8px;">
+      <div style="font-family: 'Courier New', monospace; background: #fff3cd; padding: 10px; border-radius: 4px;">
+        h<sub>L</sub> = K × v<sub>ref</sub>²/(2g) = ${K.toFixed(2)} × (${v_ref.toPrecision(4)})² / (2 × 9.81)<br>
+        <strong>h<sub>L</sub> = ${h_loss.toFixed(5)} m</strong>
+      </div>
     </div>
   </li>` : ''}
   <li><strong>Rearrange Bernoulli to solve for p₂/(ρg):</strong>
     <div style="margin-left: 20px; margin-top: 10px;">
-      p₂/(ρg) = p₁/(ρg) + v₁²/(2g) + z₁ − v₂²/(2g) − z₂${withLoss ? ' − h<sub>L</sub>' : ''}<br>
-      ${withLoss ? '<em>Note: We subtract h<sub>L</sub> because H₁ = H₂ + h<sub>L</sub>, so H₂ = H₁ − h<sub>L</sub></em>' : ''}
+      <div style="background: #e3f2fd; padding: 12px; border-left: 4px solid #2196f3; border-radius: 4px;">
+        p₂/(ρg) = p₁/(ρg) + v₁²/(2g) + z₁ − v₂²/(2g) − z₂${withLoss ? ' − h<sub>L</sub>' : ''}<br>
+        ${withLoss ? '<em style="font-size: 0.9em;">Note: We subtract h<sub>L</sub> because H₁ = H₂ + h<sub>L</sub>, so H₂ = H₁ − h<sub>L</sub></em>' : ''}
+      </div>
     </div>
   </li>
   <li><strong>Convert gauge pressure to pressure head at point 1:</strong>
-    <div style="margin-left: 20px;">
-      p₁(gauge) = ${p1_gauge_kpa.toFixed(1)} kPa = ${p1_gauge_pa.toFixed(0)} Pa<br>
-      p₁/(ρg) = ${p1_gauge_pa.toFixed(0)}/(1000×9.81) = ${(p1_gauge_pa/(rho*g)).toFixed(4)} m
+    <div style="margin-left: 20px; margin-top: 8px;">
+      <div style="font-family: 'Courier New', monospace; background: #f8f9fa; padding: 10px; border-radius: 4px;">
+        p₁(gauge) = ${p1_gauge_kpa.toFixed(1)} kPa = ${(p1_gauge_pa/1000).toFixed(1)} × 10³ Pa<br>
+        p₁/(ρg) = ${(p1_gauge_pa/1000).toFixed(1)} × 10³ / (1000 × 9.81) = ${(p1_gauge_pa/(rho*g)).toFixed(4)} m
+      </div>
     </div>
   </li>
   <li><strong>Calculate pressure head at point 2:</strong>
-    <div style="margin-left: 20px;">
-      p₂/(ρg) = ${(p1_gauge_pa/(rho*g)).toFixed(4)} + ${v1_head.toFixed(4)} + ${z1.toFixed(2)} − ${v2_head.toFixed(4)} − ${z2.toFixed(2)}${withLoss ? ` − ${h_loss.toFixed(5)}` : ''}<br>
-      <strong>p₂/(ρg) = ${(p2_gauge_pa/(rho*g)).toFixed(4)} m</strong>
+    <div style="margin-left: 20px; margin-top: 8px;">
+      <div style="font-family: 'Courier New', monospace; background: #f8f9fa; padding: 10px; border-radius: 4px;">
+        p₂/(ρg) = ${(p1_gauge_pa/(rho*g)).toFixed(4)} + ${v1_head.toFixed(4)} + ${z1.toFixed(2)} − ${v2_head.toFixed(4)} − ${z2.toFixed(2)}${withLoss ? ` − ${h_loss.toFixed(5)}` : ''}<br>
+        <strong>p₂/(ρg) = ${(p2_gauge_pa/(rho*g)).toFixed(4)} m</strong>
+      </div>
     </div>
   </li>
   <li><strong>Convert back to gauge pressure:</strong>
-    <div style="margin-left: 20px;">
-      p₂(gauge) = (ρg) × ${(p2_gauge_pa/(rho*g)).toFixed(4)} = (1000 × 9.81) × ${(p2_gauge_pa/(rho*g)).toFixed(4)}<br>
-      p₂(gauge) = ${p2_gauge_pa.toFixed(0)} Pa = ${p2_gauge_kpa.toFixed(2)} kPa<br>
-      <strong style="color: #28a745;">p₂ = ${p2_disp} kPa (gauge) ✓</strong>
+    <div style="margin-left: 20px; margin-top: 8px;">
+      <div style="font-family: 'Courier New', monospace; background: #f8f9fa; padding: 10px; border-radius: 4px;">
+        p₂(gauge) = (ρg) × ${(p2_gauge_pa/(rho*g)).toFixed(4)} = (1000 × 9.81) × ${(p2_gauge_pa/(rho*g)).toFixed(4)}<br>
+        p₂(gauge) = ${(p2_gauge_pa/1000).toFixed(2)} × 10³ Pa = ${p2_gauge_kpa.toFixed(2)} kPa<br>
+        <strong style="color: #28a745; font-size: 1.1em;">p₂ = ${p2_disp} kPa (gauge) ✓</strong>
+      </div>
     </div>
   </li>
 </ol>
 
 <p><strong>Verification:</strong></p>
-<ul style="background: #e7f3ff; padding: 15px; border-radius: 5px;">
+<ul style="background: #e8f5e9; padding: 15px; border-radius: 5px; border-left: 4px solid #4caf50;">
   <li><strong>Continuity check:</strong> |Q₁ − Q₂|/Q₁ = ${continuity_rel_err.toExponential(2)} &lt; 10⁻¹² ✓</li>
   <li><strong>Bernoulli check:</strong> ${withLoss ? `|H₁ − (H₂ + h<sub>L</sub>)|/H₁` : '|H₁ − H₂|/H₁'} = ${bernoulli_rel_err.toExponential(2)} &lt; 10⁻¹² ✓</li>
   <li><strong>Pressure validity:</strong> p₂(gauge) = ${p2_gauge_kpa.toFixed(2)} kPa &gt; 0 ✓</li>
   <li><strong>Total head balance:</strong>
-    <div style="margin-left: 20px; font-size: 0.95em;">
-      H₁ = ${(p1_gauge_pa/(rho*g)).toFixed(4)} + ${v1_head.toFixed(4)} + ${z1.toFixed(2)} = ${H1.toFixed(4)} m<br>
-      H₂ = ${(p2_gauge_pa/(rho*g)).toFixed(4)} + ${v2_head.toFixed(4)} + ${z2.toFixed(2)} = ${H2.toFixed(4)} m<br>
-      ${withLoss ? `H₁ − (H₂ + h<sub>L</sub>) = ${H1.toFixed(4)} − (${H2.toFixed(4)} + ${h_loss.toFixed(5)}) ≈ 0 ✓` : `H₁ − H₂ = ${H1.toFixed(4)} − ${H2.toFixed(4)} ≈ 0 ✓`}
+    <div style="margin-left: 20px; font-size: 0.95em; margin-top: 5px;">
+      <div style="font-family: 'Courier New', monospace; background: #fff; padding: 8px; border-radius: 3px;">
+        H₁ = ${(p1_gauge_pa/(rho*g)).toFixed(4)} + ${v1_head.toFixed(4)} + ${z1.toFixed(2)} = ${H1.toFixed(4)} m<br>
+        H₂ = ${(p2_gauge_pa/(rho*g)).toFixed(4)} + ${v2_head.toFixed(4)} + ${z2.toFixed(2)} = ${H2.toFixed(4)} m<br>
+        ${withLoss ? `H₁ − (H₂ + h<sub>L</sub>) = ${H1.toFixed(4)} − (${H2.toFixed(4)} + ${h_loss.toFixed(5)}) ≈ 0 ✓` : `H₁ − H₂ = ${H1.toFixed(4)} − ${H2.toFixed(4)} ≈ 0 ✓`}
+      </div>
     </div>
   </li>
 </ul>
