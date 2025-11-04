@@ -56,6 +56,17 @@ const TOPIC_SPECS = {
       z_diff: [-2, 2]
     },
     unknowns: ['p2']
+  },
+  continuity_bernoulli_K: {
+    ranges: {
+      d1: [0.020, 0.080],
+      diameter_ratio: [0.5, 1.5],
+      v1: [0.50, 3.00],
+      p1: [180, 320],
+      z_diff: [-2, 2],
+      K: [0.2, 0.8]
+    },
+    unknowns: ['p2']
   }
 };
 
@@ -328,8 +339,8 @@ class QuestionGenerator {
     }
 
     // For multi-part problems, generate programmatically instead of using AI
-    if (topic === 'continuity_bernoulli') {
-      return this._generateMultiPartProgrammatic(options);
+    if (topic === 'continuity_bernoulli' || topic === 'continuity_bernoulli_K') {
+      return this._generateMultiPartProgrammatic({ ...options, topic });
     }
 
     const userPrompt = this._buildUserPrompt(topic, options);
@@ -380,103 +391,215 @@ class QuestionGenerator {
 
   /**
    * Generate multi-part continuity+bernoulli question programmatically
-   * This bypasses AI to ensure mathematical correctness
+   * Physics-aware sampling with proper validation
    */
   _generateMultiPartProgrammatic(options = {}) {
     const seed = options.seed || Math.random() * 10000;
     const rng = this._seededRandom(seed);
-    
-    // Generate random input values
-    const d1 = this._randomInRange(0.020, 0.080, rng);
-    const ratio = this._randomInRange(0.5, 1.5, rng);
-    const d2 = d1 * ratio;
-    const v1 = this._randomInRange(0.50, 3.00, rng);
-    const p1 = this._randomInRange(180, 320, rng);
-    const z1 = 0; // Reference level
-    const zDiff = this._randomInRange(-2, 2, rng);
-    const z2 = z1 + zDiff;
+    const withLoss = options.topic === 'continuity_bernoulli_K';
     
     // Constants
     const rho = 1000; // kg/m³
     const g = 9.81; // m/s²
+    const p_atm = 101325; // Pa
     const PI = Math.PI;
     
-    // Part A: Calculate v2 using continuity
-    const A1 = PI * Math.pow(d1, 2) / 4;
-    const A2 = PI * Math.pow(d2, 2) / 4;
-    const v2 = (A1 * v1) / A2;
+    // Teaching bands
+    const v2_min = 0.5; // m/s
+    const v2_max = 6.0; // m/s
+    const min_v_delta = 0.2; // m/s - avoid boring cases
     
-    // Part B: Calculate p2 using Bernoulli
-    const v1_head = Math.pow(v1, 2) / (2 * g);
-    const v2_head = Math.pow(v2, 2) / (2 * g);
-    const p1_pa = p1 * 1000;
-    const p1_head = p1_pa / (rho * g);
+    let attempt = 0;
+    const maxAttempts = 100;
     
-    const H1 = p1_head + v1_head + z1;
-    const p2_head = H1 - v2_head - z2;
-    const p2_pa = p2_head * rho * g;
-    const p2_kpa = p2_pa / 1000;
-    
-    // Check if p2 is in valid range, if not regenerate
-    if (p2_kpa < 80 || p2_kpa > 400) {
-      // Retry with different seed
-      return this._generateMultiPartProgrammatic({ seed: seed + 1 });
+    while (attempt++ < maxAttempts) {
+      // Sample geometry and inlet velocity
+      const d1 = this._randomInRange(0.020, 0.080, rng);
+      const ratio = this._randomInRange(0.5, 1.5, rng); // d2/d1
+      const d2 = d1 * ratio;
+      const v1 = this._randomInRange(0.50, 3.00, rng);
+      
+      // Part A: Calculate v2 using continuity (full precision)
+      const A1 = PI * Math.pow(d1, 2) / 4;
+      const A2 = PI * Math.pow(d2, 2) / 4;
+      const v2 = (A1 * v1) / A2;
+      const Q = A1 * v1;
+      
+      // Check v2 in teaching band and not boring
+      if (v2 < v2_min || v2 > v2_max) continue;
+      if (Math.abs(v2 - v1) < min_v_delta) continue;
+      
+      // Sample inlet pressure (gauge)
+      const p1_gauge_kpa = this._randomInRange(180, 320, rng);
+      const p1_gauge_pa = p1_gauge_kpa * 1000;
+      const p1_abs_pa = p1_gauge_pa + p_atm;
+      
+      // Sample elevation difference
+      const z1 = 0; // Reference level
+      let z2 = z1 + this._randomInRange(-2, 2, rng);
+      
+      // Round z to nearest mm to enable proper "horizontal" detection
+      z2 = Math.round(z2 * 1000) / 1000;
+      
+      // Optional minor loss coefficient
+      const K = withLoss ? this._randomInRange(0.2, 0.8, rng) : 0;
+      const v_ref = ratio < 1 ? v2 : v1; // contraction uses v2, expansion uses v1
+      const h_loss = withLoss ? K * Math.pow(v_ref, 2) / (2 * g) : 0;
+      
+      // Part B: Calculate p2 using Bernoulli (full precision)
+      const v1_head = Math.pow(v1, 2) / (2 * g);
+      const v2_head = Math.pow(v2, 2) / (2 * g);
+      const p1_head = p1_abs_pa / (rho * g);
+      
+      const H1 = p1_head + v1_head + z1;
+      const H2_without_loss = p1_head + v1_head + z1; // H1 = H2 when no losses
+      const p2_head = H1 - v2_head - z2 - h_loss;
+      const p2_abs_pa = p2_head * rho * g;
+      const p2_gauge_pa = p2_abs_pa - p_atm;
+      const p2_gauge_kpa = p2_gauge_pa / 1000;
+      
+      // Physics-aware validation
+      // 1. Require positive gauge pressure (no vacuum for intro problems)
+      if (p2_gauge_pa <= 0) continue;
+      
+      // 2. Compute max expected pressure change with 5% safety factor
+      const Dp_max_pa = 1.05 * rho * g * (Math.abs(z2 - z1) + Math.max(v1*v1, v2*v2) / (2*g));
+      if (Math.abs(p2_gauge_pa - p1_gauge_pa) > Dp_max_pa) continue;
+      
+      // Valid draw found - now format output
+      const is_horizontal = Math.abs(z2 - z1) < 0.001;
+      const is_contraction = ratio < 1.0;
+      
+      return this._buildMultiPartOutput({
+        seed, d1, d2, A1, A2, v1, v2, Q, z1, z2,
+        rho, g, p_atm,
+        p1_gauge_kpa, p1_gauge_pa, p1_abs_pa,
+        v1_head, v2_head, p1_head,
+        H1, p2_head, p2_abs_pa, p2_gauge_pa, p2_gauge_kpa,
+        is_horizontal, is_contraction,
+        withLoss, K, v_ref, h_loss
+      });
     }
     
-    // Format values for display
+    throw new Error(`Failed to generate valid multi-part question after ${maxAttempts} attempts`);
+  }
+  
+  _buildMultiPartOutput(data) {
+    const {
+      seed, d1, d2, A1, A2, v1, v2, Q, z1, z2,
+      rho, g, p_atm,
+      p1_gauge_kpa, p1_gauge_pa, p1_abs_pa,
+      v1_head, v2_head, p1_head,
+      H1, p2_head, p2_abs_pa, p2_gauge_pa, p2_gauge_kpa,
+      is_horizontal, is_contraction,
+      withLoss, K, v_ref, h_loss
+    } = data;
+    
+    // Relative tolerance validation on full precision
+    const eps_cont = 1e-12;
+    const eps_head = 1e-12;
+    const Q1 = A1 * v1;
+    const Q2 = A2 * v2;
+    const continuity_rel_err = Math.abs(Q1 - Q2) / Math.max(Q1, Q2);
+    
+    const H2 = p2_head + v2_head + z2;
+    const bernoulli_rel_err = Math.abs(H1 - H2) / Math.max(Math.abs(H1), Math.abs(H2));
+    
+    if (continuity_rel_err > eps_cont) {
+      throw new Error(`Continuity validation failed: rel_err = ${continuity_rel_err}`);
+    }
+    if (bernoulli_rel_err > eps_head) {
+      throw new Error(`Bernoulli validation failed: rel_err = ${bernoulli_rel_err}`);
+    }
+    
+    // Round for display (4 sig figs for intermediates, 3 for final answer)
     const d1_mm = (d1 * 1000).toFixed(1);
     const d2_mm = (d2 * 1000).toFixed(1);
-    const v1_disp = v1.toFixed(2);
-    const v2_disp = v2.toFixed(3);
-    const p1_disp = p1.toFixed(1);
-    const p2_disp = p2_kpa.toFixed(1);
+    const d1_m = d1.toPrecision(4);
+    const d2_m = d2.toPrecision(4);
+    const v1_disp = v1.toPrecision(4);
+    const v2_disp = v2.toPrecision(4);
+    const p1_disp = p1_gauge_kpa.toPrecision(4);
+    const p2_disp = p2_gauge_kpa.toPrecision(3);
+    const z_diff = z2 - z1;
+    
+    // Adaptive prose based on geometry
+    let geometry_desc;
+    if (is_horizontal) {
+      geometry_desc = "The pipe is horizontal";
+    } else if (z_diff > 0) {
+      geometry_desc = `The pipe rises by ${Math.abs(z_diff).toFixed(2)} m`;
+    } else {
+      geometry_desc = `The pipe drops by ${Math.abs(z_diff).toFixed(2)} m`;
+    }
+    
+    const change_desc = is_contraction ? "contracts" : "expands";
+    const loss_clause = withLoss ? `Include a minor loss with K = ${K.toFixed(2)} (using v_ref = ${is_contraction ? 'v₂' : 'v₁'}).` : "Neglect losses.";
     
     // Build HTML output
     const question_html = `
-<p><strong>A horizontal pipe carries water. The pipe ${ratio < 1 ? 'contracts' : 'expands'} from diameter d₁ at point 1 to diameter d₂ at point 2.</strong></p>
+<p>A water line ${change_desc} from diameter d₁ at point 1 to diameter d₂ at point 2. ${geometry_desc} between these points. ${loss_clause}</p>
 <p><strong>Given:</strong></p>
 <ul>
-  <li>d₁ = ${d1_mm} mm = ${d1.toFixed(4)} m</li>
-  <li>d₂ = ${d2_mm} mm = ${d2.toFixed(4)} m</li>
+  <li>d₁ = ${d1_mm} mm (${d1_m} m)</li>
+  <li>d₂ = ${d2_mm} mm (${d2_m} m)</li>
   <li>v₁ = ${v1_disp} m/s</li>
-  <li>p₁ = ${p1_disp} kPa (gauge)</li>
-  <li>z₁ = ${z1.toFixed(1)} m (reference level)</li>
+  <li>p₁ = ${p1_disp} kPa (gauge pressure)</li>
+  <li>z₁ = ${z1.toFixed(2)} m (reference level)</li>
   <li>z₂ = ${z2.toFixed(2)} m</li>
   <li>ρ = 1000 kg/m³ (water)</li>
   <li>g = 9.81 m/s²</li>
+  ${withLoss ? `<li>K = ${K.toFixed(2)} (minor loss coefficient, v_ref = ${is_contraction ? 'v₂' : 'v₁'})</li>` : ''}
 </ul>
 <p><strong>Part A:</strong> Using the continuity equation, calculate the velocity v₂ at point 2.</p>
 <p><strong>Part B:</strong> Using your answer from Part A and the Bernoulli equation, calculate the gauge pressure p₂ at point 2.</p>
-<p><strong>Find: p₂ (kPa)</strong></p>
+<p><strong>Find: p₂ (kPa, gauge)</strong></p>
     `.trim();
     
-    const answer_html = `p₂ = ${p2_disp} kPa`;
+    const answer_html = `p₂ = ${p2_disp} kPa (gauge)`;
+    
+    // Build detailed explanation
+    const loss_term = withLoss ? ` + h_L` : '';
+    const loss_calc = withLoss ? `
+  <li>Calculate minor loss head:
+    <ul>
+      <li>h_L = K × v_ref²/(2g) = ${K.toFixed(2)} × (${v_ref.toPrecision(4)})²/(2×9.81)</li>
+      <li>h_L = ${h_loss.toFixed(4)} m</li>
+    </ul>
+  </li>` : '';
     
     const explain_html = `
 <p><strong>Part A Solution: Find v₂ using Continuity Equation</strong></p>
 <ol>
   <li>Calculate cross-sectional areas:
     <ul>
-      <li>A₁ = πd₁²/4 = π(${d1.toFixed(4)})²/4 = ${A1.toExponential(4)} m²</li>
-      <li>A₂ = πd₂²/4 = π(${d2.toFixed(4)})²/4 = ${A2.toExponential(4)} m²</li>
+      <li>A₁ = πd₁²/4 = π(${d1_m})²/4 = ${A1.toExponential(4)} m²</li>
+      <li>A₂ = πd₂²/4 = π(${d2_m})²/4 = ${A2.toExponential(4)} m²</li>
     </ul>
   </li>
   <li>Apply continuity: Q₁ = Q₂ → A₁v₁ = A₂v₂</li>
   <li>Solve for v₂:
     <ul>
       <li>v₂ = (A₁/A₂)v₁ = (${A1.toExponential(4)}/${A2.toExponential(4)}) × ${v1_disp}</li>
-      <li>v₂ = (d₁/d₂)² × v₁ = (${d1.toFixed(4)}/${d2.toFixed(4)})² × ${v1_disp}</li>
+      <li>v₂ = (d₁/d₂)² × v₁ = (${d1_m}/${d2_m})² × ${v1_disp}</li>
       <li><strong>v₂ = ${v2_disp} m/s</strong> ✓</li>
     </ul>
   </li>
-  <li>Verify: A₁v₁ = ${(A1*v1).toExponential(4)}, A₂v₂ = ${(A2*v2).toExponential(4)} ✓</li>
+  <li>Verify: Q₁ = ${(Q).toExponential(4)} m³/s, Q₂ = ${(A2*v2).toExponential(4)} m³/s ✓</li>
 </ol>
 
 <p><strong>Part B Solution: Find p₂ using Bernoulli Equation</strong></p>
 <ol>
   <li>Write Bernoulli equation (head form):
     <ul>
-      <li>p₁/(ρg) + v₁²/(2g) + z₁ = p₂/(ρg) + v₂²/(2g) + z₂</li>
+      <li>p₁/(ρg) + v₁²/(2g) + z₁ = p₂/(ρg) + v₂²/(2g) + z₂${loss_term}</li>
+      <li>Note: p₁ and p₂ are absolute pressures in the equation</li>
+    </ul>
+  </li>
+  <li>Convert gauge to absolute pressure:
+    <ul>
+      <li>p₁(abs) = p₁(gauge) + p_atm = ${p1_gauge_kpa.toFixed(1)} + ${(p_atm/1000).toFixed(1)} = ${(p1_abs_pa/1000).toFixed(1)} kPa</li>
+      <li>p₁(abs) = ${p1_abs_pa.toFixed(0)} Pa</li>
     </ul>
   </li>
   <li>Calculate velocity heads:
@@ -484,57 +607,105 @@ class QuestionGenerator {
       <li>v₁²/(2g) = (${v1_disp})²/(2×9.81) = ${v1_head.toFixed(4)} m</li>
       <li>v₂²/(2g) = (${v2_disp})²/(2×9.81) = ${v2_head.toFixed(4)} m</li>
     </ul>
-  </li>
+  </li>${loss_calc}
   <li>Calculate pressure head at point 1:
     <ul>
-      <li>p₁/(ρg) = (${p1_disp}×1000)/(1000×9.81) = ${p1_head.toFixed(3)} m</li>
+      <li>p₁/(ρg) = ${p1_abs_pa.toFixed(0)}/(1000×9.81) = ${p1_head.toFixed(4)} m</li>
     </ul>
   </li>
   <li>Calculate total head at point 1:
     <ul>
-      <li>H₁ = ${p1_head.toFixed(3)} + ${v1_head.toFixed(4)} + ${z1.toFixed(1)} = ${H1.toFixed(3)} m</li>
+      <li>H₁ = ${p1_head.toFixed(4)} + ${v1_head.toFixed(4)} + ${z1.toFixed(2)} = ${H1.toFixed(4)} m</li>
     </ul>
   </li>
   <li>Calculate pressure head at point 2:
     <ul>
-      <li>H₁ = H₂ (conservation of energy)</li>
-      <li>p₂/(ρg) = H₁ - v₂²/(2g) - z₂</li>
-      <li>p₂/(ρg) = ${H1.toFixed(3)} - ${v2_head.toFixed(4)} - ${z2.toFixed(2)} = ${p2_head.toFixed(3)} m</li>
+      <li>H₁ = H₂ (energy conservation${withLoss ? ' with losses' : ''})</li>
+      <li>p₂/(ρg) = H₁ - v₂²/(2g) - z₂${loss_term}</li>
+      <li>p₂/(ρg) = ${H1.toFixed(4)} - ${v2_head.toFixed(4)} - ${z2.toFixed(2)}${withLoss ? ` - ${h_loss.toFixed(4)}` : ''} = ${p2_head.toFixed(4)} m</li>
     </ul>
   </li>
-  <li>Convert to pressure:
+  <li>Convert to gauge pressure:
     <ul>
-      <li>p₂ = (ρg) × ${p2_head.toFixed(3)} = (1000 × 9.81) × ${p2_head.toFixed(3)}</li>
-      <li>p₂ = ${p2_pa.toFixed(0)} Pa = ${p2_disp} kPa</li>
-      <li><strong>p₂ = ${p2_disp} kPa</strong> ✓</li>
+      <li>p₂(abs) = (ρg) × ${p2_head.toFixed(4)} = (1000 × 9.81) × ${p2_head.toFixed(4)}</li>
+      <li>p₂(abs) = ${p2_abs_pa.toFixed(0)} Pa = ${(p2_abs_pa/1000).toFixed(1)} kPa</li>
+      <li>p₂(gauge) = p₂(abs) - p_atm = ${(p2_abs_pa/1000).toFixed(1)} - ${(p_atm/1000).toFixed(1)}</li>
+      <li><strong>p₂ = ${p2_disp} kPa (gauge)</strong> ✓</li>
     </ul>
   </li>
 </ol>
 
 <p><strong>Verification:</strong></p>
 <ul>
-  <li>✓ Continuity: A₁v₁ = A₂v₂ → ${(A1*v1).toExponential(4)} = ${(A2*v2).toExponential(4)}</li>
-  <li>✓ Bernoulli: H₁ = H₂ → ${H1.toFixed(3)} m = ${(p2_head + v2_head + z2).toFixed(3)} m</li>
-  <li>✓ Pressure range: 80 ≤ ${p2_disp} ≤ 400 kPa</li>
+  <li>✓ Continuity: |Q₁ - Q₂|/Q₁ = ${continuity_rel_err.toExponential(2)} < 10⁻¹²</li>
+  <li>✓ Bernoulli: |H₁ - H₂|/H₁ = ${bernoulli_rel_err.toExponential(2)} < 10⁻¹²</li>
+  <li>✓ Gauge pressure positive: p₂(gauge) = ${p2_gauge_kpa.toFixed(1)} kPa > 0</li>
 </ul>
     `.trim();
     
     return {
-      topic: 'continuity_bernoulli',
+      topic: withLoss ? 'continuity_bernoulli_K' : 'continuity_bernoulli',
+      seed,
       question_html,
       answer_html,
       explain_html,
-      label: 'p₂',
+      label: 'p₂_gauge_kpa',
       answer_value: parseFloat(p2_disp),
       answer_unit: 'kPa',
-      state: {
-        d1, d2, v1, v2, p1, z1, z2,
-        rho, g,
-        A1, A2,
-        v1_head, v2_head,
-        p1_head, p2_head,
-        H1,
-        p2_pa, p2_kpa
+      state_raw: {
+        units: {
+          pressure_in: 'kPa_g',
+          pressure_internal: 'Pa_abs',
+          length: 'm',
+          velocity: 'm/s'
+        },
+        d1_m: d1,
+        d2_m: d2,
+        A1_m2: A1,
+        A2_m2: A2,
+        v1_mps: v1,
+        v2_mps: v2,
+        Q_m3ps: Q,
+        z1_m: z1,
+        z2_m: z2,
+        rho_kgpm3: rho,
+        g_mps2: g,
+        p_atm_pa: p_atm,
+        p1_gauge_kpa: p1_gauge_kpa,
+        p1_abs_pa: p1_abs_pa,
+        v1_head_m: v1_head,
+        v2_head_m: v2_head,
+        p1_head_m: p1_head,
+        H1_m: H1,
+        H2_m: p2_head + v2_head + z2,
+        p2_abs_pa: p2_abs_pa,
+        p2_gauge_pa: p2_gauge_pa,
+        p2_gauge_kpa: p2_gauge_kpa,
+        is_horizontal: is_horizontal,
+        is_contraction: is_contraction,
+        used_loss: withLoss,
+        ...(withLoss && { K, v_ref_mps: v_ref, h_loss_m: h_loss })
+      },
+      state_shown: {
+        d1: `${d1_m} m (${d1_mm} mm)`,
+        d2: `${d2_m} m (${d2_mm} mm)`,
+        A1: `${A1.toExponential(4)} m²`,
+        A2: `${A2.toExponential(4)} m²`,
+        v1: `${v1_disp} m/s`,
+        v2: `${v2_disp} m/s`,
+        Q: `${Q.toExponential(4)} m³/s`,
+        z1: `${z1.toFixed(2)} m`,
+        z2: `${z2.toFixed(2)} m`,
+        p1: `${p1_disp} kPa (gauge)`,
+        H1: `${H1.toFixed(4)} m`,
+        p2: `${p2_disp} kPa (gauge)`,
+        ...(withLoss && { K: K.toFixed(2), h_loss: `${h_loss.toFixed(4)} m` })
+      },
+      validation: {
+        continuity_rel_err,
+        bernoulli_rel_err,
+        p2_gauge_positive: p2_gauge_pa > 0,
+        post_render_recompute_match_kpa: Math.abs(parseFloat(p2_disp) - p2_gauge_kpa) < 0.2
       }
     };
   }

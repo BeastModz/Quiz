@@ -229,7 +229,7 @@ app.post('/api/generate/question', async (req, res) => {
     if (!topic) {
       return res.status(400).json({
         error: 'Missing required field: topic',
-        valid_topics: ['continuity', 'bernoulli', 'combined_gas_law', 'dalton', 'continuity_bernoulli']
+        valid_topics: ['continuity', 'bernoulli', 'combined_gas_law', 'dalton', 'continuity_bernoulli', 'continuity_bernoulli_K']
       });
     }
 
@@ -286,7 +286,7 @@ app.post('/api/generate/batch', async (req, res) => {
     if (!topic) {
       return res.status(400).json({
         error: 'Missing required field: topic',
-        valid_topics: ['continuity', 'bernoulli', 'combined_gas_law', 'dalton', 'continuity_bernoulli']
+        valid_topics: ['continuity', 'bernoulli', 'combined_gas_law', 'dalton', 'continuity_bernoulli', 'continuity_bernoulli_K']
       });
     }
 
