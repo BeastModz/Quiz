@@ -1,0 +1,228 @@
+Air pressure + Dalton's law practice:
+
+You decide you want to climb the most spectacular mountain in Saskatchewan, mount
+Blackstrap. This majestic mountain soars 45 metres above the surrounding landscape – roughly
+643 metres above sea level. Assuming oxygen makes up 21% of the atmosphere here, what is
+the partial pressure of oxygen at the peak?
+Follow up – could you use the same approach if you had a fluid like water instead of air?
+
+anwser:
+Part 1: Calculating Atmospheric PressureThe solution begins by identifying the nature of the fluid (air) to select the correct formula:"Since we're working with a compressible fluid we should use"1:$$P = 101325 \cdot (1 - 2.25577 \cdot 10^{-5} \cdot h)^{5.25588}$$2"with $h = 643\text{m}$ which gives"3:$$93.835 \text{ kPa Total Pressure}$$4Part 2: Calculating Partial Pressure of OxygenUsing Dalton's Law (partial pressures), the solution calculates the specific pressure contribution of oxygen:$$P_{O_2} = 0.21 \cdot P_{total} = 0.21 \cdot (93.835 \text{ kPa})$$5$$P_{O_2} = 19.705 \text{ kPa}$$6Part 3: Follow-up (Incompressible Fluids)The explanation addresses the second question regarding water versus air:"If we use an incompressible fluid like water, we could just use"7:$$P = 101.3 \text{ kPa} + \rho g h$$
+
+
+
+
+=========================================================
+
+Boyle's Law Practice:
+
+Imagine you have a balloon that you inflate inside of an airplane where the temperature is 20°C
+and the pressure is 101kPa. The balloon has a volume of 1L – you can assume the pressure of
+the balloon is the same as that of the plane. However, Donald Trump has made safety illegal so
+the plane depressurizes unexpectedly during the flight – the pressure in the plane drops to
+60kPa and the temperature drops to -5°C. How big is your balloon now?
+
+anwser:  Based on the "Boyle's Law Practice - Answer" document, here is the transcription of the handwritten explanation.Handwritten Solution TranscriptionPart 1: Identifying the Law and VariablesDespite the title, the solution notes the variables change in both pressure and temperature, leading to the use of the Combined Gas Law (though the text explicitly names Boyle's law):"Here we need to use Boyle's law" 1Formula: $$\frac{P_1V_1}{T_1} = \frac{P_2V_2}{T_2}$$2Part 2: Listing the KnownsThe writer lists the initial and final conditions, converting Celsius to Kelvin immediately3333:$P_1 = 101 \text{ kPa}$$V_1 = 1 \text{ L}$$T_1 = 20^\circ\text{C} = 293 \text{ K}$$P_2 = 60 \text{ kPa}$$T_2 = -5^\circ\text{C} = 268 \text{ K}$$V_2 = \ ?$Part 3: Rearrangement and CalculationThe formula is rearranged to solve for $V_2$, and the values are substituted. Note that the writer converts kPa to Pa in the substitution step:$$V_2 = \frac{T_2 P_1 V_1}{P_2 T_1}$$4$$V_2 = \frac{268 \text{ K} \cdot 101000 \text{ Pa} \cdot 1 \text{ L}}{60000 \text{ Pa} \cdot 293 \text{ K}}$$5$$V_2 = 1.5397 \text{ L}$$6Part 4: Reasoning and NotesThe solution includes a logic check and a crucial note about units:Logic Check: "$\rightarrow$ we went to a much lower Pressure so even though it got colder, it makes sense the balloon got ~ 54% bigger" 7Important Note: "* this equation only works with Kelvin (that's also why I chose a negative value for T in celsius, it simply won't make sense to get a negative volume)" 8
+
+==============================================================================
+
+Blood (ρ=1050kg/m3
+) enters a branch in the circulatory system where it splits from one flow to
+two. The diameter and pressures of all three points is known but the heights and inlet velocity is
+not.
+
+image
+
+Determine the velocity of the inlet (point 1) and the heights of points 1 and 2. Treat the height of
+point 3 to be zero.
+
+
+anwser: Problem StatementScenario: Blood ($\rho=1050\text{ kg/m}^3$) enters a branch in the circulatory system where it splits from one flow to two1.Knowns: The diameters and pressures of all three points are known, but heights and inlet velocity are not2.Point 1 (Inlet): $\phi_1 = 3\text{ cm}$, $P_1 = 18\text{ kPa}$, $v_1 = \ ?$3.Point 2 (Outlet): $\phi_2 = 1\text{ cm}$, $v_2 = 70\text{ cm/s}$, $P_2 = 17.3\text{ kPa}$4.Point 3 (Outlet): $\phi_3 = 0.8\text{ cm}$, $v_3 = 90\text{ cm/s}$, $P_3 = 19\text{ kPa}$5.Goal: Determine the velocity of the inlet (point 1) and the heights of points 1 and 2, treating the height of point 3 as zero ($z_3=0$)6.Step 1: Conservation of MassThe solution first finds the missing velocity at the inlet."The first step is to apply the conservation of Mass law where $Q_{in} = Q_{out}$"7.Equation: $$v_1 A_1 = v_2 A_2 + v_3 A_3$$8.Substitution:$$\frac{v_1 \cdot \pi(0.03\text{m})^2}{4} = \frac{0.70\text{m/s} \cdot \pi(0.01\text{m})^2}{4} + \frac{0.90\text{m/s} \cdot \pi(0.008\text{m})^2}{4}$$9.Result: $$v_1 = 0.14178 \text{ m/s} \approx 14.1 \text{ cm/s}$$10.Note: "which seems slow but the X-Section [cross-section] is much bigger"11.Step 2: Bernoulli's Equation (Finding $z_1$)The solution uses Bernoulli's principle to find the height difference between Point 3 (where all variables are known) and Point 1.Formula: $$\frac{v^2}{2} + \frac{P}{\rho} + gz = \text{constant}$$12.Reasoning: "We know everything for 3" so we can equate it to Point 113.Rearrangement for $z_1$:$$z_1 = \frac{\left( \frac{v_3^2}{2} + \frac{P_3}{\rho} + gz_3 - \frac{v_1^2}{2} - \frac{P_1}{\rho} \right)}{g}$$14.Substitution:$$z_1 = \frac{\left( \frac{(0.9\text{m/s})^2}{2} + \frac{19000\text{Pa}}{1050\text{kg/m}^3} + 0 - \frac{(0.14178\text{m/s})^2}{2} - \frac{18000\text{Pa}}{1050\text{kg/m}^3} \right)}{9.81\text{m/s}^2}$$15.Result: $$z_1 = 13.734 \text{ cm (above } z_3)$$16.Step 3: Bernoulli's Equation (Finding $z_2$)The same process is repeated for Point 2.Note: "uses the same formula except for point 2 instead"17.Substitution:$$z_2 = \frac{\left( \frac{(0.9\text{m/s})^2}{2} + \frac{19000\text{Pa}}{1050} + 0 - \frac{(0.7\text{m/s})^2}{2} - \frac{17300\text{Pa}}{1050} \right)}{9.81}$$18.Result: $$z_2 = 18.135 \text{ cm (above } z_3)$$19.Closing Note:"You could also use point 1 to find $z_2$ but then that's the $\Delta z$ between 1 & 2, not 1 & 3 like I did"20.
+
+
+
+++++================================================
+
+1) Theory (50 points):
+a) The unitless dimension ‘Reynold’s number’ represents the ratio of two
+types of forces, what are they? (2 points)
+Inertial forces to viscous forces
+b) Give a brief explanation of what the governing laws of fluid flow mean:
+i) Conservation of Mass (4 points)
+Within a fixed system there cannot be mass created or destroyed so the mass
+that enters this system must be the same as the amount stored and the mass
+leaving the system
+ii) Conservation of Linear / Angular Momentum (4 points)
+The conservation of linear and angular momentum says that unless a force
+acts on a fluid, it will continue travelling in the same direction with the same
+velocity, or rotating the same speed in the case of angular momentum.
+c) The left half of the heart pumps blood throughout the body but the right
+part is dedicated to one area. What is this area of the body and why is
+half of the heart dedicated to it? (5 points)
+The lungs receive the output from the right half of the heart. This is so that the
+blood can remove carbon dioxide taken from the body and absorb oxygen
+from the alveoli which it can then distribute to the body afterward.
+3
+d) How are the valves within the heart opened and closed? (2 points)
+Pressure gradients drive the valves to open and close, the muscle
+present do not actually open the valves.
+e) What occurs at the respiratory boundary? (3 points)
+The capillaries connect to the alveoli meaning that the cardiovascular system
+can receive oxygen from the respiratory system and the blood can release
+carbon dioxide to the respiratory system.
+f) Explain the mechanism of how synovial fluid is stored in a joint and
+how it is used to lubricate the joint during motion. (5 points)
+Synovial fluid is stored in the cartilage and is squeezed out of the cartilage like
+a sponge in order to provide lubrication for a joint in motion. After the motion
+the cartilage sucks the synovial fluid back up.
+g) Give two advantages of using titanium as an implant material. (4
+points)
+Good corrosion resistance/oxide layer formation, light weight but strong,
+young’s modulus is not as different than that of bone when compared to steel,
+non-magnetic, biocompatible, osseointegration
+4
+h) Briefly explain how volume based computational fluid dynamics can
+model flows within the human body and what it means to be ‘mesh
+independent’. (5 points)
+CFD models fluid flow by making a grid of small elements which each have
+their own flow direction and speed, combing many of the elements can give a
+bigger picture of what’s happening in flows within the human body. Mesh
+independent means that changing the arrangement of the elements will not
+affect the results of the simulation noticeably.
+i) What is the main function of:
+i) Red blood cells (2 points)
+Transport oxygen and carbon dioxide
+ii) White blood cells (2 points)
+Fight infections and eliminate foreign particles
+iii) Platelets (2 points)
+Stop blood loss / maintain hemostasis
+5
+j) Draw below how the velocity profile of blood will look as it flows through
+a cylindrical blood vessel. Explain any differences between your
+velocity profile and that of an inviscid Newtonian fluid shown as an
+example. (10 points)
+Blood Inviscid Newtonian Fluid
+The blood has a more curved shape because blood is a shear-thinning fluid,
+meaning as more shear stress is applied, the lower the viscosity of blood will
+be. It also has a blunt central area because it has a yield stress, there is not
+enough shear stress present in the centre of the flow so that means the blood
+will move more as a solid body in the centre of the vessel.
+6
+2) Static Fluid Pressures (15 Points)
+Determine the pressure at point a.
+Pressure between 2 and 3
+𝑃𝑟𝑒𝑠𝑠𝑢𝑟𝑒 2 − 3 = (0.7𝑚 − 0.3𝑚) ∗
+9.81𝑚
+𝑠2
+∗
+1200𝑘𝑔
+𝑚3
++ 101300𝑃𝑎
+𝑃𝑟𝑒𝑠𝑠𝑢𝑟𝑒 2 − 3 = 106008.8𝑃𝑎
+Pressure between 2 and 1
+𝑃𝑟𝑒𝑠𝑠𝑢𝑟𝑒 1 − 2 = (0.3𝑚 − 1.0𝑚) ∗
+9.81𝑚
+𝑠2
+∗
+1000𝑘𝑔
+𝑚3
++ 106008.8𝑃𝑎
+𝑃𝑟𝑒𝑠𝑠𝑢𝑟𝑒 1 − 2 = 99141.8𝑃𝑎
+Pressure at a
+𝑃𝑟𝑒𝑠𝑠𝑢𝑟𝑒 𝑎𝑡 𝑎 = (1.0𝑚 − 0.5𝑚) ∗
+9.81𝑚
+𝑠2
+∗
+800𝑘𝑔
+𝑚3
++ 99141.8𝑃𝑎
+𝑃𝑟𝑒𝑠𝑠𝑢𝑟𝑒 𝑎𝑡 𝑎 = 103065.8𝑃𝑎 𝑜𝑟 ~103𝑘𝑃𝑎
+7
+3) Partial Pressures (7 Points)
+Is it safe to dive at a depth of 30m with a mixture containing 20% oxygen for a
+long period of time when a partial pressure of oxygen above 60kPa can be
+dangerous? Proof your answer with a calculation. (Assume other components
+of the gas are not dangerous and the surface of the water is at sea level)
+Pressure at sea level = 101.3kPa
+Pressure on diver = water pressure + atmospheric pressure
+𝑃𝑟𝑒𝑠𝑠𝑢𝑟𝑒 = 30𝑚 ∗
+9.81𝑚
+𝑠2
+∗
+1000𝑘𝑔
+𝑚3
++ 101300𝑃𝑎
+𝑃𝑟𝑒𝑠𝑠𝑢𝑟𝑒 = 395600𝑃𝑎
+𝑃𝑎𝑟𝑡𝑖𝑎𝑙 𝑃𝑟𝑒𝑠𝑠𝑢𝑟𝑒 𝑜𝑓 𝑜𝑥𝑦𝑔𝑒𝑛 = 0.2 ∗ 395600𝑃𝑎
+Partial pressure of oxygen = 79.120kPa so this would be unsafe!
+4) Composite Materials (5 Points)
+A composite material is to be put into the body as an implant material. This
+composite has a plastic matrix with carbon fibres aligned parallel to the load.
+The fibres make up 10% of the volume of the composite and has a Young’s
+modulus of 100GPa and the matrix has a Young’s modulus of 3GPa.
+Determine the Young’s modulus of the entire composite in this direction.
+E = 0.1 * 100 GPa + 0.9 * 3 GPa = 12.7GPa
+8
+5) Moving Fluid Flows (15 points)
+Determine the distance between the inlet and outlet of this system containing
+water. Assume the inlet and outlet are both circular. The inlet has a radius of
+5cm and the outlet has a radius of 4cm. The water flows into the inlet at a rate
+of 1.5m/s. The pressure at the inlet is 105kPa and the pressure at the outlet is
+101.3kPa.
+𝐶𝑜𝑛𝑠𝑒𝑟𝑣𝑎𝑡𝑖𝑜𝑛 𝑜𝑓 𝑚𝑎𝑠𝑠:𝑄𝑖𝑛 = 𝑄𝑜𝑢𝑡
+𝑣𝑖𝑛 ∗ 𝐴𝑖𝑛 = 𝑣𝑜𝑢𝑡 ∗ 𝐴𝑜𝑢𝑡
+1.5𝑚
+𝑠
+∗ 𝜋(0.05𝑚)
+2 = 𝑣𝑜𝑢𝑡 ∗ 𝜋(0.04𝑚)
+2
+𝑣𝑜𝑢𝑡 = 2.34375𝑚/𝑠
+Bernoulli’s equation
+∆𝑧 =
+(
+1.5𝑚
+𝑠
+)
+2
+2
++
+105000𝑃𝑎
+1000𝑘𝑔
+𝑚3
+−
+(
+2.34375𝑚
+𝑠
+)
+2
+2
+−
+101300𝑃𝑎
+1000𝑘𝑔
+𝑚3
+9.81𝑚/𝑠
+2
+∆𝑧 = 0.21187𝑚
+Or the difference in height is 21.2cm
+9
+6) Boyle’s Law (8 points)
+Determine the volume of air that you blow from your lungs into a balloon if you
+want the balloon to expand 1L in volume. The elasticity of the balloon applies
+some extra pressure, you can treat the pressure and density of the air in the
+balloon as constants of 103kPa and 1.2kg/m3
+. Your body temperature is 37°𝐶
+and the room is 20°𝐶. The pressure in the atmosphere is 101kPa.
+𝑃1𝑉1
+𝑇1
+=
+𝑃2𝑉2
+𝑇2
+𝑉1 =
+𝑃2𝑉2𝑇1
+𝑇2𝑃1
+𝑉1 =
+103𝑘𝑃𝑎 ∗ 1𝐿 ∗ 310°𝐾
+293°𝐾 ∗ 101𝑘𝑃𝑎
+𝑉1 = 1.0790𝐿
+*The density and pressure being constant are important for Boyle’s law to
+apply but you don’t actually need the density value at all.

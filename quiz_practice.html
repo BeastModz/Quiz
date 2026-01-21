@@ -2643,24 +2643,34 @@
         // Try loading from the richer JSON file first (if you added it)
         const candidateFiles = [
           'data/quiz_questions_exam1_exam2_cleaned_verified.json',
-          'data/quiz_questions.json'
+          'data/quiz_questions.json',
+          'data/fluid_dynamics_practice.json'
         ];
 
+        let allQuestions = [];
+
+        // Load all candidate files and merge them
         for (const path of candidateFiles) {
           try {
             console.log(`Attempting to load ${path}...`);
             const resp = await fetch(path);
             if (resp.ok) {
-              const allQuestions = await resp.json();
-              if (allQuestions && allQuestions.length > 0) {
-                console.log('✓ Loaded', allQuestions.length, 'questions from', path);
-                this.loadQuestionsData(allQuestions);
-                return;
+              const questions = await resp.json();
+              if (questions && questions.length > 0) {
+                console.log('✓ Loaded', questions.length, 'questions from', path);
+                allQuestions = allQuestions.concat(questions);
               }
             }
           } catch (err) {
             console.log(`Could not load ${path}:`, err.message);
           }
+        }
+
+        // If we loaded any questions, use them
+        if (allQuestions.length > 0) {
+          console.log('✓ Total questions loaded:', allQuestions.length);
+          this.loadQuestionsData(allQuestions);
+          return;
         }
 
         // Try Flask API if JSON files fail (useful for local dev)

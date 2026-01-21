@@ -1,0 +1,329 @@
+[
+  {
+    "id": "fd-dalton-001",
+    "type": "free-response",
+    "topic": "dalton_atmospheric",
+    "question": "You decide you want to climb the most spectacular mountain in Saskatchewan, Mount Blackstrap. This majestic mountain soars 45 metres above the surrounding landscape – roughly 643 metres above sea level. Assuming oxygen makes up 21% of the atmosphere here, what is the partial pressure of oxygen at the peak?\n\nFollow up – could you use the same approach if you had a fluid like water instead of air?",
+    "correct": "19.705",
+    "answer_unit": "kPa",
+    "explanation": "<p><strong>Part 1: Calculating Atmospheric Pressure</strong></p>\n<p>Since we're working with a compressible fluid (air), we use the barometric formula:</p>\n<p style=\"text-align: center; font-size: 1.1em; margin: 15px 0;\">\n  <strong>P = 101.325 × (1 - 2.25577 × 10⁻⁵ × h)^5.25588</strong>\n</p>\n<p>with h = 643 m, which gives:</p>\n<div style=\"font-family: 'Courier New', monospace; background: #f8f9fa; padding: 10px; border-radius: 4px;\">\n  P = 101.325 × (1 - 2.25577 × 10⁻⁵ × 643)^5.25588<br>\n  P = 101.325 × (0.9855)^5.25588<br>\n  <strong>P = 93.835 kPa (Total Pressure)</strong>\n</div>\n\n<p><strong>Part 2: Calculating Partial Pressure of Oxygen</strong></p>\n<p>Using Dalton's Law (partial pressures):</p>\n<div style=\"font-family: 'Courier New', monospace; background: #f8f9fa; padding: 10px; border-radius: 4px;\">\n  P_O₂ = 0.21 × P_total = 0.21 × 93.835 kPa<br>\n  <strong style=\"color: #28a745;\">P_O₂ = 19.705 kPa ✓</strong>\n</div>\n\n<p><strong>Part 3: Follow-up (Incompressible Fluids)</strong></p>\n<p>If we use an incompressible fluid like water, we could just use the hydrostatic equation:</p>\n<p style=\"text-align: center;\"><strong>P = P_atm + ρgh</strong></p>\n<p>This simpler approach works because water density doesn't change significantly with pressure.</p>",
+    "keyPoints": [
+      "Compressible fluids (air) require barometric formula",
+      "Dalton's Law: P_partial = (mole fraction) × P_total",
+      "Incompressible fluids use simpler hydrostatic equation"
+    ],
+    "state": {
+      "h_m": 643,
+      "P_atm_kPa": 101.325,
+      "P_total_kPa": 93.835,
+      "O2_fraction": 0.21,
+      "P_O2_kPa": 19.705
+    },
+    "exam": "Practice",
+    "textbookReference": {
+      "chapter": "Fluid Mechanics",
+      "section": "Dalton's Law & Atmospheric Pressure"
+    }
+  },
+  {
+    "id": "fd-combined-gas-001",
+    "type": "free-response",
+    "topic": "combined_gas_law",
+    "question": "Imagine you have a balloon that you inflate inside of an airplane where the temperature is 20°C and the pressure is 101 kPa. The balloon has a volume of 1L – you can assume the pressure of the balloon is the same as that of the plane.\n\nHowever, Donald Trump has made safety illegal so the plane depressurizes unexpectedly during the flight – the pressure in the plane drops to 60 kPa and the temperature drops to -5°C. How big is your balloon now?",
+    "correct": "1.54",
+    "answer_unit": "L",
+    "explanation": "<p><strong>Identifying the Law and Variables</strong></p>\n<p>Since both pressure AND temperature change, we need the Combined Gas Law:</p>\n<p style=\"text-align: center; font-size: 1.1em; margin: 15px 0;\">\n  <strong>P₁V₁/T₁ = P₂V₂/T₂</strong>\n</p>\n\n<p><strong>Listing the Knowns (converting °C to K):</strong></p>\n<div style=\"font-family: 'Courier New', monospace; background: #f8f9fa; padding: 10px; border-radius: 4px;\">\n  P₁ = 101 kPa<br>\n  V₁ = 1 L<br>\n  T₁ = 20°C = 293 K<br>\n  P₂ = 60 kPa<br>\n  T₂ = -5°C = 268 K<br>\n  V₂ = ?\n</div>\n\n<p><strong>Rearrangement and Calculation:</strong></p>\n<div style=\"font-family: 'Courier New', monospace; background: #f8f9fa; padding: 10px; border-radius: 4px;\">\n  V₂ = (T₂ × P₁ × V₁) / (P₂ × T₁)<br>\n  V₂ = (268 K × 101 kPa × 1 L) / (60 kPa × 293 K)<br>\n  V₂ = 27068 / 17580<br>\n  <strong style=\"color: #28a745;\">V₂ = 1.54 L ✓</strong>\n</div>\n\n<p><strong>Reasoning Check:</strong></p>\n<p>→ We went to a much lower pressure, so even though it got colder, it makes sense the balloon got ~54% bigger.</p>\n\n<p><strong>Important Note:</strong></p>\n<p style=\"background: #fff3cd; padding: 10px; border-radius: 4px;\">⚠️ This equation ONLY works with Kelvin! That's also why I chose a negative value for T in Celsius – it simply won't make sense to get a negative volume.</p>",
+    "keyPoints": [
+      "Combined Gas Law: P₁V₁/T₁ = P₂V₂/T₂",
+      "MUST convert to Kelvin (K = °C + 273)",
+      "Lower pressure → larger volume (inverse relationship)"
+    ],
+    "state": {
+      "P1_kPa": 101,
+      "V1_L": 1,
+      "T1_C": 20,
+      "T1_K": 293,
+      "P2_kPa": 60,
+      "T2_C": -5,
+      "T2_K": 268,
+      "V2_L": 1.5397
+    },
+    "exam": "Practice",
+    "textbookReference": {
+      "chapter": "Fluid Mechanics",
+      "section": "Combined Gas Law / Boyle's Law"
+    }
+  },
+  {
+    "id": "fd-blood-branch-001",
+    "type": "free-response",
+    "topic": "continuity_bernoulli_branch",
+    "question": "Blood (ρ = 1050 kg/m³) enters a branch in the circulatory system where it splits from one flow to two. The diameter and pressures of all three points are known but the heights and inlet velocity are not.\n\n<strong>Given:</strong>\n<ul>\n  <li>Point 1 (Inlet): φ₁ = 3 cm, P₁ = 18 kPa, v₁ = ?</li>\n  <li>Point 2 (Outlet): φ₂ = 1 cm, v₂ = 70 cm/s, P₂ = 17.3 kPa</li>\n  <li>Point 3 (Outlet): φ₃ = 0.8 cm, v₃ = 90 cm/s, P₃ = 19 kPa</li>\n</ul>\n\nDetermine the velocity of the inlet (point 1) and the heights of points 1 and 2. Treat the height of point 3 to be zero (z₃ = 0).",
+    "correct": "v₁ = 14.2 cm/s, z₁ = 13.7 cm, z₂ = 18.1 cm",
+    "answer_unit": "various",
+    "explanation": "<p><strong>Step 1: Conservation of Mass</strong></p>\n<p>First find the missing velocity at the inlet using Q_in = Q_out:</p>\n<p style=\"text-align: center;\"><strong>v₁A₁ = v₂A₂ + v₃A₃</strong></p>\n<div style=\"font-family: 'Courier New', monospace; background: #f8f9fa; padding: 10px; border-radius: 4px;\">\n  v₁ × π(0.03m)²/4 = 0.70 m/s × π(0.01m)²/4 + 0.90 m/s × π(0.008m)²/4<br>\n  v₁ × 7.069×10⁻⁴ = 0.70 × 7.854×10⁻⁵ + 0.90 × 5.027×10⁻⁵<br>\n  v₁ × 7.069×10⁻⁴ = 5.498×10⁻⁵ + 4.524×10⁻⁵<br>\n  v₁ = 1.002×10⁻⁴ / 7.069×10⁻⁴<br>\n  <strong style=\"color: #28a745;\">v₁ = 0.1418 m/s ≈ 14.2 cm/s ✓</strong>\n</div>\n<p><em>Note: This seems slow but the cross-section is much bigger.</em></p>\n\n<p><strong>Step 2: Bernoulli's Equation (Finding z₁)</strong></p>\n<p>Use Bernoulli between Point 3 (all known) and Point 1:</p>\n<p style=\"text-align: center;\"><strong>v²/2 + P/ρ + gz = constant</strong></p>\n<div style=\"font-family: 'Courier New', monospace; background: #f8f9fa; padding: 10px; border-radius: 4px;\">\n  z₁ = [v₃²/2 + P₃/ρ + gz₃ - v₁²/2 - P₁/ρ] / g<br>\n  z₁ = [(0.9)²/2 + 19000/1050 + 0 - (0.1418)²/2 - 18000/1050] / 9.81<br>\n  z₁ = [0.405 + 18.095 + 0 - 0.0101 - 17.143] / 9.81<br>\n  z₁ = 1.347 / 9.81<br>\n  <strong style=\"color: #28a745;\">z₁ = 0.1373 m = 13.7 cm (above z₃) ✓</strong>\n</div>\n\n<p><strong>Step 3: Bernoulli's Equation (Finding z₂)</strong></p>\n<p>Same process for Point 2:</p>\n<div style=\"font-family: 'Courier New', monospace; background: #f8f9fa; padding: 10px; border-radius: 4px;\">\n  z₂ = [(0.9)²/2 + 19000/1050 + 0 - (0.7)²/2 - 17300/1050] / 9.81<br>\n  z₂ = [0.405 + 18.095 + 0 - 0.245 - 16.476] / 9.81<br>\n  z₂ = 1.779 / 9.81<br>\n  <strong style=\"color: #28a745;\">z₂ = 0.1814 m = 18.1 cm (above z₃) ✓</strong>\n</div>\n\n<p><strong>Note:</strong> You could also use point 1 to find z₂ but then that's the Δz between 1 & 2, not relative to z₃.</p>",
+    "keyPoints": [
+      "Conservation of mass: Q_in = Q_out for branching flows",
+      "Bernoulli: v²/2 + P/ρ + gz = constant",
+      "Use known point (all variables) as reference"
+    ],
+    "state": {
+      "rho_kgpm3": 1050,
+      "d1_cm": 3,
+      "d2_cm": 1,
+      "d3_cm": 0.8,
+      "v1_cmps": 14.18,
+      "v2_cmps": 70,
+      "v3_cmps": 90,
+      "P1_kPa": 18,
+      "P2_kPa": 17.3,
+      "P3_kPa": 19,
+      "z1_cm": 13.73,
+      "z2_cm": 18.14,
+      "z3_cm": 0
+    },
+    "exam": "Practice",
+    "textbookReference": {
+      "chapter": "Fluid Mechanics",
+      "section": "Continuity + Bernoulli (Branching Flow)"
+    }
+  },
+  {
+    "id": "fd-static-pressure-001",
+    "type": "free-response",
+    "topic": "static_fluid_pressure",
+    "question": "Determine the pressure at point A in a multi-fluid manometer system.\n\n<strong>Given:</strong>\n<ul>\n  <li>Fluid column 1 (bottom): Oil with ρ = 800 kg/m³, height from 0.5m to 1.0m</li>\n  <li>Fluid column 2 (middle): Water with ρ = 1000 kg/m³, height from 0.3m to 1.0m</li>\n  <li>Fluid column 3 (top): Dense fluid with ρ = 1200 kg/m³, height from 0.3m to 0.7m, open to atmosphere</li>\n  <li>Atmospheric pressure = 101.3 kPa</li>\n</ul>",
+    "correct": "103.07",
+    "answer_unit": "kPa",
+    "explanation": "<p><strong>Strategy: Work from open surface down to point A</strong></p>\n\n<p><strong>Step 1: Pressure between points 2 and 3 (dense fluid column)</strong></p>\n<div style=\"font-family: 'Courier New', monospace; background: #f8f9fa; padding: 10px; border-radius: 4px;\">\n  P₂₋₃ = (0.7m - 0.3m) × 9.81 m/s² × 1200 kg/m³ + 101300 Pa<br>\n  P₂₋₃ = 0.4 × 9.81 × 1200 + 101300<br>\n  <strong>P₂₋₃ = 106,008.8 Pa</strong>\n</div>\n\n<p><strong>Step 2: Pressure between points 1 and 2 (water column)</strong></p>\n<div style=\"font-family: 'Courier New', monospace; background: #f8f9fa; padding: 10px; border-radius: 4px;\">\n  P₁₋₂ = (0.3m - 1.0m) × 9.81 m/s² × 1000 kg/m³ + 106008.8 Pa<br>\n  P₁₋₂ = -0.7 × 9.81 × 1000 + 106008.8<br>\n  <strong>P₁₋₂ = 99,141.8 Pa</strong>\n</div>\n<p><em>Note: Negative because we're going UP in elevation.</em></p>\n\n<p><strong>Step 3: Pressure at point A (oil column)</strong></p>\n<div style=\"font-family: 'Courier New', monospace; background: #f8f9fa; padding: 10px; border-radius: 4px;\">\n  P_a = (1.0m - 0.5m) × 9.81 m/s² × 800 kg/m³ + 99141.8 Pa<br>\n  P_a = 0.5 × 9.81 × 800 + 99141.8<br>\n  P_a = 3924 + 99141.8<br>\n  <strong style=\"color: #28a745;\">P_a = 103,065.8 Pa ≈ 103.07 kPa ✓</strong>\n</div>",
+    "keyPoints": [
+      "Work from known pressure (atmosphere) toward unknown",
+      "P = ρgh (going down adds pressure, going up subtracts)",
+      "Track each fluid layer separately with its own density"
+    ],
+    "state": {
+      "P_atm_Pa": 101300,
+      "rho1_kgpm3": 800,
+      "rho2_kgpm3": 1000,
+      "rho3_kgpm3": 1200,
+      "P_a_Pa": 103065.8,
+      "P_a_kPa": 103.07
+    },
+    "exam": "Practice",
+    "textbookReference": {
+      "chapter": "Fluid Mechanics",
+      "section": "Static Fluid Pressure / Manometers"
+    }
+  },
+  {
+    "id": "fd-diving-dalton-001",
+    "type": "free-response",
+    "topic": "dalton_diving",
+    "question": "Is it safe to dive at a depth of 30m with a mixture containing 20% oxygen for a long period of time when a partial pressure of oxygen above 60 kPa can be dangerous?\n\nProve your answer with a calculation. (Assume other components of the gas are not dangerous and the surface of the water is at sea level)",
+    "correct": "79.12",
+    "answer_unit": "kPa",
+    "explanation": "<p><strong>Step 1: Calculate total pressure on diver</strong></p>\n<p>Pressure = water pressure + atmospheric pressure</p>\n<div style=\"font-family: 'Courier New', monospace; background: #f8f9fa; padding: 10px; border-radius: 4px;\">\n  P_water = ρgh = 1000 kg/m³ × 9.81 m/s² × 30m = 294,300 Pa<br>\n  P_total = P_water + P_atm = 294,300 + 101,300 = 395,600 Pa<br>\n  <strong>P_total = 395.6 kPa</strong>\n</div>\n\n<p><strong>Step 2: Calculate partial pressure of oxygen</strong></p>\n<div style=\"font-family: 'Courier New', monospace; background: #f8f9fa; padding: 10px; border-radius: 4px;\">\n  P_O₂ = 0.20 × 395,600 Pa<br>\n  <strong style=\"color: #dc3545;\">P_O₂ = 79,120 Pa = 79.12 kPa</strong>\n</div>\n\n<p><strong>Conclusion:</strong></p>\n<p style=\"background: #f8d7da; padding: 10px; border-radius: 4px; border-left: 4px solid #dc3545;\">⚠️ <strong>UNSAFE!</strong> The partial pressure of oxygen (79.12 kPa) exceeds the safe limit of 60 kPa. This could cause oxygen toxicity!</p>",
+    "keyPoints": [
+      "Total pressure = hydrostatic pressure + atmospheric pressure",
+      "Dalton's Law: P_partial = (fraction) × P_total",
+      "Oxygen toxicity occurs above ~60 kPa partial pressure"
+    ],
+    "state": {
+      "depth_m": 30,
+      "rho_kgpm3": 1000,
+      "g_mps2": 9.81,
+      "P_atm_kPa": 101.3,
+      "O2_fraction": 0.20,
+      "P_total_kPa": 395.6,
+      "P_O2_kPa": 79.12,
+      "safe_limit_kPa": 60,
+      "is_safe": false
+    },
+    "exam": "Practice",
+    "textbookReference": {
+      "chapter": "Fluid Mechanics",
+      "section": "Dalton's Law / Diving Physiology"
+    }
+  },
+  {
+    "id": "fd-composite-001",
+    "type": "free-response",
+    "topic": "composite_materials",
+    "question": "A composite material is to be put into the body as an implant material. This composite has a plastic matrix with carbon fibres aligned parallel to the load.\n\nThe fibres make up 10% of the volume of the composite and has a Young's modulus of 100 GPa. The matrix has a Young's modulus of 3 GPa.\n\nDetermine the Young's modulus of the entire composite in this direction.",
+    "correct": "12.7",
+    "answer_unit": "GPa",
+    "explanation": "<p><strong>Rule of Mixtures (Parallel Loading)</strong></p>\n<p>For fibres aligned parallel to the load, the composite modulus is:</p>\n<p style=\"text-align: center; font-size: 1.1em; margin: 15px 0;\">\n  <strong>E_composite = V_f × E_f + V_m × E_m</strong>\n</p>\n<p>where V = volume fraction, E = Young's modulus, f = fibre, m = matrix</p>\n\n<div style=\"font-family: 'Courier New', monospace; background: #f8f9fa; padding: 10px; border-radius: 4px;\">\n  E_composite = 0.1 × 100 GPa + 0.9 × 3 GPa<br>\n  E_composite = 10 GPa + 2.7 GPa<br>\n  <strong style=\"color: #28a745;\">E_composite = 12.7 GPa ✓</strong>\n</div>\n\n<p><strong>Note:</strong> The fibres, despite being only 10% of the volume, contribute 10 GPa while the 90% matrix only contributes 2.7 GPa. This shows why fibre reinforcement is so effective!</p>",
+    "keyPoints": [
+      "Rule of Mixtures: E = V_f×E_f + V_m×E_m (parallel to fibres)",
+      "Volume fractions must sum to 1 (V_f + V_m = 1)",
+      "Stiff fibres dominate even at low volume fractions"
+    ],
+    "state": {
+      "V_f": 0.1,
+      "V_m": 0.9,
+      "E_f_GPa": 100,
+      "E_m_GPa": 3,
+      "E_composite_GPa": 12.7
+    },
+    "exam": "Practice",
+    "textbookReference": {
+      "chapter": "Biomaterials",
+      "section": "Composite Materials"
+    }
+  },
+  {
+    "id": "fd-cont-bern-height-001",
+    "type": "free-response",
+    "topic": "continuity_bernoulli",
+    "question": "Determine the distance between the inlet and outlet of a pipe system containing water. Assume the inlet and outlet are both circular.\n\n<strong>Given:</strong>\n<ul>\n  <li>Inlet radius: r₁ = 5 cm</li>\n  <li>Outlet radius: r₂ = 4 cm</li>\n  <li>Inlet velocity: v₁ = 1.5 m/s</li>\n  <li>Inlet pressure: P₁ = 105 kPa</li>\n  <li>Outlet pressure: P₂ = 101.3 kPa</li>\n  <li>Water density: ρ = 1000 kg/m³</li>\n</ul>\n\nFind: Height difference (Δz) between inlet and outlet.",
+    "correct": "21.2",
+    "answer_unit": "cm",
+    "explanation": "<p><strong>Step 1: Conservation of Mass (Continuity)</strong></p>\n<p style=\"text-align: center;\"><strong>Q_in = Q_out → v₁A₁ = v₂A₂</strong></p>\n<div style=\"font-family: 'Courier New', monospace; background: #f8f9fa; padding: 10px; border-radius: 4px;\">\n  v₁ × π(0.05m)² = v₂ × π(0.04m)²<br>\n  1.5 m/s × 0.00785 m² = v₂ × 0.00503 m²<br>\n  v₂ = (1.5 × 0.00785) / 0.00503<br>\n  <strong>v₂ = 2.344 m/s</strong>\n</div>\n\n<p><strong>Step 2: Bernoulli's Equation</strong></p>\n<p>Rearrange to solve for Δz:</p>\n<div style=\"font-family: 'Courier New', monospace; background: #f8f9fa; padding: 10px; border-radius: 4px;\">\n  Δz = [v₁²/2 + P₁/ρ - v₂²/2 - P₂/ρ] / g<br><br>\n  v₁²/2 = (1.5)²/2 = 1.125 m²/s²<br>\n  v₂²/2 = (2.344)²/2 = 2.747 m²/s²<br>\n  P₁/ρ = 105000/1000 = 105 m²/s²<br>\n  P₂/ρ = 101300/1000 = 101.3 m²/s²<br><br>\n  Δz = [1.125 + 105 - 2.747 - 101.3] / 9.81<br>\n  Δz = 2.078 / 9.81<br>\n  <strong style=\"color: #28a745;\">Δz = 0.212 m = 21.2 cm ✓</strong>\n</div>\n\n<p><strong>Interpretation:</strong> The outlet is 21.2 cm higher than the inlet (water flows upward).</p>",
+    "keyPoints": [
+      "Continuity: v₁A₁ = v₂A₂ (smaller area → higher velocity)",
+      "Bernoulli: v²/2 + P/ρ + gz = constant",
+      "Positive Δz means flow is going upward"
+    ],
+    "state": {
+      "r1_m": 0.05,
+      "r2_m": 0.04,
+      "v1_mps": 1.5,
+      "v2_mps": 2.344,
+      "P1_kPa": 105,
+      "P2_kPa": 101.3,
+      "rho_kgpm3": 1000,
+      "dz_m": 0.212,
+      "dz_cm": 21.2
+    },
+    "exam": "Practice",
+    "textbookReference": {
+      "chapter": "Fluid Mechanics",
+      "section": "Continuity + Bernoulli"
+    }
+  },
+  {
+    "id": "fd-boyle-lungs-001",
+    "type": "free-response",
+    "topic": "combined_gas_law",
+    "question": "Determine the volume of air that you blow from your lungs into a balloon if you want the balloon to expand 1L in volume.\n\nThe elasticity of the balloon applies some extra pressure. You can treat the pressure and density of the air in the balloon as constants of 103 kPa and 1.2 kg/m³.\n\n<strong>Given:</strong>\n<ul>\n  <li>Body temperature: T₁ = 37°C</li>\n  <li>Room temperature: T₂ = 20°C</li>\n  <li>Atmospheric pressure: P₁ = 101 kPa</li>\n  <li>Balloon pressure: P₂ = 103 kPa</li>\n  <li>Balloon volume: V₂ = 1 L</li>\n</ul>",
+    "correct": "1.079",
+    "answer_unit": "L",
+    "explanation": "<p><strong>Using Combined Gas Law:</strong></p>\n<p style=\"text-align: center; font-size: 1.1em; margin: 15px 0;\">\n  <strong>P₁V₁/T₁ = P₂V₂/T₂</strong>\n</p>\n\n<p><strong>Convert temperatures to Kelvin:</strong></p>\n<div style=\"font-family: 'Courier New', monospace; background: #f8f9fa; padding: 10px; border-radius: 4px;\">\n  T₁ = 37°C + 273 = 310 K (body temperature)<br>\n  T₂ = 20°C + 273 = 293 K (room temperature)\n</div>\n\n<p><strong>Rearrange and solve for V₁:</strong></p>\n<div style=\"font-family: 'Courier New', monospace; background: #f8f9fa; padding: 10px; border-radius: 4px;\">\n  V₁ = (P₂ × V₂ × T₁) / (T₂ × P₁)<br>\n  V₁ = (103 kPa × 1 L × 310 K) / (293 K × 101 kPa)<br>\n  V₁ = 31930 / 29593<br>\n  <strong style=\"color: #28a745;\">V₁ = 1.079 L ✓</strong>\n</div>\n\n<p><strong>Note:</strong> The density value (1.2 kg/m³) is provided but not actually needed for this calculation! The density and pressure being constant are important for the gas law to apply, but you don't need the density value itself.</p>",
+    "keyPoints": [
+      "Combined Gas Law: P₁V₁/T₁ = P₂V₂/T₂",
+      "MUST use Kelvin for temperature",
+      "Body air is warmer → takes slightly more volume than final balloon volume"
+    ],
+    "state": {
+      "T1_C": 37,
+      "T1_K": 310,
+      "T2_C": 20,
+      "T2_K": 293,
+      "P1_kPa": 101,
+      "P2_kPa": 103,
+      "V2_L": 1,
+      "V1_L": 1.079
+    },
+    "exam": "Practice",
+    "textbookReference": {
+      "chapter": "Fluid Mechanics",
+      "section": "Combined Gas Law / Boyle's Law"
+    }
+  },
+  {
+    "id": "theory-reynolds-001",
+    "type": "multiple-choice",
+    "topic": "theory",
+    "question": "The unitless dimension 'Reynolds number' represents the ratio of two types of forces. What are they?",
+    "options": [
+      "Inertial forces to viscous forces",
+      "Gravitational forces to pressure forces",
+      "Surface tension to viscous forces",
+      "Pressure forces to inertial forces"
+    ],
+    "correct": "A",
+    "explanation": "<p>The Reynolds number (Re) is defined as:</p>\n<p style=\"text-align: center; font-size: 1.1em; margin: 15px 0;\">\n  <strong>Re = ρvL/μ = Inertial forces / Viscous forces</strong>\n</p>\n<p>Where:</p>\n<ul>\n  <li>ρ = fluid density</li>\n  <li>v = velocity</li>\n  <li>L = characteristic length</li>\n  <li>μ = dynamic viscosity</li>\n</ul>\n<p>Low Re (< 2300): Viscous forces dominate → Laminar flow</p>\n<p>High Re (> 4000): Inertial forces dominate → Turbulent flow</p>",
+    "keyPoints": [
+      "Re = ρvL/μ",
+      "Low Re → Laminar flow",
+      "High Re → Turbulent flow"
+    ],
+    "exam": "Practice",
+    "textbookReference": {
+      "chapter": "Fluid Mechanics",
+      "section": "Reynolds Number"
+    }
+  },
+  {
+    "id": "theory-mass-conservation-001",
+    "type": "free-response",
+    "topic": "theory",
+    "question": "Give a brief explanation of what the Conservation of Mass law means in fluid mechanics.",
+    "correct": "Mass entering equals mass leaving plus mass stored",
+    "explanation": "<p><strong>Conservation of Mass</strong></p>\n<p>Within a fixed control volume, mass cannot be created or destroyed. Therefore:</p>\n<p style=\"text-align: center; font-size: 1.1em; margin: 15px 0; background: #e3f2fd; padding: 15px; border-radius: 5px;\">\n  <strong>Mass In = Mass Stored + Mass Out</strong>\n</p>\n<p>For steady flow (no accumulation):</p>\n<p style=\"text-align: center;\"><strong>ṁ_in = ṁ_out</strong> or <strong>ρ₁A₁v₁ = ρ₂A₂v₂</strong></p>\n<p>For incompressible fluids (constant ρ):</p>\n<p style=\"text-align: center;\"><strong>A₁v₁ = A₂v₂</strong> (Continuity Equation)</p>",
+    "keyPoints": [
+      "Mass is conserved in a control volume",
+      "For steady flow: ṁ_in = ṁ_out",
+      "Incompressible: A₁v₁ = A₂v₂"
+    ],
+    "exam": "Practice",
+    "textbookReference": {
+      "chapter": "Fluid Mechanics",
+      "section": "Conservation Laws"
+    }
+  },
+  {
+    "id": "theory-heart-right-001",
+    "type": "free-response",
+    "topic": "theory",
+    "question": "The left half of the heart pumps blood throughout the body but the right part is dedicated to one area. What is this area of the body and why is half of the heart dedicated to it?",
+    "correct": "The lungs - for gas exchange (O₂/CO₂)",
+    "explanation": "<p><strong>Pulmonary Circulation</strong></p>\n<p>The <strong>lungs</strong> receive the output from the right half of the heart.</p>\n<p><strong>Why is half the heart dedicated to the lungs?</strong></p>\n<ul>\n  <li>Blood needs to remove CO₂ taken from body tissues</li>\n  <li>Blood needs to absorb O₂ from the alveoli</li>\n  <li>The oxygenated blood then returns to the left heart for distribution to the body</li>\n</ul>\n<p style=\"background: #e8f5e9; padding: 10px; border-radius: 4px;\">The pulmonary circuit is separate to maintain different pressure requirements - the lungs need lower pressure to prevent fluid leakage into air spaces.</p>",
+    "keyPoints": [
+      "Right heart → Lungs (pulmonary circulation)",
+      "Left heart → Body (systemic circulation)",
+      "Lungs: CO₂ out, O₂ in"
+    ],
+    "exam": "Practice",
+    "textbookReference": {
+      "chapter": "Cardiovascular System",
+      "section": "Heart Anatomy"
+    }
+  },
+  {
+    "id": "theory-synovial-001",
+    "type": "free-response",
+    "topic": "theory",
+    "question": "Explain the mechanism of how synovial fluid is stored in a joint and how it is used to lubricate the joint during motion.",
+    "correct": "Stored in cartilage, squeezed out during motion like a sponge",
+    "explanation": "<p><strong>Synovial Fluid Lubrication Mechanism</strong></p>\n<p><strong>Storage:</strong> Synovial fluid is stored within the porous cartilage matrix, absorbed like water in a sponge.</p>\n<p><strong>During Motion:</strong></p>\n<ol>\n  <li>When load is applied to the joint, the cartilage compresses</li>\n  <li>Fluid is <strong>squeezed out</strong> of the cartilage like water from a sponge</li>\n  <li>This creates a thin lubricating film between articulating surfaces</li>\n  <li>After the load is removed, the cartilage <strong>sucks the fluid back in</strong></li>\n</ol>\n<p>This is called <strong>weeping lubrication</strong> and is remarkably effective - the coefficient of friction in healthy joints is lower than ice on ice!</p>",
+    "keyPoints": [
+      "Fluid stored in porous cartilage",
+      "Squeezed out under load (weeping lubrication)",
+      "Reabsorbed when load removed"
+    ],
+    "exam": "Practice",
+    "textbookReference": {
+      "chapter": "Biomechanics",
+      "section": "Joint Lubrication"
+    }
+  },
+  {
+    "id": "theory-blood-velocity-001",
+    "type": "free-response",
+    "topic": "theory",
+    "question": "Explain how the velocity profile of blood differs from that of an inviscid Newtonian fluid as it flows through a cylindrical blood vessel.",
+    "correct": "Blood has blunt profile with curved edges due to shear-thinning and yield stress",
+    "explanation": "<p><strong>Blood vs Newtonian Fluid Velocity Profiles</strong></p>\n<table style=\"width: 100%; border-collapse: collapse; margin: 15px 0;\">\n  <tr>\n    <th style=\"border: 1px solid #ddd; padding: 8px; background: #f8f9fa;\">Inviscid Newtonian</th>\n    <th style=\"border: 1px solid #ddd; padding: 8px; background: #f8f9fa;\">Blood (Non-Newtonian)</th>\n  </tr>\n  <tr>\n    <td style=\"border: 1px solid #ddd; padding: 8px;\">Flat/uniform profile</td>\n    <td style=\"border: 1px solid #ddd; padding: 8px;\">Blunted parabolic profile</td>\n  </tr>\n</table>\n\n<p><strong>Why blood is different:</strong></p>\n<ol>\n  <li><strong>Shear-thinning:</strong> Blood viscosity decreases as shear stress increases. This means the edges (high shear) flow more easily, creating a more curved shape at the walls.</li>\n  <li><strong>Yield stress:</strong> Blood requires a minimum stress to flow. In the center of the vessel where shear stress is low, the blood moves as a solid \"plug\" - creating the blunted center.</li>\n</ol>",
+    "keyPoints": [
+      "Blood is shear-thinning (viscosity ↓ as shear ↑)",
+      "Blood has yield stress → plug flow in center",
+      "Result: blunted profile with curved edges"
+    ],
+    "exam": "Practice",
+    "textbookReference": {
+      "chapter": "Fluid Mechanics",
+      "section": "Non-Newtonian Fluids"
+    }
+  }
+]

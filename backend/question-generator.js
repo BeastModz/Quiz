@@ -47,6 +47,64 @@ const TOPIC_SPECS = {
     },
     unknowns: ['component', 'Ptot']
   },
+  // NEW: Atmospheric pressure with Dalton's Law (altitude problems)
+  dalton_atmospheric: {
+    ranges: {
+      altitude: [100, 3000],       // meters above sea level
+      O2_fraction: [0.18, 0.23],   // oxygen fraction (typically 0.21)
+      N2_fraction: [0.75, 0.80]    // nitrogen fraction (typically 0.78)
+    },
+    unknowns: ['P_total', 'P_O2', 'P_N2']
+  },
+  // NEW: Diving partial pressure (underwater Dalton's Law)
+  dalton_diving: {
+    ranges: {
+      depth: [5, 50],              // meters underwater
+      O2_fraction: [0.16, 0.40],   // nitrox mixes range from 21% to 40%
+      safe_limit: [140, 160]       // partial pressure limits (kPa)
+    },
+    unknowns: ['P_total', 'P_O2', 'is_safe']
+  },
+  // NEW: Static fluid pressure (multi-fluid columns/manometers)
+  static_fluid_pressure: {
+    ranges: {
+      n_fluids: [2, 4],            // number of fluid layers
+      rho: [800, 13600],           // density range (oil to mercury)
+      height: [0.1, 2.0],          // column heights in meters
+      P_atm: [101.3, 101.3]        // atmospheric pressure (kPa)
+    },
+    unknowns: ['P_bottom', 'P_interface', 'P_gauge']
+  },
+  // NEW: Branching flow (conservation of mass with multiple outlets)
+  continuity_branch: {
+    ranges: {
+      d_inlet: [0.020, 0.050],     // inlet diameter (m)
+      d_outlet: [0.005, 0.020],    // outlet diameters (m)
+      n_outlets: [2, 3],           // number of outlets
+      v_outlet: [0.3, 2.0]         // outlet velocities (m/s)
+    },
+    unknowns: ['v_inlet', 'Q_total']
+  },
+  // NEW: Continuity + Bernoulli with height difference (find Δz)
+  continuity_bernoulli_height: {
+    ranges: {
+      r1: [0.03, 0.08],            // inlet radius (m)
+      r2: [0.02, 0.06],            // outlet radius (m)
+      v1: [0.5, 3.0],              // inlet velocity (m/s)
+      P1: [100, 150],              // inlet pressure (kPa)
+      P2: [95, 110]                // outlet pressure (kPa)
+    },
+    unknowns: ['v2', 'delta_z']
+  },
+  // NEW: Composite materials (rule of mixtures)
+  composite_materials: {
+    ranges: {
+      V_fiber: [0.05, 0.50],       // fiber volume fraction
+      E_fiber: [50, 400],          // fiber modulus (GPa)
+      E_matrix: [1, 10]            // matrix modulus (GPa)
+    },
+    unknowns: ['E_composite']
+  },
   continuity_bernoulli: {
     ranges: {
       d1: [0.020, 0.080],
@@ -73,11 +131,12 @@ const TOPIC_SPECS = {
 const FULL_SPEC = `# AI-Assisted Question Generator — Specification
 
 ## 0) Scope
-Five topics: Continuity, Bernoulli (head form), Combined Gas Law, Dalton's Law, Continuity+Bernoulli Multi-Part.
+Topics: Continuity, Bernoulli (head form), Combined Gas Law, Dalton's Law, Continuity+Bernoulli Multi-Part,
+        Dalton Atmospheric, Dalton Diving, Static Fluid Pressure, Continuity Branch, Composite Materials.
 
 ## 1) Global Output Contract (JSON)
 {
-  "topic": "continuity | bernoulli | combined_gas_law | dalton | continuity_bernoulli",
+  "topic": "continuity | bernoulli | combined_gas_law | dalton | continuity_bernoulli | dalton_atmospheric | dalton_diving | static_fluid_pressure | continuity_branch | composite_materials",
   "question_html": "<p>Stem with givens…</p>",
   "answer_html": "v₂ = 2.31 m/s",
   "explain_html": "<p>Short derivation…</p>",
@@ -114,7 +173,58 @@ Variables: pressures (kPa)
 Ranges: n∈{3,4}, Pᵢ∈[15,60]
 Unknown: one component Pₖ or total
 
-## 2.5 Continuity + Bernoulli Multi-Part Problem
+## 2.5 Dalton's Law — Atmospheric Pressure (NEW)
+Model: P = 101.325 × (1 - 2.25577×10⁻⁵ × h)^5.25588 (barometric formula for compressible air)
+       P_partial = (mole fraction) × P_total
+Variables: altitude h (m), P_total (kPa), P_O₂ (kPa), O₂ fraction
+Ranges: h∈[100,3000], O₂_fraction≈0.21
+Unknown: P_total at altitude, P_O₂ (partial pressure of oxygen)
+Context: Mountain climbing, aviation, altitude physiology
+Note: Contrast with incompressible fluids which use P = P_atm + ρgh
+
+## 2.6 Dalton's Law — Diving Partial Pressure (NEW)
+Model: P_total = P_atm + ρgh (underwater, water is incompressible)
+       P_partial = (mole fraction) × P_total
+Variables: depth h (m), P_total (kPa), P_O₂ (kPa), O₂ fraction
+Ranges: depth∈[5,50]m, O₂_fraction∈[0.16,0.40] (nitrox mixes)
+Unknown: P_total, P_O₂, safety assessment
+Safety limits: P_O₂ > 160 kPa causes CNS oxygen toxicity
+              P_O₂ > 60 kPa prolonged exposure risk
+Context: Scuba diving, hyperbaric medicine
+
+## 2.7 Static Fluid Pressure — Multi-Fluid Columns (NEW)
+Model: P = P_0 + Σ(ρᵢgΔhᵢ) for each fluid layer
+Variables: ρᵢ (kg/m³), hᵢ (m), P (Pa or kPa)
+Ranges: ρ∈[800,13600] (oil to mercury), h∈[0.1,2.0]m
+Unknown: pressure at bottom, at interface, or gauge pressure
+Common fluids: Oil (800-900), Water (1000), Seawater (1025), Mercury (13600)
+Direction: Going DOWN adds pressure, going UP subtracts
+
+## 2.8 Continuity — Branching Flow (NEW)
+Model: Q_in = ΣQ_out (conservation of mass for branching)
+       A_in × v_in = Σ(Aᵢ × vᵢ)
+Variables: d_inlet (m), d_outlets (m), v_inlet (m/s), v_outlets (m/s)
+Ranges: n_outlets∈{2,3}, diameters∈[0.005,0.050]m
+Unknown: inlet velocity, individual outlet velocity, total flow rate
+Context: Blood vessels, pipe networks, HVAC systems
+
+## 2.9 Continuity + Bernoulli — Height Difference (NEW)
+Model: Continuity: A₁v₁ = A₂v₂
+       Bernoulli: v₁²/2 + P₁/ρ + gz₁ = v₂²/2 + P₂/ρ + gz₂
+Variables: r₁,r₂ (m), v₁,v₂ (m/s), P₁,P₂ (kPa), Δz (m)
+Unknown: Δz (height difference between inlet and outlet)
+Solve: First find v₂ from continuity, then solve Bernoulli for Δz
+
+## 2.10 Composite Materials — Rule of Mixtures (NEW)
+Model: E_composite = V_f × E_f + V_m × E_m (parallel to fibers)
+       E_composite = 1 / (V_f/E_f + V_m/E_m) (perpendicular to fibers)
+Variables: V_f (fiber volume fraction), E_f (fiber modulus, GPa), E_m (matrix modulus, GPa)
+Ranges: V_f∈[0.05,0.50], E_f∈[50,400]GPa, E_m∈[1,10]GPa
+Unknown: E_composite
+Context: Biomaterials, implants, prosthetics
+Note: V_f + V_m = 1 (volume fractions sum to 1)
+
+## 2.11 Continuity + Bernoulli Multi-Part Problem
 **CRITICAL: This is a TWO-STEP sequential problem where Part A feeds into Part B.**
 
 ### Problem Structure:
@@ -341,6 +451,20 @@ class QuestionGenerator {
     // For multi-part problems, generate programmatically instead of using AI
     if (topic === 'continuity_bernoulli' || topic === 'continuity_bernoulli_K') {
       return this._generateMultiPartProgrammatic({ ...options, topic });
+    }
+
+    // For new programmatic topics (faster and more reliable than AI)
+    if (topic === 'dalton_atmospheric') {
+      return this._generateDaltonAtmospheric(options);
+    }
+    if (topic === 'dalton_diving') {
+      return this._generateDaltonDiving(options);
+    }
+    if (topic === 'static_fluid_pressure') {
+      return this._generateStaticFluidPressure(options);
+    }
+    if (topic === 'composite_materials') {
+      return this._generateCompositeMaterials(options);
     }
 
     const userPrompt = this._buildUserPrompt(topic, options);
@@ -763,6 +887,369 @@ ${loss_explanation}
   
   _randomInRange(min, max, rng) {
     return min + (max - min) * rng();
+  }
+
+  /**
+   * Generate Dalton's Law atmospheric pressure question programmatically
+   */
+  _generateDaltonAtmospheric(options = {}) {
+    const seed = options.seed || Math.random() * 10000;
+    const rng = this._seededRandom(seed);
+    
+    // Sample altitude
+    const altitude = Math.round(this._randomInRange(200, 2500, rng));
+    const O2_fraction = 0.21;
+    
+    // Barometric formula for compressible air
+    const P_total = 101.325 * Math.pow(1 - 2.25577e-5 * altitude, 5.25588);
+    const P_O2 = O2_fraction * P_total;
+    
+    const altitude_context = altitude < 500 ? 'a small hill' : 
+                             altitude < 1500 ? 'a mountain' : 
+                             altitude < 2500 ? 'a high mountain' : 'a very high peak';
+    
+    const question_html = `
+<p>You are climbing ${altitude_context} that reaches <strong>${altitude} metres above sea level</strong>.</p>
+<p>Assuming oxygen makes up 21% of the atmosphere, what is the partial pressure of oxygen at this altitude?</p>
+<p><strong>Given:</strong></p>
+<ul>
+  <li>Altitude: h = ${altitude} m</li>
+  <li>Sea level pressure: P₀ = 101.325 kPa</li>
+  <li>Oxygen fraction: 21%</li>
+</ul>
+<p><strong>Find: P_O₂ (kPa)</strong></p>
+    `.trim();
+    
+    const answer_html = `P_O₂ = ${P_O2.toFixed(2)} kPa`;
+    
+    const explain_html = `
+<p><strong>Step 1: Calculate Atmospheric Pressure at Altitude</strong></p>
+<p>Since air is compressible, we use the barometric formula:</p>
+<p style="text-align: center; font-size: 1.1em; margin: 15px 0;">
+  <strong>P = 101.325 × (1 - 2.25577 × 10⁻⁵ × h)^5.25588</strong>
+</p>
+<div style="font-family: 'Courier New', monospace; background: #f8f9fa; padding: 10px; border-radius: 4px;">
+  P = 101.325 × (1 - 2.25577 × 10⁻⁵ × ${altitude})^5.25588<br>
+  P = 101.325 × (${(1 - 2.25577e-5 * altitude).toFixed(6)})^5.25588<br>
+  <strong>P = ${P_total.toFixed(3)} kPa (Total Pressure)</strong>
+</div>
+
+<p><strong>Step 2: Calculate Partial Pressure of Oxygen</strong></p>
+<p>Using Dalton's Law:</p>
+<div style="font-family: 'Courier New', monospace; background: #f8f9fa; padding: 10px; border-radius: 4px;">
+  P_O₂ = (O₂ fraction) × P_total<br>
+  P_O₂ = 0.21 × ${P_total.toFixed(3)} kPa<br>
+  <strong style="color: #28a745;">P_O₂ = ${P_O2.toFixed(2)} kPa ✓</strong>
+</div>
+
+<p><strong>Note:</strong> For incompressible fluids like water, we would use P = P_atm + ρgh instead.</p>
+    `.trim();
+    
+    return {
+      topic: 'dalton_atmospheric',
+      seed,
+      question_html,
+      answer_html,
+      explain_html,
+      label: 'P_O₂',
+      answer_value: parseFloat(P_O2.toFixed(2)),
+      answer_unit: 'kPa',
+      state: {
+        altitude_m: altitude,
+        P_atm_kPa: 101.325,
+        P_total_kPa: P_total,
+        O2_fraction: O2_fraction,
+        P_O2_kPa: P_O2
+      }
+    };
+  }
+
+  /**
+   * Generate Dalton's Law diving question programmatically
+   */
+  _generateDaltonDiving(options = {}) {
+    const seed = options.seed || Math.random() * 10000;
+    const rng = this._seededRandom(seed);
+    
+    // Sample depth and O2 fraction (nitrox mixes)
+    const depth = Math.round(this._randomInRange(10, 45, rng));
+    const O2_fraction = this._randomInRange(0.18, 0.36, rng);
+    const safe_limit = 60; // kPa for prolonged exposure
+    
+    // Constants
+    const rho = 1000; // kg/m³
+    const g = 9.81; // m/s²
+    const P_atm = 101.3; // kPa
+    
+    // Calculate pressures
+    const P_water = (rho * g * depth) / 1000; // kPa
+    const P_total = P_atm + P_water;
+    const P_O2 = O2_fraction * P_total;
+    const is_safe = P_O2 <= safe_limit;
+    
+    const O2_percent = (O2_fraction * 100).toFixed(0);
+    const mix_name = O2_fraction > 0.21 ? `Nitrox ${O2_percent}` : O2_fraction < 0.21 ? 'hypoxic mix' : 'air';
+    
+    const question_html = `
+<p>Is it safe to dive at a depth of <strong>${depth}m</strong> with a breathing mixture containing <strong>${O2_percent}% oxygen</strong> (${mix_name}) for a long period of time?</p>
+<p>A partial pressure of oxygen above <strong>60 kPa</strong> can be dangerous for prolonged exposure.</p>
+<p><strong>Given:</strong></p>
+<ul>
+  <li>Depth: h = ${depth} m</li>
+  <li>O₂ fraction: ${O2_percent}%</li>
+  <li>Atmospheric pressure: 101.3 kPa (sea level)</li>
+  <li>Water density: ρ = 1000 kg/m³</li>
+  <li>Safe limit: P_O₂ ≤ 60 kPa</li>
+</ul>
+<p><strong>Find: P_O₂ (kPa) and safety assessment</strong></p>
+    `.trim();
+    
+    const answer_html = `P_O₂ = ${P_O2.toFixed(1)} kPa — ${is_safe ? 'SAFE ✓' : 'UNSAFE ⚠️'}`;
+    
+    const safety_color = is_safe ? '#28a745' : '#dc3545';
+    const safety_bg = is_safe ? '#d4edda' : '#f8d7da';
+    const safety_text = is_safe ? 
+      `The partial pressure of oxygen (${P_O2.toFixed(1)} kPa) is below the safe limit of 60 kPa.` :
+      `The partial pressure of oxygen (${P_O2.toFixed(1)} kPa) EXCEEDS the safe limit of 60 kPa. This could cause oxygen toxicity!`;
+    
+    const explain_html = `
+<p><strong>Step 1: Calculate Total Pressure on Diver</strong></p>
+<p>Total pressure = atmospheric pressure + water pressure:</p>
+<div style="font-family: 'Courier New', monospace; background: #f8f9fa; padding: 10px; border-radius: 4px;">
+  P_water = ρgh = 1000 kg/m³ × 9.81 m/s² × ${depth}m = ${(P_water * 1000).toFixed(0)} Pa<br>
+  P_total = P_atm + P_water = 101.3 + ${P_water.toFixed(1)} = <strong>${P_total.toFixed(1)} kPa</strong>
+</div>
+
+<p><strong>Step 2: Calculate Partial Pressure of Oxygen</strong></p>
+<div style="font-family: 'Courier New', monospace; background: #f8f9fa; padding: 10px; border-radius: 4px;">
+  P_O₂ = (O₂ fraction) × P_total<br>
+  P_O₂ = ${O2_fraction.toFixed(2)} × ${P_total.toFixed(1)} kPa<br>
+  <strong>P_O₂ = ${P_O2.toFixed(1)} kPa</strong>
+</div>
+
+<p><strong>Step 3: Safety Assessment</strong></p>
+<p style="background: ${safety_bg}; padding: 10px; border-radius: 4px; border-left: 4px solid ${safety_color};">
+  <strong style="color: ${safety_color};">${is_safe ? 'SAFE' : 'UNSAFE!'}</strong> ${safety_text}
+</p>
+    `.trim();
+    
+    return {
+      topic: 'dalton_diving',
+      seed,
+      question_html,
+      answer_html,
+      explain_html,
+      label: 'P_O₂',
+      answer_value: parseFloat(P_O2.toFixed(1)),
+      answer_unit: 'kPa',
+      state: {
+        depth_m: depth,
+        O2_fraction: O2_fraction,
+        rho_kgpm3: rho,
+        g_mps2: g,
+        P_atm_kPa: P_atm,
+        P_water_kPa: P_water,
+        P_total_kPa: P_total,
+        P_O2_kPa: P_O2,
+        safe_limit_kPa: safe_limit,
+        is_safe: is_safe
+      }
+    };
+  }
+
+  /**
+   * Generate static fluid pressure question programmatically
+   */
+  _generateStaticFluidPressure(options = {}) {
+    const seed = options.seed || Math.random() * 10000;
+    const rng = this._seededRandom(seed);
+    
+    // Define common fluids
+    const fluids = [
+      { name: 'Oil', rho: 800 + Math.round(rng() * 100) },
+      { name: 'Water', rho: 1000 },
+      { name: 'Seawater', rho: 1025 },
+      { name: 'Dense fluid', rho: 1100 + Math.round(rng() * 200) }
+    ];
+    
+    // Pick 2-3 fluids
+    const n_fluids = 2 + Math.floor(rng() * 2);
+    const selected = [];
+    const available = [...fluids];
+    for (let i = 0; i < n_fluids; i++) {
+      const idx = Math.floor(rng() * available.length);
+      selected.push(available.splice(idx, 1)[0]);
+    }
+    
+    // Assign heights (from top to bottom)
+    const P_atm = 101.3; // kPa
+    const g = 9.81;
+    let heights = [];
+    let current_h = 0;
+    
+    for (let i = 0; i < selected.length; i++) {
+      const h = 0.2 + rng() * 0.6; // 0.2 to 0.8 m per layer
+      heights.push({ top: current_h, bottom: current_h + h, h: h });
+      current_h += h;
+    }
+    
+    // Calculate pressure at bottom
+    let P_bottom_Pa = P_atm * 1000;
+    for (let i = 0; i < selected.length; i++) {
+      P_bottom_Pa += selected[i].rho * g * heights[i].h;
+    }
+    const P_bottom_kPa = P_bottom_Pa / 1000;
+    
+    // Build fluid list for question
+    const fluid_list = selected.map((f, i) => 
+      `<li>${f.name}: ρ = ${f.rho} kg/m³, height = ${heights[i].h.toFixed(2)} m</li>`
+    ).join('\n  ');
+    
+    const question_html = `
+<p>A U-tube manometer contains ${selected.length} fluid layers (from top to bottom):</p>
+<ul>
+  ${fluid_list}
+</ul>
+<p>The top surface is open to atmosphere (P_atm = ${P_atm} kPa).</p>
+<p><strong>Find: The pressure at the bottom of the manometer (kPa)</strong></p>
+    `.trim();
+    
+    const answer_html = `P_bottom = ${P_bottom_kPa.toFixed(2)} kPa`;
+    
+    // Build step-by-step explanation
+    let calc_steps = '';
+    let running_P = P_atm * 1000;
+    for (let i = 0; i < selected.length; i++) {
+      const dP = selected[i].rho * g * heights[i].h;
+      running_P += dP;
+      calc_steps += `
+  <li><strong>${selected[i].name} layer:</strong>
+    <div style="font-family: 'Courier New', monospace; background: #f8f9fa; padding: 8px; margin: 5px 0; border-radius: 4px;">
+      ΔP = ρgh = ${selected[i].rho} × 9.81 × ${heights[i].h.toFixed(2)} = ${dP.toFixed(1)} Pa<br>
+      P_cumulative = ${(running_P/1000).toFixed(3)} kPa
+    </div>
+  </li>`;
+    }
+    
+    const explain_html = `
+<p><strong>Strategy: Work from known pressure (atmosphere) downward</strong></p>
+<p>For static fluids: <strong>P = P₀ + ρgh</strong> (going down adds pressure)</p>
+
+<ol>
+  <li><strong>Starting pressure (atmospheric):</strong>
+    <div style="font-family: 'Courier New', monospace; background: #f8f9fa; padding: 8px; margin: 5px 0; border-radius: 4px;">
+      P₀ = ${P_atm} kPa = ${(P_atm*1000).toFixed(0)} Pa
+    </div>
+  </li>
+  ${calc_steps}
+</ol>
+
+<p><strong>Final Answer:</strong></p>
+<div style="font-family: 'Courier New', monospace; background: #e8f5e9; padding: 10px; border-radius: 4px;">
+  <strong style="color: #28a745;">P_bottom = ${P_bottom_kPa.toFixed(2)} kPa ✓</strong>
+</div>
+    `.trim();
+    
+    return {
+      topic: 'static_fluid_pressure',
+      seed,
+      question_html,
+      answer_html,
+      explain_html,
+      label: 'P_bottom',
+      answer_value: parseFloat(P_bottom_kPa.toFixed(2)),
+      answer_unit: 'kPa',
+      state: {
+        P_atm_kPa: P_atm,
+        g_mps2: g,
+        fluids: selected.map((f, i) => ({ ...f, h_m: heights[i].h })),
+        P_bottom_Pa: P_bottom_Pa,
+        P_bottom_kPa: P_bottom_kPa
+      }
+    };
+  }
+
+  /**
+   * Generate composite materials question programmatically
+   */
+  _generateCompositeMaterials(options = {}) {
+    const seed = options.seed || Math.random() * 10000;
+    const rng = this._seededRandom(seed);
+    
+    // Sample parameters
+    const V_f = this._randomInRange(0.08, 0.45, rng); // fiber volume fraction
+    const V_m = 1 - V_f;
+    
+    // Common fiber/matrix combinations
+    const fibers = [
+      { name: 'Carbon fiber', E: 200 + Math.round(rng() * 150) },
+      { name: 'Glass fiber', E: 70 + Math.round(rng() * 20) },
+      { name: 'Kevlar', E: 120 + Math.round(rng() * 30) }
+    ];
+    const matrices = [
+      { name: 'Epoxy', E: 2.5 + rng() * 1.5 },
+      { name: 'Polyester', E: 2 + rng() * 2 },
+      { name: 'PEEK', E: 3.5 + rng() * 1 }
+    ];
+    
+    const fiber = fibers[Math.floor(rng() * fibers.length)];
+    const matrix = matrices[Math.floor(rng() * matrices.length)];
+    
+    // Rule of mixtures (parallel to fibers - upper bound)
+    const E_composite = V_f * fiber.E + V_m * matrix.E;
+    
+    const V_f_percent = (V_f * 100).toFixed(0);
+    
+    const question_html = `
+<p>A composite material is designed for a biomedical implant. It consists of <strong>${fiber.name}</strong> in a <strong>${matrix.name}</strong> matrix, with fibers aligned parallel to the load.</p>
+<p><strong>Given:</strong></p>
+<ul>
+  <li>Fiber volume fraction: V_f = ${V_f_percent}%</li>
+  <li>Fiber Young's modulus: E_f = ${fiber.E} GPa</li>
+  <li>Matrix Young's modulus: E_m = ${matrix.E.toFixed(1)} GPa</li>
+</ul>
+<p><strong>Find: The Young's modulus of the composite in the fiber direction (GPa)</strong></p>
+    `.trim();
+    
+    const answer_html = `E_composite = ${E_composite.toFixed(1)} GPa`;
+    
+    const explain_html = `
+<p><strong>Rule of Mixtures (Parallel to Fibers)</strong></p>
+<p>When fibers are aligned parallel to the load, the composite modulus is:</p>
+<p style="text-align: center; font-size: 1.1em; margin: 15px 0;">
+  <strong>E_composite = V_f × E_f + V_m × E_m</strong>
+</p>
+<p>where V_f + V_m = 1</p>
+
+<div style="font-family: 'Courier New', monospace; background: #f8f9fa; padding: 10px; border-radius: 4px;">
+  V_m = 1 - V_f = 1 - ${V_f.toFixed(2)} = ${V_m.toFixed(2)}<br><br>
+  E_composite = ${V_f.toFixed(2)} × ${fiber.E} GPa + ${V_m.toFixed(2)} × ${matrix.E.toFixed(1)} GPa<br>
+  E_composite = ${(V_f * fiber.E).toFixed(1)} GPa + ${(V_m * matrix.E).toFixed(1)} GPa<br>
+  <strong style="color: #28a745;">E_composite = ${E_composite.toFixed(1)} GPa ✓</strong>
+</div>
+
+<p><strong>Insight:</strong> The ${fiber.name}, despite being only ${V_f_percent}% of the volume, contributes ${(V_f * fiber.E).toFixed(1)} GPa while the ${(100 - parseFloat(V_f_percent))}% matrix only contributes ${(V_m * matrix.E).toFixed(1)} GPa. This shows why fiber reinforcement is so effective!</p>
+    `.trim();
+    
+    return {
+      topic: 'composite_materials',
+      seed,
+      question_html,
+      answer_html,
+      explain_html,
+      label: 'E_composite',
+      answer_value: parseFloat(E_composite.toFixed(1)),
+      answer_unit: 'GPa',
+      state: {
+        fiber_name: fiber.name,
+        matrix_name: matrix.name,
+        V_f: V_f,
+        V_m: V_m,
+        E_f_GPa: fiber.E,
+        E_m_GPa: matrix.E,
+        E_composite_GPa: E_composite
+      }
+    };
   }
 
   _buildUserPrompt(topic, options) {
