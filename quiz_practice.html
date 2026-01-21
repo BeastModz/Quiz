@@ -2548,8 +2548,8 @@
                 this.questionsJsonUrl = 'quiz_questions.json'; // Path to JSON file
 
                 // AI Grading API Configuration
-                // Point to VPS server
-                this.graderApiUrl = 'http://82.25.101.72:3000';
+                // Point to VPS server (nginx proxies to backend)
+                this.graderApiUrl = '';  // Use same origin
 
                 // Timer settings
                 this.examDurationMinutes = parseInt(localStorage.getItem('examDurationMinutes')) || 120;
@@ -3010,7 +3010,7 @@
                     startScreen.innerHTML = '<div style="text-align: center; padding: 2rem;"><p>Loading Human Dynamics questions...</p></div>';
                     
                     // Load questions from the grading API
-                    const apiUrl = `${window.location.protocol}//${window.location.hostname}:3000`;
+                    const apiUrl = window.location.origin;
                     const response = await fetch(`${apiUrl}/api/questions`);
                     
                     if (!response.ok) {
@@ -3122,7 +3122,7 @@
                 
                 try {
                     // Call the grading API
-                    const apiUrl = `${window.location.protocol}//${window.location.hostname}:3000`;
+                    const apiUrl = window.location.origin;
                     const response = await fetch(`${apiUrl}/api/grade`, {
                         method: 'POST',
                         headers: {
@@ -4583,7 +4583,7 @@
                 
                 try {
                     // Try to use OpenAI to respond
-                    const apiUrl = this.quizApp.graderApiUrl || (window.location.protocol + '//' + window.location.hostname + ':3000');
+                    const apiUrl = this.quizApp.graderApiUrl || window.location.origin;
                     const response = await fetch(`${apiUrl}/api/chat`, {
                         method: 'POST',
                         headers: {
@@ -4621,7 +4621,7 @@
                     }
                     
                     // Show simple echo response since chat endpoint might not exist
-                    const apiUrl = this.quizApp.graderApiUrl || (window.location.protocol + '//' + window.location.hostname + ':3000');
+                    const apiUrl = this.quizApp.graderApiUrl || window.location.origin;
                     const aiMsg = document.createElement('div');
                     aiMsg.style.cssText = 'margin-bottom: 1rem;';
                     aiMsg.innerHTML = `
