@@ -2548,8 +2548,8 @@
                 this.questionsJsonUrl = 'quiz_questions.json'; // Path to JSON file
 
                 // AI Grading API Configuration
-                // Use relative URL since both frontend and backend are on same server
-                this.graderApiUrl = window.location.protocol + '//' + window.location.hostname + ':3000';
+                // Point to VPS server
+                this.graderApiUrl = 'http://82.25.101.72:3000';
 
                 // Timer settings
                 this.examDurationMinutes = parseInt(localStorage.getItem('examDurationMinutes')) || 120;
