@@ -346,7 +346,7 @@ class QuestionGenerator {
     const userPrompt = this._buildUserPrompt(topic, options);
 
     try {
-      const modelToUse = options.model || 'gpt-4o-mini';
+      const modelToUse = options.model || 'gpt-4o-2024-11-20';
       
       const response = await this.openai.chat.completions.create({
         model: modelToUse,

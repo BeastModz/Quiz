@@ -82,7 +82,7 @@ app.post('/api/grade', async (req, res) => {
     // Grade the answer
     const result = await gradeAnswer(student_answer, rubric, {
       modelEmb: process.env.OPENAI_MODEL_EMBEDDING || 'text-embedding-3-small',
-      modelLLM: process.env.OPENAI_MODEL_LLM || 'gpt-4o-mini',
+      modelLLM: process.env.OPENAI_MODEL_LLM || 'gpt-4o-2024-11-20',
       useFallback: process.env.USE_LLM_FALLBACK !== 'false'
     });
 
@@ -189,7 +189,7 @@ app.post('/api/chat', async (req, res) => {
     const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
     
     const completion = await openai.chat.completions.create({
-      model: 'gpt-4o-mini',
+      model: 'gpt-4o-2024-11-20',
       messages: [
         {
           role: 'system',
