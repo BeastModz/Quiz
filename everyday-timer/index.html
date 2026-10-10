@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#f7f8fc" />
+  <meta name="description" content="A clean, simple timer with custom sound cues." />
+  <title>Everyday Timer</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='17' fill='%235663f6'/%3E%3Ccircle cx='32' cy='32' r='18' stroke='white' stroke-width='4' fill='none'/%3E%3Cpath d='M32 19v14l10 6' stroke='white' stroke-width='4' stroke-linecap='round' fill='none'/%3E%3C/svg%3E" />
+  <style>
+    :root {
+      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: #1c263b;
+      background: #f7f8fc;
+      font-synthesis: none;
+    }
+    * { box-sizing: border-box; }
+    body { min-height: 100vh; margin: 0; background: radial-gradient(ellipse 65% 70% at 12% 10%, #e9edff 0, transparent 75%), radial-gradient(ellipse 40% 50% at 97% 90%, #eaf3ff 0, transparent 85%), #f8faff; }
+    button, input { font: inherit; }
+    button { cursor: pointer; }
+    button:focus-visible, input:focus-visible + .fake-check { outline: 3px solid #a0a9ff; outline-offset: 3px; }
+    .shell { max-width: 540px; margin: 0 auto; padding: 48px 20px 56px; }
+    .brand { display: flex; align-items: center; gap: 12px; margin-bottom: 40px; }
+    .mark { display: grid; place-items: center; flex: 0 0 42px; width: 42px; height: 42px; background: #5866ee; color: #fff; border-radius: 14px; box-shadow: 0 6px 16px #5866ee33; }
+    .brand strong { font-size: 17px; letter-spacing: -.45px; }
+    .brand small { display: block; color: #8994a9; font-weight: 500; font-size: 12px; margin-top: 2px; }
+    .card { background: #fff; border: 1px solid #e9edf6; border-radius: 26px; padding: 30px; box-shadow: 0 24px 80px #26376c0d, 0 3px 12px #26376c08; }
+    .card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+    .eyebrow { margin: 0 0 9px; font-size: 11px; font-weight: 800; letter-spacing: .14em; color: #8490a8; }
+    h1 { margin: 0; font-size: clamp(25px, 5vw, 32px); letter-spacing: -1.3px; line-height: 1.19; }
+    .sub { margin: 13px 0 0; color: #7d899c; line-height: 1.6; font-size: 14px; }
+    .status { display: inline-flex; gap: 7px; align-items: center; border-radius: 999px; background: #f1f3f9; color: #737e92; padding: 8px 11px; font-size: 11px; font-weight: 800; white-space: nowrap; }
+    .dot { height: 7px; width: 7px; border-radius: 50%; background: #acb6c6; }
+    .status.on { background: #eaf8f0; color: #26845d; }
+    .status.on .dot { background: #3ac185; box-shadow: 0 0 0 3px #3ac18520; }
+    .display { margin-top: 28px; padding: 25px 18px 23px; text-align: center; border-radius: 18px; background: linear-gradient(145deg, #f8f9ff, #f3f6ff); border: 1px solid #e9edfd; }
+    .display-label { color: #818da5; font-weight: 800; letter-spacing: .12em; font-size: 10px; text-transform: uppercase; }
+    .time { margin: 9px 0 5px; font-size: clamp(48px, 13vw, 62px); line-height: 1.05; letter-spacing: -3px; font-variant-numeric: tabular-nums; font-weight: 750; }
+    .range { font-size: 12px; color: #9ca6b8; }
+    .section-row { display: flex; justify-content: space-between; align-items: baseline; margin: 28px 0 13px; }
+    h2 { font-size: 14px; letter-spacing: -.2px; margin: 0; }
+    .section-hint { color: #a0a8b8; font-size: 12px; }
+    .sounds { display: grid; gap: 11px; }
+    .sound { display: flex; align-items: center; gap: 12px; min-height: 74px; padding: 13px 14px; background: #fff; border: 1px solid #e7eaf1; border-radius: 15px; transition: border-color .2s, background .2s; }
+    .sound:has(input:checked) { border-color: #cbd1ff; background: #fbfbff; }
+    .symbol { display: grid; place-items: center; flex: 0 0 41px; width: 41px; height: 41px; background: #f0f2fc; border-radius: 12px; color: #6877a3; }
+    .sound-label { flex: 1; min-width: 0; }
+    .sound-label b { display: block; font-size: 13px; margin-bottom: 4px; }
+    .sound-label span { display: block; font-size: 11px; color: #939cb0; }
+    .preview { color: #5866de; border: 1px solid #e1e5f9; background: #f7f8ff; border-radius: 10px; padding: 10px 11px; font-size: 11px; font-weight: 750; transition: background .2s; }
+    .preview:hover { background: #ecedff; }
+    .pick { display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 30px; cursor: pointer; position: relative; }
+    .pick input { opacity: 0; position: absolute; width: 22px; height: 22px; cursor: pointer; }
+    .fake-check { display: grid; place-items: center; width: 20px; height: 20px; border: 1.5px solid #cad0dd; border-radius: 6px; background: #fff; color: transparent; transition: all .2s; pointer-events: none; }
+    .pick input:checked + .fake-check { background: #5866ee; border-color: #5866ee; color: #fff; }
+    .actions { display: grid; grid-template-columns: 1.5fr 1fr; gap: 11px; margin-top: 24px; }
+    .btn { display: flex; justify-content: center; align-items: center; gap: 9px; height: 51px; border-radius: 13px; font-weight: 800; border: 0; font-size: 14px; }
+    .start { background: #5866ee; color: #fff; box-shadow: 0 7px 17px #5866ee2b; }
+    .start:hover:not(:disabled) { background: #4757e2; }
+    .stop { background: #f3f5f9; color: #58647c; }
+    .stop:hover:not(:disabled) { background: #e9edf4; }
+    .btn:disabled { opacity: .45; cursor: default; box-shadow: none; }
+    .note { margin: 18px 0 0; color: #a0a9b8; font-size: 11px; line-height: 1.6; text-align: center; }
+    .message { color: #626f8c; font-size: 12px; margin: 10px 0 0; text-align: center; min-height: 16px; }
+    footer { text-align: center; color: #aeb7c7; font-size: 11px; margin-top: 24px; }
+    @media (max-width: 480px) { .shell { padding: 28px 14px 38px; } .brand { margin-bottom: 24px; } .card { border-radius: 21px; padding: 23px 18px; } .status { font-size: 10px; } .sound { gap: 9px; padding: 10px; } .preview { padding: 10px 8px; } .symbol { width: 37px; flex-basis: 37px; } }
+    @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <div class="brand">
+      <div class="mark" aria-hidden="true">
+        <svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3.5 2.5"/></svg>
+      </div>
+      <div><strong>Everyday Timer</strong><small>Your personal sound timer</small></div>
+    </div>
+    <section class="card" aria-label="Timer settings">
+      <div class="card-top">
+        <div><p class="eyebrow">SOUND TIMER</p><h1>Stay on schedule.</h1></div>
+        <span id="status" class="status" aria-live="polite"><span class="dot"></span><span id="state-label">Idle</span></span>
+      </div>
+      <p class="sub">Subtle audio cues at randomly spaced intervals.</p>
+      <div class="display" aria-live="off">
+        <div class="display-label">Next sound in</div>
+        <div id="countdown" class="time" role="timer">--:--</div>
+        <div class="range">Random interval · 2–5 minutes</div>
+      </div>
+      <div class="section-row"><h2>Choose your sounds</h2><span class="section-hint">Select one or both</span></div>
+      <div class="sounds">
+        <div class="sound">
+          <div class="symbol" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 17h8l1.5-3-2-6a3.6 3.6 0 0 0-7 0l-2 6L8 17Z"/><path d="M10 20h4M12 3v1"/></svg></div>
+          <div class="sound-label"><b>Battery chirp</b><span>Short smoke alarm beep</span></div>
+          <button class="preview" type="button" data-preview="alarm" aria-label="Preview battery chirp">▶ Preview</button>
+          <label class="pick" aria-label="Enable battery chirp"><input id="use-alarm" type="checkbox" checked /><span class="fake-check" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="m3 8 3.2 3.2L13 4.5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></label>
+        </div>
+        <div class="sound">
+          <div class="symbol" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 17c3-5 5-5 8 0s5 5 10 0M3 11c3-5 5-5 8 0s5 5 10 0"/></svg></div>
+          <div class="sound-label"><b>Night crickets</b><span>A few natural-sounding chirps</span></div>
+          <button class="preview" type="button" data-preview="cricket" aria-label="Preview night crickets">▶ Preview</button>
+          <label class="pick" aria-label="Enable night crickets"><input id="use-cricket" type="checkbox" checked /><span class="fake-check" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="m3 8 3.2 3.2L13 4.5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></label>
+        </div>
+      </div>
+      <div class="actions">
+        <button type="button" id="start" class="btn start"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.8a1 1 0 0 1 1.5-.85l12 7.2a1 1 0 0 1 0 1.7l-12 7.2A1 1 0 0 1 7 19.2V4.8Z"/></svg> Start timer</button>
+        <button type="button" id="stop" class="btn stop" disabled><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><rect x="4" y="4" width="16" height="16" rx="2"/></svg> Stop</button>
+      </div>
+      <p class="message" id="message" aria-live="polite"></p>
+      <p class="note">Keep this page open and your device's sound on.<br />Background or sleeping browsers may pause audio.</p>
+    </section>
+    <footer>Simple. Private. No account required.</footer>
+  </main>
+  <script>
+  (() => {
+    'use strict';
+    const $ = (id) => document.getElementById(id);
+    const startButton = $('start');
+    const stopButton = $('stop');
+    const alarmCheckbox = $('use-alarm');
+    const cricketCheckbox = $('use-cricket');
+    const countdown = $('countdown');
+    const status = $('status');
+    const stateLabel = $('state-label');
+    const message = $('message');
+
+    const MIN_SECONDS = 120;
+    const MAX_SECONDS = 300;
+    const LOOKAHEAD_SECONDS = 3600; // Queued sounds survive ordinary background timer throttling.
+    let context = null;
+    let buffers = null;
+    let master = null;
+    let running = false;
+    let nextAt = null;
+    let queue = [];
+
+    // Everything is synthesized locally; no audio downloads, cookies or network calls.
+    function makeBuffer(seconds, generator) {
+      const rate = context.sampleRate;
+      const buffer = context.createBuffer(1, Math.ceil(seconds * rate), rate);
+      const samples = buffer.getChannelData(0);
+      for (let i = 0; i < samples.length; i++) {
+        samples[i] = Math.max(-1, Math.min(1, generator(i / rate)));
+      }
+      return buffer;
+    }
+
+    function buildSounds() {
+      const alarm = makeBuffer(0.31, (t) => {
+        const beginning = 0.025;
+        const length = 0.165;
+        const x = t - beginning;
+        if (x < 0 || x >= length) return 0;
+        const attack = Math.min(1, x / 0.004);
+        const release = Math.min(1, (length - x) / 0.020);
+        const envelope = Math.pow(Math.max(0, Math.min(attack, release)), 0.7);
+        const frequency = 3350 + 70 * Math.sin(2 * Math.PI * 7 * x);
+        const wave = Math.sin(2 * Math.PI * frequency * x) * .82
+          + Math.sin(2 * Math.PI * frequency * 2.01 * x) * .18;
+        return envelope * wave * .38;
+      });
+
+      // Clusters of narrow, high-frequency pulses with natural changes in pitch.
+      const groups = [0.10, 0.62, 1.18, 1.73];
+      const cricket = makeBuffer(2.32, (t) => {
+        let total = 0;
+        groups.forEach((begin, groupIndex) => {
+          for (let pulse = 0; pulse < 5; pulse++) {
+            const x = t - begin - pulse * 0.052;
+            if (x < 0 || x >= 0.034) continue;
+            const env = Math.sin(Math.PI * x / 0.034) ** 1.35;
+            const f = 4275 + groupIndex * 62 + pulse * 21 + 65 * Math.sin(2 * Math.PI * 31 * x);
+            total += env * (
+              Math.sin(2 * Math.PI * f * x) * 0.86 +
+              Math.sin(2 * Math.PI * f * 2 * x) * 0.14
+            );
+          }
+        });
+        return total * .23;
+      });
+      return { alarm, cricket };
+    }
+
+    async function unlockAudio() {
+      if (!context) {
+        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+        if (!AudioContextClass) throw new Error('This browser does not support audio playback.');
+        context = new AudioContextClass();
+        master = context.createGain();
+        master.gain.value = 0.75;
+        master.connect(context.destination);
+        buffers = buildSounds();
+      }
+      if (context.state !== 'running') await context.resume();
+      if (context.state !== 'running') throw new Error('Audio is paused by the browser. Try again.');
+    }
+
+    function choices() {
+      const enabled = [];
+      if (alarmCheckbox.checked) enabled.push('alarm');
+      if (cricketCheckbox.checked) enabled.push('cricket');
+      return enabled;
+    }
+
+    function randomSeconds() { return MIN_SECONDS + Math.random() * (MAX_SECONDS - MIN_SECONDS); }
+    function randomChoice(items) { return items[Math.floor(Math.random() * items.length)]; }
+
+    function playAt(kind, when, scheduled = false) {
+      const source = context.createBufferSource();
+      source.buffer = buffers[kind];
+      source.playbackRate.value = .97 + Math.random() * .06;
+      source.connect(master);
+      const item = { source, at: when, scheduled };
+      if (scheduled) queue.push(item);
+      source.onended = () => { if (scheduled) queue = queue.filter(entry => entry !== item); };
+      source.start(when);
+      return source;
+    }
+
+    function cancelQueued() {
+      for (const item of queue) {
+        try { item.source.stop(); } catch (_) { /* Already completed. */ }
+      }
+      queue = [];
+    }
+
+    function fillQueue() {
+      if (!running || !context || context.state !== 'running') return;
+      const horizon = context.currentTime + LOOKAHEAD_SECONDS;
+      const available = choices();
+      if (!available.length) return;
+      if (nextAt === null) nextAt = context.currentTime + randomSeconds();
+      while (nextAt < horizon) {
+        playAt(randomChoice(available), nextAt, true);
+        nextAt += randomSeconds();
+      }
+    }
+
+    function updateUI() {
+      status.classList.toggle('on', running);
+      stateLabel.textContent = running ? 'Running' : 'Idle';
+      startButton.disabled = running;
+      stopButton.disabled = !running;
+      if (!running || !context) { countdown.textContent = '--:--'; return; }
+      const upcoming = queue.find(entry => entry.at >= context.currentTime);
+      if (!upcoming) { countdown.textContent = '00:00'; return; }
+      const remaining = Math.max(0, Math.ceil(upcoming.at - context.currentTime));
+      countdown.textContent = String(Math.floor(remaining / 60)).padStart(2, '0') + ':' + String(remaining % 60).padStart(2, '0');
+    }
+
+    startButton.addEventListener('click', async () => {
+      if (running) return;
+      startButton.disabled = true;
+      message.textContent = '';
+      try {
+        await unlockAudio();
+        running = true;
+        nextAt = null;
+        fillQueue();
+        updateUI();
+      } catch (error) {
+        message.textContent = error.message || 'Could not start audio.';
+        startButton.disabled = false;
+      }
+    });
+
+    stopButton.addEventListener('click', () => {
+      running = false;
+      cancelQueued();
+      nextAt = null;
+      message.textContent = '';
+      updateUI();
+    });
+
+    for (const checkbox of [alarmCheckbox, cricketCheckbox]) {
+      checkbox.addEventListener('change', () => {
+        if (!choices().length) {
+          checkbox.checked = true;
+          message.textContent = 'Keep at least one sound selected.';
+          return;
+        }
+        message.textContent = '';
+        if (running) {
+          cancelQueued();
+          nextAt = null;
+          fillQueue();
+        }
+        updateUI();
+      });
+    }
+
+    document.querySelectorAll('[data-preview]').forEach(button => {
+      button.addEventListener('click', async () => {
+        try {
+          await unlockAudio();
+          playAt(button.dataset.preview, context.currentTime + 0.01);
+          message.textContent = '';
+        } catch (error) { message.textContent = error.message || 'Could not preview audio.'; }
+      });
+    });
+
+    setInterval(() => { if (running) { fillQueue(); updateUI(); } }, 1000);
+    window.addEventListener('pageshow', () => { if (running) { fillQueue(); updateUI(); } });
+    document.addEventListener('visibilitychange', () => { if (!document.hidden && running) { fillQueue(); updateUI(); } });
+    updateUI();
+  })();
+  </script>
+</body>
+</html>
